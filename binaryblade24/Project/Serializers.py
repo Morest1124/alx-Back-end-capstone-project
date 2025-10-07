@@ -12,3 +12,9 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
         readOnly_fields = ['id']
+        
+class ProjectStatusSerializers(serializers.ModelSerializer):
+    class Meta:
+        #Default ordering of quiries
+        ordering = ['-created_at']
+        
