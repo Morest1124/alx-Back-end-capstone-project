@@ -1,6 +1,4 @@
-from django.db import models
-
-# Create your models here.
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -20,20 +18,18 @@ class Project(models.Model):
     budget = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     project_id = models.IntegerField(unique=True, max_length=20, blank=False)
     client_id = models.IntegerField(unique=True, max_length=20, blank=False)
-    project_id = models.IntegerField(unique=True, max_length=20, blank=False)
-    Created_at = models.DateTimeField(auto_now = True)
     
     # Foreign Key to link a product to a category
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     
     #Project status
     class ProjectStatus (models.TextChoices):
-        OPEN = 'OPEN' , 'OPEM'
-        IN_PROGRESS = 'IM_PROGRASS', 'IN PROGRESS'
+        OPEN = 'OPEN' , 'OPEN'
+        IN_PROGRESS = 'IN_PROGRESS', 'IN PROGRESS'
         COMPLETED = 'COMPLETED', 'COMPLETED'
         CANCELED = 'CANCELED', 'CANCELED'
         
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , related_name=created_project)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , related_name='created_projects')
     
     
     #Timeline
