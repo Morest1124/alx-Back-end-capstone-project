@@ -1,10 +1,17 @@
 from rest_framework import serializers
 from .models import Project, Category 
-from User.Serializers import FreelancerDetailSerializer
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+# Serializers for User/Freelancer (Move to users/serializers.py)
+class FreelancerDetailSerializer(serializers.ModelSerializer):
+    """
+    Minimal serializer for User details, used for nesting.
+    """
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
 
 # Project Management Serializers
 class CategorySerializer(serializers.ModelSerializer):
