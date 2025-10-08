@@ -13,10 +13,10 @@ class IsClient(permissions.BasePermission):
             return True
         
         # Check if the authenticated user has a 'CLIENT' role
-        if request.user and request.User.is_authenticated:
+        if request.user and request.user.is_authenticated:
             try:
                 # Access the profile to check the role
-                return request.User.profile.role == Profile.UserRoles.CLIENT
+                return request.user.profile.role == Profile.UserRoles.CLIENT
             except Profile.DoesNotExist:
                 return False
         return False
@@ -27,7 +27,7 @@ class IsFreelancer(permissions.BasePermission):
     """
     message = 'Access denied. Only freelancers are allowed to perform this action.'
 
-    def has_permession(self, request, view):
+    def has_permission(self, request, view):
         if request.user and request.user.is_authenticated:
             try:
                 # Access the profile to check the role
