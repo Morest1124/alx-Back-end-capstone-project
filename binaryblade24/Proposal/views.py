@@ -1,7 +1,7 @@
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.response import Serializers
+
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from django.shortcuts import get_object_or_404
@@ -10,7 +10,8 @@ from django.db import transaction
 from Proposal.models import Proposal
 from Project.models import Project
 from Proposal.Serializer import ProposalSerializer
-from .Permission import  IsFreelancer,IsProposalProjectOwner #IsProjectOwner,IsClient, 
+from Project.Permissions import IsClient, IsFreelancer
+from .Permissions import IsProposalProjectOwner
 from User.models import Profile # To access UserRoles
 
 
@@ -32,7 +33,7 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
             self.permission_classes = [IsAuthenticated]
         return super().get_permissions()
 
-    def get_queryset(self):
+    def get_queryset(self): # pyright: ignore[reportIncompatibleMethodOverride]
         """
         Filters proposals by the project ID in the URL.
         """
@@ -41,7 +42,7 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         
         # Security Check for GET
         # Only the client can see the list of proposals
-        if self.request.method == 'GET' and Project.client != self.request.user:
+        if self.request.method == 'GET' and project.client != self.request.user:
             # Freelancers can list their own proposals, but not via the project endpoint
             
             # (A separate /users/{id}/proposals endpoint handles freelancer lists)
@@ -58,7 +59,7 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
 
         # 1. Check if the project is OPEN
         if project.status != Project.ProjectStatus.OPEN:
-            raise serializers.ValidationError({"detail": "Cannot submit proposal: Project is not open."})
+            raise serializer.ValidationError({"detail": "Cannot submit proposal: Project is not open."})
 
         # 2. CRUCIAL: Set the required Foreign Keys and sttus
         serializer.save(
@@ -99,7 +100,7 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
                     project.status = Project.ProjectStatus.IN_PROGRESS
                     project.save()
                     
-                # 3. Side effect: Reject all other proposals for this project
+                # Reject all other proposals for this project
                 Proposal.objects.filter(project=project, status=Proposal.ProposalStatus.PENDING).exclude(pk=proposal.pk).update(status=Proposal.ProposalStatus.REJECTED)
         
         return Response(ProposalSerializer(proposal).data)

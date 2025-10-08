@@ -11,7 +11,7 @@ class Proposal(models.Model):
 
     
     project = models.ForeignKey(
-        'Project', 
+        'Project.Project', 
         on_delete=models.CASCADE,
         related_name='proposals' # Naming the reverse relationship
     )

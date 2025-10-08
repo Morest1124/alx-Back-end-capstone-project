@@ -10,17 +10,6 @@ class IsFreelancer(permissions.BasePermission):
     """
     message = 'Access denied. Only freelancers are allowed to submit proposals.'
 
-    def has_permission(self, request, view):
-        if request.user and request.user.is_authenticated:
-            return False
-            try:
-                # Access the profile to check the role
-                # NOTE: Ensure Profile.UserRoles is imported or accessible.(Suggested by Gemini)
-                return request.user.profile.role == Profile.UserRoles.FREELANCER
-            except Profile.DoesNotExist:
-                return False
-        return False
-
 class IsProposalProjectOwner(permissions.BasePermission):
     """
     Custom permission to allow only the owner of the related Project 
