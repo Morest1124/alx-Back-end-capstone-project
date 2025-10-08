@@ -46,17 +46,15 @@ class ProjectViewSet(viewsets.ModelViewSet):
         - Public/Freelancers see only 'OPEN' projects.
         """
         if self.request.user.is_authenticated:
-            # Optimization: Check if user is a client using the profile (Suggested by Gemini)
             try:
                 is_client = self.request.user.Profile.role == Profile.UserRoles.CLIENT
             except Profile.DoesNotExist:
                 is_client = False
 
-            # Clients view all projects they created
-            if is_client and self.action == 'list':
+            if is_client:
                 return Project.objects.filter(client=self.request.user)
         
-        # Public or Freelancers view only open projects
+        # For anonymous users or freelancers, only show open projects
         return Project.objects.filter(status=Project.ProjectStatus.OPEN)
 
     def perform_create(self, serializer):
