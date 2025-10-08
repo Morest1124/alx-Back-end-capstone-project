@@ -17,8 +17,7 @@ class Project(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     budget = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     project_id = models.IntegerField(unique=True, blank=False)
- 
-  
+
     
     # Foreign Key to link a product to a category
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

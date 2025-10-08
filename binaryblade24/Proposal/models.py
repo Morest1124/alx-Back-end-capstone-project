@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings 
+# Commented Typo changes suggested by Gemini
 
 
 class Proposal(models.Model):
@@ -33,7 +34,7 @@ class Proposal(models.Model):
         help_text="The current status of this proposal."
     )
     
-    # Timestamps (Recommended)
+    # Timestamps (Recommended) 
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

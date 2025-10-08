@@ -69,3 +69,4 @@ class ProjectViewSet(viewsets.ModelViewSet):
             status=Project.ProjectStatus.OPEN
         )
 
+
