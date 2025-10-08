@@ -18,3 +18,13 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+
+
+class FreelancerDetailSerializer(serializers.ModelSerializer):
+    """
+    Minimal serializer for User details, used for nesting.
+    """
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
