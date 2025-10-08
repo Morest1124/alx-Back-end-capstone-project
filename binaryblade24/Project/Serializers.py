@@ -1,22 +1,70 @@
 from rest_framework import serializers
-from .models import Project, Category
+from .models import Project, Category 
+from django.contrib.auth import get_user_model
 
-class ProjectSerializer(serializers.ModelSerializer):
+User = get_user_model()
+
+# Serializers for User/Freelancer (Move to users/serializers.py)
+class FreelancerDetailSerializer(serializers.ModelSerializer):
+    """
+    Minimal serializer for User details, used for nesting.
+    """
     class Meta:
-        model = Project
-        fields = '__all__'
-        # `client` is a ForeignKey to the User model; Django will manage
-        # `client_id` automatically. Keep project_id read-only.
-        readOnly_fields = ['id', 'project_id']
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
 
+# Project Management Serializers
 class CategorySerializer(serializers.ModelSerializer):
+    """Serializer for Project Categories."""
     class Meta:
         model = Category
         fields = '__all__'
-        readOnly_fields = ['id']
-        
-class ProjectStatusSerializers(serializers.ModelSerializer):
+        read_only_fields = ['id', 'slug']
+
+class ProjectSerializer(serializers.ModelSerializer):
+    """Main serializer for Project CRUD operations."""
+    # Nested field to display the client's public username
+    client_details = FreelancerDetailSerializer(source='client', read_only=True)
+    
+    # Nested field to display the category name
+    category_details = CategorySerializer(source='category', read_only=True)
+
     class Meta:
-        #Default ordering of quiries
-        ordering = ['-created_at']
+        model = Project
+        # Explicitly listing fields for security and output control
+        fields = [
+            'id', 
+            'title', 
+            'description', 
+            'budget',
+            'price',
+            'category', 
+            'status', 
+            'client', 
+            'created_at', 
+            'updated_at',
+            'client_details',
+            'category_details',
+        ]
         
+        # Security: Fields set by the server/view, not allowed in client input
+        read_only_fields = [
+            'id', 
+            'client',
+            'status',
+            'created_at',
+            'updated_at',
+        ]
+
+# Proposal System Serializers
+
+class ProjectNestedSerializer(serializers.ModelSerializer):
+    """
+    Minimal serializer to show the associated project title for Proposal output.
+    """
+    class Meta:
+        model = Project
+        fields = ['id', 'title', 'budget']
+
+
+
