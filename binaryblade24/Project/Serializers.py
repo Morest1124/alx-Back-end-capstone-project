@@ -5,7 +5,9 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
-        readOnly_fields = ['id', 'project_id', 'client_id']
+        # `client` is a ForeignKey to the User model; Django will manage
+        # `client_id` automatically. Keep project_id read-only.
+        readOnly_fields = ['id', 'project_id']
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

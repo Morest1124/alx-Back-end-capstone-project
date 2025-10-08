@@ -16,20 +16,31 @@ class Project(models.Model):
     description = models.CharField(blank=False, max_length=2500)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     budget = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
-    project_id = models.IntegerField(unique=True, max_length=20, blank=False)
-    client_id = models.IntegerField(unique=True, max_length=20, blank=False)
+    project_id = models.IntegerField(unique=True, blank=False)
+ 
+  
     
     # Foreign Key to link a product to a category
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     
     #Project status
-    class ProjectStatus (models.TextChoices):
+    class ProjectStatus(models.TextChoices):
         OPEN = 'OPEN' , 'OPEN'
         IN_PROGRESS = 'IN_PROGRESS', 'IN PROGRESS'
         COMPLETED = 'COMPLETED', 'COMPLETED'
         CANCELED = 'CANCELED', 'CANCELED'
+
         
+    # client id will be created automatically
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , related_name='created_projects')
+
+    # Setting status: use the choices defined in ProjectStatus
+    status = models.CharField(
+        max_length=20,
+        choices=ProjectStatus.choices,
+        default=ProjectStatus.OPEN,
+        help_text="The current status of this project",
+    )
     
     
     #Timeline
@@ -39,4 +50,4 @@ class Project(models.Model):
     def __str__(self) ->str:
         return self.title
         
-        
+    
