@@ -5,20 +5,29 @@ from .models import Profile
 User = get_user_model()
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'skills', 'role')
+
+
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=False, min_length=8)
-    role = serializers.ChoiceField(choices=Profile.UserRoles.choices, write_only=True, required=False)
+    profile = ProfileSerializer(required=False)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'role', 'identity_number')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'profile', 'identity_number')
         read_only_fields = ('id', 'email',)
 
     def create(self, validated_data):
-        role = validated_data.pop('role')
+        profile_data = validated_data.pop('profile', None)
         password = validated_data.pop('password')
         user = User.objects.create_user(password=password, **validated_data)
-        Profile.objects.create(user=user, role=role)
+        if profile_data:
+            Profile.objects.create(user=user, **profile_data)
+        else:
+            Profile.objects.create(user=user) # Create profile with default role
         return user
 
     def update(self, instance, validated_data):
@@ -26,10 +35,11 @@ class UserSerializer(serializers.ModelSerializer):
             password = validated_data.pop('password')
             instance.set_password(password)
 
-        if 'role' in validated_data:
-            role = validated_data.pop('role')
+        profile_data = validated_data.pop('profile', None)
+        if profile_data:
             profile = instance.profile
-            profile.role = role
+            for attr, value in profile_data.items():
+                setattr(profile, attr, value)
             profile.save()
 
         for attr, value in validated_data.items():

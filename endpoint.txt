@@ -79,3 +79,18 @@ Select the "raw" radio button and choose "JSON" from the dropdown. Then, paste t
     "identity_number": "1234567890"
 }
 ```
+
+http://127.0.0.1:8000/api/projects/1/proposals/
+
+---
+JSON Body for creating a user:
+{
+    "email": "someuser@example.com",
+    "username": "someuser",
+    "password": "a_strong_password",
+    "first_name": "John",
+    "last_name": "Doe",
+    "country_origin": "USA",
+    "identity_number": "123456789",
+    "role": "FREELANCER"
+}

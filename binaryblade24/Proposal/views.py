@@ -1,4 +1,4 @@
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -14,7 +14,7 @@ from Project.models import Project
 from Proposal.Serializer import ProposalSerializer, ProposalStatusUpdateSerializer
 from Project.Permissions import IsClient, IsFreelancer
 from .Permissions import IsProposalProjectOwner
-from User.models import Profile # To access UserRoles
+from User.models import Profile, User # To access UserRoles
 
 
 class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -106,3 +106,25 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
                 Proposal.objects.filter(project=project, status=Proposal.ProposalStatus.PENDING).exclude(pk=proposal.pk).update(status=Proposal.ProposalStatus.REJECTED)
         
         return Response(ProposalSerializer(proposal).data)
+
+
+class ProposalDetailView(generics.RetrieveAPIView):
+    """
+    Retrieves a single proposal by its ID.
+    """
+    queryset = Proposal.objects.all()
+    serializer_class = ProposalSerializer
+    permission_classes = [IsAuthenticated]
+
+
+class UserProposalsView(generics.ListAPIView):
+    """
+    Retrieves all proposals submitted by a specific freelancer.
+    """
+    serializer_class = ProposalSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('pk')
+        user = get_object_or_404(User, pk=user_id)
+        return Proposal.objects.filter(freelancer=user)

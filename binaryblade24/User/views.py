@@ -1,13 +1,21 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .Serializers import UserSerializer
+from .Serializers import UserSerializer, ProfileSerializer
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from .Permissions import IsOwnerOrAdmin
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .models import Profile
+
 
 User = get_user_model()
+
+
+class LoginView(TokenObtainPairView):
+    """A login endpoint that authenticates a user and returns a token."""
+    pass
 
 
 class RegisterView(APIView):
@@ -46,6 +54,29 @@ class UserDetailView(APIView):
         user = get_object_or_404(User, pk=pk)
         self.check_object_permissions(request, user)
         serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserProfileView(APIView):
+    """
+    Retrieve or update a user's profile.
+    """
+    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(User, pk=pk)
+        profile = get_object_or_404(Profile, user=user)
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        user = get_object_or_404(User, pk=pk)
+        profile = get_object_or_404(Profile, user=user)
+        self.check_object_permissions(request, user)
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

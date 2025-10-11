@@ -7,7 +7,7 @@ class User(AbstractUser):
 
     # Custom fields added to the core User model
     country_origin = models.CharField(max_length=50, blank=False, default='')
-    email = models.EmailField(unique=True, blank=False, null=False)
+    email = models.EmailField(blank=False, unique=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
     
