@@ -9,4 +9,5 @@ router.register(r'projects', ProjectViewSet, basename='project')
 urlpatterns = [
     path('', include(router.urls)),
     path('projects/<int:project_pk>/proposals/', ProposalListCreateView.as_view({'get': 'list', 'post': 'create'}), name='project-proposals'),
+    path('projects/<int:project_pk>/proposals/<int:pk>/status/', ProposalListCreateView.as_view({'patch': 'update_status'}), name='proposal-update-status'),
 ]

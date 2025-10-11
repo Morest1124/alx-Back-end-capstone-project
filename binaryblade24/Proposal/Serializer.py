@@ -59,3 +59,8 @@ class ProposalSerializer(serializers.ModelSerializer):
         if value <= 5:
             raise serializers.ValidationError("Bid amount must be greater than 5.")
         return value
+
+class ProposalStatusUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Proposal
+        fields = ['status']

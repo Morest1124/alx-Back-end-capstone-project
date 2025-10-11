@@ -1,0 +1,92 @@
+[
+    {
+        "username": "user1",
+        "first_name": "FirstName1",
+        "last_name": "LastName1",
+        "email": "user1@example.com",
+        "password": "password123",
+        "role": "FREELANCER",
+        "identity_number": "1234567891"
+    },
+    {
+        "username": "user2",
+        "first_name": "FirstName2",
+        "last_name": "LastName2",
+        "email": "user2@example.com",
+        "password": "password123",
+        "role": "CLIENT",
+        "identity_number": "1234567892"
+    },
+    {
+        "username": "user3",
+        "first_name": "FirstName3",
+        "last_name": "LastName3",
+        "email": "user3@example.com",
+        "password": "password123",
+        "role": "FREELANCER",
+        "identity_number": "1234567893"
+    },
+    {
+        "username": "user4",
+        "first_name": "FirstName4",
+        "last_name": "LastName4",
+        "email": "user4@example.com",
+        "password": "password123",
+        "role": "CLIENT",
+        "identity_number": "1234567894"
+    },
+    {
+        "username": "user5",
+        "first_name": "FirstName5",
+        "last_name": "LastName5",
+        "email": "user5@example.com",
+        "password": "password123",
+        "role": "FREELANCER",
+        "identity_number": "1234567895"
+    },
+    {
+        "username": "user6",
+        "first_name": "FirstName6",
+        "last_name": "LastName6",
+        "email": "user6@example.com",
+        "password": "password123",
+        "role": "CLIENT",
+        "identity_number": "1234567896"
+    },
+    {
+        "username": "user7",
+        "first_name": "FirstName7",
+        "last_name": "LastName7",
+        "email": "user7@example.com",
+        "password": "password123",
+        "role": "FREELANCER",
+        "identity_number": "1234567897"
+    },
+    {
+        "username": "user8",
+        "first_name": "FirstName8",
+        "last_name": "LastName8",
+        "email": "user8@example.com",
+        "password": "password123",
+        "role": "CLIENT",
+        "identity_number": "1234567898"
+    },
+    {
+        "username": "user9",
+        "first_name": "FirstName9",
+        "last_name": "LastName9",
+        "email": "user9@example.com",
+        "password": "password123",
+        "role": "FREELANCER",
+        "identity_number": "1234567899"
+    },
+    {
+        "username": "user10",
+        "first_name": "FirstName10",
+        "last_name": "LastName10",
+        "email": "user10@example.com",
+        "password": "password123",
+        "role": "CLIENT",
+        "identity_number": "1234567810"
+    }
+]

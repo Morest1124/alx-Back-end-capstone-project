@@ -63,5 +63,5 @@ class Profile(models.Model):
     bio = models.TextField(blank=True, null=True)
     skills = models.CharField(max_length=255, blank=True)
 
-    def __str__(self):
+def __str__(self):
         return f"{self.user.username}'s Profile ({self.get_role_display()})"

@@ -2,6 +2,8 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+from rest_framework.serializers import ValidationError
+
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from django.shortcuts import get_object_or_404
@@ -9,7 +11,7 @@ from django.db import transaction
 
 from Proposal.models import Proposal
 from Project.models import Project
-from Proposal.Serializer import ProposalSerializer
+from Proposal.Serializer import ProposalSerializer, ProposalStatusUpdateSerializer
 from Project.Permissions import IsClient, IsFreelancer
 from .Permissions import IsProposalProjectOwner
 from User.models import Profile # To access UserRoles
@@ -59,7 +61,7 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
 
         # 1. Check if the project is OPEN
         if project.status != Project.ProjectStatus.OPEN:
-            raise serializer.ValidationError({"detail": "Cannot submit proposal: Project is not open."})
+            raise ValidationError({"detail": "Cannot submit proposal: Project is not open."})
 
         # 2. CRUCIAL: Set the required Foreign Keys and sttus
         serializer.save(
@@ -78,13 +80,13 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         proposal = get_object_or_404(Proposal, pk=pk)
         
         # Use a serializer for validation (only accept status field)
-        serializer = self.get_serializer(proposal, data=request.data, partial=True)
+        serializer = ProposalStatusUpdateSerializer(proposal, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         
         new_status = serializer.validated_data.get('status')
 
         if new_status not in [Proposal.ProposalStatus.ACCEPTED, Proposal.ProposalStatus.REJECTED]:
-            return Response({"detail": "Invalid status update. Only ACCEPTED or REJECTED are allowed."}, 
+            return Response({"detail": "Invalid status update. Only ACCEPTED or REJECTED are allowed."},
                             status=status.HTTP_400_BAD_REQUEST)
         
         with transaction.atomic():

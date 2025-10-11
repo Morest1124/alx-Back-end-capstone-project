@@ -1,0 +1,81 @@
+### User Registration Endpoint
+
+This endpoint is for creating a new user.
+
+*   **URL**: `http://127.0.0.1:8000/api/auth/register/`
+*   **HTTP Method**: `POST`
+*   **Description**: Creates a new user and a corresponding profile.
+*   **Request Body**: The request body should be a JSON object with the following fields:
+    *   `username` (string, required)
+    *   `first_name` (string, required)
+    *   `last_name` (string, required)
+    *   `email` (string, required)
+    *   `password` (string, required, minimum 8 characters)
+    *   `role` (string, required, one of `'ADMIN'`, `'CLIENT'`, or `'FREELANCER'`)
+    *   `identity_number` (string, required)
+
+### User Endpoints
+
+*   **URL**: `http://127.0.0.1:8000/api/auth/users/`
+*   **HTTP Method**: `GET`
+*   **Description**: Retrieves a list of all users.
+
+*   **URL**: `http://127.0.0.1:8000/api/auth/users/{id}/`
+*   **HTTP Methods**:
+    *   `GET`: Retrieves a single user by their ID.
+    *   `PUT`: Updates a user's details. Only the user themselves or an admin can perform this action.
+*   **Request Body (for PUT)**: A JSON object with the fields to be updated. All fields are optional.
+
+### Project Endpoints
+
+These endpoints are for managing projects. They are created using a `ViewSet` and a `Router`, which automatically generates a set of CRUD (Create, Read, Update, Delete) endpoints.
+
+*   **URL**: `http://127.0.0.1:8000/api/projects/`
+*   **HTTP Methods**:
+    *   `GET`: List all projects.
+    *   `POST`: Create a new project.
+*   **URL**: `http://127.0.0.1:8000/api/projects/{id}/`
+*   **HTTP Methods**:
+    *   `GET`: Retrieve a specific project by its ID.
+    *   `PUT`: Update a specific project.
+    *   `PATCH`: Partially update a specific project.
+    *   `DELETE`: Delete a specific project.
+
+### Proposal Endpoints
+
+These endpoints are for managing proposals related to a project.
+
+*   **URL**: `http://127.0.0.1:8000/api/projects/{project_pk}/proposals/`
+*   **HTTP Methods**:
+    *   `GET`: List all proposals for a specific project.
+    *   `POST`: Create a new proposal for a specific project.
+
+### Postman Example: `POST http://127.0.0.1:8000/api/auth/register/`
+
+**1. URL:**
+```
+http://127.0.0.1:8000/api/auth/register/
+```
+
+**2. Method:**
+```
+POST
+```
+
+**3. Headers:**
+Set a header with the key `Content-Type` and the value `application/json`.
+
+**4. Body:**
+Select the "raw" radio button and choose "JSON" from the dropdown. Then, paste the following JSON data into the text area:
+
+```json
+{
+    "username": "newuser",
+    "first_name": "Test",
+    "last_name": "User",
+    "email": "testuser@example.com",
+    "password": "a-strong-password",
+    "role": "FREELANCER",
+    "identity_number": "1234567890"
+}
+```
