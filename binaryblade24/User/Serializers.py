@@ -8,17 +8,17 @@ User = get_user_model()
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('bio', 'skills', 'role')
+        fields = ('bio', 'skills', 'role', 'hourly_rate', 'availability')
 
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=False, min_length=8)
+    password = serializers.CharField(write_only=True, required=True, min_length=8)
     profile = ProfileSerializer(required=False)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'profile', 'identity_number')
-        read_only_fields = ('id', 'email',)
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'profile', 'identity_number', 'profile_picture')
+        read_only_fields = ('id',)
 
     def create(self, validated_data):
         profile_data = validated_data.pop('profile', None)

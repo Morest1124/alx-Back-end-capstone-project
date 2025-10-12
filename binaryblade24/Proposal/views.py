@@ -128,3 +128,11 @@ class UserProposalsView(generics.ListAPIView):
         user_id = self.kwargs.get('pk')
         user = get_object_or_404(User, pk=user_id)
         return Proposal.objects.filter(freelancer=user)
+
+class ProposalListView(generics.ListAPIView):
+    """
+    List all proposals.
+    """
+    queryset = Proposal.objects.all()
+    serializer_class = ProposalSerializer
+    permission_classes = [IsAuthenticated]

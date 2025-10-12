@@ -12,7 +12,7 @@ class User(AbstractUser):
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
     
     # NOTE: profilePicture renamed to profile_picture (snake_case convention)
-    # profile_picture = models.ImageField(blank=True, null=True) 
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
 
     # Use 'email' for login:
     USERNAME_FIELD = 'email'
@@ -62,6 +62,17 @@ class Profile(models.Model):
     # Other non-identity profile fields
     bio = models.TextField(blank=True, null=True)
     skills = models.CharField(max_length=255, blank=True)
+    hourly_rate = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    
+    class Availability(models.TextChoices):
+        AVAILABLE = 'AVAILABLE', 'Available'
+        NOT_AVAILABLE = 'NOT_AVAILABLE', 'Not Available'
+        
+    availability = models.CharField(
+        max_length=20,
+        choices=Availability.choices,
+        default=Availability.AVAILABLE
+    )
 
 def __str__(self):
         return f"{self.user.username}'s Profile ({self.get_role_display()})"
