@@ -17,6 +17,14 @@ class Project(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     budget = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     project_id = models.IntegerField(unique=True, blank=False)
+    thumbnail = models.ImageField(upload_to='thumbnail/', null=True, blank=True)
+    delivery_days = models.DateTimeField(null=True, blank=True)
+    verbose_name="Estimated Delivery Date",
+    help_text="The expected date and time the order will be delivered to the customer."
+    #Timeline
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
 
     
     # Foreign Key to link a product to a category
@@ -40,6 +48,7 @@ class Project(models.Model):
         default=ProjectStatus.OPEN,
         help_text="The current status of this project",
     )
+    
     
     
     #Timeline

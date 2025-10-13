@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission, Group
 from django.conf import settings # Needed for settings.AUTH_USER_MODEL reference
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class User(AbstractUser):
 
@@ -62,7 +62,27 @@ class Profile(models.Model):
     # Other non-identity profile fields
     bio = models.TextField(blank=True, null=True)
     skills = models.CharField(max_length=255, blank=True)
-    hourly_rate = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    hourly_rate = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, null=True )
+    #         validators=[MinValueValidator(0.0), MaxValueValidator(5.0)]),
+    avatar = models.ImageField(blank=True)
+    
+    class SkillLevel(models.TextChoices):
+        BEGINNER = 'beginner', 'Beginner'
+        JUNIOR = 'junior', 'Junior'
+        INTERMEDIATE = 'intermediate', 'Intermediate'
+        SENIOR = 'senior', 'Senior'
+        EXPERT = 'expert', 'Expert'
+        
+        # Field to store the user's skill level for the module
+    level = models.CharField(max_length=20,
+    choices=SkillLevel.choices,
+    # Set the default to the lowest tier: 'beginner'
+    default=SkillLevel.BEGINNER,
+    verbose_name="Module Skill Level"
+)     
+        
+
     
     class Availability(models.TextChoices):
         AVAILABLE = 'AVAILABLE', 'Available'

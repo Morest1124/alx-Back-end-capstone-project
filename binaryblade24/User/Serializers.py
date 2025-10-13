@@ -3,12 +3,19 @@ from django.contrib.auth import get_user_model
 from .models import Profile
 
 User = get_user_model()
+class FreelancerDetailSerializer(serializers.ModelSerializer):
+    """
+    Minimal serializer for User details, used for nesting.
+    """
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('bio', 'skills', 'role', 'hourly_rate', 'availability')
+        fields = ('bio', 'skills', 'role', 'hourly_rate', 'rating','level', 'availability')
 
 
 class UserSerializer(serializers.ModelSerializer):

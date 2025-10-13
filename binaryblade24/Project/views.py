@@ -2,6 +2,7 @@ from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from User.Serializers import Profile
 
 from django.shortcuts import get_object_or_404
 from django.db import transaction
@@ -47,7 +48,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         if self.request.user.is_authenticated:
             try:
-                is_client = self.request.user.Profile.role == Profile.UserRoles.CLIENT
+                is_client = self.request.user.profile.role == Profile.UserRoles.CLIENT
             except Profile.DoesNotExist:
                 is_client = False
 
