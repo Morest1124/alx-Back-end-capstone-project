@@ -28,7 +28,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# CORRECTED: This should be a list of strings/hostnames. 
+# Reverting to default empty list for development.
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django']
 
 
 # Application definition
@@ -97,11 +99,16 @@ WSGI_APPLICATION = 'binaryblade24.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("MYSQL_DATABASE"),
+        "HOST": os.getenv("MYSQL_HOST"),
+        "USER": os.getenv("MYSQL_USER"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+        "PORT": os.getenv("MYSQL_PORT"),
     }
 }
+
 
 
 # Password validation
@@ -151,3 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Use the custom user model defined in the User app
 AUTH_USER_MODEL = 'User.User'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
