@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'Proposal',
     'Review',
     'Comment',
+    'dashboard',
 
 ]
 

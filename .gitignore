@@ -35,4 +35,8 @@ local_settings.py
 *.swp
 *~
 .DS_Store
-Thumbs.db
+Thumbs.dbmock_users.json 
+mock_projects_and_proposals.json 
+bulk_create_users.py 
+bulk_create_projects_and_proposals.py 
+endpoint.txt 

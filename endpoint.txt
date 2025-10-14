@@ -166,4 +166,7 @@ Example JSON for creating a user (POST to /api/auth/register/):
         "role": "CLIENT"
     }
 }
-```
+```*
+Dashboard API Endpoints:
+- /api/dashboard/freelancer/
+- /api/dashboard/client/

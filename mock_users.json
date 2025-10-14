@@ -1,92 +1,3002 @@
 [
-    {
-        "username": "user1",
-        "first_name": "FirstName1",
-        "last_name": "LastName1",
-        "email": "user1@example.com",
-        "password": "password123",
-        "role": "FREELANCER",
-        "identity_number": "1234567891"
-    },
-    {
-        "username": "user2",
-        "first_name": "FirstName2",
-        "last_name": "LastName2",
-        "email": "user2@example.com",
-        "password": "password123",
-        "role": "CLIENT",
-        "identity_number": "1234567892"
-    },
-    {
-        "username": "user3",
-        "first_name": "FirstName3",
-        "last_name": "LastName3",
-        "email": "user3@example.com",
-        "password": "password123",
-        "role": "FREELANCER",
-        "identity_number": "1234567893"
-    },
-    {
-        "username": "user4",
-        "first_name": "FirstName4",
-        "last_name": "LastName4",
-        "email": "user4@example.com",
-        "password": "password123",
-        "role": "CLIENT",
-        "identity_number": "1234567894"
-    },
-    {
-        "username": "user5",
-        "first_name": "FirstName5",
-        "last_name": "LastName5",
-        "email": "user5@example.com",
-        "password": "password123",
-        "role": "FREELANCER",
-        "identity_number": "1234567895"
-    },
-    {
-        "username": "user6",
-        "first_name": "FirstName6",
-        "last_name": "LastName6",
-        "email": "user6@example.com",
-        "password": "password123",
-        "role": "CLIENT",
-        "identity_number": "1234567896"
-    },
-    {
-        "username": "user7",
-        "first_name": "FirstName7",
-        "last_name": "LastName7",
-        "email": "user7@example.com",
-        "password": "password123",
-        "role": "FREELANCER",
-        "identity_number": "1234567897"
-    },
-    {
-        "username": "user8",
-        "first_name": "FirstName8",
-        "last_name": "LastName8",
-        "email": "user8@example.com",
-        "password": "password123",
-        "role": "CLIENT",
-        "identity_number": "1234567898"
-    },
-    {
-        "username": "user9",
-        "first_name": "FirstName9",
-        "last_name": "LastName9",
-        "email": "user9@example.com",
-        "password": "password123",
-        "role": "FREELANCER",
-        "identity_number": "1234567899"
-    },
-    {
-        "username": "user10",
-        "first_name": "FirstName10",
-        "last_name": "LastName10",
-        "email": "user10@example.com",
-        "password": "password123",
-        "role": "CLIENT",
-        "identity_number": "1234567810"
+  {
+    "email": "janedoe.freelancer1@testapi.com",
+    "username": "freelancer_jane_001",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "country_origin": "Canada",
+    "identity_number": "98765432101",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced graphic designer specializing in branding and UI/UX.",
+      "skills": "Adobe Creative Suite, Figma, UI/UX Design",
+      "hourly_rate": 50.0,
+      "availability": "AVAILABLE"
     }
+  },
+  {
+    "email": "johnsmith.client1@testapi.com",
+    "username": "client_john_001",
+    "password": "SecureTestP@ss123!",
+    "first_name": "John",
+    "last_name": "Smith",
+    "country_origin": "United States",
+    "identity_number": "98765432102",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup founder looking for talented freelancers to build our new mobile app.",
+      "skills": "Project Management, Agile Methodologies"
+    }
+  },
+  {
+    "email": "alice.johnson.freelancer2@testapi.com",
+    "username": "freelancer_alice_002",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Alice",
+    "last_name": "Johnson",
+    "country_origin": "Australia",
+    "identity_number": "98765432103",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Full-stack web developer with a passion for creating beautiful and functional websites.",
+      "skills": "Python, Django, React, JavaScript",
+      "hourly_rate": 75.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "bob.brown.client2@testapi.com",
+    "username": "client_bob_002",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Bob",
+    "last_name": "Brown",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432104",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Marketing manager seeking a content writer for our company blog.",
+      "skills": "Content Strategy, SEO"
+    }
+  },
+  {
+    "email": "charlie.davis.freelancer3@testapi.com",
+    "username": "freelancer_charlie_003",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Charlie",
+    "last_name": "Davis",
+    "country_origin": "Germany",
+    "identity_number": "98765432105",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional content writer with experience in technical writing and SEO.",
+      "skills": "Content Writing, SEO, Technical Writing",
+      "hourly_rate": 40.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "eve.evans.client3@testapi.com",
+    "username": "client_eve_003",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Eve",
+    "last_name": "Evans",
+    "country_origin": "France",
+    "identity_number": "98765432106",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce store owner looking for a photographer for product photos.",
+      "skills": "E-commerce, Marketing"
+    }
+  },
+  {
+    "email": "frank.foster.freelancer4@testapi.com",
+    "username": "freelancer_frank_004",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Frank",
+    "last_name": "Foster",
+    "country_origin": "Spain",
+    "identity_number": "98765432107",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Photographer specializing in product and lifestyle photography.",
+      "skills": "Photography, Adobe Lightroom, Adobe Photoshop",
+      "hourly_rate": 60.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "grace.green.client4@testapi.com",
+    "username": "client_grace_004",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Grace",
+    "last_name": "Green",
+    "country_origin": "Italy",
+    "identity_number": "98765432108",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Restaurant owner in need of a social media manager.",
+      "skills": "Social Media Marketing, Restaurant Management"
+    }
+  },
+  {
+    "email": "henry.hall.freelancer5@testapi.com",
+    "username": "freelancer_henry_005",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Henry",
+    "last_name": "Hall",
+    "country_origin": "Japan",
+    "identity_number": "98765432109",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Social media manager with a track record of growing online communities.",
+      "skills": "Social Media Marketing, Content Creation, Community Management",
+      "hourly_rate": 45.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "ivy.irene.client5@testapi.com",
+    "username": "client_ivy_005",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ivy",
+    "last_name": "Irene",
+    "country_origin": "South Korea",
+    "identity_number": "98765432110",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Looking for a translator to translate our website from English to Korean.",
+      "skills": "Translation, Internationalization"
+    }
+  },
+  {
+    "email": "jack.jackson.freelancer6@testapi.com",
+    "username": "freelancer_jack_006",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jack",
+    "last_name": "Jackson",
+    "country_origin": "Brazil",
+    "identity_number": "98765432111",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "English to Korean translator with experience in technical and marketing content.",
+      "skills": "Translation, Korean, English",
+      "hourly_rate": 30.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "kate.king.client6@testapi.com",
+    "username": "client_kate_006",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kate",
+    "last_name": "King",
+    "country_origin": "Mexico",
+    "identity_number": "98765432112",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Need a virtual assistant for administrative tasks.",
+      "skills": "Administration, Organization"
+    }
+  },
+  {
+    "email": "liam.lewis.freelancer7@testapi.com",
+    "username": "freelancer_liam_007",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Liam",
+    "last_name": "Lewis",
+    "country_origin": "India",
+    "identity_number": "98765432113",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Virtual assistant with experience in data entry, scheduling, and customer support.",
+      "skills": "Virtual Assistance, Data Entry, Customer Support",
+      "hourly_rate": 25.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "mia.miller.client7@testapi.com",
+    "username": "client_mia_007",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Mia",
+    "last_name": "Miller",
+    "country_origin": "China",
+    "identity_number": "98765432114",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Seeking a data scientist to help us analyze our user data.",
+      "skills": "Data Analysis, Big Data"
+    }
+  },
+  {
+    "email": "noah.nelson.freelancer8@testapi.com",
+    "username": "freelancer_noah_008",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Noah",
+    "last_name": "Nelson",
+    "country_origin": "Russia",
+    "identity_number": "98765432115",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Data scientist with expertise in machine learning and statistical analysis.",
+      "skills": "Data Science, Machine Learning, Python, R",
+      "hourly_rate": 80.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "olivia.owen.client8@testapi.com",
+    "username": "client_olivia_008",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Olivia",
+    "last_name": "Owen",
+    "country_origin": "South Africa",
+    "identity_number": "98765432116",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Looking for a mobile app developer to create an iOS app.",
+      "skills": "Mobile App Development, iOS"
+    }
+  },
+  {
+    "email": "peter.parker.freelancer9@testapi.com",
+    "username": "freelancer_peter_009",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Peter",
+    "last_name": "Parker",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432117",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "iOS developer with experience in Swift and SwiftUI.",
+      "skills": "iOS Development, Swift, SwiftUI",
+      "hourly_rate": 90.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "quinn.quinn.client9@testapi.com",
+    "username": "client_quinn_009",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quinn",
+    "last_name": "Quinn",
+    "country_origin": "Egypt",
+    "identity_number": "98765432118",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need a video editor for our YouTube channel.",
+      "skills": "Video Production, YouTube"
+    }
+  },
+  {
+    "email": "rachel.ray.freelancer10@testapi.com",
+    "username": "freelancer_rachel_010",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Rachel",
+    "last_name": "Ray",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432119",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Video editor with experience in Adobe Premiere Pro and After Effects.",
+      "skills": "Video Editing, Adobe Premiere Pro, After Effects",
+      "hourly_rate": 55.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "sam.stevens.client10@testapi.com",
+    "username": "client_sam_010",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Sam",
+    "last_name": "Stevens",
+    "country_origin": "Argentina",
+    "identity_number": "98765432120",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Looking for a writer to create articles about travel in South America.",
+      "skills": "Content Creation, Travel"
+    }
+  },
+  {
+    "email": "theo.thomas.freelancer11@testapi.com",
+    "username": "freelancer_theo_011",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Theo",
+    "last_name": "Thomas",
+    "country_origin": "Canada",
+    "identity_number": "98765432121",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "DevOps Engineer specializing in CI/CD pipelines and cloud infrastructure.",
+      "skills": "AWS, Docker, Kubernetes, Terraform",
+      "hourly_rate": 110.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "uma.unders.client11@testapi.com",
+    "username": "client_uma_011",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Uma",
+    "last_name": "Unders",
+    "country_origin": "United States",
+    "identity_number": "98765432122",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Tech company needing a DevOps expert to manage our AWS setup.",
+      "skills": "Cloud Infrastructure, Scalability"
+    }
+  },
+  {
+    "email": "victor.vance.freelancer12@testapi.com",
+    "username": "freelancer_victor_012",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Victor",
+    "last_name": "Vance",
+    "country_origin": "Australia",
+    "identity_number": "98765432123",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced corporate lawyer offering contract drafting and legal counsel for startups.",
+      "skills": "Contract Law, Intellectual Property, Business Law",
+      "hourly_rate": 150.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "wendy.white.client12@testapi.com",
+    "username": "client_wendy_012",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Wendy",
+    "last_name": "White",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432124",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Small business owner looking for assistance with legal document review.",
+      "skills": "Legal Compliance, Contract Review"
+    }
+  },
+  {
+    "email": "xavier.xander.freelancer13@testapi.com",
+    "username": "freelancer_xavier_013",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xavier",
+    "last_name": "Xander",
+    "country_origin": "Germany",
+    "identity_number": "98765432125",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified financial analyst providing budgeting, forecasting, and investment advice.",
+      "skills": "Financial Modeling, Budgeting, Investment Analysis",
+      "hourly_rate": 95.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "yara.young.client13@testapi.com",
+    "username": "client_yara_013",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yara",
+    "last_name": "Young",
+    "country_origin": "France",
+    "identity_number": "98765432126",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Seeking a financial expert to develop a 5-year financial projection for expansion.",
+      "skills": "Financial Forecasting, Budgeting"
+    }
+  },
+  {
+    "email": "zane.zeus.freelancer14@testapi.com",
+    "username": "freelancer_zane_014",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zane",
+    "last_name": "Zeus",
+    "country_origin": "Spain",
+    "identity_number": "98765432127",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Cybersecurity specialist focused on penetration testing and threat analysis.",
+      "skills": "Penetration Testing, Ethical Hacking, Security Audits",
+      "hourly_rate": 130.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "amy.adams.client14@testapi.com",
+    "username": "client_amy_014",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Amy",
+    "last_name": "Adams",
+    "country_origin": "Italy",
+    "identity_number": "98765432128",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Company requires an urgent security audit and vulnerability assessment for a new product.",
+      "skills": "Cybersecurity, Vulnerability Testing"
+    }
+  },
+  {
+    "email": "blake.baker.freelancer15@testapi.com",
+    "username": "freelancer_blake_015",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Blake",
+    "last_name": "Baker",
+    "country_origin": "Japan",
+    "identity_number": "98765432129",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in machine learning model development and data pipeline optimization.",
+      "skills": "Machine Learning, Python, TensorFlow, Data Engineering",
+      "hourly_rate": 120.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "chris.cross.client15@testapi.com",
+    "username": "client_chris_015",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Chris",
+    "last_name": "Cross",
+    "country_origin": "South Korea",
+    "identity_number": "98765432130",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "AI startup looking for an ML specialist to refine our recommendation engine.",
+      "skills": "Machine Learning, Recommendation Systems"
+    }
+  },
+  {
+    "email": "diana.day.freelancer16@testapi.com",
+    "username": "freelancer_diana_016",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Diana",
+    "last_name": "Day",
+    "country_origin": "Brazil",
+    "identity_number": "98765432131",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Veteran copywriter creating compelling sales letters and email marketing campaigns.",
+      "skills": "Copywriting, Email Marketing, Sales Funnels",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "edward.east.client16@testapi.com",
+    "username": "client_edward_016",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Edward",
+    "last_name": "East",
+    "country_origin": "Mexico",
+    "identity_number": "98765432132",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Digital marketing agency needing a freelance copywriter for client projects.",
+      "skills": "Advertising Copy, Direct Response"
+    }
+  },
+  {
+    "email": "felix.fox.freelancer17@testapi.com",
+    "username": "freelancer_felix_017",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Felix",
+    "last_name": "Fox",
+    "country_origin": "India",
+    "identity_number": "98765432133",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "C++ and embedded systems engineer. Specializing in IoT devices and firmware.",
+      "skills": "C++, Embedded Systems, IoT, Firmware Development",
+      "hourly_rate": 105.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "gloria.gomez.client17@testapi.com",
+    "username": "client_gloria_017",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Gloria",
+    "last_name": "Gomez",
+    "country_origin": "China",
+    "identity_number": "98765432134",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Hardware startup requiring a firmware engineer for a new sensor product.",
+      "skills": "Embedded Software, C/C++"
+    }
+  },
+  {
+    "email": "hannah.hunt.freelancer18@testapi.com",
+    "username": "freelancer_hannah_018",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Hannah",
+    "last_name": "Hunt",
+    "country_origin": "Russia",
+    "identity_number": "98765432135",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialist in enterprise resource planning (ERP) system customization and implementation.",
+      "skills": "SAP, Oracle ERP, Business Process Analysis",
+      "hourly_rate": 140.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "isaac.irwin.client18@testapi.com",
+    "username": "client_isaac_018",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Isaac",
+    "last_name": "Irwin",
+    "country_origin": "South Africa",
+    "identity_number": "98765432136",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Large corporation needing temporary help with migrating data to a new ERP system.",
+      "skills": "ERP Implementation, Data Migration"
+    }
+  },
+  {
+    "email": "jessica.jones.freelancer19@testapi.com",
+    "username": "freelancer_jessica_019",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jessica",
+    "last_name": "Jones",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432137",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Proven quality assurance tester focused on automation and bug reporting.",
+      "skills": "QA Testing, Selenium, Jest, Test Automation",
+      "hourly_rate": 65.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "kyle.kane.client19@testapi.com",
+    "username": "client_kyle_019",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kyle",
+    "last_name": "Kane",
+    "country_origin": "Egypt",
+    "identity_number": "98765432138",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Software company needs a dedicated QA tester for a 3-month contract.",
+      "skills": "Test Planning, Bug Tracking"
+    }
+  },
+  {
+    "email": "lisa.lane.freelancer20@testapi.com",
+    "username": "freelancer_lisa_020",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Lisa",
+    "last_name": "Lane",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432139",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced UI/UX researcher conducting user interviews and usability studies.",
+      "skills": "User Research, Usability Testing, Prototyping, Figma",
+      "hourly_rate": 78.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "mark.mann.client20@testapi.com",
+    "username": "client_mark_020",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Mark",
+    "last_name": "Mann",
+    "country_origin": "Argentina",
+    "identity_number": "98765432140",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Product team seeking a UX researcher to validate design decisions on our new mobile platform.",
+      "skills": "User Interviews, A/B Testing"
+    }
+  },
+  {
+    "email": "nancy.north.freelancer21@testapi.com",
+    "username": "freelancer_nancy_021",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nancy",
+    "last_name": "North",
+    "country_origin": "India",
+    "identity_number": "98765432141",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialized in creating robust and scalable APIs using Django and PostgreSQL.",
+      "skills": "Django REST Framework, PostgreSQL, API Design, Python",
+      "hourly_rate": 85.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "oliver.oscar.client21@testapi.com",
+    "username": "client_oliver_021",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oliver",
+    "last_name": "Oscar",
+    "country_origin": "Canada",
+    "identity_number": "98765432142",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Non-profit organization needs a database expert to optimize performance.",
+      "skills": "Database Optimization, PostgreSQL"
+    }
+  },
+  {
+    "email": "paul.payne.freelancer22@testapi.com",
+    "username": "freelancer_paul_022",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Paul",
+    "last_name": "Payne",
+    "country_origin": "United States",
+    "identity_number": "98765432143",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Veteran JavaScript developer, specializing in Vue.js and component libraries.",
+      "skills": "Vue.js, JavaScript, HTML/CSS, Tailwind CSS",
+      "hourly_rate": 72.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "quentin.query.client22@testapi.com",
+    "username": "client_quentin_022",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quentin",
+    "last_name": "Query",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432144",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We require a frontend developer for a short-term contract to finalize a dashboard.",
+      "skills": "Frontend Development, Vue.js"
+    }
+  },
+  {
+    "email": "renee.river.freelancer23@testapi.com",
+    "username": "freelancer_renee_023",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Renee",
+    "last_name": "River",
+    "country_origin": "Australia",
+    "identity_number": "98765432145",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified Scrum Master and project manager driving large-scale agile transformations.",
+      "skills": "Scrum, Agile, JIRA, Stakeholder Management",
+      "hourly_rate": 100.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "steve.stone.client23@testapi.com",
+    "username": "client_steve_023",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Steve",
+    "last_name": "Stone",
+    "country_origin": "Germany",
+    "identity_number": "98765432146",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Need an experienced project manager to guide a team through a difficult product launch.",
+      "skills": "Agile Coaching, Project Planning"
+    }
+  },
+  {
+    "email": "tina.taylor.freelancer24@testapi.com",
+    "username": "freelancer_tina_024",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Tina",
+    "last_name": "Taylor",
+    "country_origin": "France",
+    "identity_number": "98765432147",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in Salesforce development, configuration, and integration.",
+      "skills": "Salesforce Development, Apex, Lightning Web Components",
+      "hourly_rate": 135.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "ulysses.unwin.client24@testapi.com",
+    "username": "client_ulysses_024",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ulysses",
+    "last_name": "Unwin",
+    "country_origin": "Spain",
+    "identity_number": "98765432148",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need help integrating our new marketing platform with Salesforce CRM.",
+      "skills": "Salesforce Integration, Customization"
+    }
+  },
+  {
+    "email": "vera.van.freelancer25@testapi.com",
+    "username": "freelancer_vera_025",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Vera",
+    "last_name": "Van",
+    "country_origin": "Italy",
+    "identity_number": "98765432149",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "E-commerce specialist running profitable campaigns on Google Ads and Meta Ads.",
+      "skills": "Google Ads, Meta Ads, SEM, Conversion Rate Optimization",
+      "hourly_rate": 88.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "will.walker.client25@testapi.com",
+    "username": "client_will_025",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Will",
+    "last_name": "Walker",
+    "country_origin": "Japan",
+    "identity_number": "98765432150",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce brand seeking an experienced PPC manager to scale ad spending.",
+      "skills": "Paid Advertising, PPC Management"
+    }
+  },
+  {
+    "email": "yvonne.yale.freelancer26@testapi.com",
+    "username": "freelancer_yvonne_026",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yvonne",
+    "last_name": "Yale",
+    "country_origin": "South Korea",
+    "identity_number": "98765432151",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Highly skilled animator creating 2D motion graphics and explainer videos.",
+      "skills": "Motion Graphics, Adobe After Effects, 2D Animation",
+      "hourly_rate": 68.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "zach.zimm.client26@testapi.com",
+    "username": "client_zach_026",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zach",
+    "last_name": "Zimm",
+    "country_origin": "Brazil",
+    "identity_number": "98765432152",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup requires a short animated video to explain our core service.",
+      "skills": "Video Animation, Scriptwriting"
+    }
+  },
+  {
+    "email": "adam.abbott.freelancer27@testapi.com",
+    "username": "freelancer_adam_027",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Adam",
+    "last_name": "Abbott",
+    "country_origin": "Mexico",
+    "identity_number": "98765432153",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert cloud architect designing scalable solutions on Microsoft Azure.",
+      "skills": "Azure, Cloud Architecture, Serverless Computing",
+      "hourly_rate": 125.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "bella.bell.client27@testapi.com",
+    "username": "client_bella_027",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Bella",
+    "last_name": "Bell",
+    "country_origin": "India",
+    "identity_number": "98765432154",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Enterprise company migrating to Azure and needing an architect to oversee the process.",
+      "skills": "Cloud Migration, Azure Services"
+    }
+  },
+  {
+    "email": "carl.carter.freelancer28@testapi.com",
+    "username": "freelancer_carl_028",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Carl",
+    "last_name": "Carter",
+    "country_origin": "China",
+    "identity_number": "98765432155",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Database administrator specializing in performance tuning and disaster recovery for MySQL.",
+      "skills": "MySQL, DBA, Performance Tuning, Backup & Recovery",
+      "hourly_rate": 92.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "daisy.dunn.client28@testapi.com",
+    "username": "client_daisy_028",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Daisy",
+    "last_name": "Dunn",
+    "country_origin": "Russia",
+    "identity_number": "98765432156",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need a MySQL expert to resolve some complex database lock issues.",
+      "skills": "MySQL Troubleshooting, Database Administration"
+    }
+  },
+  {
+    "email": "ethan.ellis.freelancer29@testapi.com",
+    "username": "freelancer_ethan_029",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ethan",
+    "last_name": "Ellis",
+    "country_origin": "South Africa",
+    "identity_number": "98765432157",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital marketer creating comprehensive content strategies and editorial calendars.",
+      "skills": "Content Strategy, Editorial Calendar, SEO Writing",
+      "hourly_rate": 58.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "fiona.ford.client29@testapi.com",
+    "username": "client_fiona_029",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Fiona",
+    "last_name": "Ford",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432158",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Blog publisher needing a content strategist to plan the next six months of posts.",
+      "skills": "Content Planning, SEO Strategy"
+    }
+  },
+  {
+    "email": "george.gray.freelancer30@testapi.com",
+    "username": "freelancer_george_030",
+    "password": "SecureTestP@ss123!",
+    "first_name": "George",
+    "last_name": "Gray",
+    "country_origin": "Egypt",
+    "identity_number": "98765432159",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialist in developing secure RESTful APIs using Node.js and Express.",
+      "skills": "Node.js, Express, MongoDB, REST API",
+      "hourly_rate": 98.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "helen.hill.client30@testapi.com",
+    "username": "client_helen_030",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Helen",
+    "last_name": "Hill",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432160",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need an experienced backend developer to handle API maintenance and feature development.",
+      "skills": "API Development, Node.js"
+    }
+  },
+  {
+    "email": "ian.irving.freelancer31@testapi.com",
+    "username": "freelancer_ian_031",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ian",
+    "last_name": "Irving",
+    "country_origin": "Argentina",
+    "identity_number": "98765432161",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced legal transcriptionist providing accurate and timely services.",
+      "skills": "Transcription, Legal Terminology, Typing Speed",
+      "hourly_rate": 35.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "jenny.jordan.client31@testapi.com",
+    "username": "client_jenny_031",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jenny",
+    "last_name": "Jordan",
+    "country_origin": "Canada",
+    "identity_number": "98765432162",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Law firm needs a reliable transcriptionist for court proceedings and dictations.",
+      "skills": "Legal Services, Documentation"
+    }
+  },
+  {
+    "email": "kevin.knight.freelancer32@testapi.com",
+    "username": "freelancer_kevin_032",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kevin",
+    "last_name": "Knight",
+    "country_origin": "United States",
+    "identity_number": "98765432163",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified data analyst proficient in SQL, Python, and business intelligence tools.",
+      "skills": "SQL, Tableau, Python (Pandas/NumPy), Data Visualization",
+      "hourly_rate": 82.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "laura.lee.client32@testapi.com",
+    "username": "client_laura_032",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Laura",
+    "last_name": "Lee",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432164",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Retail company seeking a data analyst to interpret sales trends and customer behavior.",
+      "skills": "Business Intelligence, Data Analysis"
+    }
+  },
+  {
+    "email": "mike.moore.freelancer33@testapi.com",
+    "username": "freelancer_mike_033",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Mike",
+    "last_name": "Moore",
+    "country_origin": "Australia",
+    "identity_number": "98765432165",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional voice-over artist for commercials, e-learning, and narration.",
+      "skills": "Voice Acting, Audio Editing, Narration",
+      "hourly_rate": 60.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "nina.nixon.client33@testapi.com",
+    "username": "client_nina_033",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nina",
+    "last_name": "Nixon",
+    "country_origin": "Germany",
+    "identity_number": "98765432166",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Educational platform looking for a voice-over artist for a new course module.",
+      "skills": "E-Learning Production, Audio Recording"
+    }
+  },
+  {
+    "email": "oscar.owen.freelancer34@testapi.com",
+    "username": "freelancer_oscar_034",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oscar",
+    "last_name": "Owen",
+    "country_origin": "France",
+    "identity_number": "98765432167",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Public relations expert handling media outreach and crisis communication.",
+      "skills": "Public Relations, Media Relations, Crisis Management",
+      "hourly_rate": 115.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "pam.perez.client34@testapi.com",
+    "username": "client_pam_034",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Pam",
+    "last_name": "Perez",
+    "country_origin": "Spain",
+    "identity_number": "98765432168",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup needing a PR specialist to manage press release distribution for a funding announcement.",
+      "skills": "Media Strategy, Public Relations"
+    }
+  },
+  {
+    "email": "quincy.quill.freelancer35@testapi.com",
+    "username": "freelancer_quincy_035",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quincy",
+    "last_name": "Quill",
+    "country_origin": "Italy",
+    "identity_number": "98765432169",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Search Engine Optimization (SEO) veteran focusing on technical SEO and link building.",
+      "skills": "Technical SEO, Link Building, Ahrefs, SEMrush",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "rita.reed.client35@testapi.com",
+    "username": "client_rita_035",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Rita",
+    "last_name": "Reed",
+    "country_origin": "Japan",
+    "identity_number": "98765432170",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Mid-sized company needing an SEO audit and implementation plan to improve organic rankings.",
+      "skills": "SEO Audit, On-Page Optimization"
+    }
+  },
+  {
+    "email": "samuel.scott.freelancer36@testapi.com",
+    "username": "freelancer_samuel_036",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Samuel",
+    "last_name": "Scott",
+    "country_origin": "South Korea",
+    "identity_number": "98765432171",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional academic writer and editor for dissertations and research papers.",
+      "skills": "Academic Writing, Editing, APA/MLA Formatting",
+      "hourly_rate": 55.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "tara.todd.client36@testapi.com",
+    "username": "client_tara_036",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Tara",
+    "last_name": "Todd",
+    "country_origin": "Brazil",
+    "identity_number": "98765432172",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "University professor looking for an editor to review a complex research manuscript.",
+      "skills": "Research Editing, Scientific Documentation"
+    }
+  },
+  {
+    "email": "uri.urban.freelancer37@testapi.com",
+    "username": "freelancer_uri_037",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Uri",
+    "last_name": "Urban",
+    "country_origin": "Mexico",
+    "identity_number": "98765432173",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Backend Kotlin developer building high-performance microservices.",
+      "skills": "Kotlin, Spring Boot, Microservices, MongoDB",
+      "hourly_rate": 108.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "vicky.vega.client37@testapi.com",
+    "username": "client_vicky_037",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Vicky",
+    "last_name": "Vega",
+    "country_origin": "India",
+    "identity_number": "98765432174",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need a Kotlin specialist to help build out a new set of API endpoints.",
+      "skills": "Kotlin Development, Backend API"
+    }
+  },
+  {
+    "email": "warren.west.freelancer38@testapi.com",
+    "username": "freelancer_warren_038",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Warren",
+    "last_name": "West",
+    "country_origin": "China",
+    "identity_number": "98765432175",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Unity game developer focused on mobile and VR experiences.",
+      "skills": "Unity 3D, C#, VR/AR Development, Mobile Gaming",
+      "hourly_rate": 95.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "xenia.xena.client38@testapi.com",
+    "username": "client_xenia_038",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xenia",
+    "last_name": "Xena",
+    "country_origin": "Russia",
+    "identity_number": "98765432176",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Game studio needs a freelance Unity developer to help finish a new mobile puzzle game.",
+      "skills": "Game Development, Unity"
+    }
+  },
+  {
+    "email": "yasin.yildiz.freelancer39@testapi.com",
+    "username": "freelancer_yasin_039",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yasin",
+    "last_name": "Yildiz",
+    "country_origin": "South Africa",
+    "identity_number": "98765432177",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in creating digital illustrations and concept art for fantasy genres.",
+      "skills": "Digital Painting, Concept Art, Adobe Photoshop, Character Design",
+      "hourly_rate": 62.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "zara.zola.client39@testapi.com",
+    "username": "client_zara_039",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zara",
+    "last_name": "Zola",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432178",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Book publisher looking for a concept artist for a new series cover.",
+      "skills": "Illustration, Cover Art"
+    }
+  },
+  {
+    "email": "aaron.avery.freelancer40@testapi.com",
+    "username": "freelancer_aaron_040",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Aaron",
+    "last_name": "Avery",
+    "country_origin": "Egypt",
+    "identity_number": "98765432179",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Senior product manager focused on SaaS platform strategy and roadmapping.",
+      "skills": "Product Management, SaaS, Roadmapping, Market Research",
+      "hourly_rate": 145.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "bruce.blake.client40@testapi.com",
+    "username": "client_bruce_040",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Bruce",
+    "last_name": "Blake",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432180",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Executive team needing a temporary product manager to define the next quarter's strategy.",
+      "skills": "Product Strategy, Market Analysis"
+    }
+  },
+  {
+    "email": "cynthia.cruz.freelancer41@testapi.com",
+    "username": "freelancer_cynthia_041",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Cynthia",
+    "last_name": "Cruz",
+    "country_origin": "Argentina",
+    "identity_number": "98765432181",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced accountant offering fractional CFO services and complex tax filing.",
+      "skills": "Accounting, Tax Preparation, Financial Auditing, QuickBooks",
+      "hourly_rate": 80.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "dan.davis.client41@testapi.com",
+    "username": "client_dan_041",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Dan",
+    "last_name": "Davis",
+    "country_origin": "Canada",
+    "identity_number": "98765432182",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Small business looking for an accountant to handle quarterly reports and tax preparation.",
+      "skills": "Bookkeeping, Tax Filing"
+    }
+  },
+  {
+    "email": "eva.evans.freelancer42@testapi.com",
+    "username": "freelancer_eva_042",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Eva",
+    "last_name": "Evans",
+    "country_origin": "United States",
+    "identity_number": "98765432183",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in Amazon Web Services (AWS) deployment and serverless architecture.",
+      "skills": "AWS Lambda, S3, EC2, CloudFormation, Serverless",
+      "hourly_rate": 118.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "fred.fox.client42@testapi.com",
+    "username": "client_fred_042",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Fred",
+    "last_name": "Fox",
+    "country_origin": "Australia",
+    "identity_number": "98765432184",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup needs an AWS specialist to deploy a highly available web application.",
+      "skills": "AWS Deployment, Cloud Security"
+    }
+  },
+  {
+    "email": "gigi.gates.freelancer43@testapi.com",
+    "username": "freelancer_gigi_043",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Gigi",
+    "last_name": "Gates",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432185",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Bilingual translator (English/Mandarin) specializing in business documents and contracts.",
+      "skills": "Mandarin, Translation, Business Communication",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "harry.halls.client43@testapi.com",
+    "username": "client_harry_043",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Harry",
+    "last_name": "Halls",
+    "country_origin": "Germany",
+    "identity_number": "98765432186",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "International firm needs a Mandarin translator for legal document review.",
+      "skills": "Legal Translation, Mandarin"
+    }
+  },
+  {
+    "email": "ida.irene.freelancer44@testapi.com",
+    "username": "freelancer_ida_044",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ida",
+    "last_name": "Irene",
+    "country_origin": "France",
+    "identity_number": "98765432187",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert front-end engineer specializing in accessibility and performance optimization.",
+      "skills": "Accessibility (WCAG), Web Performance, React, TypeScript",
+      "hourly_rate": 105.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "jacob.jones.client44@testapi.com",
+    "username": "client_jacob_044",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jacob",
+    "last_name": "Jones",
+    "country_origin": "Spain",
+    "identity_number": "98765432188",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-learning platform needs an expert to audit and fix WCAG compliance issues.",
+      "skills": "Web Accessibility, React Development"
+    }
+  },
+  {
+    "email": "kelly.king.freelancer45@testapi.com",
+    "username": "freelancer_kelly_045",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kelly",
+    "last_name": "King",
+    "country_origin": "Italy",
+    "identity_number": "98765432189",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital illustrator specializing in children's books and educational content.",
+      "skills": "Children's Illustration, Procreate, Character Design",
+      "hourly_rate": 50.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "liam.luke.client45@testapi.com",
+    "username": "client_liam_045",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Liam",
+    "last_name": "Luke",
+    "country_origin": "Japan",
+    "identity_number": "98765432190",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Author needs illustrations for a new series of children's picture books.",
+      "skills": "Book Illustration, Digital Art"
+    }
+  },
+  {
+    "email": "maya.marsh.freelancer46@testapi.com",
+    "username": "freelancer_maya_046",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Maya",
+    "last_name": "Marsh",
+    "country_origin": "South Korea",
+    "identity_number": "98765432191",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Senior Java developer building robust, highly concurrent backend systems.",
+      "skills": "Java, Spring Framework, Concurrency, RESTful API",
+      "hourly_rate": 110.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "nathan.neal.client46@testapi.com",
+    "username": "client_nathan_046",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nathan",
+    "last_name": "Neal",
+    "country_origin": "Brazil",
+    "identity_number": "98765432192",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Financial service platform seeking a Java developer for mission-critical system work.",
+      "skills": "Java Development, High Concurrency Systems"
+    }
+  },
+  {
+    "email": "oliver.ortiz.freelancer47@testapi.com",
+    "username": "freelancer_oliver_047",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oliver",
+    "last_name": "Ortiz",
+    "country_origin": "Mexico",
+    "identity_number": "98765432193",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital archivist specializing in data cleanup, organization, and metadata management.",
+      "skills": "Data Cleansing, Metadata Management, SQL",
+      "hourly_rate": 45.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "penny.porter.client47@testapi.com",
+    "username": "client_penny_047",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Penny",
+    "last_name": "Porter",
+    "country_origin": "India",
+    "identity_number": "98765432194",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Media library needing help standardizing and cleaning up a large archive of media files.",
+      "skills": "Data Organization, Metadata"
+    }
+  },
+  {
+    "email": "quinn.quill.freelancer48@testapi.com",
+    "username": "freelancer_quinn_048",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quinn",
+    "last_name": "Quill",
+    "country_origin": "China",
+    "identity_number": "98765432195",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced recruiter specializing in sourcing passive candidates in the tech industry.",
+      "skills": "Technical Recruiting, Sourcing, LinkedIn Recruiter",
+      "hourly_rate": 75.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "ryan.reed.client48@testapi.com",
+    "username": "client_ryan_048",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ryan",
+    "last_name": "Reed",
+    "country_origin": "Russia",
+    "identity_number": "98765432196",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup needs a technical recruiter to fill several senior developer roles quickly.",
+      "skills": "Talent Acquisition, Technical Sourcing"
+    }
+  },
+  {
+    "email": "sarah.smith.freelancer49@testapi.com",
+    "username": "freelancer_sarah_049",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Sarah",
+    "last_name": "Smith",
+    "country_origin": "South Africa",
+    "identity_number": "98765432197",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified fitness coach creating customized nutrition and workout plans.",
+      "skills": "Personal Training, Nutrition Planning, Strength & Conditioning",
+      "hourly_rate": 55.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "todd.turner.client49@testapi.com",
+    "username": "client_todd_049",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Todd",
+    "last_name": "Turner",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432198",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Individual seeking a fitness coach for a 12-week body transformation challenge.",
+      "skills": "Fitness Coaching, Meal Planning"
+    }
+  },
+  {
+    "email": "uma.up.freelancer50@testapi.com",
+    "username": "freelancer_uma_050",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Uma",
+    "last_name": "Up",
+    "country_origin": "Egypt",
+    "identity_number": "98765432199",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Public speaker coach helping professionals overcome stage fright and deliver compelling talks.",
+      "skills": "Public Speaking Coaching, Presentation Skills, Pitch Deck Review",
+      "hourly_rate": 85.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "vince.vlad.client50@testapi.com",
+    "username": "client_vince_050",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Vince",
+    "last_name": "Vlad",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432100",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Executive needing coaching for a major keynote speech next month.",
+      "skills": "Presentation Coaching, Public Speaking"
+    }
+  },
+  {
+    "email": "wendy.wins.freelancer51@testapi.com",
+    "username": "freelancer_wendy_051",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Wendy",
+    "last_name": "Wins",
+    "country_origin": "Argentina",
+    "identity_number": "98765432201",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Environmental consultant specializing in sustainability reports and regulatory compliance.",
+      "skills": "Environmental Consulting, Sustainability Reporting, ESG",
+      "hourly_rate": 105.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "xavier.xmas.client51@testapi.com",
+    "username": "client_xavier_051",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xavier",
+    "last_name": "Xmas",
+    "country_origin": "Canada",
+    "identity_number": "98765432202",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Company needs assistance preparing their annual ESG report for investors.",
+      "skills": "ESG Reporting, Environmental Compliance"
+    }
+  },
+  {
+    "email": "yara.yacht.freelancer52@testapi.com",
+    "username": "freelancer_yara_052",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yara",
+    "last_name": "Yacht",
+    "country_origin": "United States",
+    "identity_number": "98765432203",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified bookkeeper offering full cycle accounting services for small businesses.",
+      "skills": "Bookkeeping, Payroll, Xero, Financial Statements",
+      "hourly_rate": 45.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "zane.zebra.client52@testapi.com",
+    "username": "client_zane_052",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zane",
+    "last_name": "Zebra",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432204",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Restaurant chain requires a professional bookkeeper to manage daily transactions and payroll.",
+      "skills": "Payroll Management, Bookkeeping"
+    }
+  },
+  {
+    "email": "aaron.apple.freelancer53@testapi.com",
+    "username": "freelancer_aaron_053",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Aaron",
+    "last_name": "Apple",
+    "country_origin": "Australia",
+    "identity_number": "98765432205",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital marketing expert focused on B2B lead generation using LinkedIn and automation.",
+      "skills": "B2B Marketing, LinkedIn Marketing, Lead Generation",
+      "hourly_rate": 88.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "beth.berry.client53@testapi.com",
+    "username": "client_beth_053",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Beth",
+    "last_name": "Berry",
+    "country_origin": "Germany",
+    "identity_number": "98765432206",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "SaaS company needing to improve our B2B lead volume and sales pipeline efficiency.",
+      "skills": "Lead Generation Strategy, B2B Sales"
+    }
+  },
+  {
+    "email": "cameron.cat.freelancer54@testapi.com",
+    "username": "freelancer_cameron_054",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Cameron",
+    "last_name": "Cat",
+    "country_origin": "France",
+    "identity_number": "98765432207",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialist in enterprise-level infrastructure and network security.",
+      "skills": "Network Engineering, Cisco, Firewall Configuration, VPN",
+      "hourly_rate": 130.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "diana.dog.client54@testapi.com",
+    "username": "client_diana_054",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Diana",
+    "last_name": "Dog",
+    "country_origin": "Spain",
+    "identity_number": "98765432208",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Large retail company seeking an expert to audit our current network security setup.",
+      "skills": "Network Security, Infrastructure Audit"
+    }
+  },
+  {
+    "email": "eli.egg.freelancer55@testapi.com",
+    "username": "freelancer_eli_055",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Eli",
+    "last_name": "Egg",
+    "country_origin": "Italy",
+    "identity_number": "98765432209",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in statistical modeling and A/B testing design for product optimization.",
+      "skills": "Statistical Analysis, A/B Testing, R, Hypothesis Testing",
+      "hourly_rate": 95.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "faye.fish.client55@testapi.com",
+    "username": "client_faye_055",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Faye",
+    "last_name": "Fish",
+    "country_origin": "Japan",
+    "identity_number": "98765432210",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Product team needs a statistician to validate the results of our recent A/B tests.",
+      "skills": "Statistical Validation, Experiment Design"
+    }
+  },
+  {
+    "email": "gary.goat.freelancer56@testapi.com",
+    "username": "freelancer_gary_056",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Gary",
+    "last_name": "Goat",
+    "country_origin": "South Korea",
+    "identity_number": "98765432211",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Creative director providing branding strategy, logo design, and visual identity guides.",
+      "skills": "Branding, Logo Design, Visual Identity, Creative Direction",
+      "hourly_rate": 120.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "holly.horse.client56@testapi.com",
+    "username": "client_holly_056",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Holly",
+    "last_name": "Horse",
+    "country_origin": "Brazil",
+    "identity_number": "98765432212",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "New company needs a complete visual identity and branding package from scratch.",
+      "skills": "Brand Strategy, Logo Creation"
+    }
+  },
+  {
+    "email": "isaac.igloo.freelancer57@testapi.com",
+    "username": "freelancer_isaac_057",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Isaac",
+    "last_name": "Igloo",
+    "country_origin": "Mexico",
+    "identity_number": "98765432213",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Fluency in Spanish/English, offering real-time interpreting services for conferences and meetings.",
+      "skills": "Simultaneous Interpretation, Spanish, English",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "jessica.jet.client57@testapi.com",
+    "username": "client_jessica_057",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jessica",
+    "last_name": "Jet",
+    "country_origin": "India",
+    "identity_number": "98765432214",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "International business meeting requires a Spanish interpreter for high-level negotiations.",
+      "skills": "Simultaneous Interpreting, Spanish"
+    }
+  },
+  {
+    "email": "kyle.kite.freelancer58@testapi.com",
+    "username": "freelancer_kyle_058",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kyle",
+    "last_name": "Kite",
+    "country_origin": "China",
+    "identity_number": "98765432215",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Highly experienced technical writer creating API documentation and user manuals.",
+      "skills": "Technical Writing, Documentation, API Documentation, Swagger",
+      "hourly_rate": 85.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "linda.llama.client58@testapi.com",
+    "username": "client_linda_058",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Linda",
+    "last_name": "Llama",
+    "country_origin": "Russia",
+    "identity_number": "98765432216",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Software company needs a technical writer to create and maintain comprehensive API docs.",
+      "skills": "API Documentation, Technical Manuals"
+    }
+  },
+  {
+    "email": "matt.moon.freelancer59@testapi.com",
+    "username": "freelancer_matt_059",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Matt",
+    "last_name": "Moon",
+    "country_origin": "South Africa",
+    "identity_number": "98765432217",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital marketing consultant focused on building engaging online communities and forums.",
+      "skills": "Community Management, Forum Moderation, Discourse",
+      "hourly_rate": 50.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "nancy.navy.client59@testapi.com",
+    "username": "client_nancy_059",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nancy",
+    "last_name": "Navy",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432218",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Tech company needs a manager to grow and moderate our new online user community.",
+      "skills": "Online Community Building, Moderation"
+    }
+  },
+  {
+    "email": "oscar.owl.freelancer60@testapi.com",
+    "username": "freelancer_oscar_060",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oscar",
+    "last_name": "Owl",
+    "country_origin": "Egypt",
+    "identity_number": "98765432219",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified project management professional (PMP) overseeing construction and engineering projects.",
+      "skills": "PMP, Construction Management, Risk Assessment",
+      "hourly_rate": 150.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "patty.pan.client60@testapi.com",
+    "username": "client_patty_060",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Patty",
+    "last_name": "Pan",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432220",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Engineering firm seeking a project manager to supervise a 6-month infrastructure upgrade.",
+      "skills": "Project Oversight, Engineering Management"
+    }
+  },
+  {
+    "email": "quinn.quail.freelancer61@testapi.com",
+    "username": "freelancer_quinn_061",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quinn",
+    "last_name": "Quail",
+    "country_origin": "Argentina",
+    "identity_number": "98765432221",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in creating custom reports and dashboards using Power BI and DAX.",
+      "skills": "Power BI, Data Modeling, DAX, Data Warehousing",
+      "hourly_rate": 80.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "rachel.rain.client61@testapi.com",
+    "username": "client_rachel_061",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Rachel",
+    "last_name": "Rain",
+    "country_origin": "Canada",
+    "identity_number": "98765432222",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "We need a specialist to create dynamic, interactive dashboards for executive reporting.",
+      "skills": "Power BI Reporting, Data Visualization"
+    }
+  },
+  {
+    "email": "steve.star.freelancer62@testapi.com",
+    "username": "freelancer_steve_062",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Steve",
+    "last_name": "Star",
+    "country_origin": "United States",
+    "identity_number": "98765432223",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Cyber insurance expert providing risk assessments and policy recommendations.",
+      "skills": "Cyber Insurance, Risk Assessment, Compliance, GDPR",
+      "hourly_rate": 160.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "tina.tree.client62@testapi.com",
+    "username": "client_tina_062",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Tina",
+    "last_name": "Tree",
+    "country_origin": "Australia",
+    "identity_number": "98765432224",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Legal team seeking an expert to advise on global cyber insurance policies and compliance.",
+      "skills": "Cybersecurity Policy, Legal Compliance"
+    }
+  },
+  {
+    "email": "uma.unicorn.freelancer63@testapi.com",
+    "username": "freelancer_uma_063",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Uma",
+    "last_name": "Unicorn",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432225",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in cloud security specializing in penetration testing and secure architecture design.",
+      "skills": "Cloud Security, AWS Security Hub, Penetration Testing",
+      "hourly_rate": 140.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "vicky.volcano.client63@testapi.com",
+    "username": "client_vicky_063",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Vicky",
+    "last_name": "Volcano",
+    "country_origin": "Germany",
+    "identity_number": "98765432226",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Fintech company requires a specialist to perform a comprehensive cloud security audit.",
+      "skills": "AWS Security, Penetration Testing"
+    }
+  },
+  {
+    "email": "will.whale.freelancer64@testapi.com",
+    "username": "freelancer_will_064",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Will",
+    "last_name": "Whale",
+    "country_origin": "Germany",
+    "identity_number": "98765432227",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Bilingual (German/English) content writer for technical and B2B marketing materials.",
+      "skills": "Technical Writing, German, B2B Content, SEO",
+      "hourly_rate": 75.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "xena.xylophone.client64@testapi.com",
+    "username": "client_xena_064",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xena",
+    "last_name": "Xylophone",
+    "country_origin": "France",
+    "identity_number": "98765432228",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "German software company needing English-language content written for their global website.",
+      "skills": "German Translation, Technical Content"
+    }
+  },
+  {
+    "email": "yara.yoga.freelancer65@testapi.com",
+    "username": "freelancer_yara_065",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yara",
+    "last_name": "Yoga",
+    "country_origin": "Spain",
+    "identity_number": "98765432229",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Social media influencer manager focusing on negotiating contracts and campaign reporting.",
+      "skills": "Influencer Marketing, Contract Negotiation, Campaign Reporting",
+      "hourly_rate": 88.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "zack.zen.client65@testapi.com",
+    "username": "client_zack_065",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zack",
+    "last_name": "Zen",
+    "country_origin": "Italy",
+    "identity_number": "98765432230",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce brand needing a manager to coordinate a large-scale influencer campaign.",
+      "skills": "Influencer Outreach, Campaign Management"
+    }
+  },
+  {
+    "email": "aiden.aero.freelancer66@testapi.com",
+    "username": "freelancer_aiden_066",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Aiden",
+    "last_name": "Aero",
+    "country_origin": "Japan",
+    "identity_number": "98765432231",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Senior UX/UI designer specializing in mobile app design and user flow mapping.",
+      "skills": "Mobile UX/UI, Sketch, Figma, Prototyping",
+      "hourly_rate": 105.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "brian.ball.client66@testapi.com",
+    "username": "client_brian_066",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Brian",
+    "last_name": "Ball",
+    "country_origin": "South Korea",
+    "identity_number": "98765432232",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup requires a full design system and UI/UX for a new mobile application.",
+      "skills": "Mobile UI/UX Design, Design Systems"
+    }
+  },
+  {
+    "email": "chloe.cloud.freelancer67@testapi.com",
+    "username": "freelancer_chloe_067",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Chloe",
+    "last_name": "Cloud",
+    "country_origin": "Brazil",
+    "identity_number": "98765432233",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Data engineer building ETL pipelines and managing large data warehouses.",
+      "skills": "ETL, Apache Spark, Python, Data Warehousing, AWS Redshift",
+      "hourly_rate": 115.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "dave.dust.client67@testapi.com",
+    "username": "client_dave_067",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Dave",
+    "last_name": "Dust",
+    "country_origin": "Mexico",
+    "identity_number": "98765432234",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Mid-size company needs a data engineer to consolidate data from several disparate sources.",
+      "skills": "ETL Pipeline Development, Data Migration"
+    }
+  },
+  {
+    "email": "ella.earth.freelancer68@testapi.com",
+    "username": "freelancer_ella_068",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ella",
+    "last_name": "Earth",
+    "country_origin": "India",
+    "identity_number": "98765432235",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialist in developing custom scripts and automation workflows using Python.",
+      "skills": "Python, Automation, Scripting, Selenium",
+      "hourly_rate": 78.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "finn.fire.client68@testapi.com",
+    "username": "client_finn_068",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Finn",
+    "last_name": "Fire",
+    "country_origin": "China",
+    "identity_number": "98765432236",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Small team needing custom Python scripts for daily data processing tasks.",
+      "skills": "Python Scripting, Workflow Automation"
+    }
+  },
+  {
+    "email": "grace.gala.freelancer69@testapi.com",
+    "username": "freelancer_grace_069",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Grace",
+    "last_name": "Gala",
+    "country_origin": "Russia",
+    "identity_number": "98765432237",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional video editor specializing in short-form social media content and motion graphics.",
+      "skills": "Final Cut Pro, Adobe Premiere, Motion Graphics, TikTok/Reels Editing",
+      "hourly_rate": 65.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "hank.hope.client69@testapi.com",
+    "username": "client_hank_069",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Hank",
+    "last_name": "Hope",
+    "country_origin": "South Africa",
+    "identity_number": "98765432238",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Marketing team needing a fast editor for daily video clips for social media channels.",
+      "skills": "Short-Form Video Editing, Content Production"
+    }
+  },
+  {
+    "email": "iris.ice.freelancer70@testapi.com",
+    "username": "freelancer_iris_070",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Iris",
+    "last_name": "Ice",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432239",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in developing financial models and pitch decks for seed and Series A funding rounds.",
+      "skills": "Financial Modeling, Valuation, Pitch Deck Creation, Fundraising Strategy",
+      "hourly_rate": 125.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "jack.july.client70@testapi.com",
+    "username": "client_jack_070",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jack",
+    "last_name": "July",
+    "country_origin": "Egypt",
+    "identity_number": "98765432240",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup founder preparing for a Series A funding round and needing a professional financial model.",
+      "skills": "Fundraising, Financial Projections"
+    }
+  },
+  {
+    "email": "kara.key.freelancer71@testapi.com",
+    "username": "freelancer_kara_071",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kara",
+    "last_name": "Key",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432241",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Native English editor and proofreader for academic, technical, and marketing content.",
+      "skills": "Proofreading, Copyediting, Grammar, Style Guides (APA/Chicago)",
+      "hourly_rate": 40.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "leo.lamp.client71@testapi.com",
+    "username": "client_leo_071",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Leo",
+    "last_name": "Lamp",
+    "country_origin": "Argentina",
+    "identity_number": "98765432242",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-book publisher needing a final proofread on several upcoming non-fiction titles.",
+      "skills": "Copyediting, Publishing"
+    }
+  },
+  {
+    "email": "mia.music.freelancer72@testapi.com",
+    "username": "freelancer_mia_072",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Mia",
+    "last_name": "Music",
+    "country_origin": "Canada",
+    "identity_number": "98765432243",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Sound designer and audio engineer for video games, films, and podcasts.",
+      "skills": "Sound Design, Audio Mixing, Pro Tools, Foley",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "noah.night.client72@testapi.com",
+    "username": "client_noah_072",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Noah",
+    "last_name": "Night",
+    "country_origin": "United States",
+    "identity_number": "98765432244",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Indie game studio needs a sound designer to create sound effects and environmental audio.",
+      "skills": "Game Audio, Sound Engineering"
+    }
+  },
+  {
+    "email": "olivia.orange.freelancer73@testapi.com",
+    "username": "freelancer_olivia_073",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Olivia",
+    "last_name": "Orange",
+    "country_origin": "Australia",
+    "identity_number": "98765432245",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Salesforce administrator specializing in custom flow and process automation.",
+      "skills": "Salesforce Admin, Process Automation, Flow Builder, Lightning",
+      "hourly_rate": 90.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "peter.pencil.client73@testapi.com",
+    "username": "client_peter_073",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Peter",
+    "last_name": "Pencil",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432246",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Sales team requires a Salesforce admin to optimize lead routing and reporting.",
+      "skills": "Salesforce Optimization, CRM Administration"
+    }
+  },
+  {
+    "email": "quentin.quartz.freelancer74@testapi.com",
+    "username": "freelancer_quentin_074",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quentin",
+    "last_name": "Quartz",
+    "country_origin": "Germany",
+    "identity_number": "98765432247",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced corporate trainer developing and delivering employee upskilling programs.",
+      "skills": "Corporate Training, Instructional Design, Workshop Facilitation",
+      "hourly_rate": 110.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "rebecca.rose.client74@testapi.com",
+    "username": "client_rebecca_074",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Rebecca",
+    "last_name": "Rose",
+    "country_origin": "France",
+    "identity_number": "98765432248",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "HR department needs a trainer to develop a custom leadership program for middle management.",
+      "skills": "Leadership Development, Training Materials"
+    }
+  },
+  {
+    "email": "scott.stone.freelancer75@testapi.com",
+    "username": "freelancer_scott_075",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Scott",
+    "last_name": "Stone",
+    "country_origin": "Spain",
+    "identity_number": "98765432249",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Backend Go developer building high-throughput, low-latency API gateways.",
+      "skills": "Go, API Gateway, Microservices, Performance Tuning",
+      "hourly_rate": 130.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "tina.tulip.client75@testapi.com",
+    "username": "client_tina_075",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Tina",
+    "last_name": "Tulip",
+    "country_origin": "Italy",
+    "identity_number": "98765432250",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Fintech company requires a Go developer to optimize our core transaction processing system.",
+      "skills": "Go Development, Low-Latency Systems"
+    }
+  },
+  {
+    "email": "ulysses.umbrella.freelancer76@testapi.com",
+    "username": "freelancer_ulysses_076",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ulysses",
+    "last_name": "Umbrella",
+    "country_origin": "Japan",
+    "identity_number": "98765432251",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified Kubernetes administrator managing large-scale container deployments.",
+      "skills": "Kubernetes, Docker, Helm, CI/CD",
+      "hourly_rate": 150.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "vance.vase.client76@testapi.com",
+    "username": "client_vance_076",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Vance",
+    "last_name": "Vase",
+    "country_origin": "South Korea",
+    "identity_number": "98765432252",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "DevOps team needs a Kubernetes expert to troubleshoot a complex cluster issue.",
+      "skills": "Kubernetes Administration, Container Orchestration"
+    }
+  },
+  {
+    "email": "wanda.water.freelancer77@testapi.com",
+    "username": "freelancer_wanda_077",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Wanda",
+    "last_name": "Water",
+    "country_origin": "Brazil",
+    "identity_number": "98765432253",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Customer support manager providing chat, email, and phone support training and strategy.",
+      "skills": "Customer Support, Zendesk, Live Chat, Training",
+      "hourly_rate": 60.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "xenia.xenon.client77@testapi.com",
+    "username": "client_xenia_077",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xenia",
+    "last_name": "Xenon",
+    "country_origin": "Mexico",
+    "identity_number": "98765432254",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "B2C startup needs help setting up and documenting a new customer service department.",
+      "skills": "Customer Service Strategy, Support Training"
+    }
+  },
+  {
+    "email": "yates.yarn.freelancer78@testapi.com",
+    "username": "freelancer_yates_078",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yates",
+    "last_name": "Yarn",
+    "country_origin": "India",
+    "identity_number": "98765432255",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Technical lead focused on architecting and scaling serverless applications on Google Cloud.",
+      "skills": "GCP, Firebase, Serverless Architecture, TypeScript",
+      "hourly_rate": 135.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "zara.zoom.client78@testapi.com",
+    "username": "client_zara_078",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zara",
+    "last_name": "Zoom",
+    "country_origin": "China",
+    "identity_number": "98765432256",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Team needs a GCP expert to design a scalable backend for a new mobile game.",
+      "skills": "GCP Architecture, Serverless Development"
+    }
+  },
+  {
+    "email": "alvin.alpha.freelancer79@testapi.com",
+    "username": "freelancer_alvin_079",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Alvin",
+    "last_name": "Alpha",
+    "country_origin": "Russia",
+    "identity_number": "98765432257",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "High-level management consultant specializing in corporate restructuring and efficiency.",
+      "skills": "Management Consulting, Process Optimization, Strategy Development",
+      "hourly_rate": 180.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "betty.beta.client79@testapi.com",
+    "username": "client_betty_079",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Betty",
+    "last_name": "Beta",
+    "country_origin": "South Africa",
+    "identity_number": "98765432258",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "CEO looking for a management consultant to analyze and streamline internal operations.",
+      "skills": "Business Strategy, Operational Efficiency"
+    }
+  },
+  {
+    "email": "carly.coast.freelancer80@testapi.com",
+    "username": "freelancer_carly_080",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Carly",
+    "last_name": "Coast",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432259",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Webflow expert building custom, interactive websites and landing pages.",
+      "skills": "Webflow, CSS/HTML, Responsive Design, Interactions",
+      "hourly_rate": 65.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "david.dawn.client80@testapi.com",
+    "username": "client_david_080",
+    "password": "SecureTestP@ss123!",
+    "first_name": "David",
+    "last_name": "Dawn",
+    "country_origin": "Egypt",
+    "identity_number": "98765432260",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Agency needs a Webflow developer to convert Figma designs into a functional website.",
+      "skills": "Webflow Development, CMS Integration"
+    }
+  },
+  {
+    "email": "elena.echo.freelancer81@testapi.com",
+    "username": "freelancer_elena_081",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Elena",
+    "last_name": "Echo",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432261",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Specialist in developing custom chatbots and conversational AI interfaces.",
+      "skills": "Dialogflow, Rasa, Conversational AI, Python",
+      "hourly_rate": 115.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "frank.fog.client81@testapi.com",
+    "username": "client_frank_081",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Frank",
+    "last_name": "Fog",
+    "country_origin": "Argentina",
+    "identity_number": "98765432262",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Customer support team needs a custom-built AI chatbot to handle initial inquiries.",
+      "skills": "Chatbot Development, Conversational Design"
+    }
+  },
+  {
+    "email": "greg.gold.freelancer82@testapi.com",
+    "username": "freelancer_greg_082",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Greg",
+    "last_name": "Gold",
+    "country_origin": "Canada",
+    "identity_number": "98765432263",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced technical SEO auditor identifying and fixing site performance issues.",
+      "skills": "Technical SEO, Site Speed, Core Web Vitals, Audits",
+      "hourly_rate": 85.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "hannah.hope.client82@testapi.com",
+    "username": "client_hannah_082",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Hannah",
+    "last_name": "Hope",
+    "country_origin": "United States",
+    "identity_number": "98765432264",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce store needs a full technical SEO audit to improve search rankings.",
+      "skills": "Technical SEO, Website Auditing"
+    }
+  },
+  {
+    "email": "isaac.ink.freelancer83@testapi.com",
+    "username": "freelancer_isaac_083",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Isaac",
+    "last_name": "Ink",
+    "country_origin": "Australia",
+    "identity_number": "98765432265",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional artist providing watercolor and oil painting commissions.",
+      "skills": "Watercolor, Oil Painting, Portraiture, Fine Art",
+      "hourly_rate": 60.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "jill.jet.client83@testapi.com",
+    "username": "client_jill_083",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Jill",
+    "last_name": "Jet",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432266",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Individual seeking a professional watercolor painting commission for a gift.",
+      "skills": "Fine Art Commission, Portrait Painting"
+    }
+  },
+  {
+    "email": "kyle.kite.freelancer84@testapi.com",
+    "username": "freelancer_kyle_084",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Kyle",
+    "last_name": "Kite",
+    "country_origin": "Germany",
+    "identity_number": "98765432267",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Senior C# .NET developer focused on building scalable enterprise applications.",
+      "skills": "C#, .NET Core, Azure Functions, SQL Server",
+      "hourly_rate": 120.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "lisa.lake.client84@testapi.com",
+    "username": "client_lisa_084",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Lisa",
+    "last_name": "Lake",
+    "country_origin": "France",
+    "identity_number": "98765432268",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Enterprise client needing a C# developer to work on legacy system modernization.",
+      "skills": "C# Development, .NET Framework"
+    }
+  },
+  {
+    "email": "mark.moon.freelancer85@testapi.com",
+    "username": "freelancer_mark_085",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Mark",
+    "last_name": "Moon",
+    "country_origin": "Spain",
+    "identity_number": "98765432269",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Financial controller providing advanced spreadsheet modeling and reporting.",
+      "skills": "Advanced Excel, Financial Modeling, VBA, Data Analysis",
+      "hourly_rate": 80.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "nancy.north.client85@testapi.com",
+    "username": "client_nancy_085",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nancy",
+    "last_name": "North",
+    "country_origin": "Italy",
+    "identity_number": "98765432270",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Finance department needing an expert to build complex budgeting and forecasting models in Excel.",
+      "skills": "Excel Modeling, Financial Reporting"
+    }
+  },
+  {
+    "email": "oliver.ocean.freelancer86@testapi.com",
+    "username": "freelancer_oliver_086",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oliver",
+    "last_name": "Ocean",
+    "country_origin": "Japan",
+    "identity_number": "98765432271",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Blockchain developer specializing in smart contract auditing and DApp development.",
+      "skills": "Solidity, Ethereum, Smart Contracts, DApp Development",
+      "hourly_rate": 160.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "patricia.park.client86@testapi.com",
+    "username": "client_patricia_086",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Patricia",
+    "last_name": "Park",
+    "country_origin": "South Korea",
+    "identity_number": "98765432272",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Web3 startup requires a smart contract audit before launching our mainnet.",
+      "skills": "Solidity Auditing, Blockchain Security"
+    }
+  },
+  {
+    "email": "quincy.quill.freelancer87@testapi.com",
+    "username": "freelancer_quincy_087",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quincy",
+    "last_name": "Quill",
+    "country_origin": "Brazil",
+    "identity_number": "98765432273",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional corporate photographer for headshots, events, and commercial use.",
+      "skills": "Corporate Photography, Portraiture, Event Photography, Adobe Photoshop",
+      "hourly_rate": 90.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "randy.rock.client87@testapi.com",
+    "username": "client_randy_087",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Randy",
+    "last_name": "Rock",
+    "country_origin": "Mexico",
+    "identity_number": "98765432274",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Company requires professional headshots for all senior leadership team members.",
+      "skills": "Corporate Headshots, Event Photography"
+    }
+  },
+  {
+    "email": "sophia.sun.freelancer88@testapi.com",
+    "username": "freelancer_sophia_088",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Sophia",
+    "last_name": "Sun",
+    "country_origin": "India",
+    "identity_number": "98765432275",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified technical editor specializing in complex scientific and engineering documentation.",
+      "skills": "Technical Editing, Scientific Writing, Manuscript Review",
+      "hourly_rate": 72.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "tom.thunder.client88@testapi.com",
+    "username": "client_tom_088",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Tom",
+    "last_name": "Thunder",
+    "country_origin": "China",
+    "identity_number": "98765432276",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Research lab needs an editor to review a complex paper for submission to a major journal.",
+      "skills": "Scientific Editing, Technical Documentation"
+    }
+  },
+  {
+    "email": "una.undo.freelancer89@testapi.com",
+    "username": "freelancer_una_089",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Una",
+    "last_name": "Undo",
+    "country_origin": "Russia",
+    "identity_number": "98765432277",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Full-stack developer focused on Ruby on Rails and robust database design.",
+      "skills": "Ruby on Rails, PostgreSQL, RSpec, Heroku Deployment",
+      "hourly_rate": 105.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "victor.vroom.client89@testapi.com",
+    "username": "client_victor_089",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Victor",
+    "last_name": "Vroom",
+    "country_origin": "South Africa",
+    "identity_number": "98765432278",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Startup requires a developer to maintain and add features to an existing Rails application.",
+      "skills": "Ruby on Rails Maintenance, Backend Feature Development"
+    }
+  },
+  {
+    "email": "willow.wave.freelancer90@testapi.com",
+    "username": "freelancer_willow_090",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Willow",
+    "last_name": "Wave",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432279",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Digital marketer specializing in email marketing automation and lifecycle campaigns.",
+      "skills": "Email Marketing, Klaviyo, Mailchimp, Lifecycle Automation",
+      "hourly_rate": 68.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "xander.xray.client90@testapi.com",
+    "username": "client_xander_090",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Xander",
+    "last_name": "Xray",
+    "country_origin": "Egypt",
+    "identity_number": "98765432280",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce store needs an email expert to set up a new welcome and abandoned cart series.",
+      "skills": "Email Automation, Klaviyo Setup"
+    }
+  },
+  {
+    "email": "yasmine.yard.freelancer91@testapi.com",
+    "username": "freelancer_yasmine_091",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Yasmine",
+    "last_name": "Yard",
+    "country_origin": "New Zealand",
+    "identity_number": "98765432281",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional virtual assistant handling executive scheduling, travel, and research.",
+      "skills": "Executive Assistance, Scheduling, Travel Planning, Research",
+      "hourly_rate": 40.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "zed.zip.client91@testapi.com",
+    "username": "client_zed_091",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Zed",
+    "last_name": "Zip",
+    "country_origin": "Argentina",
+    "identity_number": "98765432282",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Busy executive requires a reliable virtual assistant to manage calendar and travel logistics.",
+      "skills": "Administrative Support, Calendar Management"
+    }
+  },
+  {
+    "email": "albert.angel.freelancer92@testapi.com",
+    "username": "freelancer_albert_092",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Albert",
+    "last_name": "Angel",
+    "country_origin": "Canada",
+    "identity_number": "98765432283",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Computer vision expert specializing in image recognition and object detection models.",
+      "skills": "Computer Vision, OpenCV, PyTorch, Object Detection",
+      "hourly_rate": 130.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "betty.box.client92@testapi.com",
+    "username": "client_betty_092",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Betty",
+    "last_name": "Box",
+    "country_origin": "United States",
+    "identity_number": "98765432284",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Industrial automation company needs an expert to develop a custom visual inspection model.",
+      "skills": "Computer Vision, Machine Learning"
+    }
+  },
+  {
+    "email": "carl.cloud.freelancer93@testapi.com",
+    "username": "freelancer_carl_093",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Carl",
+    "last_name": "Cloud",
+    "country_origin": "Australia",
+    "identity_number": "98765432285",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Certified ethical hacker providing security testing and risk mitigation reports.",
+      "skills": "Ethical Hacking, Penetration Testing, Security Audits",
+      "hourly_rate": 150.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "dora.duck.client93@testapi.com",
+    "username": "client_dora_093",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Dora",
+    "last_name": "Duck",
+    "country_origin": "United Kingdom",
+    "identity_number": "98765432286",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Company needs a full-scale external and internal penetration test performed.",
+      "skills": "Penetration Testing, Ethical Hacking"
+    }
+  },
+  {
+    "email": "edgar.eagle.freelancer94@testapi.com",
+    "username": "freelancer_edgar_094",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Edgar",
+    "last_name": "Eagle",
+    "country_origin": "Germany",
+    "identity_number": "98765432287",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Experienced corporate ghostwriter drafting C-level speeches and internal communications.",
+      "skills": "Ghostwriting, Speechwriting, Internal Communications",
+      "hourly_rate": 95.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "fanny.fish.client94@testapi.com",
+    "username": "client_fanny_094",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Fanny",
+    "last_name": "Fish",
+    "country_origin": "France",
+    "identity_number": "98765432288",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "CEO needs a professional ghostwriter for an upcoming conference keynote speech.",
+      "skills": "Speechwriting, Corporate Communication"
+    }
+  },
+  {
+    "email": "george.gift.freelancer95@testapi.com",
+    "username": "freelancer_george_095",
+    "password": "SecureTestP@ss123!",
+    "first_name": "George",
+    "last_name": "Gift",
+    "country_origin": "Spain",
+    "identity_number": "98765432289",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in developing custom Shopify themes and e-commerce integrations.",
+      "skills": "Shopify Development, Liquid, E-commerce, API Integration",
+      "hourly_rate": 88.0,
+      "availability": "NOT_AVAILABLE"
+    }
+  },
+  {
+    "email": "helen.hat.client95@testapi.com",
+    "username": "client_helen_095",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Helen",
+    "last_name": "Hat",
+    "country_origin": "Italy",
+    "identity_number": "98765432290",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "E-commerce store needs a custom Shopify theme developed for a new product line.",
+      "skills": "Shopify Theme Development, E-commerce"
+    }
+  },
+  {
+    "email": "ivan.island.freelancer96@testapi.com",
+    "username": "freelancer_ivan_096",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Ivan",
+    "last_name": "Island",
+    "country_origin": "Japan",
+    "identity_number": "98765432291",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "UX writer and content strategist focused on product microcopy and user onboarding.",
+      "skills": "UX Writing, Content Strategy, Microcopy, User Onboarding",
+      "hourly_rate": 70.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "julia.jewel.client96@testapi.com",
+    "username": "client_julia_096",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Julia",
+    "last_name": "Jewel",
+    "country_origin": "South Korea",
+    "identity_number": "98765432292",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Product team needs a UX writer to refine error messages and onboarding flows.",
+      "skills": "UX Writing, Product Content"
+    }
+  },
+  {
+    "email": "karl.key.freelancer97@testapi.com",
+    "username": "freelancer_karl_097",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Karl",
+    "last_name": "Key",
+    "country_origin": "Brazil",
+    "identity_number": "98765432293",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Expert in developing and managing high-traffic websites using WordPress and custom themes.",
+      "skills": "WordPress, PHP, Custom Theme Development, Site Speed Optimization",
+      "hourly_rate": 82.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "linda.love.client97@testapi.com",
+    "username": "client_linda_097",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Linda",
+    "last_name": "Love",
+    "country_origin": "Mexico",
+    "identity_number": "98765432294",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Company needs a WordPress expert to overhaul our site and fix performance issues.",
+      "skills": "WordPress Development, Performance Optimization"
+    }
+  },
+  {
+    "email": "maggie.maple.freelancer98@testapi.com",
+    "username": "freelancer_maggie_098",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Maggie",
+    "last_name": "Maple",
+    "country_origin": "India",
+    "identity_number": "98765432295",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Professional video editor specializing in documentary filmmaking and color grading.",
+      "skills": "Documentary Editing, DaVinci Resolve, Color Grading, Story Structure",
+      "hourly_rate": 95.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "nick.next.client98@testapi.com",
+    "username": "client_nick_098",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Nick",
+    "last_name": "Next",
+    "country_origin": "China",
+    "identity_number": "98765432296",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Independent filmmaker needs a skilled editor for a feature-length documentary project.",
+      "skills": "Documentary Film Editing, Post-Production"
+    }
+  },
+  {
+    "email": "oscar.oats.freelancer99@testapi.com",
+    "username": "freelancer_oscar_099",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Oscar",
+    "last_name": "Oats",
+    "country_origin": "Russia",
+    "identity_number": "98765432297",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Senior product designer focused on creating engaging B2B SaaS interfaces.",
+      "skills": "Product Design, Figma, User Research, Design Strategy",
+      "hourly_rate": 110.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "patty.peak.client99@testapi.com",
+    "username": "client_patty_099",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Patty",
+    "last_name": "Peak",
+    "country_origin": "South Africa",
+    "identity_number": "98765432298",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "SaaS company requires a full redesign of their main product dashboard and user flows.",
+      "skills": "Product Design, UI/UX"
+    }
+  },
+  {
+    "email": "quinn.queen.freelancer100@testapi.com",
+    "username": "freelancer_quinn_100",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Quinn",
+    "last_name": "Queen",
+    "country_origin": "Nigeria",
+    "identity_number": "98765432299",
+    "profile": {
+      "role": "FREELANCER",
+      "bio": "Final record! I'm an expert in performance marketing and paid social media campaigns.",
+      "skills": "Performance Marketing, Facebook Ads, TikTok Ads, Data Analytics",
+      "hourly_rate": 90.0,
+      "availability": "AVAILABLE"
+    }
+  },
+  {
+    "email": "randy.rock.client100@testapi.com",
+    "username": "client_randy_100",
+    "password": "SecureTestP@ss123!",
+    "first_name": "Randy",
+    "last_name": "Rock",
+    "country_origin": "Egypt",
+    "identity_number": "98765432300",
+    "profile": {
+      "role": "CLIENT",
+      "bio": "Final client! E-commerce company needs to scale our paid media efforts globally.",
+      "skills": "Paid Social, Performance Marketing"
+    }
+  }
 ]

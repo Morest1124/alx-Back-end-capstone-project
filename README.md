@@ -15,6 +15,7 @@ The core idea behind this project is to create a freelance marketplace that prio
 *   **Proposal System**: Freelancers can submit proposals (bids) for projects.
 *   **Review System**: Clients and freelancers can rate and review each other after a project is completed.
 *   **Messaging**: A messaging system for communication between users.
+*   **Dashboards**: API endpoints for freelancer and client dashboards to view key metrics.
 
 ## Project Plan & Progress
 
@@ -27,10 +28,11 @@ The project is being developed following a five-week plan.
     *   Implemented the custom `User` and `Profile` models.
     *   Built the JWT-based authentication system with endpoints for registration and login.
     *   Created CRUD operations for user profiles.
-*   **[ ] Week 4: The Core Functionality**:
+*   **[x] Week 4: The Core Functionality**:
     *   Implement project management features (create, retrieve, update, delete projects).
     *   Build the proposal system for freelancers to bid on projects.
     *   Implement a permissions system to restrict actions based on user roles.
+    *   Implemented Dashboard APIs.
 *   **[ ] Week 5: Finishing Touches and Launch**:
     *   Implement the review and messaging systems.
     *   Write comprehensive tests for the entire application.
@@ -62,6 +64,8 @@ The following table outlines the RESTful API endpoints for the platform.
 |                | GET    | `/users/{id}/reviews`                  | Retrieves all reviews received by a user.                        |
 | **Comment**        | POST   | `/projects/{project_id}/comments`      | Adds a comment to a specific project.                            |
 |                | GET    | `/projects/{project_id}/comments`      | Retrieves all comments for a specific project.                   |
+| **Dashboard**      | GET    | `/api/dashboard/freelancer/`           | Retrieves metrics for the freelancer dashboard.                  |
+|                | GET    | `/api/dashboard/client/`               | Retrieves metrics for the client dashboard.                      |
 
 ## Technologies Used
 
