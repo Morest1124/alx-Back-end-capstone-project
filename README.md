@@ -33,8 +33,9 @@ The project is being developed following a five-week plan.
     *   Build the proposal system for freelancers to bid on projects.
     *   Implement a permissions system to restrict actions based on user roles.
     *   Implemented Dashboard APIs.
-*   **[ ] Week 5: Finishing Touches and Launch**:
-    *   Implement the review and messaging systems.
+*   **[x] Week 5: Finishing Touches and Launch**:
+    *   Implemented the messaging system.
+    *   Implement the review system.
     *   Write comprehensive tests for the entire application.
     *   Prepare the project for deployment.
 
@@ -66,6 +67,10 @@ The following table outlines the RESTful API endpoints for the platform.
 |                | GET    | `/projects/{project_id}/comments`      | Retrieves all comments for a specific project.                   |
 | **Dashboard**      | GET    | `/api/dashboard/freelancer/`           | Retrieves metrics for the freelancer dashboard.                  |
 |                | GET    | `/api/dashboard/client/`               | Retrieves metrics for the client dashboard.                      |
+| **Message**        | GET    | `/api/messages/`                       | Retrieves the user's inbox.                                      |
+|                | GET    | `/api/messages/sent/`                  | Retrieves the user's sent messages.                              |
+|                | GET    | `/api/messages/{id}/`                  | Retrieves a single message and marks it as read.                 |
+|                | POST   | `/api/messages/send/`                  | Sends a new message.                                             |
 
 ## Technologies Used
 

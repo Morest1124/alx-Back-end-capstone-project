@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Review',
     'Comment',
     'dashboard',
+    'message',
 
 ]
 

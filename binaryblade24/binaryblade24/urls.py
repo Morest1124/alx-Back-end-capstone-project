@@ -26,6 +26,7 @@ urlpatterns = [
     path('api/', include('Proposal.urls')),
     path('api/', include('Comment.urls')),
     path('api/dashboard/', include('dashboard.urls')),
+    path('api/messages/', include('message.urls')),
 
 ]
 

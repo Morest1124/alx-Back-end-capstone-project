@@ -49,7 +49,7 @@ class FreelancerDashboardAPIView(APIView):
         # Response Rate 
         response_rate = "95%"
 
-        # Total Impressions 
+        # Total Impressions (hardcoded as no tracking for this)
         total_impressions = "18.5K"
 
         # Recent Proposals
@@ -73,6 +73,58 @@ class FreelancerDashboardAPIView(APIView):
             'response_rate': response_rate,
             'total_impressions': total_impressions,
             'recent_proposals': recent_proposals_data,
+        }
+
+        return Response(data)
+
+class ClientDashboardAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        client = request.user
+
+        # Total Spent
+        total_spent = Project.objects.filter(
+            client=client,
+            status='COMPLETED'
+        ).aggregate(total_spent=Sum('price'))['total_spent'] or 0
+
+        # Active Projects
+        active_projects = Project.objects.filter(
+            client=client,
+            status='IN_PROGRESS'
+        ).count()
+
+        # Completed Projects
+        completed_projects = Project.objects.filter(
+            client=client,
+            status='COMPLETED'
+        ).count()
+
+        # Open Projects
+        open_projects = Project.objects.filter(
+            client=client,
+            status='OPEN'
+        ).count()
+
+        # Total Proposals Received
+        total_proposals_received = Proposal.objects.filter(
+            project__client=client
+        ).count()
+
+        # Number of Freelancers Hired
+        freelancers_hired = User.objects.filter(
+            submitted_proposals__project__client=client,
+            submitted_proposals__status='ACCEPTED'
+        ).distinct().count()
+
+        data = {
+            'total_spent': total_spent,
+            'active_projects': active_projects,
+            'completed_projects': completed_projects,
+            'open_projects': open_projects,
+            'total_proposals_received': total_proposals_received,
+            'freelancers_hired': freelancers_hired,
         }
 
         return Response(data)
