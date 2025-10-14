@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, Permission, Group
 from django.conf import settings # Needed for settings.AUTH_USER_MODEL reference
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.hashers import check_password
 
 class User(AbstractUser):
 
@@ -31,6 +32,9 @@ class User(AbstractUser):
         blank=True,
         verbose_name='user permissions',
     )
+
+    def check_identity_number(self, raw_identity_number):
+        return check_password(raw_identity_number, self.identity_number)
 
     def __str__(self):
         return self.username

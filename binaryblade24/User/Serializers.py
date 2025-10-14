@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Profile
+from django.contrib.auth.hashers import make_password
 
 User = get_user_model()
 class FreelancerDetailSerializer(serializers.ModelSerializer):
@@ -30,6 +31,8 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         profile_data = validated_data.pop('profile', None)
         password = validated_data.pop('password')
+        if 'identity_number' in validated_data:
+            validated_data['identity_number'] = make_password(validated_data['identity_number'])
         user = User.objects.create_user(password=password, **validated_data)
         if profile_data:
             Profile.objects.create(user=user, **profile_data)
@@ -41,6 +44,9 @@ class UserSerializer(serializers.ModelSerializer):
         if 'password' in validated_data:
             password = validated_data.pop('password')
             instance.set_password(password)
+
+        if 'identity_number' in validated_data:
+            instance.identity_number = make_password(validated_data.pop('identity_number'))
 
         profile_data = validated_data.pop('profile', None)
         if profile_data:
