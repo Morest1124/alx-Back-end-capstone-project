@@ -5,3 +5,7 @@ python-dotenv
 requests
 Pillow
 mysqlclient
+gunicorn
+stripe
+paypalrestsdk
+whitenoise

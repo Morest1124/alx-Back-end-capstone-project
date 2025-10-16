@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser, Permission, Group
 from django.conf import settings # Needed for settings.AUTH_USER_MODEL reference
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.hashers import check_password
+from Project.models import Project
 
 class User(AbstractUser):
 
@@ -100,3 +101,20 @@ class Profile(models.Model):
 
 def __str__(self):
         return f"{self.user.username}'s Profile ({self.get_role_display()})"
+
+class Payment(models.Model):
+    PAYMENT_METHOD_CHOICES = [
+        ('stripe', 'Stripe'),
+        ('paypal', 'PayPal'),
+    ]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date = models.DateTimeField(auto_now_add=True)
+    transaction_id = models.CharField(max_length=255)
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES)
+    status = models.CharField(max_length=20, default='pending')
+
+    def __str__(self):
+        return f"Payment of {self.amount} for {self.project.title} by {self.user.username} via {self.get_payment_method_display()}"

@@ -170,3 +170,26 @@ Example JSON for creating a user (POST to /api/auth/register/):
 Dashboard API Endpoints:
 - /api/dashboard/freelancer/
 - /api/dashboard/client/
+
+
+### AWS ECR Deployment Commands
+
+Replace the following placeholders before running the commands:
+- `your-repo-name`: The name of your ECR repository.
+- `your-region`: The AWS region where your repository is located (e.g., `us-east-1`).
+- `your-aws-account-id`: Your AWS account ID.
+
+# 1. Create an ECR repository
+aws ecr create-repository --repository-name your-repo-name --region your-region
+
+# 2. Authenticate Docker to your ECR registry
+aws ecr get-login-password --region your-region | docker login --username AWS --password-stdin your-aws-account-id.dkr.ecr.your-region.amazonaws.com
+
+# 3. Build your Docker image
+docker build -t your-repo-name .
+
+# 4. Tag your image
+docker tag your-repo-name:latest your-aws-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:latest
+
+# 5. Push your image to ECR
+docker push your-aws-account-id.dkr.ecr.your-region.amazonaws.com/your-repo-name:latest

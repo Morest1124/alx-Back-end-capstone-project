@@ -26,11 +26,11 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # CORRECTED: This should be a list of strings/hostnames. 
 # Reverting to default empty list for development.
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'django']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -69,6 +69,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,6 +149,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -164,3 +167,13 @@ AUTH_USER_MODEL = 'User.User'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+# Stripe settings
+# STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+# STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')
+# SITE_URL = os.environ.get('SITE_URL')
+
+# PayPal settings
+# PAYPAL_MODE = os.environ.get('PAYPAL_MODE', 'sandbox') # Or 'live' for production
+# PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
+# PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET')
