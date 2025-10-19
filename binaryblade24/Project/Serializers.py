@@ -42,8 +42,8 @@ class ProjectSerializer(serializers.ModelSerializer):
             'category_details',
             'thumbnail',
             'delivery_days',
-            'verbose_name',
-            'help_text',
+            # 'verbose_name',
+            # 'help_text',
             
         ]
         

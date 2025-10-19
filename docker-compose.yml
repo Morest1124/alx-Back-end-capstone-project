@@ -14,7 +14,7 @@ services:
       - MYSQL_PORT=3306
     ports:
       - "8000:8000"
-    command: ["/app/wait-for-db.sh", "mysql", "--", "gunicorn", "binaryblade24.wsgi:application", "--bind", "0.0.0.0:8000"]
+    command: ["/app/wait-for-db.sh", "mysql", "--", "gunicorn", "binaryblade24.wsgi:application", "--bind", "0.0.0.0:8000", "--chdir", "/app/binaryblade24"]
 
   mysql:
     image: mysql:8.0 # Official MySQL image

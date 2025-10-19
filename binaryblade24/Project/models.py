@@ -21,8 +21,8 @@ class Project(models.Model):
     delivery_days = models.DateTimeField(
         null=True, 
         blank=True,
-        verbose_name="Estimated Delivery Date",
-        help_text="The expected date and time the order will be delivered to the customer."
+        # verbose_name="Estimated Delivery Date",
+        # help_text="The expected date and time the order will be delivered to the customer."
     )
     #Timeline
     created_at = models.DateTimeField(auto_now_add=True)

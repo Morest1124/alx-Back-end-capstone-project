@@ -1,0 +1,108 @@
+{
+  "categories": [
+    {
+      "name": "Web Development",
+      "slug": "web-development"
+    },
+    {
+      "name": "Mobile Development",
+      "slug": "mobile-development"
+    },
+    {
+      "name": "Data Science",
+      "slug": "data-science"
+    }
+  ],
+  "users": [
+    {
+      "username": "client1",
+      "first_name": "Client",
+      "last_name": "One",
+      "email": "client1@example.com",
+      "password": "password123",
+      "country_origin": "USA",
+      "identity_number": "1111111111"
+    },
+    {
+      "username": "freelancer1",
+      "first_name": "Freelancer",
+      "last_name": "One",
+      "email": "freelancer1@example.com",
+      "password": "password123",
+      "country_origin": "Canada",
+      "identity_number": "2222222222"
+    },
+    {
+      "username": "freelancer2",
+      "first_name": "Freelancer",
+      "last_name": "Two",
+      "email": "freelancer2@example.com",
+      "password": "password123",
+      "country_origin": "UK",
+      "identity_number": "3333333333"
+    },
+    {
+        "username": "client2",
+        "first_name": "Client",
+        "last_name": "Two",
+        "email": "client2@example.com",
+        "password": "password123",
+        "country_origin": "Australia",
+        "identity_number": "4444444444"
+    },
+    {
+        "username": "admin1",
+        "first_name": "Admin",
+        "last_name": "One",
+        "email": "admin1@example.com",
+        "password": "password123",
+        "country_origin": "Germany",
+        "identity_number": "5555555555"
+    },
+    {
+        "username": "freelancer3",
+        "first_name": "Freelancer",
+        "last_name": "Three",
+        "email": "freelancer3@example.com",
+        "password": "password123",
+        "country_origin": "France",
+        "identity_number": "6666666666"
+    },
+    {
+        "username": "client3",
+        "first_name": "Client",
+        "last_name": "Three",
+        "email": "client3@example.com",
+        "password": "password123",
+        "country_origin": "Japan",
+        "identity_number": "7777777777"
+    },
+    {
+        "username": "freelancer4",
+        "first_name": "Freelancer",
+        "last_name": "Four",
+        "email": "freelancer4@example.com",
+        "password": "password123",
+        "country_origin": "Brazil",
+        "identity_number": "8888888888"
+    },
+    {
+        "username": "client4",
+        "first_name": "Client",
+        "last_name": "Four",
+        "email": "client4@example.com",
+        "password": "password123",
+        "country_origin": "India",
+        "identity_number": "9999999999"
+    },
+    {
+        "username": "freelancer5",
+        "first_name": "Freelancer",
+        "last_name": "Five",
+        "email": "freelancer5@example.com",
+        "password": "password123",
+        "country_origin": "Nigeria",
+        "identity_number": "1010101010"
+    }
+  ]
+}
