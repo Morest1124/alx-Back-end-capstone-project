@@ -1,10 +1,8 @@
 # Python
-*.pyc
 __pycache__/
-.Python
+*.pyc
 venv/
-env/
-.env
+
 pip-log.txt
 pip-delete-this-directory.txt
 .tox/
@@ -15,6 +13,7 @@ htmlcov/
 .dmypy.json
 celerybeat-schedule
 .venv
+.env
 
 # Django
 *.log
@@ -34,9 +33,3 @@ local_settings.py
 *.code-workspace
 *.swp
 *~
-.DS_Store
-Thumbs.dbmock_users.json 
-mock_projects_and_proposals.json 
-bulk_create_users.py 
-bulk_create_projects_and_proposals.py 
-endpoint.txt 
