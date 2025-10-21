@@ -78,28 +78,27 @@ class Profile(models.Model):
         INTERMEDIATE = 'intermediate', 'Intermediate'
         SENIOR = 'senior', 'Senior'
         EXPERT = 'expert', 'Expert'
-        
-        # Field to store the user's skill level for the module
-    level = models.CharField(max_length=20,
-    choices=SkillLevel.choices,
-    # Set the default to the lowest tier: 'beginner'
-    default=SkillLevel.BEGINNER,
-    verbose_name="Module Skill Level"
-)     
-        
 
-    
+    # Field to store the user's skill level for the module
+    level = models.CharField(
+        max_length=20,
+        choices=SkillLevel.choices,
+        # Set the default to the lowest tier: 'beginner'
+        default=SkillLevel.BEGINNER,
+        verbose_name="Module Skill Level"
+    )
+
     class Availability(models.TextChoices):
         AVAILABLE = 'AVAILABLE', 'Available'
         NOT_AVAILABLE = 'NOT_AVAILABLE', 'Not Available'
-        
+
     availability = models.CharField(
         max_length=20,
         choices=Availability.choices,
         default=Availability.AVAILABLE
     )
 
-def __str__(self):
+    def __str__(self):
         return f"{self.user.username}'s Profile ({self.get_role_display()})"
 
 class Payment(models.Model):
