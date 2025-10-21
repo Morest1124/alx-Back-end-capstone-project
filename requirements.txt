@@ -11,3 +11,4 @@ paypalrestsdk
 whitenoise
 dj_database_url
 psycopg2-binary
+django-cors-headers
