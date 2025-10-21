@@ -9,3 +9,5 @@ gunicorn
 stripe
 paypalrestsdk
 whitenoise
+dj_database_url
+psycopg2-binary
