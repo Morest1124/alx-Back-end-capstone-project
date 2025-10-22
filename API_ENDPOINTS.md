@@ -1,5 +1,7 @@
 # API Endpoints
 
+The base URL for the live API is: **https://binaryblade24-api.onrender.com**
+
 The following table outlines the RESTful API endpoints for the platform.
 
 | Entity         | Method | Endpoint                               | Description                                                      |

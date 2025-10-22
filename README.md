@@ -52,6 +52,12 @@ docker-compose exec django /bin/sh
 python binaryblade24/manage.py your_command_name
 ```
 
+## Live API
+
+The API is hosted on Render and can be accessed at the following URL:
+
+- [https://binaryblade24-api.onrender.com](https://binaryblade24-api.onrender.com)
+
 ## API Endpoints
 
 For a detailed description of all the API endpoints available in this application, please see the [API_ENDPOINTS.md](API_ENDPOINTS.md) file.
