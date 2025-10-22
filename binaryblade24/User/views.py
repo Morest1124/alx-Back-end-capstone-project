@@ -7,7 +7,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .Permissions import IsOwnerOrAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .models import Profile #, Payment
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Profile, Role #, Payment
 # from Project.models import Project
 # import stripe
 # import paypalrestsdk
@@ -19,9 +21,45 @@ from django.views.decorators.csrf import csrf_exempt
 User = get_user_model()
 
 
-class LoginView(TokenObtainPairView):
-    """A login endpoint that authenticates a user and returns a token."""
-    pass
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        if self.user.roles.count() > 1:
+            roles = [role.name for role in self.user.roles.all()]
+            raise serializers.ValidationError({
+                'detail': 'Multiple roles found. Please select a role.',
+                'roles': roles
+            })
+        if self.user.roles.exists():
+            data['role'] = self.user.roles.first().name
+        else:
+            data['role'] = None
+        return data
+
+class CustomLoginView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+
+class LoginWithRoleView(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        role_name = request.data.get('role')
+        
+        user = User.objects.filter(email=email).first()
+        
+        if user is None or not user.check_password(password):
+            return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            
+        if role_name not in [r.name for r in user.roles.all()]:
+            return Response({'detail': 'Invalid role for this user.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        refresh = RefreshToken.for_user(user)
+        refresh['role'] = role_name
+        
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        })
 
 
 class RegisterView(APIView):

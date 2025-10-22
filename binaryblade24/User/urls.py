@@ -3,7 +3,8 @@ from .views import (
     RegisterView, 
     UserListView, 
     UserDetailView, 
-    LoginView, 
+    CustomLoginView, 
+    LoginWithRoleView,
     UserProfileView,
     # StripeCheckoutView, 
     # stripe_webhook,
@@ -14,7 +15,8 @@ from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
 
 urlpatterns = [
-    path('login/', LoginView.as_view(), name='login'),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('login/role/', LoginWithRoleView.as_view(), name='login_with_role'),
     path('register/', RegisterView.as_view(), name='register'),
     path('users/', UserListView.as_view(), name='user-list'),
     path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),

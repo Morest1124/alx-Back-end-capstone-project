@@ -12,6 +12,7 @@ class User(AbstractUser):
     email = models.EmailField(blank=False, unique=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
+
     
     # NOTE: profilePicture renamed to profile_picture (snake_case convention)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
@@ -33,14 +34,24 @@ class User(AbstractUser):
         blank=True,
         verbose_name='user permissions',
     )
+    roles = models.ManyToManyField('Role', related_name='users')
+
 
     def check_identity_number(self, raw_identity_number):
         return check_password(raw_identity_number, self.identity_number)
 
     def __str__(self):
         return self.username
-    
-    
+
+
+class Role(models.Model):
+    """Model to represent user roles."""
+    name = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Profile(models.Model):
     
     # One-to-One link to User model
@@ -48,20 +59,6 @@ class Profile(models.Model):
         settings.AUTH_USER_MODEL, 
         on_delete=models.CASCADE, 
         related_name='profile'
-    )
-    
-    # Define User Roles
-    class UserRoles(models.TextChoices):
-        # NOTE: Removed leading space from ' FREELANCER'
-        ADMIN = 'ADMIN','Admin'
-        CLIENT = 'CLIENT', 'Client'
-        FREELANCER = 'FREELANCER', 'Freelancer' 
-        
-    # Field to store the role
-    role = models.CharField(
-        max_length=20,
-        choices=UserRoles.choices,
-        default=UserRoles.FREELANCER 
     )
     
     # Other non-identity profile fields
@@ -99,7 +96,8 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.username}'s Profile ({self.get_role_display()})"
+        roles = ', '.join([role.name for role in self.user.roles.all()])
+        return f"{self.user.username}'s Profile ({roles})"
 
 class Payment(models.Model):
     PAYMENT_METHOD_CHOICES = [
