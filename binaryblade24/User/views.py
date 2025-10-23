@@ -118,11 +118,12 @@ class UserProfileView(APIView):
         serializer = ProfileSerializer(profile)
         return Response(serializer.data)
 
-    def patch(self, request, pk, format=None):
+    def put(self, request, pk, format=None):
+        """Create or update the authenticated user's profile. Uses full PUT semantics per API docs."""
         user = get_object_or_404(User, pk=pk)
         profile = get_object_or_404(Profile, user=user)
         self.check_object_permissions(request, user)
-        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+        serializer = ProfileSerializer(profile, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

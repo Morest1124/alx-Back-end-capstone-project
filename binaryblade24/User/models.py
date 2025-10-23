@@ -4,6 +4,7 @@ from django.conf import settings # Needed for settings.AUTH_USER_MODEL reference
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.hashers import check_password
 from Project.models import Project
+from django.db.models import Avg
 
 class User(AbstractUser):
 
@@ -94,6 +95,47 @@ class Profile(models.Model):
         choices=Availability.choices,
         default=Availability.AVAILABLE
     )
+
+    # Computed properties for convenience / API use
+    @property
+    def completed_projects(self):
+        """Return a queryset of this user's completed projects."""
+        return Project.objects.filter(client=self.user, status=Project.ProjectStatus.COMPLETED)
+
+    @property
+    def portfolio(self):
+        """Return a list of thumbnails (or Project objects) representing the user's portfolio.
+
+        By default this will return the thumbnails for completed projects. If you need full
+        Project objects, use `profile.completed_projects`.
+        """
+        return list(self.completed_projects.values_list('thumbnail', flat=True))
+
+    @property
+    def active_projects(self):
+        """Return a queryset of this user's active/in-progress projects."""
+        return Project.objects.filter(client=self.user, status=Project.ProjectStatus.IN_PROGRESS)
+
+    @property
+    def projects_posted(self):
+        """Return the number of projects this user has posted (created_projects related_name)."""
+        return self.user.created_projects.count()
+
+    @property
+    def average_rating(self):
+        """Return the aggregated average rating calculated from Review records.
+
+        If the `rating` field on Profile is already populated it will be returned as a
+        convenience; otherwise the value is computed from Review.reviewee (reviews_received).
+        """
+        # Use cached rating if present
+        if self.rating is not None:
+            return float(self.rating)
+
+        # Aggregate from Review model via the user's related name `reviews_received`
+        agg = self.user.reviews_received.aggregate(avg=Avg('rating'))
+        avg = agg.get('avg')
+        return float(avg) if avg is not None else None
 
     def __str__(self):
         roles = ', '.join([role.name for role in self.user.roles.all()])
