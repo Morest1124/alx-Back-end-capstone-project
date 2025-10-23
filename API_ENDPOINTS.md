@@ -11,7 +11,23 @@ The following table outlines the RESTful API endpoints for the platform.
 | **User**           | GET    | `/api/users/{id}/`                     | Retrieves a specific user's public profile.                      |
 |                | PUT    | `/api/users/{id}/`                     | Updates the authenticated user's details.                        |
 | **User Profile**   | GET    | `/api/users/{id}/profile/`             | Retrieves the detailed profile for a user.                       |
-|                | PUT    | `/api/users/{id}/profile/`             | Creates or updates the detailed profile for the authenticated user.|
+|                | PUT    | `/api/users/{id}/profile/`             | Creates or updates the detailed profile for the authenticated user.| 
+
+Additional profile fields (read-only/computed):
+
+- `completed_projects` - list of completed projects for the user (id, title, thumbnail, status).
+- `portfolio` - list of thumbnail URLs derived from completed projects.
+- `active_projects` - list of projects currently in progress.
+- `projects_posted` - integer count of projects the user has posted.
+- `avg_rating` - average rating computed from `Review` records (falls back to `profile.rating` if present).
+
+Authentication notes:
+
+- The API uses SimpleJWT for token-based authentication. Login returns `access` and `refresh` tokens. Use the `access` token in the Authorization header as: `Authorization: Bearer <access>`.
+
+Client-side script guidance:
+
+- `binaryblade24/scripts/post_complete_mock_data.py` is a helper script included in this repo to programmatically create users, update profiles, create projects, and submit proposals/reviews. It expects SimpleJWT `access` tokens and uses `/api/users/{id}/profile/` for profile updates.
 | **Project**        | GET    | `/api/projects/`                       | Retrieves a list of all open projects.                           |
 |                | GET    | `/api/projects/{id}/`                  | Retrieves a specific project's details.                          |
 |                | POST   | `/api/projects/`                       | Creates a new project (Client only).                             |

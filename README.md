@@ -62,6 +62,26 @@ The API is hosted on Render and can be accessed at the following URL:
 
 For a detailed description of all the API endpoints available in this application, please see the [API_ENDPOINTS.md](API_ENDPOINTS.md) file.
 
+## Profiles and computed fields
+
+The `Profile` model exposes several computed/read-only fields that are surfaced via the API (available under the `profile` key when fetching `/api/users/{id}/profile/` or nested inside the `UserSerializer`):
+
+- `completed_projects` - array of the user's completed projects (minimal info: id, title, thumbnail, status).
+- `portfolio` - list of thumbnail URLs from completed projects.
+- `active_projects` - array of active projects (in-progress projects).
+- `projects_posted` - integer count of projects the user has posted.
+- `avg_rating` - aggregated average rating from Review records (falls back to `profile.rating` if set).
+
+These fields are read-only and are computed on-demand by the serializer; they do not require database schema changes or migrations.
+
+## Scripts
+
+The `binaryblade24/scripts/` directory includes helper scripts used during development to create users, profiles, projects, proposals, and reviews programmatically. Important notes:
+
+- Scripts use SimpleJWT tokens returned by `/api/auth/login/`; they look for the `access` token and use it as `Authorization: Bearer <access>`.
+- `post_complete_mock_data.py` is intended for development use and will make many requests to the API; use with caution on production.
+
+
 ## Technologies Used
 
 *   Python
