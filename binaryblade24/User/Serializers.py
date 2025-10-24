@@ -113,7 +113,15 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         if 'identity_number' in validated_data:
-            instance.identity_number = make_password(validated_data.pop('identity_number'))
+            new_identity_number = validated_data.pop('identity_number')
+            #(Suggested by Gemini)
+            # Only hash if the new identity number is different and doesn't look already hashed
+            # This is a heuristic; a more robust solution might involve a separate endpoint
+            # or a clear distinction between plain and hashed values.
+            if new_identity_number != instance.identity_number and not new_identity_number.startswith(('pbkdf2_sha256$', 'bcrypt$', 'sha1$')):
+                instance.identity_number = make_password(new_identity_number)
+            elif new_identity_number != instance.identity_number: # If it's different and already hashed, assume it's a valid pre-hashed value
+                instance.identity_number = new_identity_number
 
         profile_data = validated_data.pop('profile', None)
         if profile_data:
