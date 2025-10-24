@@ -1,6 +1,14 @@
 # API Field References
 
-This document lists all occurrences of the following keywords in the project: `id`, `username`, `first_name`, `last_name`, `email`, `password`, `profile`, `identity_number`, `profile_picture`.
+This document lists all occurrences of the following keywords in the project: 
+- User Authentication: `id`, `username`, `first_name`, `last_name`, `email`, `password`
+- Profile Fields: `profile`, `identity_number`, `profile_picture`, `country_origin`, `phone_number`, `role`, `availability`, `hourly_rate`, `rating`, `level`, `avatar`
+- Project Fields: `project_id`, `title`, `description`, `budget`, `timeline`, `category`, `status`, `client`, `required_skills`
+- Proposal Fields: `bid_amount`, `status`, `freelancer`, `project`
+- Payment Fields: `transaction_id`, `amount`, `payment_method`, `status`
+- Message Fields: `sender`, `recipient`, `subject`, `body`, `timestamp`, `is_read`
+- Review Fields: `rating`, `comment`, `reviewer`, `reviewee`, `project`
+- Comment Fields: `content`, `user`, `project`, `created_at`
 
 ---
 File: .env.example

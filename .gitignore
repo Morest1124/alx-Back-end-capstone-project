@@ -3,6 +3,13 @@ __pycache__/
 *.pyc
 venv/
 
+# Mock data and scripts
+mock_data.json
+data/mockProjects.js
+data/mockUsers.js
+**/post_mock_data*.py
+**/post_complete_mock_data.py
+
 pip-log.txt
 pip-delete-this-directory.txt
 .tox/
@@ -33,3 +40,13 @@ local_settings.py
 *.code-workspace
 *.swp
 *~
+
+# Mock data and scripts (additional entries)
+check_mock_post.py
+post_complete_mock_data_v4.py
+binaryblade24/scripts/
+binaryblade24/User/management/commands/delete_mock_data.py
+binaryblade24/User/management/commands/load_mock_data.py
+binaryblade24/User/management/commands/mock_data.py
+binaryblade24/User/management/commands/reset_and_reload_data.py
+data/
