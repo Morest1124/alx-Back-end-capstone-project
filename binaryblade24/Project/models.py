@@ -16,7 +16,6 @@ class Project(models.Model):
     description = models.CharField(blank=False, max_length=2500)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     budget = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
-    project_id = models.IntegerField(unique=True, blank=False)
     thumbnail = models.ImageField(upload_to='thumbnail/', null=True, blank=True)
     delivery_days = models.DateTimeField(
         null=True, 

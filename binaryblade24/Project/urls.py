@@ -1,4 +1,6 @@
 from django.urls import path, include
+
+app_name = 'Project'
 from rest_framework.routers import DefaultRouter
 from .views import ProjectViewSet
 from Proposal.views import ProposalListCreateView

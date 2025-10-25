@@ -31,7 +31,8 @@
       "email": "freelancer1@example.com",
       "password": "password123",
       "country_origin": "Canada",
-      "identity_number": "2222222222"
+      "identity_number": "2222222222",
+      "roles": "Freelancer"
     },
     {
       "username": "freelancer2",
@@ -40,71 +41,78 @@
       "email": "freelancer2@example.com",
       "password": "password123",
       "country_origin": "UK",
-      "identity_number": "3333333333"
+      "identity_number": "3333333333",
+      "roles": "Freelancer"
     },
     {
-        "username": "client2",
-        "first_name": "Client",
-        "last_name": "Two",
-        "email": "client2@example.com",
-        "password": "password123",
-        "country_origin": "Australia",
-        "identity_number": "4444444444"
+      "username": "client2",
+      "first_name": "Client",
+      "last_name": "Two",
+      "email": "client2@example.com",
+      "password": "password123",
+      "country_origin": "Australia",
+      "identity_number": "4444444444",
+      "roles": "Client"
     },
     {
-        "username": "admin1",
-        "first_name": "Admin",
-        "last_name": "One",
-        "email": "admin1@example.com",
-        "password": "password123",
-        "country_origin": "Germany",
-        "identity_number": "5555555555"
+      "username": "admin1",
+      "first_name": "Admin",
+      "last_name": "One",
+      "email": "admin1@example.com",
+      "password": "password123",
+      "country_origin": "Germany",
+      "identity_number": "5555555555",
+      "roles": "Admin"
     },
     {
-        "username": "freelancer3",
-        "first_name": "Freelancer",
-        "last_name": "Three",
-        "email": "freelancer3@example.com",
-        "password": "password123",
-        "country_origin": "France",
-        "identity_number": "6666666666"
+      "username": "freelancer3",
+      "first_name": "Freelancer",
+      "last_name": "Three",
+      "email": "freelancer3@example.com",
+      "password": "password123",
+      "country_origin": "France",
+      "identity_number": "6666666666",
+      "roles": "Freelancer"
     },
     {
-        "username": "client3",
-        "first_name": "Client",
-        "last_name": "Three",
-        "email": "client3@example.com",
-        "password": "password123",
-        "country_origin": "Japan",
-        "identity_number": "7777777777"
+      "username": "client3",
+      "first_name": "Client",
+      "last_name": "Three",
+      "email": "client3@example.com",
+      "password": "password123",
+      "country_origin": "Japan",
+      "identity_number": "7777777777",
+      "roles": "Client"
     },
     {
-        "username": "freelancer4",
-        "first_name": "Freelancer",
-        "last_name": "Four",
-        "email": "freelancer4@example.com",
-        "password": "password123",
-        "country_origin": "Brazil",
-        "identity_number": "8888888888"
+      "username": "freelancer4",
+      "first_name": "Freelancer",
+      "last_name": "Four",
+      "email": "freelancer4@example.com",
+      "password": "password123",
+      "country_origin": "Brazil",
+      "identity_number": "8888888888",
+      "roles": "Freelancer"
     },
     {
-        "username": "client4",
-        "first_name": "Client",
-        "last_name": "Four",
-        "email": "client4@example.com",
-        "password": "password123",
-        "country_origin": "India",
-        "identity_number": "9999999999"
+      "username": "client4",
+      "first_name": "Client",
+      "last_name": "Four",
+      "email": "client4@example.com",
+      "password": "password123",
+      "country_origin": "India",
+      "identity_number": "9999999999",
+      "roles": "Client"
     },
     {
-        "username": "freelancer5",
-        "first_name": "Freelancer",
-        "last_name": "Five",
-        "email": "freelancer5@example.com",
-        "password": "password123",
-        "country_origin": "Nigeria",
-        "identity_number": "1010101010"
+      "username": "freelancer5",
+      "first_name": "Freelancer",
+      "last_name": "Five",
+      "email": "freelancer5@example.com",
+      "password": "password123",
+      "country_origin": "Nigeria",
+      "identity_number": "1010101010",
+      "roles": "Freelancer"
     }
   ]
 }
-

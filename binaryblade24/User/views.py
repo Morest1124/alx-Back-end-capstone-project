@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Profile, Role #, Payment
+
 # from Project.models import Project
 # import stripe
 # import paypalrestsdk
@@ -24,16 +25,22 @@ User = get_user_model()
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
-        if self.user.roles.count() > 1:
-            roles = [role.name for role in self.user.roles.all()]
+        
+        # Fetch roles once to avoid multiple DB hits
+        roles = self.user.roles.all()
+        role_names = [role.name for role in roles]
+
+        if len(role_names) > 1:
             raise serializers.ValidationError({
                 'detail': 'Multiple roles found. Please select a role.',
-                'roles': roles
+                'roles': role_names
             })
-        if self.user.roles.exists():
-            data['role'] = self.user.roles.first().name
+        
+        if role_names:
+            data['role'] = role_names[0]
         else:
             data['role'] = None
+            
         return data
 
 class CustomLoginView(TokenObtainPairView):
@@ -50,7 +57,7 @@ class LoginWithRoleView(APIView):
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
             
-        if role_name not in [r.name for r in user.roles.all()]:
+        if role_name not in user.roles.values_list('name', flat=True):
             return Response({'detail': 'Invalid role for this user.'}, status=status.HTTP_400_BAD_REQUEST)
             
         refresh = RefreshToken.for_user(user)

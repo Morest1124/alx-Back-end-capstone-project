@@ -1,4 +1,6 @@
 from django.urls import path
+
+app_name = 'Proposal'
 from .views import ProposalDetailView, ProposalListView
 
 urlpatterns = [

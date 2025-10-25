@@ -39,10 +39,8 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         """
         Filters proposals by the project ID in the URL.
         """
-        project_id = self.kwargs.get('project_pk')
-        project = get_object_or_404(Project, pk=project_id)
-        
-        # Security Check for GET
+        project_pk = self.kwargs.get('project_pk')
+        project = get_object_or_404(Project, pk=project_pk)
         # Only the client can see the list of proposals
         if self.request.method == 'GET' and project.client != self.request.user:
             # Freelancers can list their own proposals, but not via the project endpoint
@@ -56,8 +54,8 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         """
         Set freelancer, project, and initial status upon submission.
         """
-        project_id = self.kwargs.get('project_pk')
-        project = get_object_or_404(Project, pk=project_id)
+        project_pk = self.kwargs.get('project_pk')
+        project = get_object_or_404(Project, pk=project_pk)
 
         # 1. Check if the project is OPEN
         if project.status != Project.ProjectStatus.OPEN:

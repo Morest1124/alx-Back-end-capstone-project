@@ -1,4 +1,6 @@
 from django.urls import path
+
+app_name = 'Comment'
 from .views import CommentListCreateView
 
 urlpatterns = [

@@ -33,15 +33,15 @@ Client-side script guidance:
 |                | POST   | `/api/projects/`                       | Creates a new project (Client only).                             |
 |                | PUT    | `/api/projects/{id}/`                  | Updates an existing project (Client only).                       |
 |                | DELETE | `/api/projects/{id}/`                  | Deletes a project (Client only).                                 |
-| **Proposal**       | GET    | `/api/projects/{project_id}/proposals/`| Retrieves all proposals for a specific project.                  |
+| **Proposal**       | GET    | `/api/projects/{project_pk}/proposals/`| Retrieves all proposals for a specific project.                  |
 |                | GET    | `/api/proposals/{id}/`                 | Retrieves a specific proposal's details.                         |
-|                | POST   | `/api/projects/{project_id}/proposals/`| Submits a new proposal to a project (Freelancer only).           |
+|                | POST   | `/api/projects/{project_pk}/proposals/`| Submits a new proposal to a project (Freelancer only).           |
 |                | PUT    | `/api/proposals/{id}/status/`          | Client accepts or rejects a proposal.                            |
 |                | GET    | `/api/users/{id}/proposals/`           | Retrieves all proposals submitted by a specific freelancer.      |
-| **Review**         | POST   | `/api/projects/{project_id}/reviews/`  | Client submits a review/rating for a freelancer.                 |
+| **Review**         | POST   | `/api/projects/{project_pk}/reviews/`  | Client submits a review/rating for a freelancer.                 |
 |                | GET    | `/api/users/{id}/reviews/`             | Retrieves all reviews received by a user.                        |
-| **Comment**        | POST   | `/api/projects/{project_id}/comments/` | Adds a comment to a specific project.                            |
-|                | GET    | `/api/projects/{project_id}/comments/` | Retrieves all comments for a specific project.                   |
+| **Comment**        | POST   | `/api/projects/{project_pk}/comments/` | Adds a comment to a specific project.                            |
+|                | GET    | `/api/projects/{project_pk}/comments/` | Retrieves all comments for a specific project.                   |
 | **Dashboard**      | GET    | `/api/dashboard/freelancer/`           | Retrieves metrics for the freelancer dashboard.                  |
 |                | GET    | `/api/dashboard/client/`               | Retrieves metrics for the client dashboard.                      |
 | **Message**        | GET    | `/api/messages/`                       | Retrieves the user's inbox.                                      |

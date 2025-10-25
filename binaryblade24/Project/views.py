@@ -46,14 +46,18 @@ class ProjectViewSet(viewsets.ModelViewSet):
         - Clients see all their own projects.
         - Public/Freelancers see only 'OPEN' projects.
         """
-        if self.request.user.is_authenticated:
+        user = self.request.user
+        if user.is_authenticated:
             try:
-                is_client = self.request.user.profile.role == Profile.UserRoles.CLIENT
+                is_client = user.profile.role == Profile.UserRoles.CLIENT
             except Profile.DoesNotExist:
                 is_client = False
 
             if is_client:
-                return Project.objects.filter(client=self.request.user)
+                return Project.objects.filter(client=user)
+            else:
+                # Authenticated non-clients (freelancers, etc.) see open projects
+                return Project.objects.filter(status=Project.ProjectStatus.OPEN)
         
         # For anonymous users or freelancers, only show open projects
         return Project.objects.filter(status=Project.ProjectStatus.OPEN)

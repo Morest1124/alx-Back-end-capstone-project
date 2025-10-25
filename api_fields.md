@@ -3,7 +3,7 @@
 This document lists all occurrences of the following keywords in the project: 
 - User Authentication: `id`, `username`, `first_name`, `last_name`, `email`, `password`
 - Profile Fields: `profile`, `identity_number`, `profile_picture`, `country_origin`, `phone_number`, `role`, `availability`, `hourly_rate`, `rating`, `level`, `avatar`
-- Project Fields: `project_id`, `title`, `description`, `budget`, `timeline`, `category`, `status`, `client`, `required_skills`
+- Project Fields: `id`, `title`, `description`, `budget`, `timeline`, `category`, `status`, `client`, `required_skills`
 - Proposal Fields: `bid_amount`, `status`, `freelancer`, `project`
 - Payment Fields: `transaction_id`, `amount`, `payment_method`, `status`
 - Message Fields: `sender`, `recipient`, `subject`, `body`, `timestamp`, `is_read`
@@ -26,15 +26,15 @@ API_ENDPOINTS.md:14:| | PUT | `/api/users/{id}/profile/` | Creates or updates th
 API_ENDPOINTS.md:16:| | GET | `/api/projects/{id}/` | Retrieves a specific project's details. |
 API_ENDPOINTS.md:18:| | PUT | `/api/projects/{id}/` | Updates an existing project (Client only). |
 API_ENDPOINTS.md:19:| | DELETE | `/api/projects/{id}/` | Deletes a project (Client only). |
-API_ENDPOINTS.md:20:| **Proposal** | GET | `/api/projects/{project_id}/proposals/`| Retrieves all proposals for a specific project. |
+API_ENDPOINTS.md:20:| **Proposal** | GET | `/api/projects/{project_pk}/proposals/`| Retrieves all proposals for a specific project. |
 API_ENDPOINTS.md:21:| | GET | `/api/proposals/{id}/` | Retrieves a specific proposal's details. |
-API_ENDPOINTS.md:22:| | POST | `/api/projects/{project_id}/proposals/`| Submits a new proposal to a project (Freelancer only). |
+API_ENDPOINTS.md:22:| | POST | `/api/projects/{project_pk}/proposals/`| Submits a new proposal to a project (Freelancer only). |
 API_ENDPOINTS.md:23:| | PUT | `/api/proposals/{id}/status/` | Client accepts or rejects a proposal. |
 API_ENDPOINTS.md:24:| | GET | `/api/users/{id}/proposals/` | Retrieves all proposals submitted by a specific freelancer. |
-API_ENDPOINTS.md:25:| **Review** | POST | `/api/projects/{project_id}/reviews/` | Client submits a review/rating for a freelancer. |
+API_ENDPOINTS.md:25:| **Review** | POST | `/api/projects/{project_pk}/reviews/` | Client submits a review/rating for a freelancer. |
 API_ENDPOINTS.md:26:| | GET | `/api/users/{id}/reviews/` | Retrieves all reviews received by a user. |
-API_ENDPOINTS.md:27:| **Comment** | POST | `/api/projects/{project_id}/comments/` | Adds a comment to a specific project. |
-API_ENDPOINTS.md:28:| | GET | `/api/projects/{project_id}/comments/` | Retrieves all comments for a specific project. |
+API_ENDPOINTS.md:27:| **Comment** | POST | `/api/projects/{project_pk}/comments/` | Adds a comment to a specific project. |
+API_ENDPOINTS.md:28:| | GET | `/api/projects/{project_pk}/comments/` | Retrieves all comments for a specific project. |
 API_ENDPOINTS.md:33:| | GET | `/api/messages/{id}/` | Retrieves a single message and marks it as read. |
 README.md:9:The core idea behind this project is to create a freelance marketplace that prioritizes user trust and safety. To combat spam and scams prevalent on other platforms, this marketplace requires mandatory ID verification for all users. This ensures that all interactions are between verified individuals, fostering a community built on trust.
 README.md:24: git clone https://github.com/your_username_/your_project_name.git
@@ -99,15 +99,15 @@ L41: return f"Proposal for {self.project.title} by {self.freelancer.username}"
 File: binaryblade24\Proposal\views.py
 L5: from rest_framework.serializers import ValidationError
 L17: from User.models import Profile, User # To access UserRoles
-L23: - POST /projects/{project_id}/proposals (Freelancer submits a bid)
-L24: - GET /projects/{project_id}/proposals (Client views bids for their project)
+L23: - POST /projects/{project_pk}/proposals (Freelancer submits a bid)
+L24: - GET /projects/{project_pk}/proposals (Client views bids for their project)
 L38: def get_queryset(self): # pyright: ignore[reportIncompatibleMethodOverride]
 L40: Filters proposals by the project ID in the URL.
-L42: project_id = self.kwargs.get('project_pk')
-L43: project = get_object_or_404(Project, pk=project_id)
+L42: project_pk = self.kwargs.get('project_pk')
+L43: project = get_object_or_404(Project, pk=project_pk)
 L50: # (A separate /users/{id}/proposals endpoint handles freelancer lists)
-L59: project_id = self.kwargs.get('project_pk')
-L60: project = get_object_or_404(Project, pk=project_id)
+L59: project_pk = self.kwargs.get('project_pk')
+L60: project = get_object_or_404(Project, pk=project_pk)
 L64: raise ValidationError({"detail": "Cannot submit proposal: Project is not open."})
 L77: Endpoint: PATCH /proposals/{id}/status
 L82: # Use a serializer for validation (only accept status field)
@@ -262,29 +262,29 @@ binaryblade24/User/views.py:122:# 'user_id': request.user.id
 binaryblade24/User/views.py:125:# return Response({'id': checkout_session.id})
 binaryblade24/User/views.py:142:# # Invalid payload
 binaryblade24/User/views.py:143:# return JsonResponse({'status': 'invalid payload'}, status=400)
-binaryblade24/User/views.py:145:# # Invalid signature
-binaryblade24/User/views.py:146:# return JsonResponse({'status': 'invalid signature'}, status=400)
-binaryblade24/User/views.py:151:# project_id = session.get('metadata', {}).get('project_id')
-binaryblade24/User/views.py:152:# user_id = session.get('metadata', {}).get('user_id')
-binaryblade24/User/views.py:154:# if user_id and project_id:
-binaryblade24/User/views.py:156:# user = User.objects.get(id=user_id)
-binaryblade24/User/views.py:157:# project = Project.objects.get(id=project_id)
-binaryblade24/User/views.py:163:# transaction_id=session.get('payment_intent'),
-binaryblade24/User/views.py:179:# "client_id": settings.PAYPAL_CLIENT_ID,
-binaryblade24/User/views.py:188:# project_id = request.data.get('project_id')
-binaryblade24/User/views.py:190:# project = Project.objects.get(id=project_id)
-binaryblade24/User/views.py:200:# "return_url": settings.SITE_URL + '/api/users/payment/paypal/execute/?project_id=' + str(project.id),
-binaryblade24/User/views.py:207:# "sku": "project-" + str(project.id),
-binaryblade24/User/views.py:236:# payment_id = request.query_params.get('paymentId')
-binaryblade24/User/views.py:237:# payer_id = request.query_params.get('PayerID')
-binaryblade24/User/views.py:238:# project_id = request.query_params.get('project_id')
-binaryblade24/User/views.py:240:# if not all([payment_id, payer_id, project_id]):
-binaryblade24/User/views.py:241:# return Response({"error": "Missing paymentId, PayerID, or project_id"}, status=status.HTTP_400_BAD_REQUEST)
-binaryblade24/User/views.py:244:# project = Project.objects.get(id=project_id)
-binaryblade24/User/views.py:248:# payment = paypalrestsdk.Payment.find(payment_id)
-binaryblade24/User/views.py:250:# if payment.execute({"payer_id": payer_id}):
-binaryblade24/User/views.py:255:# transaction_id=payment.id,
-binaryblade24/User/views.py:260:# return Response({"status": "success", "payment_id": payment.id}, status=status.HTTP_200_OK)
+L145:# # Invalid signature
+L146:# return JsonResponse({'status': 'invalid signature'}, status=400)
+L151:# project_id = session.get('metadata', {}).get('project_id')
+L152:# user_id = session.get('metadata', {}).get('user_id')
+L154:# if user_id and project_id:
+L156:# user = User.objects.get(id=user_id)
+L157:# project = Project.objects.get(id=project_id)
+L163:# transaction_id=session.get('payment_intent'),
+L179:# "client_id": settings.PAYPAL_CLIENT_ID,
+L188:# project_id = request.data.get('project_id')
+L190:# project = Project.objects.get(id=project_id)
+L200:# "return_url": settings.SITE_URL + '/api/users/payment/paypal/execute/?project_id=' + str(project.id),
+L207:# "sku": "project-" + str(project.id),
+L236:# payment_id = request.query_params.get('paymentId')
+L237:# payer_id = request.query_params.get('PayerID')
+L238:# project_id = request.query_params.get('project_id')
+L240:# if not all([payment_id, payer_id, project_id]):
+L241:# return Response({"error": "Missing paymentId, PayerID, or project_id"}, status=status.HTTP_400_BAD_REQUEST)
+L244:# project = Project.objects.get(id=project_id)
+L248:# payment = paypalrestsdk.Payment.find(payment_id)
+L250:# if payment.execute({"payer_id": payer_id}):
+L255:# transaction_id=payment.id,
+L260:# return Response({"status": "success", "payment_id": payment.id}, status=status.HTTP_200_OK)
 binaryblade24/binaryblade24/settings.py:11:# Build paths inside the project like this: BASE_DIR / 'subdir'.
 binaryblade24/binaryblade24/settings.py:53:MIDDLEWARE = [
 binaryblade24/binaryblade24/settings.py:54: 'django.middleware.security.SecurityMiddleware',

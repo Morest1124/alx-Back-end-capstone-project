@@ -47,7 +47,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         result = []
         for p in projects:
             result.append({
-                'id': p.project_id,
+                'id': p.id,
                 'title': p.title,
                 'thumbnail': p.thumbnail.url if p.thumbnail else None,
                 'status': p.status,
@@ -62,7 +62,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_active_projects(self, obj):
         projects = Project.objects.filter(client=obj.user, status=Project.ProjectStatus.IN_PROGRESS)
-        return [{'id': p.project_id, 'title': p.title, 'status': p.status} for p in projects]
+        return [{'id': p.id, 'title': p.title, 'status': p.status} for p in projects]
 
     def get_projects_posted(self, obj):
         return Project.objects.filter(client=obj.user).count()
