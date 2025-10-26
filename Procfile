@@ -1,1 +1,1 @@
-web: gunicorn --chdir binaryblade24 binaryblade24.wsgi
+web: gunicorn --chdir binaryblade24 binaryblade24.wsgi -b 0.0.0.0:$PORT
