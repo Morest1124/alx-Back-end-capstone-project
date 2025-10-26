@@ -1,0 +1,1 @@
+web: gunicorn binaryblade24.wsgi
