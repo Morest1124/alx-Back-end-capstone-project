@@ -1,1 +1,1 @@
-web: gunicorn binaryblade24.wsgi
+web: gunicorn --chdir binaryblade24 binaryblade24.wsgi
