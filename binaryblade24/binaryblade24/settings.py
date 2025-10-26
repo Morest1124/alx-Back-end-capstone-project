@@ -26,7 +26,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 # Define the allowed hosts for your application.
 # In production, this should be your domain name(s), e.g., 'www.example.com'.
 # It's loaded from an environment variable for flexibility.
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,binaryblade24-api.onrender.com').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,binaryblade24-api.onrender.com,binaryblade2411.pythonanywhere.com').split(',')
 
 
 # --- Application Definition ---
