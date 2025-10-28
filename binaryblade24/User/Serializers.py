@@ -83,12 +83,13 @@ class UserSerializer(serializers.ModelSerializer):
     roles = serializers.SlugRelatedField(
         many=True,
         slug_field='name',
-        queryset=Role.objects.all()
+        queryset=Role.objects.all(),
+        required=True
     )
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'profile', 'identity_number', 'profile_picture', 'roles', 'date_joined', 'last_login')
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password', 'profile', 'identity_number', 'profile_picture', 'roles', 'date_joined', 'last_login', 'country_origin')
         read_only_fields = ('id', 'date_joined', 'last_login')
 
     def create(self, validated_data):
