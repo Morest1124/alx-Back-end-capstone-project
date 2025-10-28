@@ -7,6 +7,9 @@ import os
 from dotenv import load_dotenv
 import dj_database_url
 from datetime import timedelta
+import os
+from django.core.exceptions import ImproperlyConfigured
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,14 +22,22 @@ load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+# 🗝️ Read the key from the environment variable set in the WSGI file.
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+if not SECRET_KEY:
+    # This check ensures the app fails early if the key is somehow missing
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty. Check your PythonAnywhere WSGI file.")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # Debug will be 'True' only if the DEBUG environment variable is explicitly set to 'true'.
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = False
 
 # Define the allowed hosts for your application.
 # In production, this should be your domain name(s), e.g., 'www.example.com'.
 # It's loaded from an environment variable for flexibility.
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,binaryblade24-api.onrender.com,binaryblade2411.pythonanywhere.com').split(',')
+ALLOWED_HOSTS = ["binaryblade2411.pythonanywhere.com"]
 
 
 # --- Application Definition ---
@@ -39,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_api_key',
     'rest_framework_simplejwt',
     'corsheaders', # For Cross-Origin Resource Sharing
     'User',
@@ -49,7 +59,6 @@ INSTALLED_APPS = [
     'Comment',
     'dashboard',
     'message',
-    'apikey',
 ]
 
 MIDDLEWARE = [
@@ -142,9 +151,6 @@ AUTH_USER_MODEL = 'User.User'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework_api_key.permissions.HasAPIKey',
     )
 }
 
