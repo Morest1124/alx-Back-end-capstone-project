@@ -4,7 +4,7 @@ from rest_framework import status
 from .Serializers import UserSerializer, ProfileSerializer
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .Permissions import IsOwnerOrAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -44,9 +44,11 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         return data
 
 class CustomLoginView(TokenObtainPairView):
+    permission_classes = [AllowAny]
     serializer_class = CustomTokenObtainPairSerializer
 
 class LoginWithRoleView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -71,6 +73,7 @@ class LoginWithRoleView(APIView):
 
 class RegisterView(APIView):
     """A registration endpoint that accepts username separate from first and last name."""
+    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
