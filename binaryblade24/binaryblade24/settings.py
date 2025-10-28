@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_api_key',
     'rest_framework_simplejwt',
     'corsheaders', # For Cross-Origin Resource Sharing
     'User',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'Comment',
     'dashboard',
     'message',
+    'apikey',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +142,9 @@ AUTH_USER_MODEL = 'User.User'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework_api_key.permissions.HasAPIKey',
     )
 }
 
