@@ -1,6 +1,9 @@
 import logging
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
+from django.db.models.signals import post_save
+from .models import User, Profile
+
 
 logger = logging.getLogger(__name__)
 
@@ -10,3 +13,11 @@ def log_user_login(sender, request, user, **kwargs):
     Logs when a user successfully logs in.
     """
     logger.info(f"User '{user.username}' (ID: {user.id}) logged in from IP: {request.META.get('REMOTE_ADDR')}")
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Create a Profile for a new User.
+    """
+    if created:
+        Profile.objects.create(user=instance)
