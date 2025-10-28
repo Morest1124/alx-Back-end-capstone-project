@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'Comment',
     'dashboard',
     'message',
+    'rest_framework_api_key', 
 ]
 
 MIDDLEWARE = [
