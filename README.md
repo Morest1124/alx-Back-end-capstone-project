@@ -54,7 +54,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your_username_/your_project_name.git
+    git clone https://github.com/Morest1124/alx-Back-end-capstone-project.git
     ```
 2.  Create a `.env` file in the root of the project and add the following environment variables:
     ```
@@ -95,7 +95,7 @@ python binaryblade24/manage.py your_command_name
 ## Live API
 
 The API is hosted on Render and can be accessed at the following URL:
-
+-[https://binaryblade2411.pythonanywhere.com](https://binaryblade2411.pythonanywhere.com)
 - [https://binaryblade24-api.onrender.com](https://binaryblade24-api.onrender.com)
 
 ## API Endpoints
