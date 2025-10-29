@@ -8,6 +8,39 @@ This repository contains the backend for a freelance marketplace platform design
 
 The core idea behind this project is to create a freelance marketplace that prioritizes user trust and safety. To combat spam and scams prevalent on other platforms, this marketplace requires mandatory ID verification for all users. This ensures that all interactions are between verified individuals, fostering a community built on trust.
 
+## Table of Contents
+
+- [Project Status](#project-status)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Management Commands](#management-commands)
+- [Live API](#live-api)
+- [API Endpoints](#api-endpoints)
+- [Profiles and Computed Fields](#profiles-and-computed-fields)
+- [Scripts](#scripts)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Project Status
+
+This project is currently under active development. New features are being added regularly, and improvements are continuously being made.
+
+## Features
+
+- **User Authentication:** Secure registration and login for both freelancers and clients.
+- **User Profiles:** Detailed profiles for users, including computed fields like completed projects, portfolio, active projects, projects posted, and average rating.
+- **Project Management:** Clients can create, update, and delete projects. Freelancers can view available projects.
+- **Proposal System:** Freelancers can submit proposals to projects, and clients can accept or reject them.
+- **Review and Rating System:** Clients can submit reviews and ratings for freelancers.
+- **Messaging System:** Users can send and receive messages.
+- **Dashboard:** Separate dashboards for freelancers and clients to view relevant metrics.
+- **API Key Generation:** Users can generate API keys for programmatic access.
+- **ID Verification:** Mandatory ID verification for all users to ensure trust and safety.
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -36,11 +69,18 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     docker-compose up --build
     ```
+4.  Generate an API key (optional, but recommended for programmatic access):
+    ```sh
+    docker-compose exec django /bin/sh
+    python binaryblade24/manage.py generate_api_key
+    ```
 
 ## Management Commands
 
 This project includes several custom management commands to help with development and testing.
 
+*   `count_users`: Counts the total number of users in the database.
+*   `create_missing_profiles`: Creates a profile for any user that does not have one.
 *   `load_mock_data`: Loads mock data from the `mock_data.json` file into the database.
 *   `delete_mock_data`: Deletes all mock data from the database.
 *   `reset_and_reload_data`: Deletes all mock data and reloads it from the `mock_data.json` file.
@@ -88,3 +128,22 @@ The `binaryblade24/scripts/` directory includes helper scripts used during devel
 *   Django
 *   Django REST Framework
 *   Docker
+*   MySQL
+
+## Contributing
+
+We welcome contributions to the Freelance Marketplace Backend! If you'd like to contribute, please follow these steps:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and ensure they adhere to the project's coding standards.
+4.  Write tests for your changes.
+5.  Submit a pull request with a clear description of your changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or inquiries, please contact us at [your-email@example.com](mailto:your-email@example.com).
