@@ -144,6 +144,14 @@ We welcome contributions to the Freelance Marketplace Backend! If you'd like to 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-
-For any questions or inquiries, please contact us at [your-email@example.com](mailto:your-email@example.com).
+Here is an example of how to register a user
+{
+    "username": "required_user4",
+    "first_name": "Required4",
+    "last_name": "Example3",
+    "email": "required.example@test4.com",
+    "password": "aStrongRequiredPassword!",
+    "identity_number": "1122334455",
+    "country_origin": "Germany",
+    "roles": ["FREELANCER"]
+}
