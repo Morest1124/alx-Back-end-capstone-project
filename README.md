@@ -114,9 +114,18 @@ The `Profile` model exposes several computed/read-only fields that are surfaced 
 
 These fields are read-only and are computed on-demand by the serializer; they do not require database schema changes or migrations.
 
-## Scripts
+Here is an example of how to register a user
+{
+    "username": "required_user4",
+    "first_name": "Required4",
+    "last_name": "Example3",
+    "email": "required.example@test4.com",
+    "password": "aStrongRequiredPassword!",
+    "identity_number": "1122334455",
+    "country_origin": "Germany",
+    "roles": ["FREELANCER"]
+}
 
-The `binaryblade24/scripts/` directory includes helper scripts used during development to create users, profiles, projects, proposals, and reviews programmatically. Important notes:
 
 - Scripts use SimpleJWT tokens returned by `/api/auth/login/`; they look for the `access` token and use it as `Authorization: Bearer <access>`.
 - `post_complete_mock_data.py` is intended for development use and will make many requests to the API; use with caution on production.
@@ -144,14 +153,3 @@ We welcome contributions to the Freelance Marketplace Backend! If you'd like to 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Here is an example of how to register a user
-{
-    "username": "required_user4",
-    "first_name": "Required4",
-    "last_name": "Example3",
-    "email": "required.example@test4.com",
-    "password": "aStrongRequiredPassword!",
-    "identity_number": "1122334455",
-    "country_origin": "Germany",
-    "roles": ["FREELANCER"]
-}
