@@ -104,8 +104,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.roles.set(roles_data)  # type: ignore[attr-defined]
         if profile_data:
             Profile.objects.create(user=user, **profile_data)
-        else:
-            Profile.objects.create(user=user) # Create profile with default role
         return user
 
     def update(self, instance, validated_data):
