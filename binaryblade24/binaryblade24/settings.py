@@ -4,43 +4,43 @@ Django settings for binaryblade24 project.
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-import dj_database_url
 from datetime import timedelta
-import os
 from django.core.exceptions import ImproperlyConfigured
+import dj_database_url
+# Using decouple for environment variable management for consistency and safety
+from decouple import config, Csv 
+from dotenv import load_dotenv
 
+# Load environment variables from .env file (for local dev environments)
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load environment variables from .env file
-load_dotenv()
 
-# --- Core Production Settings ---
+# ====================================================================
+# CORE SECURITY SETTINGS
+# ====================================================================
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# 🗝️ Read the key from the environment variable set in the WSGI file.
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# 🗝️ SECRET_KEY is read from the OS environment variable (set in your WSGI file)
+SECRET_KEY = config('SECRET_KEY', default='')
 
 if not SECRET_KEY:
-    # This check ensures the app fails early if the key is somehow missing
-    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty. Check your PythonAnywhere WSGI file.")
+    # Ensures the application fails immediately if the secret key is not set
+    raise ImproperlyConfigured("The SECRET_KEY setting must not be empty. Check your WSGI file or environment.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Debug will be 'True' only if the DEBUG environment variable is explicitly set to 'true'.
-# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
-DEBUG = False
+# DEBUG is False by default unless explicitly set to true/1 in the environment.
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Define the allowed hosts for your application.
-# In production, this should be your domain name(s), e.g., 'www.example.com'.
-# It's loaded from an environment variable for flexibility.
-ALLOWED_HOSTS = ["binaryblade2411.pythonanywhere.com"]
+# Uses Csv caster to easily load multiple hosts from a single string env variable.
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='binaryblade2411.pythonanywhere.com,127.0.0.1,localhost', cast=Csv())
 
 
-# --- Application Definition ---
+# ====================================================================
+# APPLICATION DEFINITION
+# ====================================================================
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,9 +49,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Third-party apps
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders', # For Cross-Origin Resource Sharing
+    'corsheaders', 
+    'rest_framework_api_key', 
+    
+    # Your apps
     'User',
     'Project',
     'Proposal',
@@ -59,15 +64,15 @@ INSTALLED_APPS = [
     'Comment',
     'dashboard',
     'message',
-    'rest_framework_api_key', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # WhiteNoise middleware for serving static files efficiently in production
+    # WhiteNoise must be placed immediately after SecurityMiddleware for efficiency
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # CORS middleware
+    # CORS middleware must be placed high, before common and CSRF middleware
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,7 +81,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'binaryblade24.urls'
-CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -97,21 +101,93 @@ TEMPLATES = [
 WSGI_APPLICATION = 'binaryblade24.wsgi.application'
 
 
-# --- Database Configuration ---
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-# Uses dj_database_url to parse the DATABASE_URL environment variable (e.g., for PostgreSQL).
-# Falls back to a local SQLite database for development if DATABASE_URL is not set.
+# ====================================================================
+# DATABASE CONFIGURATION
+# ====================================================================
+
 DATABASES = {
     'default': dj_database_url.config(
+        # Reads DATABASE_URL from environment or falls back to SQLite
         default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
         conn_max_age=600
     )
 }
 
+# Use the custom user model defined in the User app
+AUTH_USER_MODEL = 'User.User'
 
-# --- Password Validation ---
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
+# ====================================================================
+# STATIC & MEDIA FILES AND WHITENOISE
+# ====================================================================
+
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Uses the modern STORAGES setting for WhiteNoise
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
+
+# ====================================================================
+# AUTHENTICATION & SIMPLE JWT SETTINGS
+# ====================================================================
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # You may also want TokenAuthentication or BasicAuthentication here if needed
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
+
+
+# ====================================================================
+# CORS & CROSS-SITE COOKIE HANDLING
+# ====================================================================
+
+# This setting has precedence over CORS_ALLOWED_ORIGINS. Since we want explicit control, 
+# we rely on CORS_ALLOWED_ORIGINS and ensure CORS_ALLOW_ALL_ORIGINS is NOT True.
+# CORS_ALLOW_ALL_ORIGINS = True # <-- COMMENTED OUT for security and explicit origin listing
+
+# CORS_ALLOWED_ORIGINS is loaded from environment, defaulting to localhost:3000
+# Add your production frontend URLs (e.g., Vercel) to your CORS_ALLOWED_ORIGINS env variable!
+# Example of expected env variable: CORS_ALLOWED_ORIGINS=https://my-frontend.com,https://staging.my-frontend.com
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+
+# Critical for handling cross-site cookies (CSRF token) correctly in the browser
+# Set to 'Lax' to ensure cookies are sent with cross-origin POST requests
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True 
+
+
+# ====================================================================
+# PRODUCTION SECURITY & OTHER CONFIGS
+# ====================================================================
+
+# These settings are critical for running securely with HTTPS/SSL
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+# Password validation (unmodified)
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -119,63 +195,16 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
-# --- Internationalization & Timezones ---
+# Internationalization & Timezones (unmodified)
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-
-# --- Static & Media Files ---
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = 'static/'
-# The directory where collectstatic will gather all static files for production.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Using WhiteNoise for efficient static file storage and serving in production.
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# --- Authentication & API Settings ---
-
-# Use the custom user model defined in the User app
-AUTH_USER_MODEL = 'User.User'
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-}
-
-# In production, this should be the URL of your frontend application.
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
-
-
-# --- Production Security Settings ---
-# These settings are critical for running in a production environment with HTTPS.
-if not DEBUG:
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # --- Logging Configuration ---
+# Standard Python/Django logging setup, using console and file handlers.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -211,7 +240,7 @@ LOGGING = {
         'User': { # Logger for your User app
             'handlers': ['console', 'file'],
             'level': 'INFO',
-            'propagate': False, # Don't pass to django logger
+            'propagate': False, 
         },
     },
     'root': {
