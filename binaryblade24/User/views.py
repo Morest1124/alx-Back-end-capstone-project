@@ -55,6 +55,9 @@ class LoginWithRoleView(APIView):
         role_name = request.data.get('role')
         
         user = User.objects.filter(email=email).first()
+        if user is None:
+            # As a fallback, try to authenticate against the username
+            user = User.objects.filter(username=email).first()
         
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)

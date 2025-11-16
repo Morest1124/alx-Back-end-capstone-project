@@ -159,12 +159,12 @@ SIMPLE_JWT = {
 
 # This setting has precedence over CORS_ALLOWED_ORIGINS. Since we want explicit control, 
 # we rely on CORS_ALLOWED_ORIGINS and ensure CORS_ALLOW_ALL_ORIGINS is NOT True.
-# CORS_ALLOW_ALL_ORIGINS = True # <-- COMMENTED OUT for security and explicit origin listing
+CORS_ALLOW_ALL_ORIGINS = True # <-- COMMENTED OUT for security and explicit origin listing
 
 # CORS_ALLOWED_ORIGINS is loaded from environment, defaulting to localhost:3000
 # Add your production frontend URLs (e.g., Vercel) to your CORS_ALLOWED_ORIGINS env variable!
 # Example of expected env variable: CORS_ALLOWED_ORIGINS=https://my-frontend.com,https://staging.my-frontend.com
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+# CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
 
 # Critical for handling cross-site cookies (CSRF token) correctly in the browser
 # Set to 'Lax' to ensure cookies are sent with cross-origin POST requests
