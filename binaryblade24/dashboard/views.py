@@ -141,3 +141,42 @@ class ClientDashboardAPIView(APIView):
         }
 
         return Response(data)
+
+
+from django.shortcuts import render
+from django.urls import get_resolver
+
+def get_all_urls():
+    """
+    Scans all registered URL patterns and returns a sorted list of paths,
+    excluding admin and internal Django URLs.
+    """
+    resolver = get_resolver(None)
+    all_patterns = []
+
+    def recurse_patterns(patterns, prefix=''):
+        for p in patterns:
+            if hasattr(p, 'url_patterns'):  # This is a URLResolver
+                recurse_patterns(p.url_patterns, prefix + str(p.pattern))
+            else:  # This is a URLPattern
+                path = prefix + str(p.pattern)
+                # Clean up the pattern string
+                path = path.replace('^', '').replace('', '')
+                # Exclude unwanted patterns
+                if not any(s in path for s in ['admin', 'static', 'media', '<', '(?P<']):
+                    all_patterns.append(path)
+
+    recurse_patterns(resolver.url_patterns)
+    return sorted(list(set(all_patterns)))
+
+
+def api_home(request):
+    """
+    A view that renders an HTML page displaying a list of all
+    available API endpoints.
+    """
+    endpoints = get_all_urls()
+    context = {
+        'endpoints': endpoints
+    }
+    return render(request, 'dashboard/api_home.html', context)

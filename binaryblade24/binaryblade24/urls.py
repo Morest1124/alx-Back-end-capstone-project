@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from dashboard.views import api_home
 
 urlpatterns = [
+    path('', api_home, name='api-home'),
     path('admin/', admin.site.urls),
     path('api/auth/', include('User.urls', namespace='user_api')),
     path('api/projects/', include('Project.urls', namespace='project_api')),
