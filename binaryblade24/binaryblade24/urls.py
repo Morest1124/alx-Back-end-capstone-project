@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('User.urls', namespace='user_api')),
     path('api/projects/', include('Project.urls', namespace='project_api')),
-    path('api/proposals/', include('Proposal.urls', namespace='proposal_api')),
     path('api/comments/', include('Comment.urls', namespace='comment_api')),
     path('api/dashboard/', include('dashboard.urls', namespace='dashboard_api')),
     path('api/messages/', include('message.urls', namespace='message_api')),

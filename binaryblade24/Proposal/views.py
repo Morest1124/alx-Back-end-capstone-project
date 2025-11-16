@@ -108,11 +108,30 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
 
 class ProposalDetailView(generics.RetrieveAPIView):
     """
-    Retrieves a single proposal by its ID.
+    Retrieves a single proposal by its ID, with permission checks.
     """
-    queryset = Proposal.objects.all()
     serializer_class = ProposalSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """
+        Users can only retrieve proposals they are involved in (either as
+        the project client or the submitting freelancer).
+        """
+        user = self.request.user
+        # Q objects for complex queries
+        from django.db.models import Q
+
+        # Clients can see any proposal on their projects
+        client_projects = Project.objects.filter(client=user)
+        
+        # Freelancers can see their own proposals
+        freelancer_proposals = Q(freelancer=user)
+
+        # Combine the query
+        return Proposal.objects.filter(
+            Q(project__in=client_projects) | freelancer_proposals
+        )
 
 
 class UserProposalsView(generics.ListAPIView):
@@ -126,11 +145,3 @@ class UserProposalsView(generics.ListAPIView):
         user_id = self.kwargs.get('pk')
         user = get_object_or_404(User, pk=user_id)
         return Proposal.objects.filter(freelancer=user)
-
-class ProposalListView(generics.ListAPIView):
-    """
-    List all proposals.
-    """
-    queryset = Proposal.objects.all()
-    serializer_class = ProposalSerializer
-    permission_classes = [IsAuthenticated]

@@ -3,15 +3,16 @@ from django.urls import path, include
 app_name = 'Project'
 from rest_framework.routers import DefaultRouter
 from .views import ProjectViewSet
-from Proposal.views import ProposalListCreateView
+from Proposal.views import ProposalListCreateView, ProposalDetailView
 from Review.views import ReviewCreateView
 
 router = DefaultRouter()
-router.register(r'projects', ProjectViewSet, basename='project')
+router.register(r'', ProjectViewSet, basename='project')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('projects/<int:project_pk>/proposals/', ProposalListCreateView.as_view({'get': 'list', 'post': 'create'}), name='project-proposals'),
-    path('projects/<int:project_pk>/proposals/<int:pk>/status/', ProposalListCreateView.as_view({'patch': 'update_status'}), name='proposal-update-status'),
-    path('projects/<int:project_pk>/reviews/', ReviewCreateView.as_view(), name='create-review'),
+    path('<int:project_pk>/proposals/', ProposalListCreateView.as_view({'get': 'list', 'post': 'create'}), name='project-proposals'),
+    path('<int:project_pk>/proposals/<int:pk>/', ProposalDetailView.as_view(), name='proposal-detail'),
+    path('<int:project_pk>/proposals/<int:pk>/status/', ProposalListCreateView.as_view({'patch': 'update_status'}), name='proposal-update-status'),
+    path('<int:project_pk>/reviews/', ReviewCreateView.as_view(), name='create-review'),
 ]
