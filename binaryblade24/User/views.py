@@ -142,6 +142,27 @@ class UserProfileView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+class AddFreelancerRoleView(APIView):
+    """
+    Allows a user to add the 'freelancer' role to their own account.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        
+        # Get the freelancer and client roles
+        freelancer_role, _ = Role.objects.get_or_create(name='freelancer')
+        client_role, _ = Role.objects.get_or_create(name='client')
+        
+        # Add the roles to the user
+        user.roles.add(freelancer_role, client_role)
+        
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 # --- Stripe Payment Views ---
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 

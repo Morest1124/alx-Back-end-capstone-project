@@ -96,6 +96,17 @@ class UserSerializer(serializers.ModelSerializer):
         profile_data = validated_data.pop('profile', None)
         password = validated_data.pop('password')
         roles_data = validated_data.pop('roles')
+
+        # Convert Role objects to a set of role names for easier lookup
+        role_names = {role.name for role in roles_data}
+
+        # If 'freelancer' is one of the chosen roles, automatically add 'client'
+        if 'freelancer' in role_names:
+            client_role, created = Role.objects.get_or_create(name='client')
+            # Add the client role object to the list for setting the relationship
+            if client_role not in roles_data:
+                roles_data.append(client_role)
+
         if 'identity_number' in validated_data:
             validated_data['identity_number'] = make_password(validated_data['identity_number'])
         user = User.objects.create_user(password=password, **validated_data)
