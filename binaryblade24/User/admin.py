@@ -23,3 +23,8 @@ class CustomUserAdmin(admin.ModelAdmin):
 		('Important dates', {'fields': ('last_login', 'date_joined')}),
 		('Custom fields', {'fields': ('country_origin', 'phone_number', 'identity_number')}),
 	)
+
+	def save_model(self, request, obj, form, change):
+		if not change:  # When creating a new user
+			obj.is_active = True
+		super().save_model(request, obj, form, change)

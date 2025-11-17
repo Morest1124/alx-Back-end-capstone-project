@@ -161,7 +161,7 @@ def get_all_urls():
             else:  # This is a URLPattern
                 path = prefix + str(p.pattern)
                 # Clean up the pattern string
-                path = path.replace('^', '').replace('', '')
+                path = path.replace('^', '').replace('$', '')
                 # Exclude unwanted patterns
                 if not any(s in path for s in ['admin', 'static', 'media', '<', '(?P<']):
                     all_patterns.append(path)
