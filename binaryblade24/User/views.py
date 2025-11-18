@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, serializers
 from .Serializers import UserSerializer, ProfileSerializer
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
@@ -30,16 +30,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         roles = self.user.roles.all()
         role_names = [role.name for role in roles]
 
-        if len(role_names) > 1:
-            raise serializers.ValidationError({
-                'detail': 'Multiple roles found. Please select a role.',
-                'roles': role_names
-            })
-        
-        if role_names:
-            data['role'] = role_names[0]
-        else:
-            data['role'] = None
+        # Add roles to the token response
+        data['roles'] = role_names
             
         return data
 
