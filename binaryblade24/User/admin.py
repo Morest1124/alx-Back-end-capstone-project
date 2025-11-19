@@ -26,6 +26,8 @@ class CustomUserAdmin(admin.ModelAdmin):
 	readonly_fields = ('last_login', 'date_joined')
 
 	def save_model(self, request, obj, form, change):
+		if form.is_valid() and 'password' in form.changed_data:
+			obj.set_password(obj.password)
 		if not change:  # When creating a new user
 			obj.is_active = True
 		super().save_model(request, obj, form, change)
