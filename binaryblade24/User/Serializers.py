@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.encoding import force_str
 # Prefer importing the concrete User class from local models so static analyzers
 # and type checkers know about custom fields like `roles`.
 from .models import Profile, Role
@@ -12,6 +14,17 @@ from django.contrib.auth.hashers import make_password
 from django.db.models import Avg
 from Project.models import Project
 from Review.models import Review
+
+class CaseInsensitiveSlugRelatedField(serializers.SlugRelatedField):
+    def to_internal_value(self, data):
+        try:
+            # Perform a case-insensitive lookup
+            return self.get_queryset().get(**{f'{self.slug_field}__iexact': data})
+        except ObjectDoesNotExist:
+            # Use force_str for robust error messaging
+            self.fail('does_not_exist', slug_name=self.slug_field, value=force_str(data))
+        except (TypeError, ValueError):
+            self.fail('invalid')
 
 # Ensure User is the concrete custom User model (imported above)
 class FreelancerDetailSerializer(serializers.ModelSerializer):
@@ -80,7 +93,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, min_length=8)
     profile = ProfileSerializer(required=False)
-    roles = serializers.SlugRelatedField(
+    roles = CaseInsensitiveSlugRelatedField(
         many=True,
         slug_field='name',
         queryset=Role.objects.all(),
@@ -97,12 +110,13 @@ class UserSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password')
         roles_data = validated_data.pop('roles')
 
-        # Convert Role objects to a set of role names for easier lookup
+        # Convert Role objects to a set of role names for easier lookup.
+        # The names will be in the case they are stored in the DB (e.g., 'FREELANCER').
         role_names = {role.name for role in roles_data}
 
-        # If 'freelancer' is one of the chosen roles, automatically add 'client'
-        if 'freelancer' in role_names:
-            client_role, created = Role.objects.get_or_create(name='client')
+        # If 'FREELANCER' is one of the chosen roles, automatically add 'CLIENT'
+        if 'FREELANCER' in role_names:
+            client_role, created = Role.objects.get_or_create(name='CLIENT')
             # Add the client role object to the list for setting the relationship
             if client_role not in roles_data:
                 roles_data.append(client_role)
@@ -113,8 +127,14 @@ class UserSerializer(serializers.ModelSerializer):
         
         # roles is a custom ManyToMany on the concrete User model; static type
         user.roles.set(roles_data)  # type: ignore[attr-defined]
+        # The post_save signal already created a profile.
+        # We just need to update it if profile_data was provided.
         if profile_data:
-            Profile.objects.create(user=user, **profile_data)
+            # user.profile is available thanks to the OneToOneField relation
+            profile = user.profile
+            for key, value in profile_data.items():
+                setattr(profile, key, value)
+            profile.save()
         return user
 
     def update(self, instance, validated_data):
