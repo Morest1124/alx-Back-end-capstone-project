@@ -35,6 +35,13 @@ class FreelancerDetailSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'first_name', 'last_name']
 
+class UserContactSerializer(serializers.ModelSerializer):
+    """
+    Serializer exposing contact details, used when an agreement is reached.
+    """
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number']
 
 class ProfileSerializer(serializers.ModelSerializer):
     # Computed/read-only fields
@@ -111,7 +118,7 @@ class UserSerializer(serializers.ModelSerializer):
         roles_data = validated_data.pop('roles')
 
         # Convert Role objects to a set of role names for easier lookup.
-        # The names will be in the case they are stored in the DB (e.g., 'FREELANCER').
+        # The names will be in the case they are stored in the DB ('FREELANCER').
         role_names = {role.name for role in roles_data}
 
         # If 'FREELANCER' is one of the chosen roles, automatically add 'CLIENT'
@@ -128,7 +135,6 @@ class UserSerializer(serializers.ModelSerializer):
         # roles is a custom ManyToMany on the concrete User model; static type
         user.roles.set(roles_data)  # type: ignore[attr-defined]
         # The post_save signal already created a profile.
-        # We just need to update it if profile_data was provided.
         if profile_data:
             # user.profile is available thanks to the OneToOneField relation
             profile = user.profile

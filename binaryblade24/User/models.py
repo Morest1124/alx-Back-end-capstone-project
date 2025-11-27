@@ -9,7 +9,7 @@ from django.db.models import Avg
 class User(AbstractUser):
 
     # Custom fields added to the core User model
-    country_origin = models.CharField(max_length=50, blank=False, default='')
+    country_origin = models.CharField(max_length=50, blank=False, null=False)
     email = models.EmailField(blank=False, unique=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
@@ -20,7 +20,7 @@ class User(AbstractUser):
 
     # Use 'email' for login:
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'country_origin'] 
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'country_origin', 'phone_number'] 
 
     # Field overrides (required to avoid Django's default User model conflicts in a custom user model setup)
     groups = models.ManyToManyField(

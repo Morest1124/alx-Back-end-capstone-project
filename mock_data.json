@@ -1,118 +1,37 @@
-{
-  "categories": [
-    {
-      "name": "Web Development",
-      "slug": "web-development"
-    },
-    {
-      "name": "Mobile Development",
-      "slug": "mobile-development"
-    },
-    {
-      "name": "Data Science",
-      "slug": "data-science"
+[
+  {
+    "first_name": "Test",
+    "last_name": "User1",
+    "email": "testuser1@example.com",
+    "password": "Password123",
+    "roles": ["client"],
+    "identity_number": "123456789",
+    "country_origin": "USA"
+  },
+  {
+    "username": "testuser2",
+    "first_name": "Test",
+    "last_name": "User2",
+    "email": "testuser2@example.com",
+    "password": "StrongPassword!456",
+    "roles": ["freelancer"],
+    "identity_number": "987654321",
+    "country_origin": "Canada",
+    "profile": {
+      "bio": "Experienced freelancer in web development.",
+      "skills": "Python, Django, React",
+      "hourly_rate": 50.00,
+      "availability": "full-time"
     }
-  ],
-  "users": [
-    {
-      "username": "client11",
-      "first_name": "Client11",
-      "last_name": "Oneone",
-      "email": "client1@example1.com",
-      "password": "password123",
-      "country_origin": "USA",
-      "identity_number": "1111111112",
-      "roles": "Client"
-    },
-    {
-      "username": "freelancer1",
-      "first_name": "Freelancer",
-      "last_name": "One",
-      "email": "freelancer1@example.com",
-      "password": "password123",
-      "country_origin": "Canada",
-      "identity_number": "2222222222",
-      "roles": "Freelancer"
-    },
-    {
-      "username": "freelancer2",
-      "first_name": "Freelancer",
-      "last_name": "Two",
-      "email": "freelancer2@example.com",
-      "password": "password123",
-      "country_origin": "UK",
-      "identity_number": "3333333333",
-      "roles": "Freelancer"
-    },
-    {
-      "username": "client2",
-      "first_name": "Client",
-      "last_name": "Two",
-      "email": "client2@example.com",
-      "password": "password123",
-      "country_origin": "Australia",
-      "identity_number": "4444444444",
-      "roles": "Client"
-    },
-    {
-      "username": "admin1",
-      "first_name": "Admin",
-      "last_name": "One",
-      "email": "admin1@example.com",
-      "password": "password123",
-      "country_origin": "Germany",
-      "identity_number": "5555555555",
-      "roles": "Admin"
-    },
-    {
-      "username": "freelancer3",
-      "first_name": "Freelancer",
-      "last_name": "Three",
-      "email": "freelancer3@example.com",
-      "password": "password123",
-      "country_origin": "France",
-      "identity_number": "6666666666",
-      "roles": "Freelancer"
-    },
-    {
-      "username": "client3",
-      "first_name": "Client",
-      "last_name": "Three",
-      "email": "client3@example.com",
-      "password": "password123",
-      "country_origin": "Japan",
-      "identity_number": "7777777777",
-      "roles": "Client"
-    },
-    {
-      "username": "freelancer4",
-      "first_name": "Freelancer",
-      "last_name": "Four",
-      "email": "freelancer4@example.com",
-      "password": "password123",
-      "country_origin": "Brazil",
-      "identity_number": "8888888888",
-      "roles": "Freelancer"
-    },
-    {
-      "username": "client4",
-      "first_name": "Client",
-      "last_name": "Four",
-      "email": "client4@example.com",
-      "password": "password123",
-      "country_origin": "India",
-      "identity_number": "9999999999",
-      "roles": "Client"
-    },
-    {
-      "username": "freelancer5",
-      "first_name": "Freelancer",
-      "last_name": "Five",
-      "email": "freelancer5@example.com",
-      "password": "password123",
-      "country_origin": "Nigeria",
-      "identity_number": "1010101010",
-      "roles": "Freelancer"
-    }
-  ]
-}
+  },
+  {
+    "username": "testuser3",
+    "first_name": "Test",
+    "last_name": "User3",
+    "email": "testuser3@example.com",
+    "password": "AnotherSecurePass789",
+    "roles": ["client", "freelancer"],
+    "identity_number": "112233445",
+    "country_origin": "UK"
+  }
+]

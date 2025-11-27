@@ -14,11 +14,7 @@ class IsClient(permissions.BasePermission):
         
         # Check if the authenticated user has a 'CLIENT' role
         if request.user and request.user.is_authenticated:
-            try:
-                # Access the profile to check the role
-                return request.user.profile.role == Profile.UserRoles.CLIENT
-            except Profile.DoesNotExist:
-                return False
+            return request.user.roles.filter(name='CLIENT').exists()
         return False
 
 class IsFreelancer(permissions.BasePermission):
@@ -29,11 +25,7 @@ class IsFreelancer(permissions.BasePermission):
 
     def has_permission(self, request, view):
         if request.user and request.user.is_authenticated:
-            try:
-                # Access the profile to check the role
-                return request.user.profile.role == Profile.UserRoles.FREELANCER
-            except Profile.DoesNotExist:
-                return False
+            return request.user.roles.filter(name='FREELANCER').exists()
         return False
 
 class IsProjectOwner(permissions.BasePermission):

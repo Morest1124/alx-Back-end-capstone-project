@@ -19,7 +19,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     """Main serializer for Project CRUD operations."""
     # Nested field to display the client's public username
-    client_details = FreelancerDetailSerializer(source='client', read_only=True)
+    client_details = serializers.SerializerMethodField(read_only=True)
     
     # Nested field to display the category name
     category_details = CategorySerializer(source='category', read_only=True)
@@ -55,6 +55,29 @@ class ProjectSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         ]
+
+    def get_client_details(self, obj):
+        """
+        Return client public profile information.
+        
+        Returns basic client details without exposing contact information.
+        All communication must happen through the platform messaging system.
+        
+        Args:
+            obj (Project): The project instance being serialized
+            
+        Returns:
+            dict: Serialized client data (public profile only)
+            
+        Business Rules:
+            - Email/phone never exposed to maintain platform communication
+            - Prevents freelancers from contacting clients off-platform
+            - Protects platform revenue and user safety
+        """
+        from User.Serializers import FreelancerDetailSerializer
+        
+        # Always return minimal client details (no email/phone)
+        return FreelancerDetailSerializer(obj.client).data
 
 # Proposal System Serializers
 

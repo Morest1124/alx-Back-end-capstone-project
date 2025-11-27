@@ -50,3 +50,6 @@ class Project(models.Model):
         default=ProjectStatus.OPEN,
         help_text="The current status of this project",
     )
+
+    def __str__(self):
+        return self.title
