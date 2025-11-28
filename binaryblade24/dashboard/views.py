@@ -32,8 +32,8 @@ class FreelancerDashboardAPIView(APIView):
             status='COMPLETED'
         ).aggregate(total_earnings=Sum('price'))['total_earnings'] or 0
 
-        # Estimated Monthly Tax (18%)
-        estimated_tax = total_earnings * 0.18
+        # Estimated Monthly Tax (Set to 0 as per user request)
+        estimated_tax = 0 
 
         # Active Projects
         active_projects = Project.objects.filter(

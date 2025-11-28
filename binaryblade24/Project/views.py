@@ -294,7 +294,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
         
         # Determine project type based on user role
         # Freelancers create GIGs (Fiverr-style), Clients create JOBS (Upwork-style)
-        if 'freelancer' in [role.lower() for role in user.roles]:
+        user_roles = [role.name.lower() for role in user.roles.all()]
+        if 'freelancer' in user_roles:
             project_type = Project.ProjectType.GIG
         else:
             project_type = Project.ProjectType.JOB
