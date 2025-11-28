@@ -153,7 +153,17 @@ class Payment(models.Model):
     payment_date = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=255)
     payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES)
-    status = models.CharField(max_length=20, default='pending')
+    class PaymentStatus(models.TextChoices):
+        PENDING = 'PENDING', 'Pending'
+        HELD = 'HELD', 'Held (Escrow)'
+        RELEASED = 'RELEASED', 'Released'
+        REFUNDED = 'REFUNDED', 'Refunded'
+
+    status = models.CharField(
+        max_length=20, 
+        choices=PaymentStatus.choices, 
+        default=PaymentStatus.PENDING
+    )
 
     def __str__(self):
         return f"Payment of {self.amount} for {self.project.title} by {self.user.username} via {self.get_payment_method_display()}"
