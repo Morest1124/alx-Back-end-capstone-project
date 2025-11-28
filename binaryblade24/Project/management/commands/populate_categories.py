@@ -13,35 +13,22 @@ class Command(BaseCommand):
     help = 'Populates categories with 3-level hierarchical structure (Main → Sub → Items)'
 
     def handle(self, *args, **kwargs):
-        # User's detailed Web Development structure
+        # User's specific Web Development structure (The Source of Truth for Web Dev)
         web_dev_categories = {
             "Core Development": {
                 "description": "Fundamental web development services",
                 "subcategories": {
                     "Frontend Development": {
                         "description": "Client-side web development",
-                        "items": [
-                            "SPA Development (React, Vue, Angular)",
-                            "Responsive Web Design (HTML/CSS/JS)",
-                            "UI/UX Implementation",
-                            "Frontend Performance Optimization"
-                        ]
+                        "items": ["SPA Development (React, Vue, Angular)", "Responsive Web Design (HTML/CSS/JS)", "UI/UX Implementation", "Frontend Performance Optimization"]
                     },
                     "Backend Development": {
                         "description": "Server-side web development",
-                        "items": [
-                            "API Development (REST/GraphQL)",
-                            "Database Modeling & Mgmt (SQL/NoSQL)",
-                            "Server Logic (Python, Node.js, PHP)",
-                            "Security & Auth Implementation"
-                        ]
+                        "items": ["API Development (REST/GraphQL)", "Database Modeling & Mgmt (SQL/NoSQL)", "Server Logic (Python, Node.js, PHP)", "Security & Auth Implementation"]
                     },
                     "Full-Stack Development": {
                         "description": "End-to-end web development",
-                        "items": [
-                            "End-to-End Application Development",
-                            "System Architecture & Cloud Deployment"
-                        ]
+                        "items": ["End-to-End Application Development", "System Architecture & Cloud Deployment"]
                     },
                 }
             },
@@ -50,34 +37,19 @@ class Command(BaseCommand):
                 "subcategories": {
                     "CMS Development": {
                         "description": "Content Management Systems",
-                        "items": [
-                            "WordPress (Themes, Plugins)",
-                            "Shopify (Themes, Custom Apps)",
-                            "Drupal/Joomla Customization",
-                            "CMS Migration"
-                        ]
+                        "items": ["WordPress (Themes, Plugins)", "Shopify (Themes, Custom Apps)", "Drupal/Joomla Customization", "CMS Migration"]
                     },
                     "E-commerce Development": {
                         "description": "Online store development",
-                        "items": [
-                            "Payment Gateway Integration",
-                            "WooCommerce/Magento",
-                            "Inventory/Order Systems"
-                        ]
+                        "items": ["Payment Gateway Integration", "WooCommerce/Magento", "Inventory/Order Systems"]
                     },
                     "Hybrid Mobile App Development": {
                         "description": "Cross-platform mobile development",
-                        "items": [
-                            "React Native",
-                            "Flutter"
-                        ]
+                        "items": ["React Native", "Flutter"]
                     },
                     "Data and Automation": {
                         "description": "Data extraction and automation",
-                        "items": [
-                            "Web Scraping & Data Extraction",
-                            "Custom Automation Tools"
-                        ]
+                        "items": ["Web Scraping & Data Extraction", "Custom Automation Tools"]
                     },
                 }
             },
@@ -86,92 +58,165 @@ class Command(BaseCommand):
                 "subcategories": {
                     "Web Design and UX/UI": {
                         "description": "User interface and experience",
-                        "items": [
-                            "User Interface (UI) Design",
-                            "User Experience (UX) Research",
-                            "Prototyping and Testing"
-                        ]
+                        "items": ["User Interface (UI) Design", "User Experience (UX) Research", "Prototyping and Testing"]
                     },
                     "Maintenance and Support": {
                         "description": "Ongoing website support",
-                        "items": [
-                            "Bug Fixes & Debugging",
-                            "Security Patching & Monitoring",
-                            "Hosting/Server Management"
-                        ]
+                        "items": ["Bug Fixes & Debugging", "Security Patching & Monitoring", "Hosting/Server Management"]
                     },
                     "Technical Compliance": {
                         "description": "Technical standards and compliance",
-                        "items": [
-                            "Technical SEO",
-                            "Web Accessibility (WCAG)"
-                        ]
+                        "items": ["Technical SEO", "Web Accessibility (WCAG)"]
                     },
                 }
             }
         }
 
-        # General categories (existing structure kept simple)
+        # Expanded General Freelancing Categories (3-Level Structure)
         general_categories = {
-            'Mobile Development': [
-                'Android Development',
-                'iOS Development',
-                'React Native',
-                'Flutter Development',
-                'Mobile App Design',
-            ],
-            'Design & Creative': [
-                'Logo Design',
-                'UI/UX Design',
-                'Graphic Design',
-                'Illustration',
-                'Brand Identity',
-                '3D Design',
-            ],
-            'Writing & Translation': [
-                'Content Writing',
-                'Copywriting',
-                'Technical Writing',
-                'Translation',
-                'Proofreading & Editing',
-            ],
-            'Digital Marketing': [
-                'SEO',
-                'Social Media Marketing',
-                'Email Marketing',
-                'Content Marketing',
-                'PPC Advertising',
-            ],
-            'Video & Animation': [
-                'Video Editing',
-                'Animation',
-                'Motion Graphics',
-                'Whiteboard Animation',
-                'Video Production',
-            ],
-            'Data Science & Analytics': [
-                'Data Analysis',
-                'Machine Learning',
-                'Data Visualization',
-                'Statistical Analysis',
-                'Business Intelligence',
-            ],
-            'Programming & Tech': [
-                'Python Development',
-                'Java Development',
-                'C++ Development',
-                'DevOps',
-                'Database Administration',
-            ],
+            "Graphics & Design": {
+                "description": "Visual design and branding services",
+                "subcategories": {
+                    "Logo & Brand Identity": {
+                        "description": "Brand visual elements",
+                        "items": ["Logo Design", "Brand Style Guides", "Business Cards & Stationery"]
+                    },
+                    "Web & App Design": {
+                        "description": "Digital interface design",
+                        "items": ["Website Design", "App Design", "UX Design", "Landing Page Design", "Icon Design"]
+                    },
+                    "Art & Illustration": {
+                        "description": "Creative artwork",
+                        "items": ["Illustration", "NFT Art", "Pattern Design", "Portraits & Caricatures", "Cartoons & Comics"]
+                    },
+                    "Marketing Design": {
+                        "description": "Design for marketing materials",
+                        "items": ["Social Media Design", "Email Design", "Web Banners", "Brochure Design"]
+                    }
+                }
+            },
+            "Digital Marketing": {
+                "description": "Online marketing services",
+                "subcategories": {
+                    "Search Optimization (SEO)": {
+                        "description": "Improve search rankings",
+                        "items": ["On-Page SEO", "Off-Page SEO", "Technical SEO", "Keyword Research"]
+                    },
+                    "Social Media": {
+                        "description": "Social media management",
+                        "items": ["Social Media Management", "Paid Social Media", "Influencer Marketing", "Community Management"]
+                    },
+                    "Advertising": {
+                        "description": "Paid advertising campaigns",
+                        "items": ["Google Ads (PPC)", "Facebook Ads", "Display Advertising", "Video Marketing"]
+                    },
+                    "Content Marketing": {
+                        "description": "Content strategy and creation",
+                        "items": ["Content Strategy", "Guest Posting", "Email Marketing", "Text Message Marketing"]
+                    }
+                }
+            },
+            "Writing & Translation": {
+                "description": "Text and translation services",
+                "subcategories": {
+                    "Content Writing": {
+                        "description": "Web and article writing",
+                        "items": ["Articles & Blog Posts", "Website Content", "Product Descriptions", "Case Studies"]
+                    },
+                    "Copywriting": {
+                        "description": "Sales and marketing copy",
+                        "items": ["Sales Copy", "Ad Copy", "Email Copy", "Social Media Copy", "Landing Page Copy"]
+                    },
+                    "Technical & Business": {
+                        "description": "Professional documentation",
+                        "items": ["Technical Writing", "Business Plans", "White Papers", "Grant Writing", "Resumes & Cover Letters"]
+                    },
+                    "Translation": {
+                        "description": "Language services",
+                        "items": ["Translation", "Localization", "Transcription", "Proofreading & Editing"]
+                    }
+                }
+            },
+            "Video & Animation": {
+                "description": "Video production services",
+                "subcategories": {
+                    "Video Editing": {
+                        "description": "Post-production",
+                        "items": ["Video Editing", "Visual Effects", "Color Grading", "Subtitles & Captions"]
+                    },
+                    "Animation": {
+                        "description": "Animated content",
+                        "items": ["2D Animation", "3D Animation", "Motion Graphics", "Whiteboard Animation", "Character Animation"]
+                    },
+                    "Social & Marketing Video": {
+                        "description": "Video for social media",
+                        "items": ["Video Ads & Commercials", "Social Media Videos", "Explainer Videos", "Corporate Videos"]
+                    }
+                }
+            },
+            "Music & Audio": {
+                "description": "Audio production services",
+                "subcategories": {
+                    "Production & Composition": {
+                        "description": "Music creation",
+                        "items": ["Producers & Composers", "Beat Making", "Songwriters", "Jingles & Intros"]
+                    },
+                    "Voice & Narration": {
+                        "description": "Vocal services",
+                        "items": ["Voice Over", "Singers & Vocalists", "Audiobook Production"]
+                    },
+                    "Mixing & Mastering": {
+                        "description": "Audio engineering",
+                        "items": ["Mixing", "Mastering", "Audio Editing", "Vocal Tuning"]
+                    }
+                }
+            },
+            "Programming & Tech (General)": {
+                "description": "General technical services",
+                "subcategories": {
+                    "Mobile Apps": {
+                        "description": "Mobile application development",
+                        "items": ["Android App Development", "iOS App Development", "Cross-Platform Apps", "Mobile Game Development"]
+                    },
+                    "Desktop Applications": {
+                        "description": "Desktop software",
+                        "items": ["Desktop Software Development", "Support & IT"]
+                    },
+                    "Data Science": {
+                        "description": "Data analysis and AI",
+                        "items": ["Data Analysis & Visualization", "Machine Learning", "AI Services", "Data Engineering"]
+                    },
+                    "Cybersecurity": {
+                        "description": "Security services",
+                        "items": ["Penetration Testing", "Security Audits", "Malware Removal"]
+                    }
+                }
+            },
+            "Business": {
+                "description": "Business support services",
+                "subcategories": {
+                    "Virtual Assistant": {
+                        "description": "Administrative support",
+                        "items": ["Virtual Assistant", "Data Entry", "Market Research", "Project Management"]
+                    },
+                    "Legal & Financial": {
+                        "description": "Professional consulting",
+                        "items": ["Legal Consulting", "Financial Consulting", "Business Consulting", "HR Consulting"]
+                    }
+                }
+            }
         }
 
-        self.stdout.write(self.style.SUCCESS('Starting 3-level category population...'))
+        # Merge dictionaries
+        all_categories = {**web_dev_categories, **general_categories}
+
+        self.stdout.write(self.style.SUCCESS('Starting comprehensive 3-level category population...'))
         
         created_count = 0
         updated_count = 0
 
-        # Populate Web Development categories with 3-level structure
-        for main_name, main_data in web_dev_categories.items():
+        for main_name, main_data in all_categories.items():
+            # Create or update Main Category
             main_category, created = Category.objects.get_or_create(
                 name=main_name,
                 defaults={
@@ -183,15 +228,14 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(self.style.SUCCESS(f'✓ Created main category: {main_name}'))
+                self.stdout.write(self.style.SUCCESS(f'✓ Created Main: {main_name}'))
             else:
-                # Update description if exists
                 main_category.description = main_data['description']
                 main_category.save()
                 updated_count += 1
-                self.stdout.write(f'  Updated: {main_name}')
+                self.stdout.write(f'  Updated Main: {main_name}')
 
-            # Create subcategories with items
+            # Create or update Subcategories
             for sub_name, sub_data in main_data['subcategories'].items():
                 subcategory, created = Category.objects.get_or_create(
                     name=sub_name,
@@ -205,47 +249,13 @@ class Command(BaseCommand):
                 
                 if created:
                     created_count += 1
-                    self.stdout.write(self.style.SUCCESS(f'  ✓ Created subcategory: {sub_name} with {len(sub_data["items"])} items'))
+                    self.stdout.write(self.style.SUCCESS(f'  ✓ Created Sub: {sub_name} ({len(sub_data["items"])} items)'))
                 else:
-                    # Update items if exists
                     subcategory.items = sub_data['items']
                     subcategory.description = sub_data['description']
+                    subcategory.parent = main_category # Ensure parent is correct
                     subcategory.save()
                     updated_count += 1
-                    self.stdout.write(f'    Updated: {sub_name} with {len(sub_data["items"])} items')
-
-        # Populate general categories (simple 2-level structure)
-        for main_category_name, subcategories in general_categories.items():
-            main_category, created = Category.objects.get_or_create(
-                name=main_category_name,
-                defaults={
-                    'slug': slugify(main_category_name),
-                    'description': f'Professional services in {main_category_name}',
-                    'parent': None
-                }
-            )
-            
-            if created:
-                created_count += 1
-                self.stdout.write(self.style.SUCCESS(f'✓ Created main category: {main_category_name}'))
-            else:
-                updated_count += 1
-                self.stdout.write(f'  Exists: {main_category_name}')
-
-            for subcategory_name in subcategories:
-                subcategory, created = Category.objects.get_or_create(
-                    name=subcategory_name,
-                    defaults={
-                        'slug': slugify(subcategory_name),
-                        'description': f'{subcategory_name} services',
-                        'parent': main_category,
-                        'items': []  # No items for general categories
-                    }
-                )
-                
-                if created:
-                    created_count += 1
-                else:
-                    updated_count += 1
+                    self.stdout.write(f'    Updated Sub: {sub_name} ({len(sub_data["items"])} items)')
 
         self.stdout.write(self.style.SUCCESS(f'\n✅ Done! Created {created_count}, Updated {updated_count} categories.'))
