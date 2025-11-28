@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Category 
+from .models import Project, Category, Milestone 
 from django.contrib.auth import get_user_model
 from User.Serializers import FreelancerDetailSerializer
 
@@ -91,3 +91,16 @@ class ProjectNestedSerializer(serializers.ModelSerializer):
 
 
 
+class MilestoneSerializer(serializers.ModelSerializer):
+    """Serializer for Project Milestones."""
+    class Meta:
+        model = Milestone
+        fields = ['id', 'project', 'title', 'description', 'amount', 'due_date', 'status', 'created_at']
+        read_only_fields = ['id', 'project', 'status', 'created_at']
+
+    def create(self, validated_data):
+        # Ensure project is set from context or view
+        project_id = self.context['view'].kwargs.get('project_pk')
+        if project_id:
+            validated_data['project_id'] = project_id
+        return super().create(validated_data)

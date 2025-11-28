@@ -272,6 +272,18 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
                 if project.status == Project.ProjectStatus.OPEN:
                     project.status = Project.ProjectStatus.IN_PROGRESS
                     project.save()
+                
+                # Create HELD payment (escrow) when hiring freelancer
+                # Payment will be released when client approves completed work
+                from User.models import Payment
+                Payment.objects.create(
+                    user=request.user,  # Client who is paying
+                    project=project,
+                    amount=project.budget,
+                    transaction_id=f"TXN-{project.id}-{proposal.id}",  # Mock transaction ID
+                    payment_method='stripe',  # Mock payment method
+                    status=Payment.PaymentStatus.HELD  # Held in escrow
+                )
                     
                 # Auto-reject all competing proposals
                 # This prevents double-booking and maintains data consistency
@@ -283,6 +295,26 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
                 ).update(
                     status=Proposal.ProposalStatus.REJECTED
                 )
+
+                # Create a conversation between client and freelancer
+                from message.models import Conversation, Message
+                conversation, created = Conversation.objects.get_or_create(
+                    project=project,
+                    participant_1=request.user,  # Client
+                    participant_2=proposal.freelancer
+                )
+                
+                # Send initial system message
+                if created:
+                    Message.objects.create(
+                        conversation=conversation,
+                        sender=request.user,
+                        body=f"Congratulations! I've accepted your proposal for '{project.title}'. Let's discuss the details here."
+                    )
+                
+                # Send email notification
+                from notifications.email_service import EmailService
+                EmailService.send_proposal_accepted_email(proposal)
         
         # Return the updated proposal data
         return Response(ProposalSerializer(proposal, context={'request': request}).data)

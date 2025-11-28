@@ -1,16 +1,13 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ConversationViewSet, MessageViewSet
 
 app_name = 'message'
-from .views import (
-    InboxAPIView,
-    SentMessagesAPIView,
-    MessageDetailAPIView,
-    SendMessageAPIView,
-)
+
+router = DefaultRouter()
+router.register(r'conversations', ConversationViewSet, basename='conversation')
+router.register(r'messages', MessageViewSet, basename='message')
 
 urlpatterns = [
-    path('', InboxAPIView.as_view(), name='inbox'),
-    path('sent/', SentMessagesAPIView.as_view(), name='sent-messages'),
-    path('<int:pk>/', MessageDetailAPIView.as_view(), name='message-detail'),
-    path('send/', SendMessageAPIView.as_view(), name='send-message'),
+    path('', include(router.urls)),
 ]

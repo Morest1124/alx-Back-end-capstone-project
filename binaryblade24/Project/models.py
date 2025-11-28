@@ -112,6 +112,10 @@ class Project(models.Model):
         help_text="Type of project: GIG (freelancer offers service) or JOB (client needs work done)"
     )
 
+    # Milestone Support
+    has_milestones = models.BooleanField(default=False, help_text="Does this project use milestone-based payments?")
+    milestone_count = models.IntegerField(default=0, help_text="Total number of milestones")
+
     def __str__(self):
         return self.title
     
@@ -122,3 +126,38 @@ class Project(models.Model):
     def is_job(self):
         """Returns True if this is a client-created job posting"""
         return self.project_type == self.ProjectType.JOB
+
+
+class Milestone(models.Model):
+    """
+    Represents a payment milestone for a project.
+    Allows breaking down large projects into smaller, payable chunks.
+    """
+    class MilestoneStatus(models.TextChoices):
+        PENDING = 'PENDING', 'Pending'
+        IN_PROGRESS = 'IN_PROGRESS', 'In Progress'
+        COMPLETED = 'COMPLETED', 'Completed'
+        PAID = 'PAID', 'Paid'
+
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='milestones')
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    due_date = models.DateField()
+    status = models.CharField(
+        max_length=20,
+        choices=MilestoneStatus.choices,
+        default=MilestoneStatus.PENDING
+    )
+    payment = models.ForeignKey(
+        'User.Payment',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='milestone_payment'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} - {self.project.title}"

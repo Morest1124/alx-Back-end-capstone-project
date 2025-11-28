@@ -31,9 +31,9 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 
-from .models import Project, Category
+from .models import Project, Category, Milestone
 from Proposal.models import Proposal
-from .Serializers import ProjectSerializer
+from .Serializers import ProjectSerializer, MilestoneSerializer
 from .category_serializers import CategorySerializer
 from Proposal.Serializer import ProposalSerializer
 from .Permissions import IsClient, IsFreelancer, IsProjectOwner
@@ -97,10 +97,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
             - Modification restricted to owners prevents unauthorized changes
         """
         if self.action in ['create']:
-            # Both clients and freelancers can create projects
-            # Clients create JOBS, Freelancers create GIGS
-            # Role validation happens in perform_create()
-            self.permission_classes = [IsAuthenticated]
+            # Only freelancers can create projects (GIGs)
+            # Pure Fiverr model: freelancers offer services, clients hire
+            self.permission_classes = [IsAuthenticated, IsFreelancer]
             
         elif self.action in ['update', 'partial_update', 'destroy']:
             # Only the project creator can modify or delete
@@ -254,6 +253,48 @@ class ProjectViewSet(viewsets.ModelViewSet):
         
         return Response(serializer.data)
 
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated, IsClient, IsProjectOwner])
+    def approve_work(self, request, pk=None):
+        """
+        Approve completed work and release payment.
+        """
+        project = self.get_object()
+        
+        if project.status != Project.ProjectStatus.IN_PROGRESS:
+            return Response(
+                {"detail": "Project must be in progress to approve work."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
+        with transaction.atomic():
+            # Find and release the held payment
+            from User.models import Payment
+            try:
+                payment = Payment.objects.get(
+                    project=project,
+                    status=Payment.PaymentStatus.HELD
+                )
+                payment.status = Payment.PaymentStatus.RELEASED
+                payment.save()
+            except Payment.DoesNotExist:
+                return Response(
+                    {"detail": "No held payment found for this project."},
+                    status=status.HTTP_404_NOT_FOUND
+                )
+            
+            # Mark project as completed
+            project.status = Project.ProjectStatus.COMPLETED
+            project.save()
+            
+            # Send email notification
+            from notifications.email_service import EmailService
+            EmailService.send_payment_released_email(project, payment.amount)
+            
+            return Response({
+                "status": "success", 
+                "message": "Work approved, payment released, and project completed."
+            })
+
     def perform_create(self, serializer):
         """
         Handle project creation with server-side field population.
@@ -338,3 +379,32 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.filter(parent=None).prefetch_related('subcategories')
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class MilestoneViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for managing project milestones.
+    """
+    serializer_class = MilestoneSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """
+        Optionally filter milestones by project.
+        """
+        queryset = Milestone.objects.all()
+        project_id = self.request.query_params.get('project', None)
+        if project_id is not None:
+            queryset = queryset.filter(project_id=project_id)
+        return queryset
+
+    def perform_create(self, serializer):
+        """
+        Create a milestone and update project milestone count.
+        """
+        with transaction.atomic():
+            milestone = serializer.save()
+            project = milestone.project
+            project.has_milestones = True
+            project.milestone_count = project.milestones.count()
+            project.save()

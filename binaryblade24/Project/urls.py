@@ -2,7 +2,7 @@ from django.urls import path, include
 
 app_name = 'Project'
 from rest_framework.routers import DefaultRouter
-from .views import ProjectViewSet, CategoryViewSet
+from .views import ProjectViewSet, CategoryViewSet, MilestoneViewSet
 from Proposal.views import ProposalListCreateView, ProposalDetailView
 from Review.views import ReviewCreateView
 
@@ -13,9 +13,13 @@ project_router.register(r'', ProjectViewSet, basename='project')
 category_router = DefaultRouter()
 category_router.register(r'', CategoryViewSet, basename='category')
 
+milestone_router = DefaultRouter()
+milestone_router.register(r'', MilestoneViewSet, basename='milestone')
+
 urlpatterns = [
     # Category routes (must come first to avoid conflicts)
     path('categories/', include(category_router.urls)),
+    path('milestones/', include(milestone_router.urls)),
     
     # Proposal routes
     path('<int:project_pk>/proposals/', ProposalListCreateView.as_view({'get': 'list', 'post': 'create'}), name='project-proposals'),
