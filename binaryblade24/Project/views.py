@@ -31,9 +31,10 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 
-from .models import Project
+from .models import Project, Category
 from Proposal.models import Proposal
 from .Serializers import ProjectSerializer
+from .category_serializers import CategorySerializer
 from Proposal.Serializer import ProposalSerializer
 from .Permissions import IsClient, IsFreelancer, IsProjectOwner
 from User.models import Profile
@@ -83,24 +84,27 @@ class ProjectViewSet(viewsets.ModelViewSet):
             list: Permission classes for the current request
             
         Permission Matrix:
-            - CREATE (POST):      IsAuthenticated + IsClient
+            - CREATE (POST):      IsAuthenticated (both freelancers and clients)
+              * Freelancers can create GIGs
+              * Clients can create JOBS
             - UPDATE (PUT/PATCH): IsAuthenticated + IsProjectOwner
-            - DELETE:             IsAuthenticated + IsProjectOwner
+            - DELETE:             Is Authenticated + IsProjectOwner
             - LIST/RETRIEVE:      IsAuthenticatedOrReadOnly (public can read)
         
         Design Rationale:
             - Public listing enables SEO and project discovery
-            - Creation restricted to clients prevents spam/fraud
+            - Both roles can create (hybrid marketplace model)
             - Modification restricted to owners prevents unauthorized changes
         """
         if self.action in ['create']:
-            # Only authenticated clients can create projects
-            # Freelancers cannot post work (business rule)
-            self.permission_classes = [IsAuthenticated, IsClient]
+            # Both clients and freelancers can create projects
+            # Clients create JOBS, Freelancers create GIGS
+            # Role validation happens in perform_create()
+            self.permission_classes = [IsAuthenticated]
             
         elif self.action in ['update', 'partial_update', 'destroy']:
             # Only the project creator can modify or delete
-            # Prevents clients from editing each other's projects
+            # Prevents clients/freelancers from editing each other's projects
             self.permission_classes = [IsAuthenticated, IsProjectOwner]
             
         else:
@@ -254,12 +258,14 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         Handle project creation with server-side field population.
         
-        Automatically sets critical fields that should never be controlled
-        by client input to maintain data integrity and security.
+        Automatically sets critical fields based on user role:
+        - Freelancers create GIGs (service offerings)
+        - Clients create JOBS (work requirements)
         
         Server-Set Fields:
             - client: Always set to the authenticated user
-            - status: Always initialized as OPEN (accepts proposals)
+            - status: Always initialized as OPEN (accepts proposals/orders)
+            - project_type: GIG for freelancers, JOB for clients
         
         Args:
             serializer: Validated ProjectSerializer instance
@@ -268,28 +274,66 @@ class ProjectViewSet(viewsets.ModelViewSet):
             - Creates new Project record
             - Sets client as authenticated user
             - Initializes status as OPEN
+            - Sets project_type based on user's role
             
         Security Rationale:
             Preventing client-side control of these fields eliminates:
             - Impersonation attacks (can't set client to another user)
             - Status manipulation (can't create already-completed projects)
+            - Project type manipulation (enforces role-based creation)
             - Workflow bypass (all projects start in OPEN state)
         
         Business Logic:
-            All new projects must go through the standard workflow:
-            OPEN → (proposal acceptance) → IN_PROGRESS → COMPLETED
-        
-        Note:
-            Project details (title, description, budget, etc.) come from
-            the validated request data. Only relationship fields and
-            workflow state are server-controlled.
+            - Freelancers create GIGs: Service offerings that clients can directly accept
+            - Clients create JOBS: Requirements that freelancers bid on via proposals
+            
+            All projects go through the standard workflow:
+            OPEN → (acceptance/proposal) → IN_PROGRESS → COMPLETED
         """
+        user = self.request.user
+        
+        # Determine project type based on user role
+        # Freelancers create GIGs (Fiverr-style), Clients create JOBS (Upwork-style)
+        if 'freelancer' in [role.lower() for role in user.roles]:
+            project_type = Project.ProjectType.GIG
+        else:
+            project_type = Project.ProjectType.JOB
+        
         # Save project with server-controlled fields
-        # This prevents malicious clients from:
-        # - Setting themselves as owner of project they shouldn't control
-        # - Creating projects in IN_PROGRESS or COMPLETED state
-        # - Bypassing the normal project workflow
         serializer.save(
-            client=self.request.user,              # Owner = authenticated user
-            status=Project.ProjectStatus.OPEN       # Always start accepting proposals
+            client=user,                                # Owner = authenticated user
+            status=Project.ProjectStatus.OPEN,          # Always start accepting proposals/orders
+            project_type=project_type                   # GIG or JOB based on role
         )
+
+
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint for browsing categories and subcategories.
+    
+    Endpoints:
+        GET /api/projects/categories/ - List all main categories with subcategories
+        GET /api/projects/categories/{id}/ - Get a specific category
+    
+    Response Format:
+        [
+            {
+                "id": 1,
+                "name": "Web Development",
+                "slug": "web-development",
+                "description": "Professional services in Web Development",
+                "subcategories": [
+                    {"id": 2, "name": "Frontend Development", ...},
+                    {"id": 3, "name": "Backend Development", ...}
+                ]
+            },
+            ...
+        ]
+    
+    Permissions:
+        - Public read access (no authentication required)
+        - Users can browse categories when creating projects/gigs
+    """
+    queryset = Category.objects.filter(parent=None).prefetch_related('subcategories')
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
