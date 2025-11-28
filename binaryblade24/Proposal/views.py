@@ -441,3 +441,34 @@ class UserProposalsView(generics.ListAPIView):
         
         # Return all of this freelancer's proposals
         return Proposal.objects.filter(freelancer=user)
+
+
+class PublicProposalsView(generics.ListAPIView):
+    """
+    Public endpoint for browsing all open proposals (buyer requests).
+    
+    This allows freelancers to discover work opportunities by viewing
+    proposals from clients looking for services.
+    
+    Endpoint: GET /api/proposals/public/
+    
+    Permissions:
+        - Public access (no authentication required)
+        
+    Returns:
+        List of all PENDING proposals on OPEN projects
+    """
+    
+    serializer_class = ProposalSerializer
+    permission_classes = []  # Public access
+    
+    def get_queryset(self):
+        """
+        Return all pending proposals on open projects.
+        
+        This creates a "Find Work" feed for freelancers.
+        """
+        return Proposal.objects.filter(
+            status=Proposal.ProposalStatus.PENDING,
+            project__status=Project.ProjectStatus.OPEN
+        ).select_related('project', 'freelancer').order_by('-created_at')

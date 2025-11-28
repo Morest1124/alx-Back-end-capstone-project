@@ -21,6 +21,10 @@ class ProjectSerializer(serializers.ModelSerializer):
     # Nested field to display the client's public username
     client_details = serializers.SerializerMethodField(read_only=True)
     
+    # Aliases for semantic correctness in Gig model (Freelancer owns the Gig)
+    owner = serializers.PrimaryKeyRelatedField(source='client', read_only=True)
+    owner_details = serializers.SerializerMethodField(read_only=True)
+    
     # Nested field to display the category name
     category_details = CategorySerializer(source='category', read_only=True)
 
@@ -36,12 +40,15 @@ class ProjectSerializer(serializers.ModelSerializer):
             'category', 
             'status', 
             'client', 
+            'owner', # Alias for client (freelancer in Gig model)
             'created_at', 
             'updated_at',
             'client_details',
+            'owner_details', # Alias for client_details
             'category_details',
             'thumbnail',
             'delivery_days',
+            'project_type',
             # 'verbose_name',
             # 'help_text',
             
@@ -78,6 +85,10 @@ class ProjectSerializer(serializers.ModelSerializer):
         
         # Always return minimal client details (no email/phone)
         return FreelancerDetailSerializer(obj.client).data
+
+    def get_owner_details(self, obj):
+        """Alias for get_client_details to support 'owner' semantic."""
+        return self.get_client_details(obj)
 
 # Proposal System Serializers
 

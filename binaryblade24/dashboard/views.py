@@ -131,6 +131,19 @@ class ClientDashboardAPIView(APIView):
             submitted_proposals__status='ACCEPTED'
         ).distinct().count()
 
+        # Recent Transactions
+        from User.models import Payment
+        recent_payments = Payment.objects.filter(user=client).order_by('-payment_date')[:5]
+        recent_transactions = [
+            {
+                "id": p.id,
+                "amount": p.amount,
+                "project": p.project.title,
+                "date": p.payment_date.strftime("%Y-%m-%d")
+            }
+            for p in recent_payments
+        ]
+
         data = {
             'total_spent': total_spent,
             'active_projects': active_projects,
@@ -138,13 +151,10 @@ class ClientDashboardAPIView(APIView):
             'open_projects': open_projects,
             'total_proposals_received': total_proposals_received,
             'freelancers_hired': freelancers_hired,
+            'recent_transactions': recent_transactions,
         }
 
         return Response(data)
-
-
-from django.shortcuts import render
-from django.urls import get_resolver
 
 def get_all_urls():
     """

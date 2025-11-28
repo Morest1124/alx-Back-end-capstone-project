@@ -44,31 +44,36 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     Complete CRUD operations for projects with role-based access control.
     
+    Pure Fiverr Model:
+        - ONLY Freelancers can create GIGs (service offerings)
+        - Clients browse gigs and hire freelancers
+        - Clients CANNOT post job requests
+    
     This ViewSet provides different views of projects based on user roles:
-    - Public/Anon: Can view OPEN projects (job board/discovery)
-    - Clients: Can create, manage, and view their own projects
-    - Freelancers: Can view OPEN projects and their accepted assignments
+    - Public/Anon: Can view OPEN gigs (marketplace discovery)
+    - Clients: Can browse gigs, hire freelancers, manage hired work
+    - Freelancers: Can create GIGS, view opportunities, manage accepted work
     
     Permissions Strategy:
-        CREATE: Authenticated + CLIENT role
+        CREATE: Authenticated + FREELANCER role (gigs only)
         UPDATE/DELETE: Authenticated + Project owner
         LIST/RETRIEVE: Public read access (unauthenticated allowed)
     
     Default Queryset Behavior:
-        Returns only OPEN projects (the "Find Work" feed for freelancers)
+        Returns only OPEN gigs (the marketplace for clients to browse)
         
     Custom Actions:
-        - my_projects: Returns all projects created by the authenticated client
+        - my_projects: Returns all gigs created by the authenticated freelancer
         - my_jobs: Returns projects where freelancer has accepted proposals
     
     Business Rules:
-        - New projects always start with OPEN status
-        - Client is automatically set from authenticated user
-        - Only project creators can modify their projects
-        - Deleted projects remove all associated proposals (cascade)
+        - New gigs always start with OPEN status
+        - Creator is automatically set from authenticated user
+        - Only gig creators can modify their gigs
+        - Deleted gigs remove all associated proposals (cascade)
     
     Security:
-        - Client assignment is server-side (prevents impersonation)
+        - Creator assignment is server-side (prevents impersonation)
         - Status changes through proposal acceptance (prevents manual manipulation)
         - Role-based permissions prevent cross-role actions
     """
@@ -84,16 +89,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
             list: Permission classes for the current request
             
         Permission Matrix:
-            - CREATE (POST):      IsAuthenticated (both freelancers and clients)
-              * Freelancers can create GIGs
-              * Clients can create JOBS
+            - CREATE (POST):      IsAuthenticated + IsFreelancer
+              * ONLY Freelancers can create GIGs (Pure Fiverr Model)
+              * Clients browse and purchase gigs, they don't post jobs
             - UPDATE (PUT/PATCH): IsAuthenticated + IsProjectOwner
-            - DELETE:             Is Authenticated + IsProjectOwner
+            - DELETE:             IsAuthenticated + IsProjectOwner
             - LIST/RETRIEVE:      IsAuthenticatedOrReadOnly (public can read)
         
         Design Rationale:
+            - Pure Fiverr model: freelancers offer services, clients hire
             - Public listing enables SEO and project discovery
-            - Both roles can create (hybrid marketplace model)
             - Modification restricted to owners prevents unauthorized changes
         """
         if self.action in ['create']:

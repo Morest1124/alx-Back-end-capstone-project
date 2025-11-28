@@ -92,9 +92,13 @@ class Project(models.Model):
         GIG = 'GIG', 'Gig'      # Freelancer-created service offering (Fiverr-style)
         JOB = 'JOB', 'Job'      # Client-created work requirement (Upwork-style)
 
-        
     # client id will be created automatically
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE , related_name='created_projects')
+    client = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='created_projects',
+        verbose_name="Freelancer (Owner)" # Renamed for Pure Fiverr Model
+    )
 
     # Setting status: use the choices defined in ProjectStatus
     status = models.CharField(
@@ -108,14 +112,14 @@ class Project(models.Model):
     project_type = models.CharField(
         max_length=10,
         choices=ProjectType.choices,
-        default=ProjectType.JOB,
+        default=ProjectType.GIG, # Default to GIG for Pure Fiverr Model
         help_text="Type of project: GIG (freelancer offers service) or JOB (client needs work done)"
     )
 
     # Milestone Support
     has_milestones = models.BooleanField(default=False, help_text="Does this project use milestone-based payments?")
     milestone_count = models.IntegerField(default=0, help_text="Total number of milestones")
-
+    
     def __str__(self):
         return self.title
     

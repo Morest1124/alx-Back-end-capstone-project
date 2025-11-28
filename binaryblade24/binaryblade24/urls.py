@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/dashboard/', include('dashboard.urls', namespace='dashboard_api')),
     path('api/messages/', include('message.urls', namespace='message_api')),
     path('api/api-key/', include('apikey.urls', namespace='apikey_api')),
+    path('api/proposals/', include('Proposal.urls', namespace='proposal_api')),
 
 ]
 
