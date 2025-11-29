@@ -165,3 +165,64 @@ class Milestone(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.project.title}"
+
+
+class Deliverable(models.Model):
+    """
+    Represents work submitted by freelancer for client review.
+    Supports the complete work delivery and approval workflow.
+    """
+    class DeliverableStatus(models.TextChoices):
+        SUBMITTED = 'SUBMITTED', 'Submitted for Review'
+        APPROVED = 'APPROVED', 'Approved'
+        REJECTED = 'REJECTED', 'Revision Requested'
+    
+    project = models.ForeignKey(
+        Project, 
+        on_delete=models.CASCADE, 
+        related_name='deliverables',
+        help_text="The project this deliverable belongs to"
+    )
+    freelancer = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE,
+        related_name='submitted_deliverables',
+        help_text="Freelancer who submitted this work"
+    )
+    file = models.FileField(
+        upload_to='deliverables/%Y/%m/%d/',
+        help_text="Uploaded deliverable file"
+    )
+    description = models.TextField(
+        help_text="Description of the submitted work"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=DeliverableStatus.choices,
+        default=DeliverableStatus.SUBMITTED,
+        help_text="Current review status"
+    )
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    reviewed_at = models.DateTimeField(
+        null=True, 
+        blank=True,
+        help_text="When the client reviewed this deliverable"
+    )
+    client_feedback = models.TextField(
+        blank=True,
+        help_text="Client's feedback or revision requests"
+    )
+    
+    class Meta:
+        ordering = ['-submitted_at']
+        
+    def __str__(self):
+        return f"Deliverable for {self.project.title} by {self.freelancer.username}"
+    
+    def is_approved(self):
+        """Returns True if this deliverable has been approved"""
+        return self.status == self.DeliverableStatus.APPROVED
+    
+    def is_pending(self):
+        """Returns True if this deliverable is awaiting review"""
+        return self.status == self.DeliverableStatus.SUBMITTED
