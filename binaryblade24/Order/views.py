@@ -68,3 +68,16 @@ class OrderViewSet(viewsets.ModelViewSet):
             {'error': 'Cannot release payment for this order'},
             status=status.HTTP_400_BAD_REQUEST
         )
+
+    @action(detail=True, methods=['post'])
+    def cancel_order(self, request, pk=None):
+        """
+        Cancel order and refund if applicable.
+        """
+        order = self.get_object()
+        success, message = order.cancel_order(request.user)
+        
+        if success:
+            return Response({'status': message, 'order_status': order.status})
+        else:
+            return Response({'error': message}, status=status.HTTP_400_BAD_REQUEST)

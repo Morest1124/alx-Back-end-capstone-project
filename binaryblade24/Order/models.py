@@ -98,6 +98,48 @@ class Order(models.Model):
                 return True
         return False
 
+    def cancel_order(self, user):
+        """
+        Cancel the order.
+        If paid, refund to client.
+        Only client or freelancer can cancel.
+        """
+        # Check permissions (though view should handle this too)
+        is_client = user == self.client
+        is_freelancer = self.items.filter(freelancer=user).exists()
+        
+        if not (is_client or is_freelancer):
+            return False, "Permission denied"
+
+        if self.status == self.OrderStatus.COMPLETED:
+            return False, "Cannot cancel a completed order"
+            
+        if self.status == self.OrderStatus.CANCELLED:
+            return False, "Order is already cancelled"
+
+        # Handle Refund if Paid
+        if self.status in [self.OrderStatus.PAID, self.OrderStatus.IN_PROGRESS]:
+            if hasattr(self, 'escrow') and self.escrow.status == 'HELD':
+                if self.escrow.refund_to_client():
+                    self.status = self.OrderStatus.REFUNDED
+                    self.save()
+                    return True, "Order cancelled and funds refunded to client"
+                else:
+                    return False, "Failed to refund escrow"
+            else:
+                # Paid but no escrow? Should not happen in new system, but handle gracefully
+                self.status = self.OrderStatus.CANCELLED
+                self.save()
+                return True, "Order cancelled (Manual refund may be required)"
+
+        # Handle Pending Order
+        if self.status == self.OrderStatus.PENDING:
+            self.status = self.OrderStatus.CANCELLED
+            self.save()
+            return True, "Order cancelled successfully"
+            
+        return False, "Invalid order status for cancellation"
+
 
 class OrderItem(models.Model):
     """
