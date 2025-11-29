@@ -28,6 +28,10 @@ class ProjectSerializer(serializers.ModelSerializer):
     # Nested field to display the category name
     category_details = CategorySerializer(source='category', read_only=True)
 
+    # Computed fields for ratings
+    average_rating = serializers.SerializerMethodField()
+    review_count = serializers.SerializerMethodField()
+
     class Meta:
         model = Project
         # Explicitly listing fields for security and output control
@@ -49,6 +53,8 @@ class ProjectSerializer(serializers.ModelSerializer):
             'thumbnail',
             'delivery_days',
             'project_type',
+            'average_rating',
+            'review_count',
             # 'verbose_name',
             # 'help_text',
             
@@ -61,7 +67,21 @@ class ProjectSerializer(serializers.ModelSerializer):
             'status',
             'created_at',
             'updated_at',
+            'average_rating',
+            'review_count',
         ]
+
+    def get_average_rating(self, obj):
+        """Calculate average rating from related reviews."""
+        reviews = obj.reviews.all()
+        if not reviews.exists():
+            return 0
+        total = sum(r.rating for r in reviews)
+        return round(total / reviews.count(), 1)
+
+    def get_review_count(self, obj):
+        """Return total number of reviews."""
+        return obj.reviews.count()
 
     def get_client_details(self, obj):
         """
