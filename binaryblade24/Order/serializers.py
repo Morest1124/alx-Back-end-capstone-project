@@ -1,7 +1,13 @@
 from rest_framework import serializers
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Escrow
 from Project.Serializers import ProjectSerializer
 from User.Serializers import UserSerializer, FreelancerDetailSerializer
+
+class EscrowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Escrow
+        fields = ['id', 'amount', 'status', 'held_at', 'released_at', 'refunded_at']
+        read_only_fields = ['id', 'held_at', 'released_at', 'refunded_at']
 
 class OrderItemSerializer(serializers.ModelSerializer):
     project_details = ProjectSerializer(source='project', read_only=True)
@@ -21,6 +27,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
     client_details = UserSerializer(source='client', read_only=True)
+    escrow = EscrowSerializer(read_only=True)
     
     # Write-only field to accept items during creation
     # Expected format: [{"project_id": 1, "tier": "SIMPLE"}]
@@ -36,7 +43,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'id', 'order_number', 'client', 'client_details',
             'status', 'total_amount', 'payment', 
             'created_at', 'updated_at', 'paid_at',
-            'items', 'items_data'
+            'items', 'items_data', 'escrow'
         ]
         read_only_fields = [
             'id', 'order_number', 'client', 'status', 

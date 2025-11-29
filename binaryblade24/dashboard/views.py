@@ -1,13 +1,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import status # New import
+from rest_framework import status
 from django.db.models import Sum, Avg, Count, Q
+from django.shortcuts import render
+from django.urls import get_resolver
 from Project.models import Project
 from Proposal.models import Proposal
 from Review.models import Review
 from User.models import User
-
+from Order.models import Order, OrderItem
 
 class FreelancerDashboardAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -25,34 +27,30 @@ class FreelancerDashboardAPIView(APIView):
             # If no user_id, use the logged-in user
             freelancer = request.user
 
-        # Total Earnings
-        total_earnings = Project.objects.filter(
-            proposals__freelancer=freelancer,
-            proposals__status='ACCEPTED',
-            status='COMPLETED'
-        ).aggregate(total_earnings=Sum('price'))['total_earnings'] or 0
+        # Total Earnings (from completed order items)
+        total_earnings = OrderItem.objects.filter(
+            freelancer=freelancer,
+            order__status='COMPLETED'
+        ).aggregate(total=Sum('final_price'))['total'] or 0
 
         # Estimated Monthly Tax (Set to 0 as per user request)
         estimated_tax = 0 
 
-        # Active Projects
-        active_projects = Project.objects.filter(
-            proposals__freelancer=freelancer,
-            proposals__status='ACCEPTED',
-            status='IN_PROGRESS'
-        ).count()
-
-        # Concluded Projects
-        concluded_projects = Project.objects.filter(
-            proposals__freelancer=freelancer,
-            proposals__status='ACCEPTED',
-            status='COMPLETED'
-        ).count()
-
-        # Total Orders (accepted proposals)
-        total_orders = Proposal.objects.filter(
+        # Active Projects (Orders in progress)
+        active_projects = OrderItem.objects.filter(
             freelancer=freelancer,
-            status='ACCEPTED'
+            order__status__in=['PENDING', 'PAID']
+        ).count()
+
+        # Concluded Projects (Completed orders)
+        concluded_projects = OrderItem.objects.filter(
+            freelancer=freelancer,
+            order__status='COMPLETED'
+        ).count()
+
+        # Total Orders (All items)
+        total_orders = OrderItem.objects.filter(
+            freelancer=freelancer
         ).count()
 
         # Achievement Rating
@@ -64,13 +62,13 @@ class FreelancerDashboardAPIView(APIView):
         # Total Impressions (hardcoded as no tracking for this)
         total_impressions = "18.5K"
 
-        # Recent Proposals
+        # Recent Proposals (Keeping this for now, though less relevant in Fiverr model)
         recent_proposals = Proposal.objects.filter(freelancer=freelancer).order_by('-created_at')[:3]
         recent_proposals_data = [
             {
-                "project_title": p.project.title,
+                "title": p.project.title,
                 "status": p.status,
-                "created_at": p.created_at.strftime("%Y-%m-%d")
+                "date": p.created_at.strftime("%Y-%m-%d")
             }
             for p in recent_proposals
         ]
@@ -97,51 +95,53 @@ class ClientDashboardAPIView(APIView):
         client = request.user
 
         # Total Spent
-        total_spent = Project.objects.filter(
+        total_spent = Order.objects.filter(
             client=client,
             status='COMPLETED'
-        ).aggregate(total_spent=Sum('price'))['total_spent'] or 0
+        ).aggregate(total=Sum('total_amount'))['total'] or 0
 
-        # Active Projects
-        active_projects = Project.objects.filter(
+        # Active Projects (Orders)
+        active_projects = Order.objects.filter(
             client=client,
-            status='IN_PROGRESS'
+            status__in=['PENDING', 'PAID']
         ).count()
 
-        # Completed Projects
-        completed_projects = Project.objects.filter(
+        # Completed Projects (Orders)
+        completed_projects = Order.objects.filter(
             client=client,
             status='COMPLETED'
         ).count()
 
-        # Open Projects
+        # Open Projects (Gigs created? Clients don't create gigs usually, but if they posted jobs)
+        # In Fiverr model, clients don't have "Open Projects". 
+        # But if we support hybrid, we count OPEN projects owned by client.
         open_projects = Project.objects.filter(
             client=client,
             status='OPEN'
         ).count()
 
-        # Total Proposals Received
+        # Total Proposals Received (Legacy)
         total_proposals_received = Proposal.objects.filter(
             project__client=client
         ).count()
 
-        # Number of Freelancers Hired
+        # Number of Freelancers Hired (Distinct freelancers in orders)
+        # Using correct related name 'received_orders' from OrderItem model
         freelancers_hired = User.objects.filter(
-            submitted_proposals__project__client=client,
-            submitted_proposals__status='ACCEPTED'
+            received_orders__order__client=client
         ).distinct().count()
 
         # Recent Transactions
-        from User.models import Payment
-        recent_payments = Payment.objects.filter(user=client).order_by('-payment_date')[:5]
+        # Using Orders as transactions for now
+        recent_orders = Order.objects.filter(client=client).order_by('-created_at')[:5]
         recent_transactions = [
             {
-                "id": p.id,
-                "amount": p.amount,
-                "project": p.project.title,
-                "date": p.payment_date.strftime("%Y-%m-%d")
+                "id": o.id,
+                "amount": o.total_amount,
+                "project": f"Order #{o.order_number}",
+                "date": o.created_at.strftime("%Y-%m-%d")
             }
-            for p in recent_payments
+            for o in recent_orders
         ]
 
         data = {
@@ -149,7 +149,7 @@ class ClientDashboardAPIView(APIView):
             'active_projects': active_projects,
             'completed_projects': completed_projects,
             'open_projects': open_projects,
-            'total_proposals_received': total_proposals_received,
+            'proposals_received': total_proposals_received, # Fixed key name to match frontend
             'freelancers_hired': freelancers_hired,
             'recent_transactions': recent_transactions,
         }
