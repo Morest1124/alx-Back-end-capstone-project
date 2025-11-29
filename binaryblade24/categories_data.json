@@ -1,0 +1,645 @@
+[
+{
+  "model": "Project.category",
+  "pk": 130,
+  "fields": {
+    "name": "Core Development",
+    "slug": "core-development",
+    "parent": null,
+    "description": "Fundamental web development services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 131,
+  "fields": {
+    "name": "Frontend Development",
+    "slug": "frontend-development",
+    "parent": 130,
+    "description": "Client-side web development",
+    "items": [
+      "SPA Development (React, Vue, Angular)",
+      "Responsive Web Design (HTML/CSS/JS)",
+      "UI/UX Implementation",
+      "Frontend Performance Optimization"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 132,
+  "fields": {
+    "name": "Backend Development",
+    "slug": "backend-development",
+    "parent": 130,
+    "description": "Server-side web development",
+    "items": [
+      "API Development (REST/GraphQL)",
+      "Database Modeling & Mgmt (SQL/NoSQL)",
+      "Server Logic (Python, Node.js, PHP)",
+      "Security & Auth Implementation"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 133,
+  "fields": {
+    "name": "Full-Stack Development",
+    "slug": "full-stack-development",
+    "parent": 130,
+    "description": "End-to-end web development",
+    "items": [
+      "End-to-End Application Development",
+      "System Architecture & Cloud Deployment"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 134,
+  "fields": {
+    "name": "Specialized Platforms & Systems",
+    "slug": "specialized-platforms-systems",
+    "parent": null,
+    "description": "Platform-specific development services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 135,
+  "fields": {
+    "name": "CMS Development",
+    "slug": "cms-development",
+    "parent": 134,
+    "description": "Content Management Systems",
+    "items": [
+      "WordPress (Themes, Plugins)",
+      "Shopify (Themes, Custom Apps)",
+      "Drupal/Joomla Customization",
+      "CMS Migration"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 136,
+  "fields": {
+    "name": "E-commerce Development",
+    "slug": "e-commerce-development",
+    "parent": 134,
+    "description": "Online store development",
+    "items": [
+      "Payment Gateway Integration",
+      "WooCommerce/Magento",
+      "Inventory/Order Systems"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 137,
+  "fields": {
+    "name": "Hybrid Mobile App Development",
+    "slug": "hybrid-mobile-app-development",
+    "parent": 134,
+    "description": "Cross-platform mobile development",
+    "items": [
+      "React Native",
+      "Flutter"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 138,
+  "fields": {
+    "name": "Data and Automation",
+    "slug": "data-and-automation",
+    "parent": 134,
+    "description": "Data extraction and automation",
+    "items": [
+      "Web Scraping & Data Extraction",
+      "Custom Automation Tools"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 139,
+  "fields": {
+    "name": "Design, Maintenance, & Optimization",
+    "slug": "design-maintenance-optimization",
+    "parent": null,
+    "description": "Design and optimization services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 140,
+  "fields": {
+    "name": "Web Design and UX/UI",
+    "slug": "web-design-and-uxui",
+    "parent": 139,
+    "description": "User interface and experience",
+    "items": [
+      "User Interface (UI) Design",
+      "User Experience (UX) Research",
+      "Prototyping and Testing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 141,
+  "fields": {
+    "name": "Maintenance and Support",
+    "slug": "maintenance-and-support",
+    "parent": 139,
+    "description": "Ongoing website support",
+    "items": [
+      "Bug Fixes & Debugging",
+      "Security Patching & Monitoring",
+      "Hosting/Server Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 142,
+  "fields": {
+    "name": "Technical Compliance",
+    "slug": "technical-compliance",
+    "parent": 139,
+    "description": "Technical standards and compliance",
+    "items": [
+      "Technical SEO",
+      "Web Accessibility (WCAG)"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 143,
+  "fields": {
+    "name": "Graphics & Design",
+    "slug": "graphics-design",
+    "parent": null,
+    "description": "Visual design and branding services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 144,
+  "fields": {
+    "name": "Logo & Brand Identity",
+    "slug": "logo-brand-identity",
+    "parent": 143,
+    "description": "Brand visual elements",
+    "items": [
+      "Logo Design",
+      "Brand Style Guides",
+      "Business Cards & Stationery"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 145,
+  "fields": {
+    "name": "Web & App Design",
+    "slug": "web-app-design",
+    "parent": 143,
+    "description": "Digital interface design",
+    "items": [
+      "Website Design",
+      "App Design",
+      "UX Design",
+      "Landing Page Design",
+      "Icon Design"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 146,
+  "fields": {
+    "name": "Art & Illustration",
+    "slug": "art-illustration",
+    "parent": 143,
+    "description": "Creative artwork",
+    "items": [
+      "Illustration",
+      "NFT Art",
+      "Pattern Design",
+      "Portraits & Caricatures",
+      "Cartoons & Comics"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 147,
+  "fields": {
+    "name": "Marketing Design",
+    "slug": "marketing-design",
+    "parent": 143,
+    "description": "Design for marketing materials",
+    "items": [
+      "Social Media Design",
+      "Email Design",
+      "Web Banners",
+      "Brochure Design"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 148,
+  "fields": {
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "parent": null,
+    "description": "Online marketing services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 149,
+  "fields": {
+    "name": "Search Optimization (SEO)",
+    "slug": "search-optimization-seo",
+    "parent": 148,
+    "description": "Improve search rankings",
+    "items": [
+      "On-Page SEO",
+      "Off-Page SEO",
+      "Technical SEO",
+      "Keyword Research"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 150,
+  "fields": {
+    "name": "Social Media",
+    "slug": "social-media",
+    "parent": 148,
+    "description": "Social media management",
+    "items": [
+      "Social Media Management",
+      "Paid Social Media",
+      "Influencer Marketing",
+      "Community Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 151,
+  "fields": {
+    "name": "Advertising",
+    "slug": "advertising",
+    "parent": 148,
+    "description": "Paid advertising campaigns",
+    "items": [
+      "Google Ads (PPC)",
+      "Facebook Ads",
+      "Display Advertising",
+      "Video Marketing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 152,
+  "fields": {
+    "name": "Content Marketing",
+    "slug": "content-marketing",
+    "parent": 148,
+    "description": "Content strategy and creation",
+    "items": [
+      "Content Strategy",
+      "Guest Posting",
+      "Email Marketing",
+      "Text Message Marketing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 153,
+  "fields": {
+    "name": "Writing & Translation",
+    "slug": "writing-translation",
+    "parent": null,
+    "description": "Text and translation services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 154,
+  "fields": {
+    "name": "Content Writing",
+    "slug": "content-writing",
+    "parent": 153,
+    "description": "Web and article writing",
+    "items": [
+      "Articles & Blog Posts",
+      "Website Content",
+      "Product Descriptions",
+      "Case Studies"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 155,
+  "fields": {
+    "name": "Copywriting",
+    "slug": "copywriting",
+    "parent": 153,
+    "description": "Sales and marketing copy",
+    "items": [
+      "Sales Copy",
+      "Ad Copy",
+      "Email Copy",
+      "Social Media Copy",
+      "Landing Page Copy"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 156,
+  "fields": {
+    "name": "Technical & Business",
+    "slug": "technical-business",
+    "parent": 153,
+    "description": "Professional documentation",
+    "items": [
+      "Technical Writing",
+      "Business Plans",
+      "White Papers",
+      "Grant Writing",
+      "Resumes & Cover Letters"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 157,
+  "fields": {
+    "name": "Translation",
+    "slug": "translation",
+    "parent": 153,
+    "description": "Language services",
+    "items": [
+      "Translation",
+      "Localization",
+      "Transcription",
+      "Proofreading & Editing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 158,
+  "fields": {
+    "name": "Video & Animation",
+    "slug": "video-animation",
+    "parent": null,
+    "description": "Video production services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 159,
+  "fields": {
+    "name": "Video Editing",
+    "slug": "video-editing",
+    "parent": 158,
+    "description": "Post-production",
+    "items": [
+      "Video Editing",
+      "Visual Effects",
+      "Color Grading",
+      "Subtitles & Captions"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 160,
+  "fields": {
+    "name": "Animation",
+    "slug": "animation",
+    "parent": 158,
+    "description": "Animated content",
+    "items": [
+      "2D Animation",
+      "3D Animation",
+      "Motion Graphics",
+      "Whiteboard Animation",
+      "Character Animation"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 161,
+  "fields": {
+    "name": "Social & Marketing Video",
+    "slug": "social-marketing-video",
+    "parent": 158,
+    "description": "Video for social media",
+    "items": [
+      "Video Ads & Commercials",
+      "Social Media Videos",
+      "Explainer Videos",
+      "Corporate Videos"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 162,
+  "fields": {
+    "name": "Music & Audio",
+    "slug": "music-audio",
+    "parent": null,
+    "description": "Audio production services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 163,
+  "fields": {
+    "name": "Production & Composition",
+    "slug": "production-composition",
+    "parent": 162,
+    "description": "Music creation",
+    "items": [
+      "Producers & Composers",
+      "Beat Making",
+      "Songwriters",
+      "Jingles & Intros"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 164,
+  "fields": {
+    "name": "Voice & Narration",
+    "slug": "voice-narration",
+    "parent": 162,
+    "description": "Vocal services",
+    "items": [
+      "Voice Over",
+      "Singers & Vocalists",
+      "Audiobook Production"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 165,
+  "fields": {
+    "name": "Mixing & Mastering",
+    "slug": "mixing-mastering",
+    "parent": 162,
+    "description": "Audio engineering",
+    "items": [
+      "Mixing",
+      "Mastering",
+      "Audio Editing",
+      "Vocal Tuning"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 166,
+  "fields": {
+    "name": "Programming & Tech (General)",
+    "slug": "programming-tech-general",
+    "parent": null,
+    "description": "General technical services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 167,
+  "fields": {
+    "name": "Mobile Apps",
+    "slug": "mobile-apps",
+    "parent": 166,
+    "description": "Mobile application development",
+    "items": [
+      "Android App Development",
+      "iOS App Development",
+      "Cross-Platform Apps",
+      "Mobile Game Development"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 168,
+  "fields": {
+    "name": "Desktop Applications",
+    "slug": "desktop-applications",
+    "parent": 166,
+    "description": "Desktop software",
+    "items": [
+      "Desktop Software Development",
+      "Support & IT"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 169,
+  "fields": {
+    "name": "Data Science",
+    "slug": "data-science",
+    "parent": 166,
+    "description": "Data analysis and AI",
+    "items": [
+      "Data Analysis & Visualization",
+      "Machine Learning",
+      "AI Services",
+      "Data Engineering"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 170,
+  "fields": {
+    "name": "Cybersecurity",
+    "slug": "cybersecurity",
+    "parent": 166,
+    "description": "Security services",
+    "items": [
+      "Penetration Testing",
+      "Security Audits",
+      "Malware Removal"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 171,
+  "fields": {
+    "name": "Business",
+    "slug": "business",
+    "parent": null,
+    "description": "Business support services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 172,
+  "fields": {
+    "name": "Virtual Assistant",
+    "slug": "virtual-assistant",
+    "parent": 171,
+    "description": "Administrative support",
+    "items": [
+      "Virtual Assistant",
+      "Data Entry",
+      "Market Research",
+      "Project Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 173,
+  "fields": {
+    "name": "Legal & Financial",
+    "slug": "legal-financial",
+    "parent": 171,
+    "description": "Professional consulting",
+    "items": [
+      "Legal Consulting",
+      "Financial Consulting",
+      "Business Consulting",
+      "HR Consulting"
+    ]
+  }
+}
+]
