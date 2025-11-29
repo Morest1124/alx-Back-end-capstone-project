@@ -137,12 +137,13 @@ class OrderItem(models.Model):
     def save(self, *args, **kwargs):
         # Auto-calculate final price based on tier
         if not self.final_price or not self.tier_multiplier:
+            from decimal import Decimal
             tier_multipliers = {
-                self.TierChoice.SIMPLE: 1.0,
-                self.TierChoice.MEDIUM: 1.5,
-                self.TierChoice.EXPERT: 2.0
+                self.TierChoice.SIMPLE: Decimal('1.0'),
+                self.TierChoice.MEDIUM: Decimal('1.5'),
+                self.TierChoice.EXPERT: Decimal('2.0')
             }
-            self.tier_multiplier = tier_multipliers.get(self.tier, 1.0)
+            self.tier_multiplier = tier_multipliers.get(self.tier, Decimal('1.0'))
             self.final_price = self.base_price * self.tier_multiplier
         
         super().save(*args, **kwargs)

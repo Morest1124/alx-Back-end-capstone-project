@@ -45,10 +45,12 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         items_data = validated_data.pop('items_data')
+        # Client is passed via context from the view, not in validated_data
         client = self.context['request'].user
         
-        # Create the order
-        order = Order.objects.create(client=client, **validated_data)
+        # Create the order with initial total_amount of 0
+        # Don't pass client in validated_data since it's already provided
+        order = Order.objects.create(client=client, total_amount=0)
         
         # Create order items
         for item_data in items_data:
@@ -57,7 +59,11 @@ class OrderSerializer(serializers.ModelSerializer):
             
             # Fetch project to get base price and freelancer
             from Project.models import Project
-            project = Project.objects.get(id=project_id)
+            try:
+                project = Project.objects.get(id=project_id)
+            except Project.DoesNotExist:
+                order.delete()  # Clean up the order if project doesn't exist
+                raise serializers.ValidationError(f"Project with id {project_id} does not exist")
             
             OrderItem.objects.create(
                 order=order,
@@ -67,6 +73,6 @@ class OrderSerializer(serializers.ModelSerializer):
                 freelancer=project.client # Project owner is the freelancer
             )
             
-        # Calculate total
+        # Calculate total (this will update the order's total_amount)
         order.calculate_total()
         return order

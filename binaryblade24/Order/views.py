@@ -13,13 +13,13 @@ class OrderViewSet(viewsets.ModelViewSet):
         # Freelancers see orders they are fulfilling (via items)
         user = self.request.user
         
-        # If user is a client, show orders they made
-        client_orders = Order.objects.filter(client=user)
+        # Use Q objects to combine queries instead of queryset union
+        from django.db.models import Q
         
-        # If user is a freelancer, show orders where they are the freelancer for at least one item
-        freelancer_orders = Order.objects.filter(items__freelancer=user).distinct()
-        
-        return client_orders | freelancer_orders
+        # Return orders where user is either the client OR a freelancer for any item
+        return Order.objects.filter(
+            Q(client=user) | Q(items__freelancer=user)
+        ).distinct()
 
     def perform_create(self, serializer):
         serializer.save(client=self.request.user)
