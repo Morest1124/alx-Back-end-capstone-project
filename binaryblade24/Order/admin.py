@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Escrow
 
 
 class OrderItemInline(admin.TabularInline):
@@ -37,3 +37,20 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_filter = ['tier', 'created_at']
     search_fields = ['order__order_number', 'project__title', 'freelancer__username']
     readonly_fields = ['tier_multiplier', 'final_price', 'created_at']
+
+
+@admin.register(Escrow)
+class EscrowAdmin(admin.ModelAdmin):
+    list_display = ['order', 'amount', 'status', 'held_at', 'released_at', 'refunded_at']
+    list_filter = ['status', 'held_at', 'released_at']
+    search_fields = ['order__order_number', 'order__client__username']
+    readonly_fields = ['held_at', 'released_at', 'refunded_at']
+    
+    fieldsets = (
+        ('Escrow Information', {
+            'fields': ('order', 'amount', 'status')
+        }),
+        ('Timestamps', {
+            'fields': ('held_at', 'released_at', 'refunded_at')
+        }),
+    )

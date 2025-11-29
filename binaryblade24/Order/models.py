@@ -77,6 +77,26 @@ class Order(models.Model):
         self.total_amount = total
         self.save()
         return total
+    
+    def create_escrow(self):
+        """Create escrow record when payment is made"""
+        from .models import Escrow
+        if not hasattr(self, 'escrow'):
+            Escrow.objects.create(
+                order=self,
+                amount=self.total_amount
+            )
+    
+    def approve_and_release_payment(self):
+        """Client approves work and releases payment from escrow"""
+        if self.status == self.OrderStatus.PAID and hasattr(self, 'escrow'):
+            # Release escrow funds
+            if self.escrow.release_to_freelancer():
+                # Update order status
+                self.status = self.OrderStatus.COMPLETED
+                self.save()
+                return True
+        return False
 
 
 class OrderItem(models.Model):
@@ -176,3 +196,83 @@ class OrderItem(models.Model):
             ]
         }
         return features.get(self.tier, [])
+
+
+class Escrow(models.Model):
+    """
+    Holds payment funds until work is approved by client.
+    Implements escrow payment system similar to Fiverr/Upwork.
+    """
+    class EscrowStatus(models.TextChoices):
+        HELD = 'HELD', 'Funds Held in Escrow'
+        RELEASED = 'RELEASED', 'Released to Freelancer'
+        REFUNDED = 'REFUNDED', 'Refunded to Client'
+    
+    order = models.OneToOneField(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='escrow',
+        help_text="Order associated with this escrow"
+    )
+    amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        help_text="Amount held in escrow"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=EscrowStatus.choices,
+        default=EscrowStatus.HELD,
+        help_text="Current escrow status"
+    )
+    held_at = models.DateTimeField(
+        auto_now_add=True,
+        help_text="When funds were placed in escrow"
+    )
+    released_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="When funds were released to freelancer"
+    )
+    refunded_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="When funds were refunded to client"
+    )
+    
+    class Meta:
+        verbose_name = "Escrow"
+        verbose_name_plural = "Escrows"
+        ordering = ['-held_at']
+    
+    def __str__(self):
+        return f"Escrow for {self.order.order_number} - {self.get_status_display()}"
+    
+    def release_to_freelancer(self):
+        """Release escrow funds to freelancer(s)"""
+        if self.status == self.EscrowStatus.HELD:
+            from django.utils import timezone
+            
+            # Release funds to each freelancer in the order
+            for item in self.order.items.all():
+                # In a real system, this would transfer to freelancer's bank account
+                # For now, we'll just mark it as released
+                pass
+            
+            self.status = self.EscrowStatus.RELEASED
+            self.released_at = timezone.now()
+            self.save()
+            return True
+        return False
+    
+    def refund_to_client(self):
+        """Refund escrow funds to client"""
+        if self.status == self.EscrowStatus.HELD:
+            from django.utils import timezone
+            
+            # In a real system, this would transfer back to client's account
+            self.status = self.EscrowStatus.REFUNDED
+            self.refunded_at = timezone.now()
+            self.save()
+            return True
+        return False

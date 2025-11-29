@@ -36,5 +36,35 @@ class OrderViewSet(viewsets.ModelViewSet):
             from django.utils import timezone
             order.paid_at = timezone.now()
             order.save()
-            return Response({'status': 'Order marked as paid'})
+            
+            # Create escrow to hold funds
+            order.create_escrow()
+            
+            return Response({'status': 'Order marked as paid', 'escrow_created': True})
         return Response({'error': 'Order is not pending'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=True, methods=['post'])
+    def release_payment(self, request, pk=None):
+        """
+        Client approves work and releases payment from escrow to freelancer.
+        """
+        order = self.get_object()
+        
+        # Only client can release payment
+        if order.client != request.user:
+            return Response(
+                {'error': 'Only the client can release payment'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        if order.approve_and_release_payment():
+            return Response({
+                'status': 'Payment released to freelancer',
+                'order_status': 'COMPLETED',
+                'escrow_status': 'RELEASED'
+            })
+        
+        return Response(
+            {'error': 'Cannot release payment for this order'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
