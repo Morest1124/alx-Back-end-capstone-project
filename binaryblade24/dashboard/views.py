@@ -33,8 +33,32 @@ class FreelancerDashboardAPIView(APIView):
             order__status='COMPLETED'
         ).aggregate(total=Sum('final_price'))['total'] or 0
 
-        # Estimated Monthly Tax (Set to 0 as per user request)
-        estimated_tax = 0 
+        # Estimated Tax Calculation (Simplified South African Tax Brackets)
+        # Using progressive tax rates based on annual income
+        from decimal import Decimal
+        
+        def calculate_tax(annual_income):
+            """Calculate tax based on simplified SA tax brackets (2024)"""
+            income = Decimal(str(annual_income))
+            tax = Decimal('0')
+            
+            # Tax brackets (simplified for demonstration)
+            if income <= 237100:
+                tax = income * Decimal('0.18')
+            elif income <= 370500:
+                tax = Decimal('42678') + (income - Decimal('237100')) * Decimal('0.26')
+            elif income <= 512800:
+                tax = Decimal('77362') + (income - Decimal('370500')) * Decimal('0.31')
+            elif income <= 673000:
+                tax = Decimal('121475') + (income - Decimal('512800')) * Decimal('0.36')
+            elif income <= 857900:
+                tax = Decimal('179147') + (income - Decimal('673000')) * Decimal('0.39')
+            else:
+                tax = Decimal('251258') + (income - Decimal('857900')) * Decimal('0.41')
+            
+            return float(tax)
+        
+        estimated_tax = calculate_tax(total_earnings) if total_earnings > 0 else 0
 
         # Active Projects (Orders in progress)
         active_projects = OrderItem.objects.filter(
