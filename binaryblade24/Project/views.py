@@ -26,7 +26,7 @@ Last Modified: 2025-11-27
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 
 from django.shortcuts import get_object_or_404
 from django.db import transaction
@@ -111,10 +111,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
             # Prevents clients/freelancers from editing each other's projects
             self.permission_classes = [IsAuthenticated, IsProjectOwner]
             
+        elif self.action in ['list', 'retrieve']:
+            # Public browsing allowed - no authentication required
+            # Allows anonymous users to browse gigs (marketplace discovery)
+            self.permission_classes = [AllowAny]
+            
         else:
-            # Listing and retrieving projects is open to everyone
-            # Allows non-authenticated users to browse (SEO, discovery)
-            # Authenticated users see additional fields (via serializer context)
+            # Default: authenticated or read-only
             self.permission_classes = [IsAuthenticatedOrReadOnly]
             
         return super().get_permissions()
