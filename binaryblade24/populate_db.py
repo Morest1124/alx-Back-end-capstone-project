@@ -111,6 +111,13 @@ def populate():
         print("No subcategories found! Please load categories first.")
         return
 
+    # 2.5 Clean up old projects with numbers in titles
+    print("Cleaning up old projects with numbers in titles...")
+    old_projects = Project.objects.filter(title__regex=r'\(\d+\)$')
+    deleted_count = old_projects.count()
+    old_projects.delete()
+    print(f"Deleted {deleted_count} old projects with numbered titles")
+
     # 3. Create Projects (Gigs and Jobs)
     
     # Create Gigs (by Freelancers) - More natural titles
@@ -212,16 +219,31 @@ def populate():
         jobs.append(project)
 
     # 4. Create Proposals (Freelancers applying to Jobs)
+    proposal_title_templates = [
+        "I can deliver {} with excellence",
+        "Expert {} services available",
+        "Professional {} at competitive rates",
+        "Quality {} guaranteed",
+        "Experienced in {}",
+    ]
+    
     for job in jobs:
         # Randomly assign 1-3 proposals per job
         num_proposals = random.randint(1, 3)
         selected_freelancers = random.sample(freelancers, num_proposals)
         
         for freelancer in selected_freelancers:
+            # Generate a title based on the job
+            template = random.choice(proposal_title_templates)
+            # Extract key words from job title for proposal title
+            job_keywords = job.title.split()[:3]  # First 3 words
+            proposal_title = template.format(" ".join(job_keywords))
+            
             proposal, created = Proposal.objects.get_or_create(
                 project=job,
                 freelancer=freelancer,
                 defaults={
+                    'title': proposal_title,
                     'bid_amount': job.budget * Decimal(random.uniform(0.8, 1.2)),
                     'cover_letter': f"Hi, I am interested in your project '{job.title}'. I have the skills to complete it.",
                     'status': 'PENDING'
