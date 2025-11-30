@@ -1,0 +1,4121 @@
+[
+{
+  "model": "User.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$JxLM1cstqVed7NOloP1JRQ$lGt8H8g47oKhw5GyP0xGgncvIYi2+iQcUzWBcJkwuX0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alex_chen",
+    "first_name": "Alex",
+    "last_name": "Chen",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-22T22:30:31.213Z",
+    "country_origin": "Unknown",
+    "email": "alex.chen@example.com",
+    "phone_number": null,
+    "identity_number": "ID_1",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$pvNVS4gBv3fnatSq3lVqV4$c+v2EgcDPa3QMYOiHtvr//vQnaII7UpxvC06nQqHSFw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sarah_williams",
+    "first_name": "Sarah",
+    "last_name": "Williams",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-22T22:30:33.533Z",
+    "country_origin": "Zimbabwe",
+    "email": "kali24@gmail.com",
+    "phone_number": "87657876578765",
+    "identity_number": "1234567898765",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ylH6CeWGPYms3hD3iFdzqq$jSjV4W73bTHT54gGV2Dhyu5lfF0n06cM/8JYLz1Ydfo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marcus_johnson",
+    "first_name": "Marcus",
+    "last_name": "Johnson",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-22T22:30:35.690Z",
+    "country_origin": "Unknown",
+    "email": "marcus.johnson@example.com",
+    "phone_number": null,
+    "identity_number": "ID_3",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$GJnJ5kYv6JJMhQcThiZRVt$v1TJq+n3f8p3sjp0WWXV9M3B2aJwrOG1TOMNlDsdIqc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "emily_parker",
+    "first_name": "Emily",
+    "last_name": "Parker",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-22T22:30:39.544Z",
+    "country_origin": "Unknown",
+    "email": "emily.parker@example.com",
+    "phone_number": null,
+    "identity_number": "ID_4",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ul4VLbBf8aa3rsgRWfz3TX$mN0HZqhxdkRMufv1Xf52GCd/Xum6abx3NT56FMv/Kcc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "david_kim",
+    "first_name": "David",
+    "last_name": "Kim",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-22T22:30:41.405Z",
+    "country_origin": "Unknown",
+    "email": "david.kim@example.com",
+    "phone_number": null,
+    "identity_number": "ID_5",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$umbo2QV26o2PiH0KETRfgU$XhdhwezKHmRNswyl+mZSg8MkNlUFS4DbUr43J7mm2Co=",
+    "last_login": "2025-11-29T03:05:03.044Z",
+    "is_superuser": true,
+    "username": "Blade24",
+    "first_name": "Morest",
+    "last_name": "Burawa",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-16T13:56:08.672Z",
+    "country_origin": "Zim",
+    "email": "morestburawa05@gmail.com",
+    "phone_number": "98765456789",
+    "identity_number": "987654356789",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LEWe32wX5Z62cXwFRx77mG$SIYQdvtWVBdQij3Ymp3efa49ai9A+25hWEh2euhahIs=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "Limo",
+    "first_name": "Morest",
+    "last_name": "Burawa",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-19T17:07:28.819Z",
+    "country_origin": "South Africa",
+    "email": "freelancer1@example.com",
+    "phone_number": "0692452411",
+    "identity_number": "876547654345678",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$NsIWq87Q4lou0kb04dGvGn$D3OZZMSmQSP062wSDfmWgpGJmmnr0/Pnppfafy+zPCk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "johndoe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-23T00:54:21.563Z",
+    "country_origin": "Nigeria",
+    "email": "johndoe@example.com",
+    "phone_number": null,
+    "identity_number": "pbkdf2_sha256$1000000$C3Yqp4P7q97aTshH3LfKNN$/RLsjH1FrpXpwh+b2HaMFykoUWdvYNc7p2Wb9Lotl7w=",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$wifqIgb0hVc6jXfcrd6BGT$fOXUOnQ1lCN+4I/F71od6C88kEsV8b81srQufHt+cAY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jdoe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-23T01:34:21.721Z",
+    "country_origin": "United States",
+    "email": "john.doe@example.com",
+    "phone_number": null,
+    "identity_number": "pbkdf2_sha256$1000000$TOvwq8SstZPe49ujOlCNBU$oTFf41Jcf/5hoaJ0/DfGZsr0Oqcwej/iFrcufp63aH8=",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      1
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$RpXHiMkRkMx0ZNX4n8yT4P$3iWX0/C+XJ4upGXuebj+JwPyKpU2XYsZ/ntC7QFJyJg=",
+    "last_login": "2025-11-28T06:26:37.707Z",
+    "is_superuser": true,
+    "username": "asmith",
+    "first_name": "Anna",
+    "last_name": "Smith",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-23T01:34:52.747Z",
+    "country_origin": "Canada",
+    "email": "anna.smith@sample.org",
+    "phone_number": null,
+    "identity_number": "pbkdf2_sha256$1000000$tRQvlbINT7aqKWdkKMU1c8$7m35euTKWDrF1epQBc7+m9RmPsUSAUyrzgxWZnZ4IjU=",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$x7HRoKw6AUv6CJr6llLJCo$WzEWstkUgSK7v+fjPLK2Z4+bvmvEqkiP2Ic+n46xMT0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alex_dev",
+    "first_name": "Alex",
+    "last_name": "Developer",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:48:54.141Z",
+    "country_origin": "South Africa",
+    "email": "alex@example.com",
+    "phone_number": null,
+    "identity_number": "ID_alex_dev",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$L4RYbJiV4ORKVUWBPE0Jhs$nPOUyxvyTePcfintDwQxWOGCsL8sE21ID2wDDiC3Zy4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sarah_design",
+    "first_name": "Sarah",
+    "last_name": "Designer",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:10.907Z",
+    "country_origin": "South Africa",
+    "email": "sarah@example.com",
+    "phone_number": null,
+    "identity_number": "ID_sarah_design",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$IkWknYaY51Snb3ewUASpPA$piK3qD1SV+ZFqqOgT9YG+wUagmDGA1+pf6vTHuYtxYk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "mike_seo",
+    "first_name": "Mike",
+    "last_name": "SEO",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:12.427Z",
+    "country_origin": "South Africa",
+    "email": "mike@example.com",
+    "phone_number": null,
+    "identity_number": "ID_mike_seo",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$kbkqBRPYZn1Q4WM4Zptx1b$Ac5KGgDGc/n/7zKwLtLK1zr5ixF2omo0EeaKAPiW3fc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "emily_writer",
+    "first_name": "Emily",
+    "last_name": "Writer",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:14.221Z",
+    "country_origin": "South Africa",
+    "email": "emily@example.com",
+    "phone_number": null,
+    "identity_number": "ID_emily_writer",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$gS90PghzPxY0zMlkglx5gJ$P4pBX5DNjzEUgaoiVqpRU6D+Qp1mv1MTiY5RDpnWITc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "david_video",
+    "first_name": "David",
+    "last_name": "Video",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:16.016Z",
+    "country_origin": "South Africa",
+    "email": "david@example.com",
+    "phone_number": null,
+    "identity_number": "ID_david_video",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      3
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$urSHRHavjleCriLXHi5iuq$K0Mbrh8m6IQnsJ3Q/7b7rQYg9vEHg0juB8+a/jJttLA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "john_corp",
+    "first_name": "John",
+    "last_name": "Doe",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:17.608Z",
+    "country_origin": "USA",
+    "email": "john@corp.com",
+    "phone_number": null,
+    "identity_number": "ID_john_corp",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$cMbHDTeg4cwMRbbo9GqmgZ$Fh69g7iZUBqgF3xiunrKErfAAnBAwwYKodWs3zkTF3c=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jane_startup",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:19.103Z",
+    "country_origin": "USA",
+    "email": "jane@startup.com",
+    "phone_number": null,
+    "identity_number": "ID_jane_startup",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$bYiCVkT83SHU57odLIzK0W$QYKVHqErX0iU9Ojt0ZWLFeBOnZyayHPwAM1sKY8sHGw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tech_solutions",
+    "first_name": "Tech",
+    "last_name": "Solutions",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:20.945Z",
+    "country_origin": "USA",
+    "email": "contact@techsolutions.com",
+    "phone_number": null,
+    "identity_number": "ID_tech_solutions",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$PlUuxIhb3MQoS47jnrgErU$YJ3YcAV7h9dHqLYM0feOwIZlPZZ0PWZiIpgt7Lhx/YA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "creative_agency",
+    "first_name": "Creative",
+    "last_name": "Agency",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:22.531Z",
+    "country_origin": "USA",
+    "email": "hello@creative.com",
+    "phone_number": null,
+    "identity_number": "ID_creative_agency",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.user",
+  "pk": 20,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$dqrVcRCKwlLJlIcDl7RWpn$ckL48zoquk7odHri5Fa1l8J2s76xSghvsqwCNHJwIkw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "global_ent",
+    "first_name": "Global",
+    "last_name": "Enterprise",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-11-30T05:50:23.941Z",
+    "country_origin": "USA",
+    "email": "info@global.com",
+    "phone_number": null,
+    "identity_number": "ID_global_ent",
+    "profile_picture": "",
+    "groups": [],
+    "user_permissions": [],
+    "roles": [
+      2
+    ]
+  }
+},
+{
+  "model": "User.role",
+  "pk": 1,
+  "fields": {
+    "name": "ADMIN"
+  }
+},
+{
+  "model": "User.role",
+  "pk": 2,
+  "fields": {
+    "name": "CLIENT"
+  }
+},
+{
+  "model": "User.role",
+  "pk": 3,
+  "fields": {
+    "name": "FREELANCER"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "bio": null,
+    "skills": "React,Node.js,Python",
+    "hourly_rate": "45.00",
+    "rating": "4.8",
+    "avatar": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=800&q=80",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "4.9",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "bio": null,
+    "skills": "Figma,Adobe XD,Sketch",
+    "hourly_rate": "55.00",
+    "rating": "4.7",
+    "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "4.6",
+    "avatar": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 5,
+  "fields": {
+    "user": 5,
+    "bio": null,
+    "skills": "React Native,iOS,Android",
+    "hourly_rate": "60.00",
+    "rating": "4.9",
+    "avatar": "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?auto=format&fit=crop&w=800&q=80",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 6,
+  "fields": {
+    "user": 6,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": null,
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 7,
+  "fields": {
+    "user": 7,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": null,
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 8,
+  "fields": {
+    "user": 8,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": null,
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 9,
+  "fields": {
+    "user": 9,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": null,
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 10,
+  "fields": {
+    "user": 10,
+    "bio": null,
+    "skills": "",
+    "hourly_rate": null,
+    "rating": null,
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 11,
+  "fields": {
+    "user": 11,
+    "bio": "Full Stack Developer with 5 years experience",
+    "skills": "React, Python, Django",
+    "hourly_rate": "28.00",
+    "rating": "3.6",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 12,
+  "fields": {
+    "user": 12,
+    "bio": "Creative UI/UX Designer",
+    "skills": "Figma, Adobe XD, CSS",
+    "hourly_rate": "27.00",
+    "rating": "4.3",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 13,
+  "fields": {
+    "user": 13,
+    "bio": "SEO Specialist and Content Strategist",
+    "skills": "SEO, SEM, Google Analytics",
+    "hourly_rate": "93.00",
+    "rating": "4.9",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 14,
+  "fields": {
+    "user": 14,
+    "bio": "Professional Copywriter and Editor",
+    "skills": "Copywriting, Editing, Blogging",
+    "hourly_rate": "97.00",
+    "rating": "3.8",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 15,
+  "fields": {
+    "user": 15,
+    "bio": "Video Editor and Motion Graphics Artist",
+    "skills": "Premiere Pro, After Effects",
+    "hourly_rate": "51.00",
+    "rating": "4.3",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 16,
+  "fields": {
+    "user": 16,
+    "bio": "Client looking for talent.",
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "5.0",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 17,
+  "fields": {
+    "user": 17,
+    "bio": "Client looking for talent.",
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "5.0",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 18,
+  "fields": {
+    "user": 18,
+    "bio": "Client looking for talent.",
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "5.0",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 19,
+  "fields": {
+    "user": 19,
+    "bio": "Client looking for talent.",
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "5.0",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "User.profile",
+  "pk": 20,
+  "fields": {
+    "user": 20,
+    "bio": "Client looking for talent.",
+    "skills": "",
+    "hourly_rate": null,
+    "rating": "5.0",
+    "avatar": "",
+    "level": "beginner",
+    "availability": "AVAILABLE"
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 130,
+  "fields": {
+    "name": "Core Development",
+    "slug": "core-development",
+    "parent": null,
+    "description": "Fundamental web development services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 131,
+  "fields": {
+    "name": "Frontend Development",
+    "slug": "frontend-development",
+    "parent": 130,
+    "description": "Client-side web development",
+    "items": [
+      "SPA Development (React, Vue, Angular)",
+      "Responsive Web Design (HTML/CSS/JS)",
+      "UI/UX Implementation",
+      "Frontend Performance Optimization"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 132,
+  "fields": {
+    "name": "Backend Development",
+    "slug": "backend-development",
+    "parent": 130,
+    "description": "Server-side web development",
+    "items": [
+      "API Development (REST/GraphQL)",
+      "Database Modeling & Mgmt (SQL/NoSQL)",
+      "Server Logic (Python, Node.js, PHP)",
+      "Security & Auth Implementation"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 133,
+  "fields": {
+    "name": "Full-Stack Development",
+    "slug": "full-stack-development",
+    "parent": 130,
+    "description": "End-to-end web development",
+    "items": [
+      "End-to-End Application Development",
+      "System Architecture & Cloud Deployment"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 134,
+  "fields": {
+    "name": "Specialized Platforms & Systems",
+    "slug": "specialized-platforms-systems",
+    "parent": null,
+    "description": "Platform-specific development services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 135,
+  "fields": {
+    "name": "CMS Development",
+    "slug": "cms-development",
+    "parent": 134,
+    "description": "Content Management Systems",
+    "items": [
+      "WordPress (Themes, Plugins)",
+      "Shopify (Themes, Custom Apps)",
+      "Drupal/Joomla Customization",
+      "CMS Migration"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 136,
+  "fields": {
+    "name": "E-commerce Development",
+    "slug": "e-commerce-development",
+    "parent": 134,
+    "description": "Online store development",
+    "items": [
+      "Payment Gateway Integration",
+      "WooCommerce/Magento",
+      "Inventory/Order Systems"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 137,
+  "fields": {
+    "name": "Hybrid Mobile App Development",
+    "slug": "hybrid-mobile-app-development",
+    "parent": 134,
+    "description": "Cross-platform mobile development",
+    "items": [
+      "React Native",
+      "Flutter"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 138,
+  "fields": {
+    "name": "Data and Automation",
+    "slug": "data-and-automation",
+    "parent": 134,
+    "description": "Data extraction and automation",
+    "items": [
+      "Web Scraping & Data Extraction",
+      "Custom Automation Tools"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 139,
+  "fields": {
+    "name": "Design, Maintenance, & Optimization",
+    "slug": "design-maintenance-optimization",
+    "parent": null,
+    "description": "Design and optimization services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 140,
+  "fields": {
+    "name": "Web Design and UX/UI",
+    "slug": "web-design-and-uxui",
+    "parent": 139,
+    "description": "User interface and experience",
+    "items": [
+      "User Interface (UI) Design",
+      "User Experience (UX) Research",
+      "Prototyping and Testing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 141,
+  "fields": {
+    "name": "Maintenance and Support",
+    "slug": "maintenance-and-support",
+    "parent": 139,
+    "description": "Ongoing website support",
+    "items": [
+      "Bug Fixes & Debugging",
+      "Security Patching & Monitoring",
+      "Hosting/Server Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 142,
+  "fields": {
+    "name": "Technical Compliance",
+    "slug": "technical-compliance",
+    "parent": 139,
+    "description": "Technical standards and compliance",
+    "items": [
+      "Technical SEO",
+      "Web Accessibility (WCAG)"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 143,
+  "fields": {
+    "name": "Graphics & Design",
+    "slug": "graphics-design",
+    "parent": null,
+    "description": "Visual design and branding services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 144,
+  "fields": {
+    "name": "Logo & Brand Identity",
+    "slug": "logo-brand-identity",
+    "parent": 143,
+    "description": "Brand visual elements",
+    "items": [
+      "Logo Design",
+      "Brand Style Guides",
+      "Business Cards & Stationery"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 145,
+  "fields": {
+    "name": "Web & App Design",
+    "slug": "web-app-design",
+    "parent": 143,
+    "description": "Digital interface design",
+    "items": [
+      "Website Design",
+      "App Design",
+      "UX Design",
+      "Landing Page Design",
+      "Icon Design"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 146,
+  "fields": {
+    "name": "Art & Illustration",
+    "slug": "art-illustration",
+    "parent": 143,
+    "description": "Creative artwork",
+    "items": [
+      "Illustration",
+      "NFT Art",
+      "Pattern Design",
+      "Portraits & Caricatures",
+      "Cartoons & Comics"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 147,
+  "fields": {
+    "name": "Marketing Design",
+    "slug": "marketing-design",
+    "parent": 143,
+    "description": "Design for marketing materials",
+    "items": [
+      "Social Media Design",
+      "Email Design",
+      "Web Banners",
+      "Brochure Design"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 148,
+  "fields": {
+    "name": "Digital Marketing",
+    "slug": "digital-marketing",
+    "parent": null,
+    "description": "Online marketing services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 149,
+  "fields": {
+    "name": "Search Optimization (SEO)",
+    "slug": "search-optimization-seo",
+    "parent": 148,
+    "description": "Improve search rankings",
+    "items": [
+      "On-Page SEO",
+      "Off-Page SEO",
+      "Technical SEO",
+      "Keyword Research"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 150,
+  "fields": {
+    "name": "Social Media",
+    "slug": "social-media",
+    "parent": 148,
+    "description": "Social media management",
+    "items": [
+      "Social Media Management",
+      "Paid Social Media",
+      "Influencer Marketing",
+      "Community Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 151,
+  "fields": {
+    "name": "Advertising",
+    "slug": "advertising",
+    "parent": 148,
+    "description": "Paid advertising campaigns",
+    "items": [
+      "Google Ads (PPC)",
+      "Facebook Ads",
+      "Display Advertising",
+      "Video Marketing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 152,
+  "fields": {
+    "name": "Content Marketing",
+    "slug": "content-marketing",
+    "parent": 148,
+    "description": "Content strategy and creation",
+    "items": [
+      "Content Strategy",
+      "Guest Posting",
+      "Email Marketing",
+      "Text Message Marketing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 153,
+  "fields": {
+    "name": "Writing & Translation",
+    "slug": "writing-translation",
+    "parent": null,
+    "description": "Text and translation services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 154,
+  "fields": {
+    "name": "Content Writing",
+    "slug": "content-writing",
+    "parent": 153,
+    "description": "Web and article writing",
+    "items": [
+      "Articles & Blog Posts",
+      "Website Content",
+      "Product Descriptions",
+      "Case Studies"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 155,
+  "fields": {
+    "name": "Copywriting",
+    "slug": "copywriting",
+    "parent": 153,
+    "description": "Sales and marketing copy",
+    "items": [
+      "Sales Copy",
+      "Ad Copy",
+      "Email Copy",
+      "Social Media Copy",
+      "Landing Page Copy"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 156,
+  "fields": {
+    "name": "Technical & Business",
+    "slug": "technical-business",
+    "parent": 153,
+    "description": "Professional documentation",
+    "items": [
+      "Technical Writing",
+      "Business Plans",
+      "White Papers",
+      "Grant Writing",
+      "Resumes & Cover Letters"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 157,
+  "fields": {
+    "name": "Translation",
+    "slug": "translation",
+    "parent": 153,
+    "description": "Language services",
+    "items": [
+      "Translation",
+      "Localization",
+      "Transcription",
+      "Proofreading & Editing"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 158,
+  "fields": {
+    "name": "Video & Animation",
+    "slug": "video-animation",
+    "parent": null,
+    "description": "Video production services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 159,
+  "fields": {
+    "name": "Video Editing",
+    "slug": "video-editing",
+    "parent": 158,
+    "description": "Post-production",
+    "items": [
+      "Video Editing",
+      "Visual Effects",
+      "Color Grading",
+      "Subtitles & Captions"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 160,
+  "fields": {
+    "name": "Animation",
+    "slug": "animation",
+    "parent": 158,
+    "description": "Animated content",
+    "items": [
+      "2D Animation",
+      "3D Animation",
+      "Motion Graphics",
+      "Whiteboard Animation",
+      "Character Animation"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 161,
+  "fields": {
+    "name": "Social & Marketing Video",
+    "slug": "social-marketing-video",
+    "parent": 158,
+    "description": "Video for social media",
+    "items": [
+      "Video Ads & Commercials",
+      "Social Media Videos",
+      "Explainer Videos",
+      "Corporate Videos"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 162,
+  "fields": {
+    "name": "Music & Audio",
+    "slug": "music-audio",
+    "parent": null,
+    "description": "Audio production services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 163,
+  "fields": {
+    "name": "Production & Composition",
+    "slug": "production-composition",
+    "parent": 162,
+    "description": "Music creation",
+    "items": [
+      "Producers & Composers",
+      "Beat Making",
+      "Songwriters",
+      "Jingles & Intros"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 164,
+  "fields": {
+    "name": "Voice & Narration",
+    "slug": "voice-narration",
+    "parent": 162,
+    "description": "Vocal services",
+    "items": [
+      "Voice Over",
+      "Singers & Vocalists",
+      "Audiobook Production"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 165,
+  "fields": {
+    "name": "Mixing & Mastering",
+    "slug": "mixing-mastering",
+    "parent": 162,
+    "description": "Audio engineering",
+    "items": [
+      "Mixing",
+      "Mastering",
+      "Audio Editing",
+      "Vocal Tuning"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 166,
+  "fields": {
+    "name": "Programming & Tech (General)",
+    "slug": "programming-tech-general",
+    "parent": null,
+    "description": "General technical services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 167,
+  "fields": {
+    "name": "Mobile Apps",
+    "slug": "mobile-apps",
+    "parent": 166,
+    "description": "Mobile application development",
+    "items": [
+      "Android App Development",
+      "iOS App Development",
+      "Cross-Platform Apps",
+      "Mobile Game Development"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 168,
+  "fields": {
+    "name": "Desktop Applications",
+    "slug": "desktop-applications",
+    "parent": 166,
+    "description": "Desktop software",
+    "items": [
+      "Desktop Software Development",
+      "Support & IT"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 169,
+  "fields": {
+    "name": "Data Science",
+    "slug": "data-science",
+    "parent": 166,
+    "description": "Data analysis and AI",
+    "items": [
+      "Data Analysis & Visualization",
+      "Machine Learning",
+      "AI Services",
+      "Data Engineering"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 170,
+  "fields": {
+    "name": "Cybersecurity",
+    "slug": "cybersecurity",
+    "parent": 166,
+    "description": "Security services",
+    "items": [
+      "Penetration Testing",
+      "Security Audits",
+      "Malware Removal"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 171,
+  "fields": {
+    "name": "Business",
+    "slug": "business",
+    "parent": null,
+    "description": "Business support services",
+    "items": []
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 172,
+  "fields": {
+    "name": "Virtual Assistant",
+    "slug": "virtual-assistant",
+    "parent": 171,
+    "description": "Administrative support",
+    "items": [
+      "Virtual Assistant",
+      "Data Entry",
+      "Market Research",
+      "Project Management"
+    ]
+  }
+},
+{
+  "model": "Project.category",
+  "pk": 173,
+  "fields": {
+    "name": "Legal & Financial",
+    "slug": "legal-financial",
+    "parent": 171,
+    "description": "Professional consulting",
+    "items": [
+      "Legal Consulting",
+      "Financial Consulting",
+      "Business Consulting",
+      "HR Consulting"
+    ]
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 8,
+  "fields": {
+    "title": "Portfolio Website",
+    "description": "Build a robust, clean portfolio website to stand out amongst the crowd.",
+    "price": "100.00",
+    "budget": "100.00",
+    "thumbnail": "",
+    "delivery_days": "2025-11-30T06:24:28Z",
+    "created_at": "2025-11-28T06:25:15.335Z",
+    "updated_at": "2025-11-29T03:48:17.818Z",
+    "category": 131,
+    "client": 10,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 9,
+  "fields": {
+    "title": "An e-commerce website",
+    "description": "Create an e-commerce website like Amazon",
+    "price": "200.00",
+    "budget": "3000.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-15T12:00:00Z",
+    "created_at": "2025-11-28T06:28:03.750Z",
+    "updated_at": "2025-11-29T03:48:09.991Z",
+    "category": 133,
+    "client": 10,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 10,
+  "fields": {
+    "title": "Money",
+    "description": "Love money",
+    "price": "1789.00",
+    "budget": "1000.00",
+    "thumbnail": "",
+    "delivery_days": "2025-11-29T00:00:00Z",
+    "created_at": "2025-11-29T03:51:19.606Z",
+    "updated_at": "2025-11-29T03:51:19.606Z",
+    "category": 131,
+    "client": 7,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 11,
+  "fields": {
+    "title": "Hello",
+    "description": "Hi there",
+    "price": "199.99",
+    "budget": "199.99",
+    "thumbnail": "",
+    "delivery_days": null,
+    "created_at": "2025-11-29T17:16:04.350Z",
+    "updated_at": "2025-11-29T17:16:04.350Z",
+    "category": 140,
+    "client": 7,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 12,
+  "fields": {
+    "title": "I hate my Life",
+    "description": "My life is bullshit",
+    "price": "1000.00",
+    "budget": "1000.00",
+    "thumbnail": "",
+    "delivery_days": null,
+    "created_at": "2025-11-29T18:00:18.844Z",
+    "updated_at": "2025-11-29T18:00:18.845Z",
+    "category": 164,
+    "client": 7,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 13,
+  "fields": {
+    "title": "Error1",
+    "description": "errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr njiroesssscdjmkl",
+    "price": "100000.00",
+    "budget": "100000.00",
+    "thumbnail": "",
+    "delivery_days": null,
+    "created_at": "2025-11-29T18:56:25.126Z",
+    "updated_at": "2025-11-29T18:56:25.126Z",
+    "category": 133,
+    "client": 7,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 14,
+  "fields": {
+    "title": "Build a modern React website",
+    "description": "I will build a modern react website with high quality and fast delivery. Contact me for more details.",
+    "price": "2010.00",
+    "budget": "1770.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-10T05:50:25.674Z",
+    "created_at": "2025-11-30T05:50:25.677Z",
+    "updated_at": "2025-11-30T05:50:25.677Z",
+    "category": 145,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 15,
+  "fields": {
+    "title": "Design a stunning logo for your brand",
+    "description": "I will design a stunning logo for your brand with high quality and fast delivery. Contact me for more details.",
+    "price": "4750.00",
+    "budget": "600.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-14T05:50:25.687Z",
+    "created_at": "2025-11-30T05:50:25.689Z",
+    "updated_at": "2025-11-30T05:50:25.689Z",
+    "category": 170,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 16,
+  "fields": {
+    "title": "SEO optimization for your e-commerce store",
+    "description": "I will seo optimization for your e-commerce store with high quality and fast delivery. Contact me for more details.",
+    "price": "660.00",
+    "budget": "4960.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-05T05:50:25.699Z",
+    "created_at": "2025-11-30T05:50:25.701Z",
+    "updated_at": "2025-11-30T05:50:25.701Z",
+    "category": 168,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 17,
+  "fields": {
+    "title": "Write engaging blog posts for your niche",
+    "description": "I will write engaging blog posts for your niche with high quality and fast delivery. Contact me for more details.",
+    "price": "2880.00",
+    "budget": "2510.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-12T05:50:25.709Z",
+    "created_at": "2025-11-30T05:50:25.711Z",
+    "updated_at": "2025-11-30T05:50:25.711Z",
+    "category": 149,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 18,
+  "fields": {
+    "title": "Edit your YouTube videos professionally",
+    "description": "I will edit your youtube videos professionally with high quality and fast delivery. Contact me for more details.",
+    "price": "4620.00",
+    "budget": "690.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-06T05:50:25.719Z",
+    "created_at": "2025-11-30T05:50:25.721Z",
+    "updated_at": "2025-11-30T05:50:25.721Z",
+    "category": 156,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 19,
+  "fields": {
+    "title": "Develop a custom Python script",
+    "description": "I will develop a custom python script with high quality and fast delivery. Contact me for more details.",
+    "price": "3010.00",
+    "budget": "4310.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-03T05:50:25.730Z",
+    "created_at": "2025-11-30T05:50:25.732Z",
+    "updated_at": "2025-11-30T05:50:25.732Z",
+    "category": 142,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 20,
+  "fields": {
+    "title": "Create a mobile app UI design",
+    "description": "I will create a mobile app ui design with high quality and fast delivery. Contact me for more details.",
+    "price": "1270.00",
+    "budget": "1050.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:50:25.741Z",
+    "created_at": "2025-11-30T05:50:25.742Z",
+    "updated_at": "2025-11-30T05:50:25.743Z",
+    "category": 140,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 21,
+  "fields": {
+    "title": "Translate documents from English to Spanish",
+    "description": "I will translate documents from english to spanish with high quality and fast delivery. Contact me for more details.",
+    "price": "1090.00",
+    "budget": "2090.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:50:25.752Z",
+    "created_at": "2025-11-30T05:50:25.754Z",
+    "updated_at": "2025-11-30T05:50:25.754Z",
+    "category": 161,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 22,
+  "fields": {
+    "title": "Compose original background music",
+    "description": "I will compose original background music with high quality and fast delivery. Contact me for more details.",
+    "price": "1160.00",
+    "budget": "1100.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-03T05:50:25.763Z",
+    "created_at": "2025-11-30T05:50:25.764Z",
+    "updated_at": "2025-11-30T05:50:25.764Z",
+    "category": 156,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 23,
+  "fields": {
+    "title": "Virtual Assistant for data entry",
+    "description": "I will virtual assistant for data entry with high quality and fast delivery. Contact me for more details.",
+    "price": "3330.00",
+    "budget": "2410.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-10T05:50:25.775Z",
+    "created_at": "2025-11-30T05:50:25.777Z",
+    "updated_at": "2025-11-30T05:50:25.777Z",
+    "category": 170,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 24,
+  "fields": {
+    "title": "Need a developer for a SaaS platform",
+    "description": "We are looking for someone to need a developer for a saas platform. Must have experience and good portfolio.",
+    "price": "9090.00",
+    "budget": "3220.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-27T05:50:25.786Z",
+    "created_at": "2025-11-30T05:50:25.788Z",
+    "updated_at": "2025-11-30T05:50:26.076Z",
+    "category": 157,
+    "client": 16,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 25,
+  "fields": {
+    "title": "Looking for a logo designer for a startup",
+    "description": "We are looking for someone to looking for a logo designer for a startup. Must have experience and good portfolio.",
+    "price": "7280.00",
+    "budget": "2390.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-11T05:50:25.797Z",
+    "created_at": "2025-11-30T05:50:25.799Z",
+    "updated_at": "2025-11-30T05:50:26.135Z",
+    "category": 169,
+    "client": 17,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 26,
+  "fields": {
+    "title": "SEO expert needed for long term",
+    "description": "We are looking for someone to seo expert needed for long term. Must have experience and good portfolio.",
+    "price": "9130.00",
+    "budget": "8440.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-24T05:50:25.809Z",
+    "created_at": "2025-11-30T05:50:25.811Z",
+    "updated_at": "2025-11-30T05:50:26.211Z",
+    "category": 147,
+    "client": 18,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 27,
+  "fields": {
+    "title": "Copywriter for landing page",
+    "description": "We are looking for someone to copywriter for landing page. Must have experience and good portfolio.",
+    "price": "4800.00",
+    "budget": "1100.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-29T05:50:25.820Z",
+    "created_at": "2025-11-30T05:50:25.822Z",
+    "updated_at": "2025-11-30T05:50:25.822Z",
+    "category": 150,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 28,
+  "fields": {
+    "title": "Video editor for wedding footage",
+    "description": "We are looking for someone to video editor for wedding footage. Must have experience and good portfolio.",
+    "price": "7710.00",
+    "budget": "9860.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-23T05:50:25.830Z",
+    "created_at": "2025-11-30T05:50:25.832Z",
+    "updated_at": "2025-11-30T05:50:25.832Z",
+    "category": 167,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 29,
+  "fields": {
+    "title": "Python expert to fix bugs",
+    "description": "We are looking for someone to python expert to fix bugs. Must have experience and good portfolio.",
+    "price": "1760.00",
+    "budget": "2480.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-14T05:50:25.840Z",
+    "created_at": "2025-11-30T05:50:25.842Z",
+    "updated_at": "2025-11-30T05:50:25.842Z",
+    "category": 141,
+    "client": 16,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 30,
+  "fields": {
+    "title": "UI/UX designer for mobile app",
+    "description": "We are looking for someone to ui/ux designer for mobile app. Must have experience and good portfolio.",
+    "price": "8160.00",
+    "budget": "7750.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-18T05:50:25.851Z",
+    "created_at": "2025-11-30T05:50:25.853Z",
+    "updated_at": "2025-11-30T05:50:25.853Z",
+    "category": 165,
+    "client": 17,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 31,
+  "fields": {
+    "title": "Translator needed urgently",
+    "description": "We are looking for someone to translator needed urgently. Must have experience and good portfolio.",
+    "price": "2550.00",
+    "budget": "8170.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-14T05:50:25.862Z",
+    "created_at": "2025-11-30T05:50:25.863Z",
+    "updated_at": "2025-11-30T05:50:25.863Z",
+    "category": 159,
+    "client": 18,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 32,
+  "fields": {
+    "title": "Music composer for game",
+    "description": "We are looking for someone to music composer for game. Must have experience and good portfolio.",
+    "price": "7920.00",
+    "budget": "1810.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-15T05:50:25.874Z",
+    "created_at": "2025-11-30T05:50:25.875Z",
+    "updated_at": "2025-11-30T05:50:25.875Z",
+    "category": 133,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 33,
+  "fields": {
+    "title": "Data entry specialist needed",
+    "description": "We are looking for someone to data entry specialist needed. Must have experience and good portfolio.",
+    "price": "7670.00",
+    "budget": "7790.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-22T05:50:25.885Z",
+    "created_at": "2025-11-30T05:50:25.887Z",
+    "updated_at": "2025-11-30T05:50:25.887Z",
+    "category": 137,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 34,
+  "fields": {
+    "title": "Design a stunning Fashion logo (928)",
+    "description": "I will design a stunning fashion logo (928) with high quality and fast delivery. Contact me for more details.",
+    "price": "790.00",
+    "budget": "1910.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-12T05:58:27.538Z",
+    "created_at": "2025-11-30T05:58:27.551Z",
+    "updated_at": "2025-11-30T05:58:27.551Z",
+    "category": 159,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 35,
+  "fields": {
+    "title": "Edit your Wedding videos (511)",
+    "description": "I will edit your wedding videos (511) with high quality and fast delivery. Contact me for more details.",
+    "price": "4710.00",
+    "budget": "1030.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-09T05:58:27.559Z",
+    "created_at": "2025-11-30T05:58:27.560Z",
+    "updated_at": "2025-11-30T05:58:27.560Z",
+    "category": 136,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 36,
+  "fields": {
+    "title": "SEO optimization for Food (783)",
+    "description": "I will seo optimization for food (783) with high quality and fast delivery. Contact me for more details.",
+    "price": "4990.00",
+    "budget": "2230.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:27.568Z",
+    "created_at": "2025-11-30T05:58:27.569Z",
+    "updated_at": "2025-11-30T05:58:27.569Z",
+    "category": 157,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 37,
+  "fields": {
+    "title": "Compose Food background music (663)",
+    "description": "I will compose food background music (663) with high quality and fast delivery. Contact me for more details.",
+    "price": "4270.00",
+    "budget": "2990.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:27.577Z",
+    "created_at": "2025-11-30T05:58:27.578Z",
+    "updated_at": "2025-11-30T05:58:27.578Z",
+    "category": 131,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 38,
+  "fields": {
+    "title": "Compose Data Entry background music (595)",
+    "description": "I will compose data entry background music (595) with high quality and fast delivery. Contact me for more details.",
+    "price": "2060.00",
+    "budget": "2020.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-12T05:58:27.586Z",
+    "created_at": "2025-11-30T05:58:27.587Z",
+    "updated_at": "2025-11-30T05:58:27.587Z",
+    "category": 135,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 39,
+  "fields": {
+    "title": "Edit your Wedding videos (346)",
+    "description": "I will edit your wedding videos (346) with high quality and fast delivery. Contact me for more details.",
+    "price": "3380.00",
+    "budget": "3790.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.594Z",
+    "created_at": "2025-11-30T05:58:27.596Z",
+    "updated_at": "2025-11-30T05:58:27.596Z",
+    "category": 132,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 40,
+  "fields": {
+    "title": "Build a modern React website (687)",
+    "description": "I will build a modern react website (687) with high quality and fast delivery. Contact me for more details.",
+    "price": "640.00",
+    "budget": "3680.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.605Z",
+    "created_at": "2025-11-30T05:58:27.606Z",
+    "updated_at": "2025-11-30T05:58:27.606Z",
+    "category": 145,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 41,
+  "fields": {
+    "title": "SEO optimization for Travel (969)",
+    "description": "I will seo optimization for travel (969) with high quality and fast delivery. Contact me for more details.",
+    "price": "1770.00",
+    "budget": "1150.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-04T05:58:27.613Z",
+    "created_at": "2025-11-30T05:58:27.614Z",
+    "updated_at": "2025-11-30T05:58:27.614Z",
+    "category": 169,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 42,
+  "fields": {
+    "title": "Translate Fashion documents (752)",
+    "description": "I will translate fashion documents (752) with high quality and fast delivery. Contact me for more details.",
+    "price": "1630.00",
+    "budget": "730.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.622Z",
+    "created_at": "2025-11-30T05:58:27.623Z",
+    "updated_at": "2025-11-30T05:58:27.623Z",
+    "category": 161,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 43,
+  "fields": {
+    "title": "Compose Travel background music (609)",
+    "description": "I will compose travel background music (609) with high quality and fast delivery. Contact me for more details.",
+    "price": "1410.00",
+    "budget": "4470.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-10T05:58:27.634Z",
+    "created_at": "2025-11-30T05:58:27.635Z",
+    "updated_at": "2025-11-30T05:58:27.635Z",
+    "category": 138,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 44,
+  "fields": {
+    "title": "Write engaging E-commerce blog posts (266)",
+    "description": "I will write engaging e-commerce blog posts (266) with high quality and fast delivery. Contact me for more details.",
+    "price": "2170.00",
+    "budget": "1590.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-04T05:58:27.643Z",
+    "created_at": "2025-11-30T05:58:27.644Z",
+    "updated_at": "2025-11-30T05:58:27.644Z",
+    "category": 147,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 45,
+  "fields": {
+    "title": "Translate Real Estate documents (123)",
+    "description": "I will translate real estate documents (123) with high quality and fast delivery. Contact me for more details.",
+    "price": "1570.00",
+    "budget": "3060.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.654Z",
+    "created_at": "2025-11-30T05:58:27.655Z",
+    "updated_at": "2025-11-30T05:58:27.655Z",
+    "category": 170,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 46,
+  "fields": {
+    "title": "Virtual Assistant for Real Estate (244)",
+    "description": "I will virtual assistant for real estate (244) with high quality and fast delivery. Contact me for more details.",
+    "price": "1980.00",
+    "budget": "1000.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:27.664Z",
+    "created_at": "2025-11-30T05:58:27.665Z",
+    "updated_at": "2025-11-30T05:58:27.665Z",
+    "category": 137,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 47,
+  "fields": {
+    "title": "Create a Fashion mobile app design (857)",
+    "description": "I will create a fashion mobile app design (857) with high quality and fast delivery. Contact me for more details.",
+    "price": "1510.00",
+    "budget": "4160.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:27.676Z",
+    "created_at": "2025-11-30T05:58:27.677Z",
+    "updated_at": "2025-11-30T05:58:27.677Z",
+    "category": 149,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 48,
+  "fields": {
+    "title": "Translate Game documents (915)",
+    "description": "I will translate game documents (915) with high quality and fast delivery. Contact me for more details.",
+    "price": "860.00",
+    "budget": "1540.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-05T05:58:27.687Z",
+    "created_at": "2025-11-30T05:58:27.688Z",
+    "updated_at": "2025-11-30T05:58:27.688Z",
+    "category": 173,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 49,
+  "fields": {
+    "title": "SEO optimization for Fitness (374)",
+    "description": "I will seo optimization for fitness (374) with high quality and fast delivery. Contact me for more details.",
+    "price": "2570.00",
+    "budget": "540.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-04T05:58:27.695Z",
+    "created_at": "2025-11-30T05:58:27.696Z",
+    "updated_at": "2025-11-30T05:58:27.696Z",
+    "category": 141,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 50,
+  "fields": {
+    "title": "Virtual Assistant for Wedding (956)",
+    "description": "I will virtual assistant for wedding (956) with high quality and fast delivery. Contact me for more details.",
+    "price": "3230.00",
+    "budget": "860.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:27.705Z",
+    "created_at": "2025-11-30T05:58:27.706Z",
+    "updated_at": "2025-11-30T05:58:27.706Z",
+    "category": 150,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 51,
+  "fields": {
+    "title": "Edit your React videos (342)",
+    "description": "I will edit your react videos (342) with high quality and fast delivery. Contact me for more details.",
+    "price": "2670.00",
+    "budget": "1370.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:27.714Z",
+    "created_at": "2025-11-30T05:58:27.715Z",
+    "updated_at": "2025-11-30T05:58:27.715Z",
+    "category": 146,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 52,
+  "fields": {
+    "title": "Translate React documents (515)",
+    "description": "I will translate react documents (515) with high quality and fast delivery. Contact me for more details.",
+    "price": "4370.00",
+    "budget": "4240.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-09T05:58:27.724Z",
+    "created_at": "2025-11-30T05:58:27.725Z",
+    "updated_at": "2025-11-30T05:58:27.725Z",
+    "category": 167,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 53,
+  "fields": {
+    "title": "Compose Tech background music (731)",
+    "description": "I will compose tech background music (731) with high quality and fast delivery. Contact me for more details.",
+    "price": "3200.00",
+    "budget": "3110.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-03T05:58:27.738Z",
+    "created_at": "2025-11-30T05:58:27.739Z",
+    "updated_at": "2025-11-30T05:58:27.739Z",
+    "category": 152,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 54,
+  "fields": {
+    "title": "Write engaging Wedding blog posts (535)",
+    "description": "I will write engaging wedding blog posts (535) with high quality and fast delivery. Contact me for more details.",
+    "price": "2780.00",
+    "budget": "1890.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.748Z",
+    "created_at": "2025-11-30T05:58:27.749Z",
+    "updated_at": "2025-11-30T05:58:27.749Z",
+    "category": 151,
+    "client": 11,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 55,
+  "fields": {
+    "title": "Develop a custom Business script (795)",
+    "description": "I will develop a custom business script (795) with high quality and fast delivery. Contact me for more details.",
+    "price": "3030.00",
+    "budget": "1900.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-04T05:58:27.757Z",
+    "created_at": "2025-11-30T05:58:27.758Z",
+    "updated_at": "2025-11-30T05:58:27.758Z",
+    "category": 165,
+    "client": 12,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 56,
+  "fields": {
+    "title": "Write engaging Data Entry blog posts (533)",
+    "description": "I will write engaging data entry blog posts (533) with high quality and fast delivery. Contact me for more details.",
+    "price": "570.00",
+    "budget": "2270.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:27.765Z",
+    "created_at": "2025-11-30T05:58:27.766Z",
+    "updated_at": "2025-11-30T05:58:27.766Z",
+    "category": 132,
+    "client": 13,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 57,
+  "fields": {
+    "title": "SEO optimization for Real Estate (934)",
+    "description": "I will seo optimization for real estate (934) with high quality and fast delivery. Contact me for more details.",
+    "price": "1540.00",
+    "budget": "2440.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-04T05:58:27.774Z",
+    "created_at": "2025-11-30T05:58:27.775Z",
+    "updated_at": "2025-11-30T05:58:27.775Z",
+    "category": 161,
+    "client": 14,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 58,
+  "fields": {
+    "title": "Design a stunning Tech logo (490)",
+    "description": "I will design a stunning tech logo (490) with high quality and fast delivery. Contact me for more details.",
+    "price": "3080.00",
+    "budget": "970.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-03T05:58:27.794Z",
+    "created_at": "2025-11-30T05:58:27.795Z",
+    "updated_at": "2025-11-30T05:58:27.795Z",
+    "category": 161,
+    "client": 15,
+    "status": "OPEN",
+    "project_type": "GIG",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 59,
+  "fields": {
+    "title": "Travel specialist needed (863)",
+    "description": "We are looking for someone to travel specialist needed (863). Must have experience and good portfolio.",
+    "price": "2370.00",
+    "budget": "6160.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-27T05:58:27.805Z",
+    "created_at": "2025-11-30T05:58:27.807Z",
+    "updated_at": "2025-11-30T05:58:28.842Z",
+    "category": 135,
+    "client": 16,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 60,
+  "fields": {
+    "title": "Need a developer for Tech (138)",
+    "description": "We are looking for someone to need a developer for tech (138). Must have experience and good portfolio.",
+    "price": "8540.00",
+    "budget": "2690.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-30T05:58:27.816Z",
+    "created_at": "2025-11-30T05:58:27.817Z",
+    "updated_at": "2025-11-30T05:58:28.892Z",
+    "category": 169,
+    "client": 17,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 61,
+  "fields": {
+    "title": "Copywriter for Business (763)",
+    "description": "We are looking for someone to copywriter for business (763). Must have experience and good portfolio.",
+    "price": "2490.00",
+    "budget": "5530.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-30T05:58:27.825Z",
+    "created_at": "2025-11-30T05:58:27.826Z",
+    "updated_at": "2025-11-30T05:58:29.042Z",
+    "category": 133,
+    "client": 18,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 62,
+  "fields": {
+    "title": "React expert needed (942)",
+    "description": "We are looking for someone to react expert needed (942). Must have experience and good portfolio.",
+    "price": "4830.00",
+    "budget": "5030.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-18T05:58:27.837Z",
+    "created_at": "2025-11-30T05:58:27.838Z",
+    "updated_at": "2025-11-30T05:58:29.095Z",
+    "category": 173,
+    "client": 19,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 63,
+  "fields": {
+    "title": "Fitness expert to fix bugs (276)",
+    "description": "We are looking for someone to fitness expert to fix bugs (276). Must have experience and good portfolio.",
+    "price": "4690.00",
+    "budget": "5340.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-18T05:58:27.847Z",
+    "created_at": "2025-11-30T05:58:27.848Z",
+    "updated_at": "2025-11-30T05:58:29.142Z",
+    "category": 155,
+    "client": 20,
+    "status": "COMPLETED",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 64,
+  "fields": {
+    "title": "Food expert needed (847)",
+    "description": "We are looking for someone to food expert needed (847). Must have experience and good portfolio.",
+    "price": "7610.00",
+    "budget": "1920.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-09T05:58:27.895Z",
+    "created_at": "2025-11-30T05:58:27.896Z",
+    "updated_at": "2025-11-30T05:58:27.896Z",
+    "category": 137,
+    "client": 16,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 65,
+  "fields": {
+    "title": "Video editor for Fashion (515)",
+    "description": "We are looking for someone to video editor for fashion (515). Must have experience and good portfolio.",
+    "price": "2120.00",
+    "budget": "9360.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-25T05:58:27.904Z",
+    "created_at": "2025-11-30T05:58:27.905Z",
+    "updated_at": "2025-11-30T05:58:27.905Z",
+    "category": 144,
+    "client": 17,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 66,
+  "fields": {
+    "title": "Copywriter for Crypto (605)",
+    "description": "We are looking for someone to copywriter for crypto (605). Must have experience and good portfolio.",
+    "price": "7050.00",
+    "budget": "9480.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-27T05:58:27.913Z",
+    "created_at": "2025-11-30T05:58:27.914Z",
+    "updated_at": "2025-11-30T05:58:27.914Z",
+    "category": 168,
+    "client": 18,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 67,
+  "fields": {
+    "title": "Copywriter for Data Entry (989)",
+    "description": "We are looking for someone to copywriter for data entry (989). Must have experience and good portfolio.",
+    "price": "6430.00",
+    "budget": "8280.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-16T05:58:27.922Z",
+    "created_at": "2025-11-30T05:58:27.923Z",
+    "updated_at": "2025-11-30T05:58:27.923Z",
+    "category": 141,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 68,
+  "fields": {
+    "title": "UI/UX designer for Travel (429)",
+    "description": "We are looking for someone to ui/ux designer for travel (429). Must have experience and good portfolio.",
+    "price": "8340.00",
+    "budget": "4420.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-21T05:58:27.933Z",
+    "created_at": "2025-11-30T05:58:27.934Z",
+    "updated_at": "2025-11-30T05:58:27.934Z",
+    "category": 164,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 69,
+  "fields": {
+    "title": "Copywriter for Fitness (478)",
+    "description": "We are looking for someone to copywriter for fitness (478). Must have experience and good portfolio.",
+    "price": "2580.00",
+    "budget": "4490.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-25T05:58:27.943Z",
+    "created_at": "2025-11-30T05:58:27.944Z",
+    "updated_at": "2025-11-30T05:58:27.944Z",
+    "category": 133,
+    "client": 16,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 70,
+  "fields": {
+    "title": "UI/UX designer for Crypto (669)",
+    "description": "We are looking for someone to ui/ux designer for crypto (669). Must have experience and good portfolio.",
+    "price": "2430.00",
+    "budget": "9750.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-12T05:58:27.952Z",
+    "created_at": "2025-11-30T05:58:27.953Z",
+    "updated_at": "2025-11-30T05:58:27.953Z",
+    "category": 147,
+    "client": 17,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 71,
+  "fields": {
+    "title": "Fashion composer needed (173)",
+    "description": "We are looking for someone to fashion composer needed (173). Must have experience and good portfolio.",
+    "price": "2780.00",
+    "budget": "1570.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-15T05:58:27.962Z",
+    "created_at": "2025-11-30T05:58:27.963Z",
+    "updated_at": "2025-11-30T05:58:27.963Z",
+    "category": 154,
+    "client": 18,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 72,
+  "fields": {
+    "title": "Python specialist needed (425)",
+    "description": "We are looking for someone to python specialist needed (425). Must have experience and good portfolio.",
+    "price": "8420.00",
+    "budget": "1180.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-27T05:58:27.973Z",
+    "created_at": "2025-11-30T05:58:27.974Z",
+    "updated_at": "2025-11-30T05:58:27.974Z",
+    "category": 155,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 73,
+  "fields": {
+    "title": "Translator needed for E-commerce (540)",
+    "description": "We are looking for someone to translator needed for e-commerce (540). Must have experience and good portfolio.",
+    "price": "4070.00",
+    "budget": "3010.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-26T05:58:27.984Z",
+    "created_at": "2025-11-30T05:58:27.985Z",
+    "updated_at": "2025-11-30T05:58:27.985Z",
+    "category": 146,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 74,
+  "fields": {
+    "title": "UI/UX designer for Fitness (523)",
+    "description": "We are looking for someone to ui/ux designer for fitness (523). Must have experience and good portfolio.",
+    "price": "6970.00",
+    "budget": "4390.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-13T05:58:27.994Z",
+    "created_at": "2025-11-30T05:58:27.995Z",
+    "updated_at": "2025-11-30T05:58:27.995Z",
+    "category": 133,
+    "client": 16,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 75,
+  "fields": {
+    "title": "Crypto expert needed (753)",
+    "description": "We are looking for someone to crypto expert needed (753). Must have experience and good portfolio.",
+    "price": "1070.00",
+    "budget": "1480.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:28.005Z",
+    "created_at": "2025-11-30T05:58:28.007Z",
+    "updated_at": "2025-11-30T05:58:28.007Z",
+    "category": 132,
+    "client": 17,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 76,
+  "fields": {
+    "title": "Crypto composer needed (554)",
+    "description": "We are looking for someone to crypto composer needed (554). Must have experience and good portfolio.",
+    "price": "7170.00",
+    "budget": "4370.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-15T05:58:28.016Z",
+    "created_at": "2025-11-30T05:58:28.017Z",
+    "updated_at": "2025-11-30T05:58:28.017Z",
+    "category": 152,
+    "client": 18,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 77,
+  "fields": {
+    "title": "Tech specialist needed (132)",
+    "description": "We are looking for someone to tech specialist needed (132). Must have experience and good portfolio.",
+    "price": "4600.00",
+    "budget": "5880.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:28.026Z",
+    "created_at": "2025-11-30T05:58:28.027Z",
+    "updated_at": "2025-11-30T05:58:28.027Z",
+    "category": 137,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 78,
+  "fields": {
+    "title": "Looking for a Tech designer (518)",
+    "description": "We are looking for someone to looking for a tech designer (518). Must have experience and good portfolio.",
+    "price": "6830.00",
+    "budget": "9430.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:28.038Z",
+    "created_at": "2025-11-30T05:58:28.039Z",
+    "updated_at": "2025-11-30T05:58:28.039Z",
+    "category": 138,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 79,
+  "fields": {
+    "title": "Fitness composer needed (977)",
+    "description": "We are looking for someone to fitness composer needed (977). Must have experience and good portfolio.",
+    "price": "1930.00",
+    "budget": "1280.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:28.049Z",
+    "created_at": "2025-11-30T05:58:28.050Z",
+    "updated_at": "2025-11-30T05:58:28.050Z",
+    "category": 160,
+    "client": 16,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 80,
+  "fields": {
+    "title": "Looking for a Fitness designer (100)",
+    "description": "We are looking for someone to looking for a fitness designer (100). Must have experience and good portfolio.",
+    "price": "5500.00",
+    "budget": "1880.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-08T05:58:28.061Z",
+    "created_at": "2025-11-30T05:58:28.062Z",
+    "updated_at": "2025-11-30T05:58:28.062Z",
+    "category": 167,
+    "client": 17,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 81,
+  "fields": {
+    "title": "Copywriter for Wedding (982)",
+    "description": "We are looking for someone to copywriter for wedding (982). Must have experience and good portfolio.",
+    "price": "8070.00",
+    "budget": "9070.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-15T05:58:28.070Z",
+    "created_at": "2025-11-30T05:58:28.072Z",
+    "updated_at": "2025-11-30T05:58:28.072Z",
+    "category": 164,
+    "client": 18,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 82,
+  "fields": {
+    "title": "Crypto composer needed (802)",
+    "description": "We are looking for someone to crypto composer needed (802). Must have experience and good portfolio.",
+    "price": "9810.00",
+    "budget": "5260.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-07T05:58:28.081Z",
+    "created_at": "2025-11-30T05:58:28.082Z",
+    "updated_at": "2025-11-30T05:58:28.082Z",
+    "category": 136,
+    "client": 19,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Project.project",
+  "pk": 83,
+  "fields": {
+    "title": "Fashion expert needed (342)",
+    "description": "We are looking for someone to fashion expert needed (342). Must have experience and good portfolio.",
+    "price": "6290.00",
+    "budget": "7110.00",
+    "thumbnail": "",
+    "delivery_days": "2025-12-29T05:58:28.092Z",
+    "created_at": "2025-11-30T05:58:28.093Z",
+    "updated_at": "2025-11-30T05:58:28.093Z",
+    "category": 173,
+    "client": 20,
+    "status": "OPEN",
+    "project_type": "JOB",
+    "has_milestones": false,
+    "milestone_count": 0
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 4,
+  "fields": {
+    "bid_amount": "200.00",
+    "cover_letter": "Okay, the error has been fixed, but the gigs are not being shown. Also, when I am logged out, when I say \"find work\" or \"find talent,\" nothing is being displayed.\r\n\r\nRight now, I created what you call gigs from the freelancer side to a client, which is the logged-in client. But then nothing is being rendered, whether it's logged in or not.",
+    "project": 8,
+    "freelancer": 10,
+    "status": "PENDING",
+    "created_at": "2025-11-28T06:35:45.736Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 5,
+  "fields": {
+    "bid_amount": "5000.00",
+    "cover_letter": "the client page is not working",
+    "project": 9,
+    "freelancer": 10,
+    "status": "PENDING",
+    "created_at": "2025-11-28T14:15:11.565Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 6,
+  "fields": {
+    "bid_amount": "600.00",
+    "cover_letter": "So he basically sees proposals that have been sent to him, and proposals that are still not yet accepted by any other freelancer.",
+    "project": 8,
+    "freelancer": 7,
+    "status": "PENDING",
+    "created_at": "2025-11-28T21:20:58.207Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 7,
+  "fields": {
+    "bid_amount": "2000.00",
+    "cover_letter": "The page is now live at /freelancer/proposals. Freelancers can track their applications and discover new opportunities all in one place!\r\n\r\nPlease test the functionality - try submitting a proposal to an open job and viewing your submission history",
+    "project": 9,
+    "freelancer": 7,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-28T21:22:36.153Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 8,
+  "fields": {
+    "bid_amount": "3442.93",
+    "cover_letter": "Hi, I am interested in your project 'Need a developer for a SaaS platform'. I have the skills to complete it.",
+    "project": 24,
+    "freelancer": 15,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:50:25.899Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 9,
+  "fields": {
+    "bid_amount": "3736.93",
+    "cover_letter": "Hi, I am interested in your project 'Need a developer for a SaaS platform'. I have the skills to complete it.",
+    "project": 24,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.909Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 10,
+  "fields": {
+    "bid_amount": "3316.60",
+    "cover_letter": "Hi, I am interested in your project 'Need a developer for a SaaS platform'. I have the skills to complete it.",
+    "project": 24,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.918Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 11,
+  "fields": {
+    "bid_amount": "2207.28",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a logo designer for a startup'. I have the skills to complete it.",
+    "project": 25,
+    "freelancer": 12,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:50:25.929Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 12,
+  "fields": {
+    "bid_amount": "1917.58",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a logo designer for a startup'. I have the skills to complete it.",
+    "project": 25,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.941Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 13,
+  "fields": {
+    "bid_amount": "7263.15",
+    "cover_letter": "Hi, I am interested in your project 'SEO expert needed for long term'. I have the skills to complete it.",
+    "project": 26,
+    "freelancer": 13,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:50:25.950Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 14,
+  "fields": {
+    "bid_amount": "9211.86",
+    "cover_letter": "Hi, I am interested in your project 'SEO expert needed for long term'. I have the skills to complete it.",
+    "project": 26,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.960Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 15,
+  "fields": {
+    "bid_amount": "1152.41",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for landing page'. I have the skills to complete it.",
+    "project": 27,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.970Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 16,
+  "fields": {
+    "bid_amount": "11717.09",
+    "cover_letter": "Hi, I am interested in your project 'Video editor for wedding footage'. I have the skills to complete it.",
+    "project": 28,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.981Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 17,
+  "fields": {
+    "bid_amount": "2489.97",
+    "cover_letter": "Hi, I am interested in your project 'Python expert to fix bugs'. I have the skills to complete it.",
+    "project": 29,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.990Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 18,
+  "fields": {
+    "bid_amount": "2891.84",
+    "cover_letter": "Hi, I am interested in your project 'Python expert to fix bugs'. I have the skills to complete it.",
+    "project": 29,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:25.999Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 19,
+  "fields": {
+    "bid_amount": "2080.97",
+    "cover_letter": "Hi, I am interested in your project 'Python expert to fix bugs'. I have the skills to complete it.",
+    "project": 29,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.007Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 20,
+  "fields": {
+    "bid_amount": "9263.59",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for mobile app'. I have the skills to complete it.",
+    "project": 30,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.017Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 21,
+  "fields": {
+    "bid_amount": "7071.22",
+    "cover_letter": "Hi, I am interested in your project 'Translator needed urgently'. I have the skills to complete it.",
+    "project": 31,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.027Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 22,
+  "fields": {
+    "bid_amount": "9745.97",
+    "cover_letter": "Hi, I am interested in your project 'Translator needed urgently'. I have the skills to complete it.",
+    "project": 31,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.039Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 23,
+  "fields": {
+    "bid_amount": "1976.66",
+    "cover_letter": "Hi, I am interested in your project 'Music composer for game'. I have the skills to complete it.",
+    "project": 32,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.048Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 24,
+  "fields": {
+    "bid_amount": "7021.38",
+    "cover_letter": "Hi, I am interested in your project 'Data entry specialist needed'. I have the skills to complete it.",
+    "project": 33,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.058Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 25,
+  "fields": {
+    "bid_amount": "8286.12",
+    "cover_letter": "Hi, I am interested in your project 'Data entry specialist needed'. I have the skills to complete it.",
+    "project": 33,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:50:26.068Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 26,
+  "fields": {
+    "bid_amount": "4988.10",
+    "cover_letter": "Hi, I am interested in your project 'Travel specialist needed (863)'. I have the skills to complete it.",
+    "project": 59,
+    "freelancer": 13,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:58:28.104Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 27,
+  "fields": {
+    "bid_amount": "2254.29",
+    "cover_letter": "Hi, I am interested in your project 'Need a developer for Tech (138)'. I have the skills to complete it.",
+    "project": 60,
+    "freelancer": 14,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:58:28.114Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 28,
+  "fields": {
+    "bid_amount": "2313.91",
+    "cover_letter": "Hi, I am interested in your project 'Need a developer for Tech (138)'. I have the skills to complete it.",
+    "project": 60,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.126Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 29,
+  "fields": {
+    "bid_amount": "6268.29",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Business (763)'. I have the skills to complete it.",
+    "project": 61,
+    "freelancer": 12,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:58:28.137Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 30,
+  "fields": {
+    "bid_amount": "4917.56",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Business (763)'. I have the skills to complete it.",
+    "project": 61,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.148Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 31,
+  "fields": {
+    "bid_amount": "5783.24",
+    "cover_letter": "Hi, I am interested in your project 'React expert needed (942)'. I have the skills to complete it.",
+    "project": 62,
+    "freelancer": 12,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:58:28.159Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 32,
+  "fields": {
+    "bid_amount": "5331.78",
+    "cover_letter": "Hi, I am interested in your project 'Fitness expert to fix bugs (276)'. I have the skills to complete it.",
+    "project": 63,
+    "freelancer": 14,
+    "status": "ACCEPTED",
+    "created_at": "2025-11-30T05:58:28.170Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 33,
+  "fields": {
+    "bid_amount": "4844.28",
+    "cover_letter": "Hi, I am interested in your project 'Fitness expert to fix bugs (276)'. I have the skills to complete it.",
+    "project": 63,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.180Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 34,
+  "fields": {
+    "bid_amount": "1627.30",
+    "cover_letter": "Hi, I am interested in your project 'Food expert needed (847)'. I have the skills to complete it.",
+    "project": 64,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.257Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 35,
+  "fields": {
+    "bid_amount": "1830.28",
+    "cover_letter": "Hi, I am interested in your project 'Food expert needed (847)'. I have the skills to complete it.",
+    "project": 64,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.268Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 36,
+  "fields": {
+    "bid_amount": "8799.13",
+    "cover_letter": "Hi, I am interested in your project 'Video editor for Fashion (515)'. I have the skills to complete it.",
+    "project": 65,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.279Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 37,
+  "fields": {
+    "bid_amount": "7983.59",
+    "cover_letter": "Hi, I am interested in your project 'Video editor for Fashion (515)'. I have the skills to complete it.",
+    "project": 65,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.291Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 38,
+  "fields": {
+    "bid_amount": "10563.02",
+    "cover_letter": "Hi, I am interested in your project 'Video editor for Fashion (515)'. I have the skills to complete it.",
+    "project": 65,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.299Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 39,
+  "fields": {
+    "bid_amount": "10982.18",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Crypto (605)'. I have the skills to complete it.",
+    "project": 66,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.307Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 40,
+  "fields": {
+    "bid_amount": "8594.69",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Crypto (605)'. I have the skills to complete it.",
+    "project": 66,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.329Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 41,
+  "fields": {
+    "bid_amount": "9405.63",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Data Entry (989)'. I have the skills to complete it.",
+    "project": 67,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.340Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 42,
+  "fields": {
+    "bid_amount": "5146.31",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Travel (429)'. I have the skills to complete it.",
+    "project": 68,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.361Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 43,
+  "fields": {
+    "bid_amount": "3847.05",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Travel (429)'. I have the skills to complete it.",
+    "project": 68,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.369Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 44,
+  "fields": {
+    "bid_amount": "4591.23",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Travel (429)'. I have the skills to complete it.",
+    "project": 68,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.378Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 45,
+  "fields": {
+    "bid_amount": "4089.03",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Fitness (478)'. I have the skills to complete it.",
+    "project": 69,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.390Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 46,
+  "fields": {
+    "bid_amount": "5148.26",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Fitness (478)'. I have the skills to complete it.",
+    "project": 69,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.491Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 47,
+  "fields": {
+    "bid_amount": "5088.56",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Fitness (478)'. I have the skills to complete it.",
+    "project": 69,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.499Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 48,
+  "fields": {
+    "bid_amount": "9367.11",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Crypto (669)'. I have the skills to complete it.",
+    "project": 70,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.508Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 49,
+  "fields": {
+    "bid_amount": "8676.74",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Crypto (669)'. I have the skills to complete it.",
+    "project": 70,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.516Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 50,
+  "fields": {
+    "bid_amount": "1791.26",
+    "cover_letter": "Hi, I am interested in your project 'Fashion composer needed (173)'. I have the skills to complete it.",
+    "project": 71,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.525Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 51,
+  "fields": {
+    "bid_amount": "1723.55",
+    "cover_letter": "Hi, I am interested in your project 'Fashion composer needed (173)'. I have the skills to complete it.",
+    "project": 71,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.533Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 52,
+  "fields": {
+    "bid_amount": "1277.64",
+    "cover_letter": "Hi, I am interested in your project 'Fashion composer needed (173)'. I have the skills to complete it.",
+    "project": 71,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.543Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 53,
+  "fields": {
+    "bid_amount": "1222.97",
+    "cover_letter": "Hi, I am interested in your project 'Python specialist needed (425)'. I have the skills to complete it.",
+    "project": 72,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.553Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 54,
+  "fields": {
+    "bid_amount": "1105.90",
+    "cover_letter": "Hi, I am interested in your project 'Python specialist needed (425)'. I have the skills to complete it.",
+    "project": 72,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.564Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 55,
+  "fields": {
+    "bid_amount": "2483.73",
+    "cover_letter": "Hi, I am interested in your project 'Translator needed for E-commerce (540)'. I have the skills to complete it.",
+    "project": 73,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.575Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 56,
+  "fields": {
+    "bid_amount": "3558.65",
+    "cover_letter": "Hi, I am interested in your project 'Translator needed for E-commerce (540)'. I have the skills to complete it.",
+    "project": 73,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.584Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 57,
+  "fields": {
+    "bid_amount": "2955.67",
+    "cover_letter": "Hi, I am interested in your project 'Translator needed for E-commerce (540)'. I have the skills to complete it.",
+    "project": 73,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.592Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 58,
+  "fields": {
+    "bid_amount": "5019.10",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Fitness (523)'. I have the skills to complete it.",
+    "project": 74,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.604Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 59,
+  "fields": {
+    "bid_amount": "4321.43",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Fitness (523)'. I have the skills to complete it.",
+    "project": 74,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.612Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 60,
+  "fields": {
+    "bid_amount": "4122.11",
+    "cover_letter": "Hi, I am interested in your project 'UI/UX designer for Fitness (523)'. I have the skills to complete it.",
+    "project": 74,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.623Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 61,
+  "fields": {
+    "bid_amount": "1757.46",
+    "cover_letter": "Hi, I am interested in your project 'Crypto expert needed (753)'. I have the skills to complete it.",
+    "project": 75,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.634Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 62,
+  "fields": {
+    "bid_amount": "1324.12",
+    "cover_letter": "Hi, I am interested in your project 'Crypto expert needed (753)'. I have the skills to complete it.",
+    "project": 75,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.644Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 63,
+  "fields": {
+    "bid_amount": "3498.49",
+    "cover_letter": "Hi, I am interested in your project 'Crypto composer needed (554)'. I have the skills to complete it.",
+    "project": 76,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.656Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 64,
+  "fields": {
+    "bid_amount": "4705.55",
+    "cover_letter": "Hi, I am interested in your project 'Tech specialist needed (132)'. I have the skills to complete it.",
+    "project": 77,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.669Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 65,
+  "fields": {
+    "bid_amount": "5961.06",
+    "cover_letter": "Hi, I am interested in your project 'Tech specialist needed (132)'. I have the skills to complete it.",
+    "project": 77,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.679Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 66,
+  "fields": {
+    "bid_amount": "5742.63",
+    "cover_letter": "Hi, I am interested in your project 'Tech specialist needed (132)'. I have the skills to complete it.",
+    "project": 77,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.688Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 67,
+  "fields": {
+    "bid_amount": "7826.71",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Tech designer (518)'. I have the skills to complete it.",
+    "project": 78,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.698Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 68,
+  "fields": {
+    "bid_amount": "8080.34",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Tech designer (518)'. I have the skills to complete it.",
+    "project": 78,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.710Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 69,
+  "fields": {
+    "bid_amount": "9205.53",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Tech designer (518)'. I have the skills to complete it.",
+    "project": 78,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.718Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 70,
+  "fields": {
+    "bid_amount": "1444.61",
+    "cover_letter": "Hi, I am interested in your project 'Fitness composer needed (977)'. I have the skills to complete it.",
+    "project": 79,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.729Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 71,
+  "fields": {
+    "bid_amount": "1244.84",
+    "cover_letter": "Hi, I am interested in your project 'Fitness composer needed (977)'. I have the skills to complete it.",
+    "project": 79,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.738Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 72,
+  "fields": {
+    "bid_amount": "2179.73",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Fitness designer (100)'. I have the skills to complete it.",
+    "project": 80,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.748Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 73,
+  "fields": {
+    "bid_amount": "2158.41",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Fitness designer (100)'. I have the skills to complete it.",
+    "project": 80,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.758Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 74,
+  "fields": {
+    "bid_amount": "2101.69",
+    "cover_letter": "Hi, I am interested in your project 'Looking for a Fitness designer (100)'. I have the skills to complete it.",
+    "project": 80,
+    "freelancer": 13,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.768Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 75,
+  "fields": {
+    "bid_amount": "9523.76",
+    "cover_letter": "Hi, I am interested in your project 'Copywriter for Wedding (982)'. I have the skills to complete it.",
+    "project": 81,
+    "freelancer": 11,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.779Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 76,
+  "fields": {
+    "bid_amount": "4542.46",
+    "cover_letter": "Hi, I am interested in your project 'Crypto composer needed (802)'. I have the skills to complete it.",
+    "project": 82,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.790Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 77,
+  "fields": {
+    "bid_amount": "4906.57",
+    "cover_letter": "Hi, I am interested in your project 'Crypto composer needed (802)'. I have the skills to complete it.",
+    "project": 82,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.803Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 78,
+  "fields": {
+    "bid_amount": "5886.27",
+    "cover_letter": "Hi, I am interested in your project 'Fashion expert needed (342)'. I have the skills to complete it.",
+    "project": 83,
+    "freelancer": 14,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.811Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 79,
+  "fields": {
+    "bid_amount": "7695.35",
+    "cover_letter": "Hi, I am interested in your project 'Fashion expert needed (342)'. I have the skills to complete it.",
+    "project": 83,
+    "freelancer": 12,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.820Z"
+  }
+},
+{
+  "model": "Proposal.proposal",
+  "pk": 80,
+  "fields": {
+    "bid_amount": "8006.67",
+    "cover_letter": "Hi, I am interested in your project 'Fashion expert needed (342)'. I have the skills to complete it.",
+    "project": 83,
+    "freelancer": 15,
+    "status": "PENDING",
+    "created_at": "2025-11-30T05:58:28.833Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 2,
+  "fields": {
+    "project": 10,
+    "reviewer": 10,
+    "reviewee": 7,
+    "rating": 5,
+    "comment": "I love it",
+    "created_at": "2025-11-29T03:54:34.126Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 3,
+  "fields": {
+    "project": 10,
+    "reviewer": 2,
+    "reviewee": 7,
+    "rating": 1,
+    "comment": "i hate him",
+    "created_at": "2025-11-29T04:13:41.610Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 4,
+  "fields": {
+    "project": 9,
+    "reviewer": 1,
+    "reviewee": 7,
+    "rating": 5,
+    "comment": "Bullshit",
+    "created_at": "2025-11-29T04:15:31.805Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 5,
+  "fields": {
+    "project": 24,
+    "reviewer": 16,
+    "reviewee": 15,
+    "rating": 4,
+    "comment": "Great work by david_video! Highly recommended.",
+    "created_at": "2025-11-30T05:50:26.115Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 6,
+  "fields": {
+    "project": 24,
+    "reviewer": 15,
+    "reviewee": 16,
+    "rating": 4,
+    "comment": "Excellent client john_corp. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:50:26.125Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 7,
+  "fields": {
+    "project": 25,
+    "reviewer": 17,
+    "reviewee": 12,
+    "rating": 5,
+    "comment": "Great work by sarah_design! Highly recommended.",
+    "created_at": "2025-11-30T05:50:26.194Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 8,
+  "fields": {
+    "project": 25,
+    "reviewer": 12,
+    "reviewee": 17,
+    "rating": 5,
+    "comment": "Excellent client jane_startup. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:50:26.203Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 9,
+  "fields": {
+    "project": 26,
+    "reviewer": 18,
+    "reviewee": 13,
+    "rating": 4,
+    "comment": "Great work by mike_seo! Highly recommended.",
+    "created_at": "2025-11-30T05:50:26.231Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 10,
+  "fields": {
+    "project": 26,
+    "reviewer": 13,
+    "reviewee": 18,
+    "rating": 4,
+    "comment": "Excellent client tech_solutions. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:50:26.241Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 11,
+  "fields": {
+    "project": 59,
+    "reviewer": 16,
+    "reviewee": 13,
+    "rating": 5,
+    "comment": "Great work by mike_seo! Highly recommended.",
+    "created_at": "2025-11-30T05:58:28.872Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 12,
+  "fields": {
+    "project": 59,
+    "reviewer": 13,
+    "reviewee": 16,
+    "rating": 5,
+    "comment": "Excellent client john_corp. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:58:28.883Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 13,
+  "fields": {
+    "project": 60,
+    "reviewer": 17,
+    "reviewee": 14,
+    "rating": 5,
+    "comment": "Great work by emily_writer! Highly recommended.",
+    "created_at": "2025-11-30T05:58:28.917Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 14,
+  "fields": {
+    "project": 60,
+    "reviewer": 14,
+    "reviewee": 17,
+    "rating": 5,
+    "comment": "Excellent client jane_startup. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:58:28.930Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 15,
+  "fields": {
+    "project": 61,
+    "reviewer": 18,
+    "reviewee": 12,
+    "rating": 4,
+    "comment": "Great work by sarah_design! Highly recommended.",
+    "created_at": "2025-11-30T05:58:29.069Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 16,
+  "fields": {
+    "project": 61,
+    "reviewer": 12,
+    "reviewee": 18,
+    "rating": 5,
+    "comment": "Excellent client tech_solutions. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:58:29.083Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 17,
+  "fields": {
+    "project": 62,
+    "reviewer": 19,
+    "reviewee": 12,
+    "rating": 5,
+    "comment": "Great work by sarah_design! Highly recommended.",
+    "created_at": "2025-11-30T05:58:29.121Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 18,
+  "fields": {
+    "project": 62,
+    "reviewer": 12,
+    "reviewee": 19,
+    "rating": 5,
+    "comment": "Excellent client creative_agency. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:58:29.134Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 19,
+  "fields": {
+    "project": 63,
+    "reviewer": 20,
+    "reviewee": 14,
+    "rating": 4,
+    "comment": "Great work by emily_writer! Highly recommended.",
+    "created_at": "2025-11-30T05:58:29.175Z"
+  }
+},
+{
+  "model": "Review.review",
+  "pk": 20,
+  "fields": {
+    "project": 63,
+    "reviewer": 14,
+    "reviewee": 20,
+    "rating": 4,
+    "comment": "Excellent client global_ent. Clear requirements and fast payment.",
+    "created_at": "2025-11-30T05:58:29.187Z"
+  }
+}
+]
