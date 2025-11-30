@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/messages/', include('message.urls', namespace='message_api')),
     path('api/api-key/', include('apikey.urls', namespace='apikey_api')),
     path('api/proposals/', include('Proposal.urls', namespace='proposal_api')),
+    path('api/reviews/', include('Review.urls', namespace='review_api')),
     path('api/orders/', include('Order.urls')),
 
 ]
