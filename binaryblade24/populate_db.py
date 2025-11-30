@@ -13,6 +13,8 @@ from User.models import User, Role, Profile
 from Project.models import Project, Category
 from Proposal.models import Proposal
 from Review.models import Review
+from Comment.models import Comment
+from message.models import Message, Conversation
 
 def populate():
     print("Populating database...")
@@ -288,6 +290,146 @@ def populate():
                     'comment': f"Excellent client {client.username}. Clear requirements and fast payment."
                 }
             )
+
+    # 6. Create 100 Comments on projects
+    print("Creating 100 Comments...")
+    all_projects = list(Project.objects.all())
+    all_users = freelancers + clients
+    
+    comment_templates = [
+        "This looks interesting! Can you provide more details?",
+        "I have a question about the requirements.",
+        "What's the timeline for this project?",
+        "Do you have any examples of similar work?",
+        "I'm very interested in this opportunity.",
+        "Can we discuss the budget?",
+        "What technologies are you using?",
+        "Is this still available?",
+        "I'd love to work on this project!",
+        "Can you clarify the deliverables?",
+        "This is exactly what I'm looking for!",
+        "Do you need this done urgently?",
+        "I have relevant experience in this area.",
+        "What's your preferred communication method?",
+        "Can we schedule a call to discuss?",
+    ]
+    
+    for i in range(100):
+        project = random.choice(all_projects)
+        user = random.choice(all_users)
+        comment_text = random.choice(comment_templates)
+        
+        Comment.objects.create(
+            project=project,
+            user=user,
+            text=comment_text
+        )
+    
+    # 7. Create 100 Messages in conversations
+    print("Creating 100 Messages...")
+    
+    # First create some conversations
+    conversations = []
+    for i in range(20):  # Create 20 conversations
+        project = random.choice(all_projects)
+        client = random.choice(clients)
+        freelancer = random.choice(freelancers)
+        
+        conversation, created = Conversation.objects.get_or_create(
+            project=project,
+            participant_1=client,
+            participant_2=freelancer
+        )
+        conversations.append(conversation)
+    
+    message_templates = [
+        "Hi! I'm interested in your project.",
+        "Can we discuss the details?",
+        "Sure, I'd be happy to help!",
+        "What's your budget for this?",
+        "I can start immediately.",
+        "Do you have any specific requirements?",
+        "I've sent you my portfolio.",
+        "When do you need this completed?",
+        "I have some questions about the scope.",
+        "Let's schedule a call.",
+        "I'm available for a meeting.",
+        "Can you provide more information?",
+        "I've worked on similar projects before.",
+        "What's the deadline?",
+        "I can deliver this within a week.",
+        "Do you need any revisions?",
+        "I'm excited to work with you!",
+        "Let me know if you have questions.",
+        "I'll send you an update soon.",
+        "Thanks for considering me!",
+    ]
+    
+    for i in range(100):
+        conversation = random.choice(conversations)
+        # Alternate between the two participants
+        sender = conversation.participant_1 if i % 2 == 0 else conversation.participant_2
+        message_text = random.choice(message_templates)
+        
+        Message.objects.create(
+            conversation=conversation,
+            sender=sender,
+            body=message_text,
+            is_read=random.choice([True, False])
+        )
+    
+    # 8. Create 100 Reviews (expanding beyond just completed jobs)
+    print("Creating 100 Reviews...")
+    
+    review_comments_positive = [
+        "Excellent work! Highly professional and delivered on time.",
+        "Great communication throughout the project. Very satisfied!",
+        "Outstanding quality! Will definitely hire again.",
+        "Exceeded my expectations. Highly recommended!",
+        "Very talented and easy to work with.",
+        "Perfect! Exactly what I was looking for.",
+        "Amazing work ethic and attention to detail.",
+        "Delivered ahead of schedule with great quality.",
+        "Professional and responsive. Great experience!",
+        "Fantastic results! Worth every penny.",
+    ]
+    
+    review_comments_good = [
+        "Good work overall. Met the requirements.",
+        "Solid performance. Would work with again.",
+        "Delivered as promised. Good communication.",
+        "Quality work. Minor revisions needed.",
+        "Good experience. Timely delivery.",
+        "Met expectations. Professional service.",
+        "Good job! Some room for improvement.",
+        "Reliable and competent. Good work.",
+        "Delivered on time. Good quality.",
+        "Satisfactory work. Would recommend.",
+    ]
+    
+    # Create reviews for more projects
+    for i in range(100):
+        project = random.choice(all_projects)
+        reviewer = random.choice(all_users)
+        reviewee = random.choice([u for u in all_users if u != reviewer])
+        rating = random.randint(3, 5)
+        
+        if rating == 5:
+            comment = random.choice(review_comments_positive)
+        else:
+            comment = random.choice(review_comments_good)
+        
+        try:
+            Review.objects.create(
+                project=project,
+                reviewer=reviewer,
+                reviewee=reviewee,
+                rating=rating,
+                comment=comment
+            )
+        except:
+            # Skip if duplicate or other error
+            pass
 
     print("Database population completed successfully!")
 
