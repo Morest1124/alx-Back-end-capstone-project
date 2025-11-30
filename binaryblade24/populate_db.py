@@ -113,34 +113,44 @@ def populate():
 
     # 3. Create Projects (Gigs and Jobs)
     
-    # Create Gigs (by Freelancers)
-    gig_templates = [
-        "Build a modern {} website",
-        "Design a stunning {} logo",
-        "SEO optimization for {}",
-        "Write engaging {} blog posts",
-        "Edit your {} videos",
-        "Develop a custom {} script",
-        "Create a {} mobile app design",
-        "Translate {} documents",
-        "Compose {} background music",
-        "Virtual Assistant for {}"
+    # Create Gigs (by Freelancers) - More natural titles
+    gig_titles = [
+        "Build a modern React e-commerce website",
+        "Design a professional business logo and brand identity",
+        "Complete SEO optimization for your online store",
+        "Write 10 engaging tech blog posts",
+        "Edit and enhance your wedding videos professionally",
+        "Develop a custom Python automation script",
+        "Create a stunning mobile app UI design",
+        "Translate legal documents from English to Spanish",
+        "Compose original background music for your game",
+        "Provide virtual assistant services for data entry",
+        "Build a responsive landing page with HTML/CSS",
+        "Design a minimalist logo for your startup",
+        "Optimize your website for search engines",
+        "Write compelling product descriptions for e-commerce",
+        "Edit your YouTube videos with professional transitions",
+        "Develop a Django REST API for your application",
+        "Create a modern Figma design for mobile app",
+        "Translate your website content to French",
+        "Compose a catchy jingle for your brand",
+        "Manage your social media accounts professionally",
+        "Build a full-stack web application with React and Node",
+        "Design eye-catching social media graphics",
+        "Implement advanced SEO strategies for your blog",
+        "Write engaging email marketing campaigns",
+        "Create stunning motion graphics for your videos"
     ]
-    
-    gig_topics = ["React", "Business", "E-commerce", "Tech", "Wedding", "Python", "Fitness", "Legal", "Game", "Data Entry", "Real Estate", "Crypto", "Fashion", "Food", "Travel"]
 
     print("Creating 25 Gigs...")
-    for i in range(25):
+    for i, title in enumerate(gig_titles):
         freelancer = freelancers[i % len(freelancers)]
         category = random.choice(categories)
-        template = random.choice(gig_templates)
-        topic = random.choice(gig_topics)
-        title = template.format(topic) + f" ({random.randint(100,999)})" # Add random number to ensure uniqueness
         
         project, created = Project.objects.get_or_create(
             title=title,
             defaults={
-                'description': f"I will {title.lower()} with high quality and fast delivery. Contact me for more details.",
+                'description': f"I will {title.lower()} with high quality and fast delivery. I have years of experience and a proven track record. Contact me to discuss your project requirements.",
                 'price': Decimal(random.randint(50, 500) * 10),
                 'budget': Decimal(random.randint(50, 500) * 10),
                 'delivery_days': timezone.now() + timedelta(days=random.randint(3, 14)),
@@ -151,33 +161,45 @@ def populate():
             }
         )
 
-    # Create Jobs (by Clients)
-    job_templates = [
-        "Need a developer for {}",
-        "Looking for a {} designer",
-        "{} expert needed",
-        "Copywriter for {}",
-        "Video editor for {}",
-        "{} expert to fix bugs",
-        "UI/UX designer for {}",
-        "Translator needed for {}",
-        "{} composer needed",
-        "{} specialist needed"
+    # Create Jobs (by Clients) - More natural titles
+    job_titles = [
+        "Need an experienced developer for SaaS platform development",
+        "Looking for a creative logo designer for tech startup",
+        "SEO expert needed for long-term e-commerce project",
+        "Professional copywriter for landing page content",
+        "Skilled video editor for wedding footage editing",
+        "Python expert to fix bugs in existing application",
+        "Talented UI/UX designer for mobile app redesign",
+        "Urgent: Translator needed for legal documents",
+        "Music composer for indie game soundtrack",
+        "Data entry specialist for large-scale project",
+        "Full-stack developer for custom CRM system",
+        "Graphic designer for complete brand identity package",
+        "Digital marketing expert for social media campaigns",
+        "Content writer for technology blog articles",
+        "Video production specialist for corporate videos",
+        "Backend developer for API integration project",
+        "Web designer for portfolio website creation",
+        "Multilingual translator for international expansion",
+        "Audio engineer for podcast editing and mastering",
+        "Administrative assistant for ongoing virtual support",
+        "React developer for single-page application",
+        "Brand designer for complete visual identity",
+        "SEO consultant for website traffic improvement",
+        "Technical writer for software documentation",
+        "Motion graphics artist for explainer videos"
     ]
 
     print("Creating 25 Jobs...")
     jobs = []
-    for i in range(25):
+    for i, title in enumerate(job_titles):
         client = clients[i % len(clients)]
         category = random.choice(categories)
-        template = random.choice(job_templates)
-        topic = random.choice(gig_topics)
-        title = template.format(topic) + f" ({random.randint(100,999)})"
         
         project, created = Project.objects.get_or_create(
             title=title,
             defaults={
-                'description': f"We are looking for someone to {title.lower()}. Must have experience and good portfolio.",
+                'description': f"We are looking for a professional to {title.lower()}. Must have relevant experience and a strong portfolio. Please include your previous work samples when applying.",
                 'price': Decimal(random.randint(100, 1000) * 10),
                 'budget': Decimal(random.randint(100, 1000) * 10),
                 'delivery_days': timezone.now() + timedelta(days=random.randint(7, 30)),
