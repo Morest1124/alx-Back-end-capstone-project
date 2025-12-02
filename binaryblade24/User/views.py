@@ -32,6 +32,13 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Add roles to the token response
         data['roles'] = role_names
+        data['user'] = {
+            'id': self.user.id,
+            'username': self.user.username,
+            'email': self.user.email,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
+        }
             
         return data
 
@@ -215,12 +222,12 @@ class AddFreelancerRoleView(APIView):
 #         session = event['data']['object']
 #         project_id = session.get('metadata', {}).get('project_id')
 #         user_id = session.get('metadata', {}).get('user_id')
-        
+#         
 #         if user_id and project_id:
 #             try:
 #                 user = User.objects.get(id=user_id)
 #                 project = Project.objects.get(id=project_id)
-                
+#                 
 #                 Payment.objects.create(
 #                     user=user,
 #                     project=project,
