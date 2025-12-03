@@ -9,6 +9,22 @@ from .views import (
     LoginWithRoleView,
     UserProfileView,
     AddFreelancerRoleView,
+)
+from .settings_views import (
+    CountriesListView,
+    ChangePasswordView,
+    NotificationPreferencesView,
+    UserPreferencesView,
+    UserAccountView,
+)
+from .views_old import (
+    RegisterView, 
+    UserListView, 
+    UserDetailView, 
+    CustomLoginView, 
+    LoginWithRoleView,
+    UserProfileView,
+    AddFreelancerRoleView,
     # StripeCheckoutView, 
     # stripe_webhook,
     # CreatePayPalPaymentView,
@@ -35,4 +51,11 @@ urlpatterns = [
     # PayPal URLs
     # path('payment/paypal/create/', CreatePayPalPaymentView.as_view(), name='paypal-create-payment'),
     # path('payment/paypal/execute/', ExecutePayPalPaymentView.as_view(), name='paypal-execute-payment'),
+    
+    # Settings endpoints
+    path('settings/account/', UserAccountView.as_view(), name='settings-account'),
+    path('settings/password/', ChangePasswordView.as_view(), name='settings-password'),
+    path('settings/notifications/', NotificationPreferencesView.as_view(), name='settings-notifications'),
+    path('settings/preferences/', UserPreferencesView.as_view(), name='settings-preferences'),
+    path('countries/', CountriesListView.as_view(), name='countries-list'),
 ]

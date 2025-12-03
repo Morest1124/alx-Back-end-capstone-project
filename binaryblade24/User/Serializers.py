@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.utils.encoding import force_str
 # Prefer importing the concrete User class from local models so static analyzers
 # and type checkers know about custom fields like `roles`.
-from .models import Profile, Role
+from .models import Profile, Role, NotificationPreferences, UserPreferences
 try:
     from .models import User
 except Exception:
@@ -187,3 +187,18 @@ class UserSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+
+class NotificationPreferencesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotificationPreferences
+        fields = [
+            'email_new_message', 'email_payment_received', 
+            'email_proposal_submitted', 'email_system_updates',
+            'push_notifications', 'marketing_emails'
+        ]
+
+
+class UserPreferencesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPreferences
+        fields = ['language', 'timezone', 'dark_mode', 'default_view']

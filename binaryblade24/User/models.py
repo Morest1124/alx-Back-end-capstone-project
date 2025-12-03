@@ -167,3 +167,53 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment of {self.amount} for {self.project.title} by {self.user.username} via {self.get_payment_method_display()}"
+class NotificationPreferences(models.Model):
+    """Model to store user notification preferences."""
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='notification_preferences'
+    )
+    
+    # Email Notifications
+    email_new_message = models.BooleanField(default=True)
+    email_payment_received = models.BooleanField(default=True)
+    email_proposal_submitted = models.BooleanField(default=True)
+    email_system_updates = models.BooleanField(default=True)
+    
+    # Push Notifications
+    push_notifications = models.BooleanField(default=True)
+    
+    # Marketing
+    marketing_emails = models.BooleanField(default=False)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Notification Preferences for {self.user.username}"
+
+
+class UserPreferences(models.Model):
+    """Model to store user application preferences."""
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='preferences'
+    )
+    
+    # Language & Region
+    language = models.CharField(max_length=10, default='en')
+    timezone = models.CharField(max_length=50, default='UTC')
+    
+    # Display Settings
+    dark_mode = models.BooleanField(default=False)
+    
+    # Default View
+    default_view = models.CharField(max_length=100, blank=True, null=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"Preferences for {self.user.username}"
