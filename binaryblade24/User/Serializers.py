@@ -39,13 +39,16 @@ class FreelancerDetailSerializer(serializers.ModelSerializer):
 
     def get_avg_rating(self, obj):
         """Get average rating from user profile."""
-        if hasattr(obj, 'profile'):
+        try:
+            # Safely access profile
+            profile = obj.profile
             agg = Review.objects.filter(reviewee=obj).aggregate(avg=Avg('rating'))
             avg = agg.get('avg')
             if avg is None:
-                return obj.profile.rating
+                return profile.rating
             return round(avg, 1)
-        return 0.0
+        except ObjectDoesNotExist:
+            return 0.0
 
 class UserContactSerializer(serializers.ModelSerializer):
     """
