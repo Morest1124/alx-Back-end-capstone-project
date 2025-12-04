@@ -204,4 +204,4 @@ class NotificationPreferencesSerializer(serializers.ModelSerializer):
 class UserPreferencesSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPreferences
-        fields = ['language', 'timezone', 'dark_mode', 'default_view']
+        fields = ['language', 'timezone', 'preferred_currency', 'dark_mode', 'default_view']

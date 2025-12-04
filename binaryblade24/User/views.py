@@ -8,6 +8,90 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .Permissions import IsOwnerOrAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Profile, Role #, Payment
+
+# from Project.models import Project
+# import stripe
+# import paypalrestsdk
+from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
+User = get_user_model()
+
+class LoginWithRoleView(APIView):
+    permission_classes = [AllowAny]
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        role_name = request.data.get('role')
+        
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            # As a fallback, try to authenticate against the username
+            user = User.objects.filter(username=email).first()
+        
+        if user is None or not user.check_password(password):
+            return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            
+        if role_name not in user.roles.values_list('name', flat=True):
+            return Response({'detail': 'Invalid role for this user.'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        refresh = RefreshToken.for_user(user)
+        refresh['role'] = role_name
+        
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': UserSerializer(user).data,
+            'roles': [role_name]
+        })
+
+
+class RegisterView(APIView):
+    """A registration endpoint that accepts username separate from first and last name."""
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            
+            # Generate tokens for the new user
+            refresh = RefreshToken.for_user(user)
+            if user.roles.exists():
+                refresh['role'] = user.roles.first().name
+            
+            response_data = UserSerializer(user).data
+            response_data['refresh'] = str(refresh)
+            response_data['access'] = str(refresh.access_token)
+            
+            return Response(response_data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserListView(APIView):
+    """
+    List all users.
+    """
+    permission_classes = [IsAdminUser]
+
+    def get(self, request, format=None):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+
+class UserDetailView(APIView):
+    """
+    Retrieve or update a user instance.
+    """
+    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(User, pk=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
@@ -77,7 +161,7 @@ class AddFreelancerRoleView(APIView):
 #             project = Project.objects.get(id=project_id)
 #             checkout_session = stripe.checkout.Session.create(
 #                 payment_method_types=['card'],
-#                 line_items=[
+# line_items=[
 #                     {
 #                         'price_data': {
 #                             'currency': 'usd',

@@ -224,6 +224,13 @@ class UserPreferences(models.Model):
     language = models.CharField(max_length=10, default='en')
     timezone = models.CharField(max_length=50, default='UTC')
     
+    # Currency Preference
+    preferred_currency = models.CharField(
+        max_length=3, 
+        default='USD',
+        help_text='ISO 4217 currency code (e.g., USD, EUR, GBP, ZAR)'
+    )
+    
     # Display Settings
     dark_mode = models.BooleanField(default=False)
     
