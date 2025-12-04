@@ -8,19 +8,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from .Permissions import IsOwnerOrAdmin
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Profile, Role #, Payment
-
-# from Project.models import Project
-# import stripe
-# import paypalrestsdk
-from django.conf import settings
-    Retrieve or update a user instance.
-    """
-    permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
-
-    def get(self, request, pk, format=None):
-        user = get_object_or_404(User, pk=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
