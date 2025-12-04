@@ -17,19 +17,6 @@ from .settings_views import (
     UserPreferencesView,
     UserAccountView,
 )
-from .views_old import (
-    RegisterView, 
-    UserListView, 
-    UserDetailView, 
-    CustomLoginView, 
-    LoginWithRoleView,
-    UserProfileView,
-    AddFreelancerRoleView,
-    # StripeCheckoutView, 
-    # stripe_webhook,
-    # CreatePayPalPaymentView,
-    # ExecutePayPalPaymentView
-)
 from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
 
