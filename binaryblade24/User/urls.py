@@ -16,6 +16,7 @@ from .settings_views import (
     NotificationPreferencesView,
     UserPreferencesView,
     UserAccountView,
+    TimezonesListView,
 )
 from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
@@ -45,4 +46,5 @@ urlpatterns = [
     path('settings/notifications/', NotificationPreferencesView.as_view(), name='settings-notifications'),
     path('settings/preferences/', UserPreferencesView.as_view(), name='settings-preferences'),
     path('countries/', CountriesListView.as_view(), name='countries-list'),
+    path('timezones/', TimezonesListView.as_view(), name='timezones-list'),
 ]

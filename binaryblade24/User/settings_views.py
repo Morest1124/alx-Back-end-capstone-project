@@ -98,3 +98,13 @@ class CountriesListView(APIView):
 
     def get(self, request):
         return Response(COUNTRIES)
+
+
+import pytz
+
+class TimezonesListView(APIView):
+    """Return list of all timezones for dropdowns."""
+    permission_classes = []
+
+    def get(self, request):
+        return Response(pytz.all_timezones)

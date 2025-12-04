@@ -13,7 +13,7 @@ class RoleAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class CustomUserAdmin(admin.ModelAdmin):
-	list_display = ('username', 'email', 'first_name', 'last_name', 'is_active')
+	list_display = ('username', 'email', 'first_name', 'last_name', 'get_country_name', 'is_active')
 	search_fields = ('username', 'email', 'first_name', 'last_name')
 	ordering = ('username',)
 	fieldsets = (

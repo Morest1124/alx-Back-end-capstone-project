@@ -67,7 +67,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         # include profile editable fields plus computed read-only fields
         fields = (
-            'bio', 'skills', 'hourly_rate', 'rating', 'level', 'availability',
+            'bio', 'address', 'skills', 'hourly_rate', 'rating', 'level', 'availability',
             'completed_projects', 'portfolio', 'active_projects', 'projects_posted', 'avg_rating'
         )
 

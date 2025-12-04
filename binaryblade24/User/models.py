@@ -5,11 +5,21 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.hashers import check_password
 from Project.models import Project
 from django.db.models import Avg
+from .countries import COUNTRIES
+
+# Generate choices from COUNTRIES list
+COUNTRY_CHOICES = [(country['code'], country['name']) for country in COUNTRIES]
 
 class User(AbstractUser):
 
     # Custom fields added to the core User model
-    country_origin = models.CharField(max_length=50, blank=False, null=False)
+    country_origin = models.CharField(
+        max_length=50, 
+        blank=False, 
+        null=False,
+        choices=COUNTRY_CHOICES,
+        help_text="Select your country of origin"
+    )
     email = models.EmailField(blank=False, unique=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
@@ -40,6 +50,13 @@ class User(AbstractUser):
 
     def check_identity_number(self, raw_identity_number):
         return check_password(raw_identity_number, self.identity_number)
+    
+    def get_country_name(self):
+        """Get the full country name from the country code."""
+        for country in COUNTRIES:
+            if country['code'] == self.country_origin:
+                return country['name']
+        return self.country_origin
 
     def __str__(self):
         return self.username
@@ -64,6 +81,7 @@ class Profile(models.Model):
     
     # Other non-identity profile fields
     bio = models.TextField(blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
     skills = models.CharField(max_length=255, blank=True)
     hourly_rate = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, null=True )
