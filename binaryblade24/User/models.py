@@ -20,6 +20,12 @@ class User(AbstractUser):
         choices=COUNTRY_CHOICES,
         help_text="Select your country of origin"
     )
+    phone_country_code = models.CharField(
+        max_length=10,
+        blank=True,
+        null=True,
+        help_text="Phone country code (e.g., +1, +44, +27)"
+    )
     email = models.EmailField(blank=False, unique=True)
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
