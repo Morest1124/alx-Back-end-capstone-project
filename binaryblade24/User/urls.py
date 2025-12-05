@@ -2,6 +2,7 @@ from django.urls import path
 
 app_name = 'User'
 from .views import (
+    LoginView,
     RegisterView, 
     UserListView, 
     UserDetailView, 
@@ -21,7 +22,7 @@ from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
 
 urlpatterns = [
-    # path('login/', CustomLoginView.as_view(), name='login'),  # Commented out - view doesn't exist
+    path('login/', LoginView.as_view(), name='login'),
     path('login/role/', LoginWithRoleView.as_view(), name='login_with_role'),
     path('register/', RegisterView.as_view(), name='register'),
     path('add-freelancer-role/', AddFreelancerRoleView.as_view(), name='add_freelancer_role'),

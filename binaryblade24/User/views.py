@@ -21,6 +21,41 @@ from django.views.decorators.csrf import csrf_exempt
 
 User = get_user_model()
 
+class LoginView(APIView):
+    """Simple login endpoint that returns user data and all their roles."""
+    permission_classes = [AllowAny]
+    
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        
+        if not email or not password:
+            return Response({'detail': 'Email and password are required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        user = User.objects.filter(email=email).first()
+        if user is None:
+            # Fallback to username
+            user = User.objects.filter(username=email).first()
+        
+        if user is None or not user.check_password(password):
+            return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+        # Get all user roles
+        user_roles = list(user.roles.values_list('name', flat=True))
+        if not user_roles:
+            return Response({'detail': 'User has no assigned roles'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Generate tokens
+        refresh = RefreshToken.for_user(user)
+        refresh['role'] = user_roles[0]  # Add primary role to token
+        
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': UserSerializer(user).data,
+            'roles': user_roles
+        })
+
 class LoginWithRoleView(APIView):
     permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
