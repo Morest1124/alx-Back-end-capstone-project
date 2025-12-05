@@ -40,12 +40,13 @@ class LoginView(APIView):
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         
-        # Check if account is deactivated
+        # Auto-reactivate deactivated accounts on login
+        was_deactivated = False
         if user.deactivated_at:
-            return Response({
-                'detail': 'Account is deactivated. Please contact support to reactivate your account.',
-                'deactivated': True
-            }, status=status.HTTP_403_FORBIDDEN)
+            user.deactivated_at = None
+            user.is_active = True
+            user.save()
+            was_deactivated = True
         
         # Check if account is scheduled for deletion
         if user.scheduled_deletion_at:
@@ -66,12 +67,19 @@ class LoginView(APIView):
         refresh = RefreshToken.for_user(user)
         refresh['role'] = user_roles[0]  # Add primary role to token
         
-        return Response({
+        response_data = {
             'refresh': str(refresh),
             'access': str(refresh.access_token),
             'user': UserSerializer(user).data,
             'roles': user_roles
-        })
+        }
+        
+        # Add notification if account was reactivated
+        if was_deactivated:
+            response_data['message'] = 'Your account has been reactivated. Welcome back!'
+            response_data['reactivated'] = True
+        
+        return Response(response_data)
 
 class LoginWithRoleView(APIView):
     permission_classes = [AllowAny]
@@ -88,12 +96,13 @@ class LoginWithRoleView(APIView):
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         
-        # Check if account is deactivated
+        # Auto-reactivate deactivated accounts on login
+        was_deactivated = False
         if user.deactivated_at:
-            return Response({
-                'detail': 'Account is deactivated. Please contact support to reactivate your account.',
-                'deactivated': True
-            }, status=status.HTTP_403_FORBIDDEN)
+            user.deactivated_at = None
+            user.is_active = True
+            user.save()
+            was_deactivated = True
         
         # Check if account is scheduled for deletion
         if user.scheduled_deletion_at:
@@ -111,12 +120,19 @@ class LoginWithRoleView(APIView):
         refresh = RefreshToken.for_user(user)
         refresh['role'] = role_name
         
-        return Response({
+        response_data = {
             'refresh': str(refresh),
             'access': str(refresh.access_token),
             'user': UserSerializer(user).data,
             'roles': [role_name]
-        })
+        }
+        
+        # Add notification if account was reactivated
+        if was_deactivated:
+            response_data['message'] = 'Your account has been reactivated. Welcome back!'
+            response_data['reactivated'] = True
+        
+        return Response(response_data)
 
 
 class RegisterView(APIView):
