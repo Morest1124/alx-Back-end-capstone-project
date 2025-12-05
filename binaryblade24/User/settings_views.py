@@ -80,14 +80,38 @@ class UserAccountView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        serializer = UserSerializer(request.user)
-        return Response(serializer.data)
+        user_data = UserSerializer(request.user).data
+        # Add profile address if profile exists
+        try:
+            user_data['address'] = request.user.profile.address or ''
+        except:
+            user_data['address'] = ''
+        return Response(user_data)
 
     def put(self, request):
+        # Extract profile data (address) from request
+        address = request.data.pop('address', None)
+        
         serializer = UserSerializer(request.user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            
+            # Update profile address if provided
+            if address is not None:
+                try:
+                    profile = request.user.profile
+                    profile.address = address
+                    profile.save()
+                except:
+                    pass
+            
+            # Return updated data including address
+            response_data = serializer.data
+            try:
+                response_data['address'] = request.user.profile.address or ''
+            except:
+                response_data['address'] = ''
+            return Response(response_data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 from .countries import COUNTRIES
