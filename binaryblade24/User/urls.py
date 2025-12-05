@@ -18,6 +18,13 @@ from .settings_views import (
     UserAccountView,
     TimezonesListView,
 )
+from .account_management_views import (
+    DeactivateAccountView,
+    ReactivateAccountView,
+    RequestAccountDeletionView,
+    CancelAccountDeletionView,
+    AccountStatusView,
+)
 from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
 
@@ -47,4 +54,11 @@ urlpatterns = [
     path('settings/preferences/', UserPreferencesView.as_view(), name='settings-preferences'),
     path('countries/', CountriesListView.as_view(),name='countries-list'),
     path('timezones/', TimezonesListView.as_view(), name='timezones-list'),
+    
+    # Account management endpoints
+    path('account/status/', AccountStatusView.as_view(), name='account-status'),
+    path('account/deactivate/', DeactivateAccountView.as_view(), name='account-deactivate'),
+    path('account/reactivate/', ReactivateAccountView.as_view(), name='account-reactivate'),
+    path('account/delete/', RequestAccountDeletionView.as_view(), name='account-delete'),
+    path('account/cancel-deletion/', CancelAccountDeletionView.as_view(), name='account-cancel-deletion'),
 ]

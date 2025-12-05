@@ -30,6 +30,18 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=15, unique=True, null=True, blank=True)
     identity_number = models.CharField(max_length=255, unique=True, null=False, blank=False)
 
+    # Account management fields
+    deactivated_at = models.DateTimeField(
+        null=True, 
+        blank=True,
+        help_text="Timestamp when account was deactivated"
+    )
+    scheduled_deletion_at = models.DateTimeField(
+        null=True,
+        blank=True, 
+        help_text="Timestamp when account is scheduled for permanent deletion"
+    )
+
     
     # NOTE: profilePicture renamed to profile_picture (snake_case convention)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
