@@ -55,21 +55,36 @@ class RegisterView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
+        try:
+            serializer = UserSerializer(data=request.data)
+            if serializer.is_valid():
+                user = serializer.save()
+                
+                # Generate tokens for the new user
+                refresh = RefreshToken.for_user(user)
+                if user.roles.exists():
+                    refresh['role'] = user.roles.first().name
+                
+                response_data = UserSerializer(user).data
+                response_data['refresh'] = str(refresh)
+                response_data['access'] = str(refresh.access_token)
+                
+                return Response(response_data, status=status.HTTP_201_CREATED)
             
-            # Generate tokens for the new user
-            refresh = RefreshToken.for_user(user)
-            if user.roles.exists():
-                refresh['role'] = user.roles.first().name
+            # Return validation errors with details
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        except Exception as e:
+            # Log the full error for debugging
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Registration error: {str(e)}", exc_info=True)
             
-            response_data = UserSerializer(user).data
-            response_data['refresh'] = str(refresh)
-            response_data['access'] = str(refresh.access_token)
-            
-            return Response(response_data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            # Return a user-friendly error message
+            error_message = str(e) if str(e) else "Registration failed. Please try again."
+            return Response({
+                'detail': error_message
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class UserListView(APIView):

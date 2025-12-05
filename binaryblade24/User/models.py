@@ -228,6 +228,8 @@ class UserPreferences(models.Model):
     preferred_currency = models.CharField(
         max_length=3, 
         default='USD',
+        blank=True,
+        null=True,
         help_text='ISO 4217 currency code (e.g., USD, EUR, GBP, ZAR)'
     )
     

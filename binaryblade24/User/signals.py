@@ -29,4 +29,9 @@ def create_user_preferences(sender, instance, created, **kwargs):
     """
     if created:
         NotificationPreferences.objects.create(user=instance)
-        UserPreferences.objects.create(user=instance)
+        UserPreferences.objects.create(
+            user=instance,
+            preferred_currency='USD',
+            language='en',
+            timezone='UTC'
+        )
