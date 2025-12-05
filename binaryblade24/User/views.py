@@ -40,6 +40,23 @@ class LoginView(APIView):
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         
+        # Check if account is deactivated
+        if user.deactivated_at:
+            return Response({
+                'detail': 'Account is deactivated. Please contact support to reactivate your account.',
+                'deactivated': True
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        # Check if account is scheduled for deletion
+        if user.scheduled_deletion_at:
+            from django.utils import timezone
+            days_remaining = (user.scheduled_deletion_at - timezone.now()).days
+            return Response({
+                'detail': f'Your account is scheduled for deletion in {days_remaining} days. Cancel deletion from settings to continue using your account.',
+                'scheduled_deletion': True,
+                'days_remaining': max(0, days_remaining)
+            }, status=status.HTTP_403_FORBIDDEN)
+        
         # Get all user roles
         user_roles = list(user.roles.values_list('name', flat=True))
         if not user_roles:
@@ -70,6 +87,23 @@ class LoginWithRoleView(APIView):
         
         if user is None or not user.check_password(password):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        
+        # Check if account is deactivated
+        if user.deactivated_at:
+            return Response({
+                'detail': 'Account is deactivated. Please contact support to reactivate your account.',
+                'deactivated': True
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        # Check if account is scheduled for deletion
+        if user.scheduled_deletion_at:
+            from django.utils import timezone
+            days_remaining = (user.scheduled_deletion_at - timezone.now()).days
+            return Response({
+                'detail': f'Your account is scheduled for deletion in {days_remaining} days. Cancel deletion from settings to continue using your account.',
+                'scheduled_deletion': True,
+                'days_remaining': max(0, days_remaining)
+            }, status=status.HTTP_403_FORBIDDEN)
             
         if role_name not in user.roles.values_list('name', flat=True):
             return Response({'detail': 'Invalid role for this user.'}, status=status.HTTP_400_BAD_REQUEST)
