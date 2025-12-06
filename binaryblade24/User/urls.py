@@ -27,6 +27,12 @@ from .account_management_views import (
 )
 from Proposal.views import UserProposalsView
 from Review.views import UserReviewsView
+from .file_views import (
+    FileUploadView,
+    FileListView,
+    FileDeleteView,
+    FileDownloadView,
+)
 
 urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
@@ -61,4 +67,10 @@ urlpatterns = [
     path('account/reactivate/', ReactivateAccountView.as_view(), name='account-reactivate'),
     path('account/delete/', RequestAccountDeletionView.as_view(), name='account-delete'),
     path('account/cancel-deletion/', CancelAccountDeletionView.as_view(), name='account-cancel-deletion'),
+    
+    # File management endpoints
+    path('files/upload/', FileUploadView.as_view(), name='file-upload'),
+    path('files/', FileListView.as_view(), name='file-list'),
+    path('files/<int:pk>/delete/', FileDeleteView.as_view(), name='file-delete'),
+    path('files/<int:pk>/download/', FileDownloadView.as_view(), name='file-download'),
 ]

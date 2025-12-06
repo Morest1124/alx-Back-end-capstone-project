@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Message, Conversation
-from User.models import User
+from User.models import User, FileAttachment
 
 class UserMinimalSerializer(serializers.ModelSerializer):
     """Minimal user info for message display"""
@@ -8,13 +8,25 @@ class UserMinimalSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'first_name', 'last_name', 'email']
 
+class FileAttachmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FileAttachment
+        fields = ['id', 'original_filename', 'file', 'category', 'file_type', 'file_size']
 
 class MessageSerializer(serializers.ModelSerializer):
     sender_details = UserMinimalSerializer(source='sender', read_only=True)
+    attachment_details = FileAttachmentSerializer(source='attachment', read_only=True)
+    attachment_id = serializers.PrimaryKeyRelatedField(
+        queryset=FileAttachment.objects.all(), 
+        source='attachment', 
+        required=False, 
+        allow_null=True,
+        write_only=True
+    )
     
     class Meta:
         model = Message
-        fields = ['id', 'conversation', 'sender', 'sender_details', 'body', 'timestamp', 'is_read']
+        fields = ['id', 'conversation', 'sender', 'sender_details', 'body', 'timestamp', 'is_read', 'attachment_details', 'attachment_id']
         read_only_fields = ['sender', 'timestamp']
 
 

@@ -34,6 +34,13 @@ class Message(models.Model):
     body = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
+    attachment = models.ForeignKey(
+        'User.FileAttachment',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='messages'
+    )
 
     class Meta:
         ordering = ['timestamp']

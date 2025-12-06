@@ -262,3 +262,67 @@ class UserPreferences(models.Model):
     
     def __str__(self):
         return f"Preferences for {self.user.username}"
+
+
+class FileAttachment(models.Model):
+    """Model for storing user-uploaded files of various types."""
+    
+    CATEGORY_CHOICES = [
+        ('profile', 'Profile'),
+        ('portfolio', 'Portfolio'),
+        ('project', 'Project'),
+        ('proposal', 'Proposal'),
+        ('deliverable', 'Deliverable'),
+        ('certification', 'Certification'),
+        ('contract', 'Contract'),
+        ('other', 'Other'),
+    ]
+    
+    FILE_TYPE_CHOICES = [
+        ('image', 'Image'),
+        ('video', 'Video'),
+        ('document', 'Document'),
+        ('code', 'Code'),
+        ('archive', 'Archive'),
+        ('audio', 'Audio'),
+        ('design', 'Design'),
+        ('spreadsheet', 'Spreadsheet'),
+        ('presentation', 'Presentation'),
+        ('other', 'Other'),
+    ]
+    
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='file_attachments'
+    )
+    file = models.FileField(upload_to='uploads/%Y/%m/%d/')
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='other')
+    file_type = models.CharField(max_length=20, choices=FILE_TYPE_CHOICES, default='other')
+    original_filename = models.CharField(max_length=255)
+    file_size = models.IntegerField(help_text='File size in bytes')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(blank=True, null=True)
+    
+    # Optional: Link to specific entities
+    project_id = models.IntegerField(blank=True, null=True, help_text='Related project ID')
+    proposal_id = models.IntegerField(blank=True, null=True, help_text='Related proposal ID')
+    
+    class Meta:
+        ordering = ['-uploaded_at']
+        indexes = [
+            models.Index(fields=['user', 'category']),
+            models.Index(fields=['uploaded_at']),
+        ]
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.original_filename} ({self.category})"
+    
+    def get_file_size_display(self):
+        """Return human-readable file size."""
+        size = self.file_size
+        for unit in ['B', 'KB', 'MB', 'GB']:
+            if size < 1024.0:
+                return f"{size:.2f} {unit}"
+            size /= 1024.0
+        return f"{size:.2f} TB"

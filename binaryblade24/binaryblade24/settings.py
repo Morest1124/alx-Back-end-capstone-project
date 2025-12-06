@@ -139,6 +139,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Uses the modern STORAGES setting for WhiteNoise
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
