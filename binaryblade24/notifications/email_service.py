@@ -29,6 +29,7 @@ class EmailService:
     def send_proposal_accepted_email(cls, proposal):
         """Notify freelancer that their proposal was accepted"""
         subject = f"Proposal Accepted: {proposal.project.title}"
+        
         recipient = proposal.freelancer.email
         
         message = f"""
@@ -36,10 +37,10 @@ class EmailService:
         
         Congratulations! Your proposal for "{proposal.project.title}" has been accepted by {proposal.project.client.first_name}.
         
-        Project Budget: ${proposal.price}
+        Project Budget: ${proposal.bid_amount}
         Status: In Progress
         
-        A payment of ${proposal.price} has been held in escrow and will be released upon completion.
+        A payment of ${proposal.bid_amount} has been held in escrow and will be released upon completion.
         
         You can now start working on the project.
         
