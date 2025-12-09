@@ -56,7 +56,7 @@ class ProjectNestedSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Project
-        fields = ['id', 'title', 'budget']
+        fields = ['id', 'title', 'budget', 'description']
 
 
 class ProposalSerializer(serializers.ModelSerializer):
@@ -70,23 +70,13 @@ class ProposalSerializer(serializers.ModelSerializer):
     - Protects platform revenue and user safety
     
     Fields:
-        id (int): Proposal unique identifier
-        project (FK): Reference to the project (read-only)
-        freelancer (FK): Reference to the freelancer (read-only)
-        bid_amount (Decimal): Amount for the proposal (read-only, auto-populated)
-        cover_letter (str): Freelancer's pitch/cover letter
-        status (str): Proposal status (PENDING/ACCEPTED/REJECTED, read-only)
-        created_at (datetime): Timestamp of proposal submission (read-only)
-        freelancer_details (dict): Nested freelancer public info (no contact details)
-        project_details (dict): Nested project info
-    
-    Security:
-        - Prevents bid amount manipulation by making it read-only
-        - Never exposes email/phone to enforce platform messaging use
-        - Request context required for proper permission evaluation
+    - project: returns full nested object {id, title, budget, description}
     """
     # Computed fields that require custom logic
     freelancer_details = serializers.SerializerMethodField(read_only=True)
+    # Use nested serializer for the main 'project' field
+    project = ProjectNestedSerializer(read_only=True)
+    # project_details is now redundant but kept for backward compatibility if needed
     project_details = ProjectNestedSerializer(source='project', read_only=True)
 
     class Meta:
