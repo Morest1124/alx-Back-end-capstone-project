@@ -101,6 +101,7 @@ class ProposalSerializer(serializers.ModelSerializer):
             'created_at',
             'freelancer_details',
             'project_details',
+            'thumbnail',
         ]
         
         # Fields that should never be modified by client requests

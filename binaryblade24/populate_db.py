@@ -113,15 +113,34 @@ def populate():
         print("No subcategories found! Please load categories first.")
         return
 
-    # 2.5 Clean up old projects with numbers in titles
-    print("Cleaning up old projects with numbers in titles...")
-    old_projects = Project.objects.filter(title__regex=r'\(\d+\)$')
-    deleted_count = old_projects.count()
-    old_projects.delete()
-    print(f"Deleted {deleted_count} old projects with numbered titles")
+    from Order.models import Order
 
+    # ... inside populate function
+    # 2.9 DELETE ALL PROJECTS, PROPOSALS, AND PROFILES FIRST (Reset)
+    print("Deleting all existing Orders, Projects, Proposals, and Reviews...")
+    Order.objects.all().delete()
+    Review.objects.all().delete()
+    Proposal.objects.all().delete()
+    Project.objects.all().delete()
+    
+    # ...
     # 3. Create Projects (Gigs and Jobs)
     
+    # Helper to get/create dummy image
+    import requests
+    from django.core.files.base import ContentFile
+    
+    def get_dummy_image(title):
+        try:
+             # Use a placeholder service. Generates a 600x400 image with the first letter of title
+             url = f"https://placehold.co/600x400/png?text={title.split()[0]}"
+             response = requests.get(url)
+             if response.status_code == 200:
+                 return ContentFile(response.content, name=f"{title.replace(' ', '_')}.png")
+        except Exception as e:
+            print(f"Failed to download image for {title}: {e}")
+        return None
+
     # Create Gigs (by Freelancers) - More natural titles
     gig_titles = [
         "Build a modern React e-commerce website",
@@ -156,6 +175,7 @@ def populate():
         freelancer = freelancers[i % len(freelancers)]
         category = random.choice(categories)
         
+        # Check if exists to avoid duplicates if partial run, but we deleted all so new ones created
         project, created = Project.objects.get_or_create(
             title=title,
             defaults={
@@ -166,9 +186,15 @@ def populate():
                 'category': category,
                 'client': freelancer,
                 'project_type': 'GIG',
-                'status': 'OPEN'
+                'status': 'OPEN',
             }
         )
+        if created:
+             # Add Thumbnail
+             img_file = get_dummy_image(title)
+             if img_file:
+                 project.thumbnail.save(img_file.name, img_file, save=True)
+                 print(f"  Added thumbnail to Gig: {title}")
 
     # Create Jobs (by Clients) - More natural titles
     job_titles = [
@@ -218,6 +244,12 @@ def populate():
                 'status': 'OPEN'
             }
         )
+        if created:
+             # Add Thumbnail (Even jobs might want a relevant image)
+             img_file = get_dummy_image(title)
+             if img_file:
+                 project.thumbnail.save(img_file.name, img_file, save=True)
+                 print(f"  Added thumbnail to Job: {title}")
         jobs.append(project)
 
     # 4. Create Proposals (Freelancers applying to Jobs)
