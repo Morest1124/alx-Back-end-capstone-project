@@ -144,14 +144,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
             - Use my_jobs() for freelancer's active work
         """
         # Show only open projects (the "job board" for freelancers)
-        # Optimize with select_related for foreign keys and prefetch_related for reverse relations
-        return Project.objects.filter(
-            status=Project.ProjectStatus.OPEN
-        ).select_related(
-            'category', 'client', 'client__profile'
-        ).prefetch_related(
-            'reviews'
-        )
+        return Project.objects.filter(status=Project.ProjectStatus.OPEN)
 
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated, IsClient])
     def my_projects(self, request):
@@ -194,14 +187,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
         user = request.user
         
         # Get all projects where this user is the client
-        # Optimize with select_related and prefetch_related
-        projects = Project.objects.filter(
-            client=user
-        ).select_related(
-            'category', 'client', 'client__profile'
-        ).prefetch_related(
-            'reviews'
-        )
+        projects = Project.objects.filter(client=user)
         
         # Serialize with full context (may expose additional fields)
         serializer = self.get_serializer(projects, many=True)
@@ -265,15 +251,10 @@ class ProjectViewSet(viewsets.ModelViewSet):
         # 1. There exists a proposal by this user
         # 2. That proposal's status is ACCEPTED
         # Uses Django's double-underscore notation for related model filtering
-        # Optimize with select_related and prefetch_related
         projects = Project.objects.filter(
             proposals__freelancer=user,
             proposals__status='ACCEPTED'
-        ).select_related(
-            'category', 'client', 'client__profile'
-        ).prefetch_related(
-            'reviews', 'proposals', 'proposals__freelancer'
-        ).distinct()  # Avoid duplicates from JOIN
+        )
         
         # Serialize with request context (enables conditional field exposure)
         serializer = self.get_serializer(projects, many=True)
