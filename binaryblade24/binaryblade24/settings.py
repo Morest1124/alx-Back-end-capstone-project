@@ -79,6 +79,8 @@ DEFAULT_FROM_EMAIL = 'BinaryBlade24 <noreply@binaryblade24.com>'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # GZip compression for API responses (must be first for efficiency)
+    'django.middleware.gzip.GZipMiddleware',
     # WhiteNoise must be placed immediately after SecurityMiddleware for efficiency
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -156,7 +158,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         # You may also want TokenAuthentication or BasicAuthentication here if needed
-    )
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,  # Default page size for list endpoints
 }
 
 SIMPLE_JWT = {

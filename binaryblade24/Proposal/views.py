@@ -422,6 +422,7 @@ class UserProposalsView(generics.ListAPIView):
     
     serializer_class = ProposalSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None  # Disable pagination - show all user proposals
 
     def get_queryset(self):
         """
@@ -440,7 +441,9 @@ class UserProposalsView(generics.ListAPIView):
         user = get_object_or_404(User, pk=user_id)
         
         # Return all of this freelancer's proposals
-        return Proposal.objects.filter(freelancer=user)
+        return Proposal.objects.filter(freelancer=user).select_related(
+            'project', 'project__client'
+        )
 
 
 class PublicProposalsView(generics.ListAPIView):

@@ -87,7 +87,11 @@ class FreelancerDashboardAPIView(APIView):
         total_impressions = "18.5K"
 
         # Recent Proposals (Keeping this for now, though less relevant in Fiverr model)
-        recent_proposals = Proposal.objects.filter(freelancer=freelancer).order_by('-created_at')[:3]
+        recent_proposals = Proposal.objects.filter(
+            freelancer=freelancer
+        ).select_related(
+            'project', 'project__client'
+        ).order_by('-created_at')[:3]
         recent_proposals_data = [
             {
                 "title": p.project.title,
@@ -157,7 +161,11 @@ class ClientDashboardAPIView(APIView):
 
         # Recent Transactions
         # Using Orders as transactions for now
-        recent_orders = Order.objects.filter(client=client).order_by('-created_at')[:5]
+        recent_orders = Order.objects.filter(
+            client=client
+        ).prefetch_related(
+            'items', 'items__freelancer'
+        ).order_by('-created_at')[:5]
         recent_transactions = [
             {
                 "id": o.id,
