@@ -44,6 +44,7 @@ urlpatterns = [
     path('api/proposals/', include('Proposal.urls', namespace='proposal_api')),
     path('api/reviews/', include('Review.urls', namespace='review_api')),
     path('api/orders/', include('Order.urls')),
+    path('api/notifications/', include('notifications.urls')),  # Notifications API
     
     # SEO: Sitemap and robots.txt
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
