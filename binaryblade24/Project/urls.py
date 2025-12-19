@@ -2,7 +2,7 @@ from django.urls import path, include
 
 app_name = 'Project'
 from rest_framework.routers import DefaultRouter
-from .views import ProjectViewSet, CategoryViewSet, MilestoneViewSet
+from .views import ProjectViewSet, CategoryViewSet, MilestoneViewSet, RecordProjectView
 from Proposal.views import ProposalListCreateView, ProposalDetailView
 from Review.views import ReviewCreateView
 
@@ -29,6 +29,9 @@ urlpatterns = [
     # Review routes
     path('<int:project_pk>/reviews/', ReviewCreateView.as_view(), name='create-review'),
     
+    # Analytics routes
+    path('<int:pk>/view/', RecordProjectView.as_view(), name='record-project-view'),
+
     # Project routes (must come last)
     path('', include(project_router.urls)),
 ]

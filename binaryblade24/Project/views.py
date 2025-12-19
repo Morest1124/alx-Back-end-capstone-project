@@ -406,13 +406,38 @@ class MilestoneViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(project_id=project_id)
         return queryset
 
-    def perform_create(self, serializer):
-        """
-        Create a milestone and update project milestone count.
-        """
-        with transaction.atomic():
-            milestone = serializer.save()
-            project = milestone.project
             project.has_milestones = True
             project.milestone_count = project.milestones.count()
             project.save()
+
+
+class RecordProjectView(APIView):
+    """
+    Endpoint to record a view (impression) for a project.
+    POST /api/projects/{id}/view/
+    """
+    permission_classes = [AllowAny] # Public can view projects
+
+    def post(self, request, pk=None):
+        project = get_object_or_404(Project, pk=pk)
+        
+        # Get IP address
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+            
+        # Get user if authenticated
+        user = request.user if request.user.is_authenticated else None
+        
+        # Create view record
+        # Optional: Add logic to prevent duplicate views from same IP/User within X minutes
+        from .models import ProjectView
+        ProjectView.objects.create(
+            project=project,
+            ip_address=ip,
+            user=user
+        )
+        
+        return Response({"status": "view recorded"}, status=status.HTTP_201_CREATED)

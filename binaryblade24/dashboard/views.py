@@ -10,6 +10,8 @@ from Proposal.models import Proposal
 from Review.models import Review
 from User.models import User
 from Order.models import Order, OrderItem
+from Project.models import ProjectView
+from message.models import Conversation, Message
 
 class FreelancerDashboardAPIView(APIView):
     permission_classes = [IsAuthenticated]
@@ -80,11 +82,35 @@ class FreelancerDashboardAPIView(APIView):
         # Achievement Rating
         achievement_rating = freelancer.profile.rating or 0
 
-        # Response Rate 
-        response_rate = "95%"
+        # Response Rate Calculation
+        # Definition: Percentage of conversations where the freelancer has replied
+        # 1. Get all conversations where the user is a participant
+        conversations = Conversation.objects.filter(
+            Q(participant_1=freelancer) | Q(participant_2=freelancer)
+        )
+        total_conversations = conversations.count()
+        
+        if total_conversations > 0:
+            # 2. significant conversations (where freelancer sent at least one message)
+            replied_count = 0
+            for convo in conversations:
+                if convo.messages.filter(sender=freelancer).exists():
+                    replied_count += 1
+            
+            rate = (replied_count / total_conversations) * 100
+            response_rate = f"{int(rate)}%"
+        else:
+            response_rate = "N/A" # No conversations yet
 
-        # Total Impressions (hardcoded as no tracking for this)
-        total_impressions = "18.5K"
+        # Total Impressions (Real data from ProjectView)
+        # Count all views on projects created by this freelancer
+        total_impressions = ProjectView.objects.filter(
+            project__client=freelancer 
+        ).count()
+        
+        # Format for readability (e.g. 1.2K) if large
+        if total_impressions > 1000:
+            total_impressions = f"{total_impressions/1000:.1f}K"
 
         # Recent Proposals (Keeping this for now, though less relevant in Fiverr model)
         recent_proposals = Proposal.objects.filter(freelancer=freelancer).order_by('-created_at')[:3]

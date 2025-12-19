@@ -248,3 +248,29 @@ class Deliverable(models.Model):
     def is_pending(self):
         """Returns True if this deliverable is awaiting review"""
         return self.status == self.DeliverableStatus.SUBMITTED
+
+
+class ProjectView(models.Model):
+    """
+    Tracks views (impressions) for a project.
+    Used for analytics to show freelancers how many people are viewing their gigs.
+    """
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='views')
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
+        related_name='project_views'
+    )
+    timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+        indexes = [
+            models.Index(fields=['project', 'timestamp']),  # Fast filtering for charts/stats
+        ]
+
+    def __str__(self):
+        return f"View on {self.project.title} at {self.timestamp}"
