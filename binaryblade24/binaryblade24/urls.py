@@ -20,6 +20,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from dashboard.views import api_home
 
+# SEO: Sitemap imports
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import ProjectSitemap, CategorySitemap, StaticViewSitemap
+from .views import robots_txt
+
+# SEO: Define sitemaps
+sitemaps = {
+    'projects': ProjectSitemap,
+    'categories': CategorySitemap,
+    'static': StaticViewSitemap,
+}
+
 urlpatterns = [
     path('', api_home, name='api-home'),
     path('admin/', admin.site.urls),
@@ -32,6 +44,10 @@ urlpatterns = [
     path('api/proposals/', include('Proposal.urls', namespace='proposal_api')),
     path('api/reviews/', include('Review.urls', namespace='review_api')),
     path('api/orders/', include('Order.urls')),
+    
+    # SEO: Sitemap and robots.txt
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', robots_txt, name='robots_txt'),
 
 ]
 

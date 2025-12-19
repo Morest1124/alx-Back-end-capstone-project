@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # Required for sitemaps
+    'django.contrib.sitemaps',  # SEO: Sitemap framework
     
     # Third-party apps
     'rest_framework',
@@ -68,6 +70,10 @@ INSTALLED_APPS = [
     'notifications',
     'Order',
 ]
+
+# SEO: Site ID for sitemap framework
+SITE_ID = 1
+
 
 # Email Configuration (Console Backend for Development)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
