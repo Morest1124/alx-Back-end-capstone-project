@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders', 
     # TURN ON LATER
-    # 'rest_framework_api_key', 
+    'rest_framework_api_key', 
     
     # Your apps
     'User',
