@@ -33,7 +33,7 @@ class Message(models.Model):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sent_messages')
     body = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False)
+    is_read = models.BooleanField(default=False, db_index=True)  # Index for filtering unread messages
     attachment = models.ForeignKey(
         'User.FileAttachment',
         on_delete=models.SET_NULL,
@@ -44,6 +44,10 @@ class Message(models.Model):
 
     class Meta:
         ordering = ['timestamp']
+        indexes = [
+            models.Index(fields=['conversation', 'is_read']),  # Unread messages in a conversation
+            models.Index(fields=['sender', 'timestamp']),  # User's message history
+        ]
 
     def __str__(self):
         return f'Message from {self.sender.username} at {self.timestamp}'

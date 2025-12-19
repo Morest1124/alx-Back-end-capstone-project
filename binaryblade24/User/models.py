@@ -18,7 +18,8 @@ class User(AbstractUser):
         blank=False, 
         null=False,
         choices=COUNTRY_CHOICES,
-        help_text="Select your country of origin"
+        help_text="Select your country of origin",
+        db_index=True  # Index for location-based filtering
     )
     phone_country_code = models.CharField(
         max_length=10,
@@ -119,7 +120,8 @@ class Profile(models.Model):
         choices=SkillLevel.choices,
         # Set the default to the lowest tier: 'beginner'
         default=SkillLevel.BEGINNER,
-        verbose_name="Module Skill Level"
+        verbose_name="Module Skill Level",
+        db_index=True  # Index for filtering by skill level
     )
 
     class Availability(models.TextChoices):
@@ -129,7 +131,8 @@ class Profile(models.Model):
     availability = models.CharField(
         max_length=20,
         choices=Availability.choices,
-        default=Availability.AVAILABLE
+        default=Availability.AVAILABLE,
+        db_index=True  # Index for filtering available freelancers
     )
 
     # Computed properties for convenience / API use
@@ -173,6 +176,11 @@ class Profile(models.Model):
         avg = agg.get('avg')
         return float(avg) if avg is not None else None
 
+    class Meta:
+        indexes = [
+            models.Index(fields=['user', 'availability']),  # Common query: user's availability status
+        ]
+
     def __str__(self):
         roles = ', '.join([role.name for role in self.user.roles.all()])
         return f"{self.user.username}'s Profile ({roles})"
@@ -187,7 +195,7 @@ class Payment(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateTimeField(auto_now_add=True)
-    transaction_id = models.CharField(max_length=255)
+    transaction_id = models.CharField(max_length=255, db_index=True)  # Index for transaction lookups
     payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES)
     class PaymentStatus(models.TextChoices):
         PENDING = 'PENDING', 'Pending'
@@ -198,8 +206,15 @@ class Payment(models.Model):
     status = models.CharField(
         max_length=20, 
         choices=PaymentStatus.choices, 
-        default=PaymentStatus.PENDING
+        default=PaymentStatus.PENDING,
+        db_index=True  # Index for payment status filtering
     )
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['user', 'status']),  # User payment history
+            models.Index(fields=['project', 'status']),  # Project payment tracking
+        ]
 
     def __str__(self):
         return f"Payment of {self.amount} for {self.project.title} by {self.user.username} via {self.get_payment_method_display()}"

@@ -73,7 +73,7 @@ class Project(models.Model):
         # help_text="The expected date and time the order will be delivered to the customer."
     )
     #Timeline
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)  # Index for sorting recent projects
     updated_at = models.DateTimeField(auto_now=True)
     
 
@@ -107,6 +107,7 @@ class Project(models.Model):
         choices=ProjectStatus.choices,
         default=ProjectStatus.OPEN,
         help_text="The current status of this project",
+        db_index=True  # Index for filtering projects by status
     )
     
     # Project type: GIG (freelancer service) or JOB (client requirement)
@@ -114,12 +115,21 @@ class Project(models.Model):
         max_length=10,
         choices=ProjectType.choices,
         default=ProjectType.GIG, # Default to GIG for Pure Fiverr Model
-        help_text="Type of project: GIG (freelancer offers service) or JOB (client needs work done)"
+        help_text="Type of project: GIG (freelancer offers service) or JOB (client needs work done)",
+        db_index=True  # Index for filtering GIGs vs JOBs
     )
 
     # Milestone Support
     has_milestones = models.BooleanField(default=False, help_text="Does this project use milestone-based payments?")
     milestone_count = models.IntegerField(default=0, help_text="Total number of milestones")
+    
+    class Meta:
+        indexes = [
+            models.Index(fields=['status', 'project_type']),  # Common: "show me all open GIGs"
+            models.Index(fields=['category', 'status']),  # Filtering projects by category and status
+            models.Index(fields=['client', 'status']),  # User's project dashboard
+            models.Index(fields=['created_at']),  # Recent projects (already has db_index, but Meta ensures it)
+        ]
     
     def __str__(self):
         return self.title
@@ -152,7 +162,8 @@ class Milestone(models.Model):
     status = models.CharField(
         max_length=20,
         choices=MilestoneStatus.choices,
-        default=MilestoneStatus.PENDING
+        default=MilestoneStatus.PENDING,
+        db_index=True  # Index for tracking milestone completion
     )
     payment = models.ForeignKey(
         'User.Payment',
@@ -163,6 +174,11 @@ class Milestone(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['project', 'status']),  # Project milestone tracking
+        ]
 
     def __str__(self):
         return f"{self.title} - {self.project.title}"
@@ -201,7 +217,8 @@ class Deliverable(models.Model):
         max_length=20,
         choices=DeliverableStatus.choices,
         default=DeliverableStatus.SUBMITTED,
-        help_text="Current review status"
+        help_text="Current review status",
+        db_index=True  # Index for tracking review state
     )
     submitted_at = models.DateTimeField(auto_now_add=True)
     reviewed_at = models.DateTimeField(
@@ -216,6 +233,10 @@ class Deliverable(models.Model):
     
     class Meta:
         ordering = ['-submitted_at']
+        indexes = [
+            models.Index(fields=['project', 'status']),  # Project deliverable tracking
+            models.Index(fields=['freelancer', 'status']),  # Freelancer's submitted work
+        ]
         
     def __str__(self):
         return f"Deliverable for {self.project.title} by {self.freelancer.username}"

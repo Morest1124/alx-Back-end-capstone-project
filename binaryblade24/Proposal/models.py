@@ -33,11 +33,12 @@ class Proposal(models.Model):
         max_length=20, 
         choices=ProposalStatus.choices,
         default=ProposalStatus.PENDING,
-        help_text="The current status of this proposal."
+        help_text="The current status of this proposal.",
+        db_index=True  # Index for filtering proposals by status
     )
     
     # Timestamps (Recommended) 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)  # Index for sorting proposals by date
     
     def __str__(self):
         return f"Proposal for {self.project.title} by {self.freelancer.username}"
@@ -45,3 +46,7 @@ class Proposal(models.Model):
     class Meta:
         # Enforce that a freelancer can only submit one proposal per project
         unique_together = ('project', 'freelancer')
+        indexes = [
+            models.Index(fields=['project', 'status']),  # Viewing proposals for a specific project
+            models.Index(fields=['freelancer', 'status']),  # Freelancer's proposal dashboard
+        ]

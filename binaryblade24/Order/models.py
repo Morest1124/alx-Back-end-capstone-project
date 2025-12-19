@@ -33,7 +33,8 @@ class Order(models.Model):
         max_length=20, 
         choices=OrderStatus.choices, 
         default=OrderStatus.PENDING,
-        help_text="Current order status"
+        help_text="Current order status",
+        db_index=True  # Index for filtering orders by status
     )
     total_amount = models.DecimalField(
         max_digits=10, 
@@ -48,7 +49,7 @@ class Order(models.Model):
         related_name='order_payment',
         help_text="Associated payment record"
     )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)  # Index for sorting recent orders
     updated_at = models.DateTimeField(auto_now=True)
     paid_at = models.DateTimeField(
         null=True, 
@@ -58,6 +59,10 @@ class Order(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['client', 'status']),  # User's order dashboard
+            models.Index(fields=['status', 'created_at']),  # Recent orders by status
+        ]
         
     def __str__(self):
         return f"Order {self.order_number} - {self.client.username}"
@@ -165,7 +170,8 @@ class OrderItem(models.Model):
     tier = models.CharField(
         max_length=10, 
         choices=TierChoice.choices,
-        help_text="Selected pricing tier"
+        help_text="Selected pricing tier",
+        db_index=True  # Index for filtering by package tier
     )
     base_price = models.DecimalField(
         max_digits=10, 
@@ -192,6 +198,9 @@ class OrderItem(models.Model):
     
     class Meta:
         ordering = ['created_at']
+        indexes = [
+            models.Index(fields=['order', 'freelancer']),  # Tracking freelancer earnings
+        ]
         
     def __str__(self):
         return f"{self.project.title} - {self.tier} ({self.order.order_number})"
@@ -265,7 +274,8 @@ class Escrow(models.Model):
         max_length=20,
         choices=EscrowStatus.choices,
         default=EscrowStatus.HELD,
-        help_text="Current escrow status"
+        help_text="Current escrow status",
+        db_index=True  # Index for tracking escrow state
     )
     held_at = models.DateTimeField(
         auto_now_add=True,
@@ -286,6 +296,9 @@ class Escrow(models.Model):
         verbose_name = "Escrow"
         verbose_name_plural = "Escrows"
         ordering = ['-held_at']
+        indexes = [
+            models.Index(fields=['status', 'held_at']),  # Finding held/pending escrows
+        ]
     
     def __str__(self):
         return f"Escrow for {self.order.order_number} - {self.get_status_display()}"
