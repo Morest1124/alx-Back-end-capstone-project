@@ -57,6 +57,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'average_rating',
             'review_count',
             'view_count',
+            'debug_sync_field',
             # 'verbose_name',
             # 'help_text',
             
