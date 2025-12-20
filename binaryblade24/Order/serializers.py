@@ -72,6 +72,11 @@ class OrderSerializer(serializers.ModelSerializer):
                 order.delete()  # Clean up the order if project doesn't exist
                 raise serializers.ValidationError(f"Project with id {project_id} does not exist")
             
+            # SECURITY: Prevent buying own gig
+            if project.client == client:
+                order.delete()
+                raise serializers.ValidationError("You cannot purchase your own gig.")
+
             OrderItem.objects.create(
                 order=order,
                 project=project,

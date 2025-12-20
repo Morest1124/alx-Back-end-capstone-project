@@ -161,10 +161,16 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         project_pk = self.kwargs.get('project_pk')
         project = get_object_or_404(Project, pk=project_pk)
 
-        # Validation:Check if the project is accepting proposals
+        # Validation: Check if the project is accepting proposals
         if project.status != Project.ProjectStatus.OPEN:
             raise ValidationError({
                 "detail": "Cannot submit proposal: Project is not open for new proposals."
+            })
+
+        # SECURITY: Prevent owner from submitting proposal to own project
+        if project.client == self.request.user:
+            raise ValidationError({
+                "detail": "You cannot submit a proposal to your own project."
             })
 
         # Save with server-controlled fields
@@ -253,6 +259,13 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
         if new_status not in [Proposal.ProposalStatus.ACCEPTED, Proposal.ProposalStatus.REJECTED]:
             return Response(
                 {"detail": "Invalid status update. Only ACCEPTED or REJECTED are allowed."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # SECURITY: Prevent project owner from accepting their own proposal
+        if new_status == Proposal.ProposalStatus.ACCEPTED and proposal.freelancer == request.user:
+            return Response(
+                {"detail": "You cannot accept your own proposal."},
                 status=status.HTTP_400_BAD_REQUEST
             )
         
