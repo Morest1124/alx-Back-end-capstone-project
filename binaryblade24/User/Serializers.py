@@ -12,8 +12,9 @@ except Exception:
     User = get_user_model()
 from django.contrib.auth.hashers import make_password
 from django.db.models import Avg
-from Project.models import Project
-from Review.models import Review
+
+# from Project.models import Project # Moved inside methods to avoid circular dependency
+# from Review.models import Review # Moved inside methods to avoid circular dependency
 
 class CaseInsensitiveSlugRelatedField(serializers.SlugRelatedField):
     def to_internal_value(self, data):
@@ -39,6 +40,7 @@ class FreelancerDetailSerializer(serializers.ModelSerializer):
 
     def get_avg_rating(self, obj):
         """Get average rating from user profile."""
+        from Review.models import Review
         try:
             # Safely access profile
             profile = obj.profile
@@ -78,6 +80,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_completed_projects(self, obj):
         """Return a list of minimal completed project info for this user's created projects."""
+        from Project.models import Project
         projects = Project.objects.filter(client=obj.user, status=Project.ProjectStatus.COMPLETED)
         result = []
         for p in projects:
@@ -91,18 +94,22 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_portfolio(self, obj):
         """Return a list of thumbnail URLs from completed projects (portfolio)."""
+        from Project.models import Project
         projects = Project.objects.filter(client=obj.user, status=Project.ProjectStatus.COMPLETED).exclude(thumbnail='')
         thumbs = [p.thumbnail.url for p in projects if p.thumbnail]
         return thumbs
 
     def get_active_projects(self, obj):
+        from Project.models import Project
         projects = Project.objects.filter(client=obj.user, status=Project.ProjectStatus.IN_PROGRESS)
         return [{'id': p.id, 'title': p.title, 'status': p.status} for p in projects]
 
     def get_projects_posted(self, obj):
+        from Project.models import Project
         return Project.objects.filter(client=obj.user).count()
 
     def get_avg_rating(self, obj):
+        from Review.models import Review
         # Prefer calculating from Review model; fall back to stored profile.rating
         agg = Review.objects.filter(reviewee=obj.user).aggregate(avg=Avg('rating'))
         avg = agg.get('avg')

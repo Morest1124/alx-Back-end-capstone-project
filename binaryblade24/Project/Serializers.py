@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Project, Category, Milestone 
 from django.contrib.auth import get_user_model
-from User.Serializers import FreelancerDetailSerializer
 
 User = get_user_model()
 
