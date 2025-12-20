@@ -1,5 +1,4 @@
 from rest_framework import permissions
-from User.models import Profile, User  
 
 class IsClient(permissions.BasePermission):
     """
@@ -41,3 +40,15 @@ class IsProjectOwner(permissions.BasePermission):
 
         # Write permissions (PUT, PATCH, DELETE) are only allowed to the owner
         return obj.client == request.user
+
+class IsClientOrFreelancer(permissions.BasePermission):
+    """
+    Custom permission to allow both 'CLIENT' and 'FREELANCER' roles.
+    Used for creating projects (GIGs or JOBs).
+    """
+    def has_permission(self, request, view):
+        if not (request.user and request.user.is_authenticated):
+            return False
+            
+        # Check if user has either role
+        return request.user.roles.filter(name__in=['CLIENT', 'FREELANCER']).exists()

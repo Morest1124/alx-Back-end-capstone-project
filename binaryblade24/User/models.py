@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser, Permission, Group
 from django.conf import settings # Needed for settings.AUTH_USER_MODEL reference
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.hashers import check_password
-from Project.models import Project
+
 from django.db.models import Avg
 from .countries import COUNTRIES
 
@@ -139,6 +139,7 @@ class Profile(models.Model):
     @property
     def completed_projects(self):
         """Return a queryset of this user's completed projects."""
+        from Project.models import Project
         return Project.objects.filter(client=self.user, status=Project.ProjectStatus.COMPLETED)
 
     @property
@@ -153,6 +154,7 @@ class Profile(models.Model):
     @property
     def active_projects(self):
         """Return a queryset of this user's active/in-progress projects."""
+        from Project.models import Project
         return Project.objects.filter(client=self.user, status=Project.ProjectStatus.IN_PROGRESS)
 
     @property
@@ -192,7 +194,7 @@ class Payment(models.Model):
     ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey('Project.Project', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=255, db_index=True)  # Index for transaction lookups

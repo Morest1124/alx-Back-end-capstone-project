@@ -37,7 +37,7 @@ from Proposal.models import Proposal
 from .Serializers import ProjectSerializer, MilestoneSerializer
 from .category_serializers import CategorySerializer
 from Proposal.Serializer import ProposalSerializer
-from .Permissions import IsClient, IsFreelancer, IsProjectOwner
+from .Permissions import IsClient, IsFreelancer, IsProjectOwner, IsClientOrFreelancer
 from User.models import Profile
 
 
@@ -104,7 +104,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         if self.action in ['create']:
             # Both freelancers (GIGs) and clients (JOBs) can create projects
-            self.permission_classes = [IsAuthenticated, (IsFreelancer | IsClient)]
+            self.permission_classes = [IsAuthenticated, IsClientOrFreelancer]
             
         elif self.action in ['update', 'partial_update', 'destroy']:
             # Only the project creator can modify or delete
