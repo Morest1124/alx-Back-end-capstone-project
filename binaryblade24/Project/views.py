@@ -103,9 +103,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
             - Modification restricted to owners prevents unauthorized changes
         """
         if self.action in ['create']:
-            # Only freelancers can create projects (GIGs)
-            # Pure Fiverr model: freelancers offer services, clients hire
-            self.permission_classes = [IsAuthenticated, IsFreelancer]
+            # Both freelancers (GIGs) and clients (JOBs) can create projects
+            self.permission_classes = [IsAuthenticated, (IsFreelancer | IsClient)]
             
         elif self.action in ['update', 'partial_update', 'destroy']:
             # Only the project creator can modify or delete
