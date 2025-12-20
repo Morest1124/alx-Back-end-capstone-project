@@ -24,6 +24,7 @@ Last Modified: 2025-11-27
 """
 
 from rest_framework import viewsets, mixins, status
+from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
@@ -406,9 +407,15 @@ class MilestoneViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(project_id=project_id)
         return queryset
 
-            project.has_milestones = True
-            project.milestone_count = project.milestones.count()
-            project.save()
+    def perform_create(self, serializer):
+        """
+        Update project milestone status and count on creation.
+        """
+        milestone = serializer.save()
+        project = milestone.project
+        project.has_milestones = True
+        project.milestone_count = project.milestones.count()
+        project.save()
 
 
 class RecordProjectView(APIView):

@@ -31,6 +31,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     # Computed fields for ratings
     average_rating = serializers.SerializerMethodField()
     review_count = serializers.SerializerMethodField()
+    view_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
@@ -55,6 +56,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'project_type',
             'average_rating',
             'review_count',
+            'view_count',
             # 'verbose_name',
             # 'help_text',
             
@@ -69,6 +71,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'updated_at',
             'average_rating',
             'review_count',
+            'view_count',
         ]
 
     def get_average_rating(self, obj):
@@ -82,6 +85,10 @@ class ProjectSerializer(serializers.ModelSerializer):
     def get_review_count(self, obj):
         """Return total number of reviews."""
         return obj.reviews.count()
+
+    def get_view_count(self, obj):
+        """Return total number of view impressions."""
+        return obj.views.count()
 
     def get_client_details(self, obj):
         """
