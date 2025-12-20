@@ -38,7 +38,7 @@ from .Serializers import ProjectSerializer, MilestoneSerializer
 from .category_serializers import CategorySerializer
 from Proposal.Serializer import ProposalSerializer
 from .Permissions import IsClient, IsFreelancer, IsProjectOwner, IsClientOrFreelancer
-from User.models import Profile
+# from User.models import Profile # Unused and potential circular dependency
 
 
 class ProjectViewSet(viewsets.ModelViewSet):

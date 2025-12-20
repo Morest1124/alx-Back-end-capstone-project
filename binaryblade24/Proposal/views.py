@@ -36,7 +36,7 @@ from Project.models import Project
 from Proposal.Serializer import ProposalSerializer, ProposalStatusUpdateSerializer
 from Project.Permissions import IsClient, IsFreelancer
 from .Permissions import IsProposalProjectOwner
-from User.models import Profile, User
+# from User.models import Profile, User # Moved Profile (unused) and User (local import)
 
 
 class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -450,6 +450,7 @@ class UserProposalsView(generics.ListAPIView):
         user_id = self.kwargs.get('pk')
         
         # Get user or 404
+        from User.models import User
         user = get_object_or_404(User, pk=user_id)
         
         # Return all of this freelancer's proposals

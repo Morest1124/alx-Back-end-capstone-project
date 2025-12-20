@@ -5,18 +5,18 @@ from rest_framework import status
 from django.db.models import Sum, Avg, Count, Q
 from django.shortcuts import render
 from django.urls import get_resolver
-from Project.models import Project
-from Proposal.models import Proposal
-from Review.models import Review
-from User.models import User
-from Order.models import Order, OrderItem
-from Project.models import ProjectView
-from message.models import Conversation, Message
+# Models moved inside methods to avoid circular dependencies
 
 class FreelancerDashboardAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, user_id=None):
+        from User.models import User
+        from Order.models import OrderItem
+        from Project.models import ProjectView
+        from Proposal.models import Proposal
+        from message.models import Conversation
+        
         if user_id:
             # If user_id is provided, check if the requesting user is an admin
             if not request.user.is_staff and not request.user.is_superuser:
@@ -142,6 +142,11 @@ class ClientDashboardAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        from Order.models import Order
+        from Project.models import Project
+        from Proposal.models import Proposal
+        from User.models import User
+        
         client = request.user
 
         # Total Spent
