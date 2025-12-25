@@ -36,7 +36,7 @@ from .models import Project, Category, Milestone
 from Proposal.models import Proposal
 from .Serializers import ProjectSerializer, MilestoneSerializer
 from .category_serializers import CategorySerializer
-from Proposal.Serializer import ProposalSerializer
+from Proposal.serializers import ProposalSerializer
 from .Permissions import IsClient, IsFreelancer, IsProjectOwner, IsClientOrFreelancer
 # from User.models import Profile # Unused and potential circular dependency
 

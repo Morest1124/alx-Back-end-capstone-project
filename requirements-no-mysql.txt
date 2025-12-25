@@ -4,7 +4,8 @@ djangorestframework-simplejwt==5.5.1
 python-dotenv
 requests
 Pillow
-mysqlclient
+# mysqlclient - commented out, using PyMySQL instead
+PyMySQL
 gunicorn
 stripe
 paypalrestsdk
@@ -15,4 +16,3 @@ django-cors-headers
 djangorestframework-api-key==3.1.0
 python-decouple
 pytz
-dj_database_url
