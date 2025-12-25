@@ -50,3 +50,25 @@ binaryblade24/User/management/commands/load_mock_data.py
 binaryblade24/User/management/commands/mock_data.py
 binaryblade24/User/management/commands/reset_and_reload_data.py
 data/
+
+# Temporary patch and debug files
+binaryblade24/check_patch.py
+binaryblade24/django.tar.gz
+binaryblade24/patch_django.py
+binaryblade24/patch_django_v2.py
+binaryblade24/reproduce_issue.py
+binaryblade24/test_django.py
+check_patch.py
+django.tar.gz
+patch_django.py
+patch_django_v2.py
+reproduce_issue.py
+test_django.py
+requirements-no-mysql.txt
+binaryblade24/check_patch.py
+binaryblade24/django.tar.gz
+binaryblade24/patch_django.py
+binaryblade24/patch_django_v2.py
+binaryblade24/reproduce_issue.py
+binaryblade24/test_django.py
+requirements-no-mysql.txt
