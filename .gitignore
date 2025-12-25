@@ -30,6 +30,7 @@ celerybeat-schedule
 db.sqlite3
 media/
 static/
+staticfiles/
 /static_root/
 /media_root/
 local_settings.py
