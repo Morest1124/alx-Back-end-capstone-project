@@ -33,7 +33,7 @@ from django.db.models import Q
 
 from Proposal.models import Proposal
 from Project.models import Project
-from Proposal.Serializer import ProposalSerializer, ProposalStatusUpdateSerializer
+from Proposal.serializers import ProposalSerializer, ProposalStatusUpdateSerializer
 from Project.Permissions import IsClient, IsFreelancer
 from .Permissions import IsProposalProjectOwner
 # from User.models import Profile, User # Moved Profile (unused) and User (local import)
