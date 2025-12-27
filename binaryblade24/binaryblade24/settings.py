@@ -271,21 +271,5 @@ LOGGING = {
 }
 
 # ====================================================================
-# MONKEYPATCHES
+# END OF SETTINGS
 # ====================================================================
-
-# This is required because some admin views copy the context, and RequestContext's default copy behavior is broken.
-import django.template.context
-from django.template import RequestContext
-
-def request_context_copy(self):
-    # Create new instance with same request and first dict
-    new_context = self.__class__(self.request, self.dicts[0] if self.dicts else None)
-    
-    # Explicitly ensure _processors_index is copied if present
-    if hasattr(self, '_processors_index'):
-        new_context._processors_index = self._processors_index
-        
-    return new_context
-
-RequestContext.__copy__ = request_context_copy
