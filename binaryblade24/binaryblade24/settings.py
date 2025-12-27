@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'message',
     'notifications',
     'Order',
+    'escrow',
 ]
 
 # SEO: Site ID for sitemap framework

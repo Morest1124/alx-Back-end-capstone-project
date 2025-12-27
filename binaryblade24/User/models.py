@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.hashers import check_password
 
 from django.db.models import Avg
+from decimal import Decimal
 from .countries import COUNTRIES
 
 # Generate choices from COUNTRIES list
@@ -104,6 +105,7 @@ class Profile(models.Model):
     skills = models.CharField(max_length=255, blank=True)
     hourly_rate = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, null=True )
+    wallet_balance = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal('0.00'))
     #         validators=[MinValueValidator(0.0), MaxValueValidator(5.0)]),
     avatar = models.ImageField(blank=True)
     
