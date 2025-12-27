@@ -33,6 +33,7 @@ if not SECRET_KEY:
 # DEBUG is False by default unless explicitly set to true/1 in the environment.
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+
 # Define the allowed hosts for your application.
 # Uses Csv caster to easily load multiple hosts from a single string env variable.
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='binaryblade2411.pythonanywhere.com,127.0.0.1,localhost', cast=Csv())
@@ -56,7 +57,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders', 
-    # TURN ON LATER
     'rest_framework_api_key', 
     
     # Your apps

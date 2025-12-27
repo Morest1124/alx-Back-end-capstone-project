@@ -74,6 +74,7 @@ volumes:
     name: binaryblade_postgres_data
   redis_data:
     name: binaryblade_redis_data
+    external: true
   mysql_data:
     name: binaryblade_mysql_data
   mongo_data:
