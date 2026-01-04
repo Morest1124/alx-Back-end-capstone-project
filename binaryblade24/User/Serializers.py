@@ -190,6 +190,15 @@ class UserSerializer(serializers.ModelSerializer):
 
         if 'roles' in validated_data:
             roles_data = validated_data.pop('roles')
+            # Check for dual role requirement in update as well
+            role_names = {role.name for role in roles_data}
+            if 'FREELANCER' in role_names:
+                client_role, created = Role.objects.get_or_create(name='CLIENT')
+                if client_role not in roles_data:
+                    # Convert to list if it's a queryset/set to allow append/extend
+                    roles_list = list(roles_data)
+                    roles_list.append(client_role)
+                    roles_data = roles_list
             instance.roles.set(roles_data)  # type: ignore[attr-defined]
 
         for attr, value in validated_data.items():

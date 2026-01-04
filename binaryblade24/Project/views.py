@@ -23,7 +23,7 @@ Author: BinaryBlade24 Team
 Last Modified: 2025-11-27
 """
 
-from rest_framework import viewsets, mixins, status
+from rest_framework import viewsets, mixins, status, filters
 from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -45,45 +45,21 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     Complete CRUD operations for projects with role-based access control.
     
-    Pure Fiverr Model:
-        - ONLY Freelancers can create GIGs (service offerings)
-        - Clients browse gigs and hire freelancers
-        - Clients CANNOT post job requests
+    Hybrid Marketplace Model:
+        - Freelancers create GIGs (service offerings)
+        - Clients create JOBS (work requirements)
+        - Both can browse appropriately
     
     This ViewSet provides different views of projects based on user roles:
-    - Public/Anon: Can view OPEN gigs (marketplace discovery)
-    - Clients: Can browse gigs, hire freelancers, manage hired work
-    - Freelancers: Can create GIGS, view opportunities, manage accepted work
+    - Public/Anon: Can view OPEN projects
+    - Clients: Can browse and manage hired work
+    - Freelancers: Can view opportunities and manage accepted work
     
     Permissions Strategy:
-        CREATE: Authenticated + FREELANCER role (gigs only)
+        CREATE: Authenticated + Freelancer (GIGs) or Client (JOBs)
         UPDATE/DELETE: Authenticated + Project owner
-        LIST/RETRIEVE: Public read access (unauthenticated allowed)
-    
-    Default Queryset Behavior:
-        Returns only OPEN gigs (the marketplace for clients to browse)
-        
-    Custom Actions:
-        - my_projects: Returns all gigs created by the authenticated freelancer
-        - my_jobs: Returns projects where freelancer has accepted proposals
-    
-    Business Rules:
-        - New gigs always start with OPEN status
-        - Creator is automatically set from authenticated user
-        - Only gig creators can modify their gigs
-        - Deleted gigs remove all associated proposals (cascade)
-    
-    Security:
-        - Creator assignment is server-side (prevents impersonation)
-        - Status changes through proposal acceptance (prevents manual manipulation)
-        - Role-based permissions prevent cross-role actions
+        LIST/RETRIEVE: Public read access
     """
-    
-from rest_framework import viewsets, mixins, status, filters
-# ...
-
-class ProjectViewSet(viewsets.ModelViewSet):
-    # ...
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     filter_backends = [filters.SearchFilter]
