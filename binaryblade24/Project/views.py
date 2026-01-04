@@ -162,6 +162,15 @@ class ProjectViewSet(viewsets.ModelViewSet):
         client_id = self.request.query_params.get('client')
         if client_id:
             queryset = queryset.filter(client_id=client_id)
+
+        # Filter by category (including subcategories)
+        category_id = self.request.query_params.get('category')
+        if category_id:
+            from django.db.models import Q
+            queryset = queryset.filter(
+                Q(category_id=category_id) | 
+                Q(category__parent_id=category_id)
+            )
         
         return queryset
 

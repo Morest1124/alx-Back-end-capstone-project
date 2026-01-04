@@ -488,8 +488,10 @@ class SearchFilterOptionsView(APIView):
     authentication_classes = []
 
     def get(self, request):
-        # 1. Categories (Main ones)
-        categories = Category.objects.filter(parent=None).values('id', 'name', 'slug')
+        # 1. Categories (Full Hierarchy)
+        from Project.category_serializers import CategorySerializer
+        categories_qs = Category.objects.filter(parent=None).prefetch_related('subcategories')
+        categories_data = CategorySerializer(categories_qs, many=True).data
         
         # 2. Hourly Rates (from Profiles)
         rate_stats = Profile.objects.aggregate(
@@ -504,7 +506,7 @@ class SearchFilterOptionsView(APIView):
         )
         
         return Response({
-            "categories": list(categories),
+            "categories": categories_data,
             "freelancer_rates": {
                 "min": rate_stats['min_rate'] or 0,
                 "max": rate_stats['max_rate'] or 500
@@ -557,7 +559,11 @@ class GlobalSearchView(APIView):
             if rating:
                 users = users.filter(profile__rating__gte=rating)
             if category_id:
-                pass
+                # Filter freelancers who have GIGs in this category or its subcategories
+                users = users.filter(
+                    Q(created_projects__category_id=category_id) |
+                    Q(created_projects__category__parent_id=category_id)
+                ).distinct()
             
             user_limit = 20 if search_type == 'all' else 50
             results['freelancers'] = UserSerializer(users[:user_limit], many=True).data
@@ -587,7 +593,10 @@ class GlobalSearchView(APIView):
             if max_price:
                 projects = projects.filter(budget__lte=max_price)
             if category_id:
-                projects = projects.filter(category_id=category_id)
+                projects = projects.filter(
+                    Q(category_id=category_id) | 
+                    Q(category__parent_id=category_id)
+                )
                 
             project_limit = 20 if search_type == 'all' else 50
             results['projects'] = ProjectSerializer(projects[:project_limit], many=True).data
