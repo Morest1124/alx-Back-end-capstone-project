@@ -50,7 +50,7 @@ class User(AbstractUser):
 
     # Use 'email' for login:
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'country_origin', 'phone_number'] 
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'country_origin', 'phone_number', 'identity_number'] 
 
     # Field overrides (required to avoid Django's default User model conflicts in a custom user model setup)
     groups = models.ManyToManyField(
