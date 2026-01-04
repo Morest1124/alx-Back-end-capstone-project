@@ -9,6 +9,8 @@ from .views import (
     LoginWithRoleView,
     UserProfileView,
     AddFreelancerRoleView,
+    UserSearchView,
+    UserSuggestionView,
 )
 from .settings_views import (
     CountriesListView,
@@ -44,6 +46,10 @@ urlpatterns = [
     path('users/<int:pk>/profile/', UserProfileView.as_view(), name='user-profile'),
     path('users/<int:pk>/proposals/', UserProposalsView.as_view(), name='user-proposals'),
     path('users/<int:pk>/reviews/', UserReviewsView.as_view(), name='user-reviews'),
+    
+    # Search endpoints
+    path('search/', UserSearchView.as_view(), name='user-search'),
+    path('search/suggest/', UserSuggestionView.as_view(), name='user-search-suggest'),
     
     # Stripe URLs
     # path('create-checkout-session/', StripeCheckoutView.as_view(), name='create-checkout-session'),

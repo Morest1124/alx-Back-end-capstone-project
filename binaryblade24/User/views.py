@@ -249,6 +249,110 @@ class AddFreelancerRoleView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+from django.db.models import Q
+
+class UserSearchView(APIView):
+    """
+    Search for freelancers with filters.
+    """
+    permission_classes = [AllowAny] # Allow public search or restrict as needed
+
+    def get(self, request, format=None):
+        query = request.query_params.get('q', '')
+        min_rate = request.query_params.get('min_rate')
+        max_rate = request.query_params.get('max_rate')
+        level = request.query_params.get('level')
+        country = request.query_params.get('country')
+        availability = request.query_params.get('availability')
+
+        # Start with all users who have a 'freelancer' role
+        users = User.objects.filter(roles__name='freelancer')
+
+        if query:
+            # Search in username, names, bio, skills
+            users = users.filter(
+                Q(username__icontains=query) |
+                Q(first_name__icontains=query) |
+                Q(last_name__icontains=query) |
+                Q(profile__bio__icontains=query) |
+                Q(profile__skills__icontains=query)
+            ).distinct()
+
+        # Apply Filters
+        if min_rate:
+            users = users.filter(profile__hourly_rate__gte=min_rate)
+        if max_rate:
+            users = users.filter(profile__hourly_rate__lte=max_rate)
+        if level:
+            users = users.filter(profile__level=level)
+        if country:
+            users = users.filter(country_origin=country)
+        if availability:
+            users = users.filter(profile__availability=availability)
+
+        # Pagination (Simple limit for now, can use standard DRF pagination)
+        # users = users[:20] 
+
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+
+class UserSuggestionView(APIView):
+    """
+    Provide autocomplete suggestions for the search bar.
+    """
+    permission_classes = [AllowAny]
+
+    def get(self, request, format=None):
+        query = request.query_params.get('q', '').strip()
+        if len(query) < 2:
+            return Response([])
+
+        suggestions = []
+
+        # 1. Matches in Roles/Job Titles (if we had a standard title field, we'd use that)
+        # For now, let's assume 'skills' contains relevant keywords.
+        
+        # 2. Matches in Skills (Assuming comma-separated string in Profile.skills or similar structure)
+        # A bit complex to filter distinct skills from a CharField efficiently in SQLite/Postgres without normalization.
+        # We will do a simple containment search for now.
+        
+        # 3. Matches in Names
+        users = User.objects.filter(roles__name='freelancer').filter(
+            Q(username__icontains=query) |
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query)
+        )[:5]
+        
+        for user in users:
+            name_str = f"{user.first_name} {user.last_name} (@{user.username})"
+            suggestions.append({
+                "type": "user",
+                "text": name_str.strip(),
+                "id": user.id
+            })
+
+        # 4. Keyword suggestions (Mocked behavior or derived from skills)
+        # Ideally, you'd query a Tag/Skill model. Here we mimic it by looking at profiles.
+        profiles = Profile.objects.filter(skills__icontains=query)[:5]
+        seen_skills = set()
+        for p in profiles:
+            # Simple splitter, might be messy if skills aren't standardized
+            user_skills = [s.strip() for s in p.skills.split(',')] 
+            for s in user_skills:
+                if query.lower() in s.lower() and s.lower() not in seen_skills:
+                    suggestions.append({
+                        "type": "skill",
+                        "text": s,
+                        "id": s # use text as ID for skill search
+                    })
+                    seen_skills.add(s.lower())
+                    if len(suggestions) >= 10: break
+            if len(suggestions) >= 10: break
+
+        return Response(suggestions)
+
+
 # --- Stripe Payment Views ---
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
