@@ -79,8 +79,15 @@ class ProjectViewSet(viewsets.ModelViewSet):
         - Role-based permissions prevent cross-role actions
     """
     
+from rest_framework import viewsets, mixins, status, filters
+# ...
+
+class ProjectViewSet(viewsets.ModelViewSet):
+    # ...
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'description', 'category__name']
     
     def get_permissions(self):
         """
@@ -144,7 +151,14 @@ class ProjectViewSet(viewsets.ModelViewSet):
             - Use my_jobs() for freelancer's active work
         """
         # Show only open projects (the "job board" for freelancers)
-        return Project.objects.filter(status=Project.ProjectStatus.OPEN)
+        queryset = Project.objects.filter(status=Project.ProjectStatus.OPEN)
+
+        # Filter by project type (GIG or JOB) if specified
+        project_type = self.request.query_params.get('project_type')
+        if project_type:
+             queryset = queryset.filter(project_type=project_type.upper())
+        
+        return queryset
 
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated, IsClient])
     def my_projects(self, request):

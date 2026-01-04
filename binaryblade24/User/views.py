@@ -297,60 +297,7 @@ class UserSearchView(APIView):
         return Response(serializer.data)
 
 
-class UserSuggestionView(APIView):
-    """
-    Provide autocomplete suggestions for the search bar.
-    """
-    permission_classes = [AllowAny]
 
-    def get(self, request, format=None):
-        query = request.query_params.get('q', '').strip()
-        if len(query) < 2:
-            return Response([])
-
-        suggestions = []
-
-        # 1. Matches in Roles/Job Titles (if we had a standard title field, we'd use that)
-        # For now, let's assume 'skills' contains relevant keywords.
-        
-        # 2. Matches in Skills (Assuming comma-separated string in Profile.skills or similar structure)
-        # A bit complex to filter distinct skills from a CharField efficiently in SQLite/Postgres without normalization.
-        # We will do a simple containment search for now.
-        
-        # 3. Matches in Names
-        users = User.objects.filter(roles__name='freelancer').filter(
-            Q(username__icontains=query) |
-            Q(first_name__icontains=query) |
-            Q(last_name__icontains=query)
-        )[:5]
-        
-        for user in users:
-            name_str = f"{user.first_name} {user.last_name} (@{user.username})"
-            suggestions.append({
-                "type": "user",
-                "text": name_str.strip(),
-                "id": user.id
-            })
-
-        # 4. Keyword suggestions (Mocked behavior or derived from skills)
-        # Ideally, you'd query a Tag/Skill model. Here we mimic it by looking at profiles.
-        profiles = Profile.objects.filter(skills__icontains=query)[:5]
-        seen_skills = set()
-        for p in profiles:
-            # Simple splitter, might be messy if skills aren't standardized
-            user_skills = [s.strip() for s in p.skills.split(',')] 
-            for s in user_skills:
-                if query.lower() in s.lower() and s.lower() not in seen_skills:
-                    suggestions.append({
-                        "type": "skill",
-                        "text": s,
-                        "id": s # use text as ID for skill search
-                    })
-                    seen_skills.add(s.lower())
-                    if len(suggestions) >= 10: break
-            if len(suggestions) >= 10: break
-
-        return Response(suggestions)
 
 
 # --- Stripe Payment Views ---
@@ -523,3 +470,189 @@ class UserSuggestionView(APIView):
 #             return Response({"status": "success", "payment_id": payment.id}, status=status.HTTP_200_OK)
 #         else:
 #             return Response({"error": payment.error}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# -----------------------------------------------------------------------------
+# GLOBAL SEARCH & FILTERS
+# -----------------------------------------------------------------------------
+
+from django.db.models import Min, Max, Q
+from Project.models import Project, Category
+from Project.Serializers import ProjectSerializer
+from .Serializers import UserSerializer # Assuming this exists and includes Profile data
+
+class SearchFilterOptionsView(APIView):
+    """
+    Returns dynamic filter options for the search page.
+    """
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request):
+        # 1. Categories (Main ones)
+        categories = Category.objects.filter(parent=None).values('id', 'name', 'slug')
+        
+        # 2. Hourly Rates (from Profiles)
+        rate_stats = Profile.objects.aggregate(
+            min_rate=Min('hourly_rate'),
+            max_rate=Max('hourly_rate')
+        )
+        
+        # 3. Project Budgets (from Projects)
+        budget_stats = Project.objects.aggregate(
+            min_budget=Min('budget'),
+            max_budget=Max('budget')
+        )
+        
+        return Response({
+            "categories": list(categories),
+            "freelancer_rates": {
+                "min": rate_stats['min_rate'] or 0,
+                "max": rate_stats['max_rate'] or 500
+            },
+            "project_budgets": {
+                "min": budget_stats['min_budget'] or 0,
+                "max": budget_stats['max_budget'] or 10000
+            },
+            "ratings": [4.0, 3.0, 2.0, 1.0] # Common filter thresholds
+        })
+
+
+class GlobalSearchView(APIView):
+    """
+    Unified search endpoint for Users, Projects, and Categories.
+    """
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request):
+        query = request.query_params.get('q', '')
+        category_id = request.query_params.get('category')
+        min_price = request.query_params.get('min_price') # Covers rate or budget
+        max_price = request.query_params.get('max_price')
+        rating = request.query_params.get('rating')
+        search_type = request.query_params.get('type', 'all') # 'all', 'freelancers', 'projects'
+
+        results = {}
+
+        # ---------------------------------------------------------
+        # 1. SEARCH FREELANCERS (if type is 'all' or 'freelancers')
+        # ---------------------------------------------------------
+        if search_type in ['all', 'freelancers']:
+            users = User.objects.filter(roles__name='freelancer')
+            
+            if query:
+                users = users.filter(
+                    Q(username__icontains=query) |
+                    Q(first_name__icontains=query) |
+                    Q(last_name__icontains=query) |
+                    Q(profile__bio__icontains=query) |
+                    Q(profile__skills__icontains=query)
+                ).distinct()
+
+            # Filters
+            if min_price:
+                users = users.filter(profile__hourly_rate__gte=min_price)
+            if max_price:
+                users = users.filter(profile__hourly_rate__lte=max_price)
+            if rating:
+                users = users.filter(profile__rating__gte=rating)
+            if category_id:
+                pass
+            
+            user_limit = 20 if search_type == 'all' else 50
+            results['freelancers'] = UserSerializer(users[:user_limit], many=True).data
+
+        # ---------------------------------------------------------
+        # 2. SEARCH PROJECTS (if type is 'all' or 'projects')
+        # ---------------------------------------------------------
+        if search_type in ['all', 'projects']:
+            # Search Projects (OPEN only)
+            projects = Project.objects.filter(status='OPEN')
+            
+            # Filter by project_type (JOB or GIG) if specified
+            project_type = request.query_params.get('project_type')
+            if project_type:
+                projects = projects.filter(project_type=project_type.upper())
+            
+            if query:
+                projects = projects.filter(
+                    Q(title__icontains=query) |
+                    Q(description__icontains=query) |
+                    Q(category__name__icontains=query)
+                ).distinct()
+                
+            # Filters
+            if min_price:
+                projects = projects.filter(budget__gte=min_price)
+            if max_price:
+                projects = projects.filter(budget__lte=max_price)
+            if category_id:
+                projects = projects.filter(category_id=category_id)
+                
+            project_limit = 20 if search_type == 'all' else 50
+            results['projects'] = ProjectSerializer(projects[:project_limit], many=True).data
+
+        # ---------------------------------------------------------
+        # 3. SEARCH CATEGORIES (only if query present and type is 'all')
+        # ---------------------------------------------------------
+        if search_type == 'all' and query:
+            categories = Category.objects.filter(name__icontains=query)[:5]
+            results['categories'] = list(categories.values('id', 'name', 'slug'))
+        elif search_type == 'all' and not query:
+             results['categories'] = []
+
+        return Response(results)
+
+class UserSuggestionView(APIView):
+    """
+    Provide autocomplete suggestions for the search bar (Users, Projects, Categories).
+    """
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request, format=None):
+        query = request.query_params.get('q', '').strip()
+        if len(query) < 2:
+            return Response([])
+
+        suggestions = []
+
+        # 1. Matching Categories
+        categories = Category.objects.filter(name__icontains=query)[:3]
+        for cat in categories:
+            suggestions.append({'type': 'category', 'text': cat.name, 'id': cat.id})
+
+        # 2. Matching Projects
+        projects = Project.objects.filter(title__icontains=query, status='OPEN')[:3]
+        for p in projects:
+            suggestions.append({'type': 'project', 'text': p.title, 'id': p.id})
+
+        # 3. Matching Users
+        users = User.objects.filter(roles__name='freelancer').filter(
+            Q(username__icontains=query) |
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query)
+        )[:3]
+        
+        for user in users:
+            name_str = f"{user.first_name} {user.last_name} ({user.username})"
+            suggestions.append({
+                "type": "user",
+                "text": name_str.strip(),
+                "id": user.id
+            })
+
+        # 4. Matching Skills (from Profile)
+        profiles = Profile.objects.filter(skills__icontains=query)[:5]
+        found_skills = set()
+        for p in profiles:
+            if not p.skills: continue
+            for skill in p.skills.split(','):
+                skill = skill.strip()
+                if query.lower() in skill.lower() and skill not in found_skills:
+                    found_skills.add(skill)
+                    suggestions.append({'type': 'skill', 'text': skill})
+                    if len(found_skills) >= 2: break
+            if len(found_skills) >= 2: break
+
+        return Response(suggestions)

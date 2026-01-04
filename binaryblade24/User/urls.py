@@ -11,6 +11,8 @@ from .views import (
     AddFreelancerRoleView,
     UserSearchView,
     UserSuggestionView,
+    GlobalSearchView,
+    SearchFilterOptionsView,
 )
 from .settings_views import (
     CountriesListView,
@@ -48,7 +50,8 @@ urlpatterns = [
     path('users/<int:pk>/reviews/', UserReviewsView.as_view(), name='user-reviews'),
     
     # Search endpoints
-    path('search/', UserSearchView.as_view(), name='user-search'),
+    path('search/global/', GlobalSearchView.as_view(), name='global-search'),
+    path('search/options/', SearchFilterOptionsView.as_view(), name='search-options'),
     path('search/suggest/', UserSuggestionView.as_view(), name='user-search-suggest'),
     
     # Stripe URLs
