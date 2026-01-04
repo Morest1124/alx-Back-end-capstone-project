@@ -157,6 +157,11 @@ class ProjectViewSet(viewsets.ModelViewSet):
         project_type = self.request.query_params.get('project_type')
         if project_type:
              queryset = queryset.filter(project_type=project_type.upper())
+             
+        # Filter by client (for fetching a specific user's projects/gigs)
+        client_id = self.request.query_params.get('client')
+        if client_id:
+            queryset = queryset.filter(client_id=client_id)
         
         return queryset
 
