@@ -36,7 +36,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Define the allowed hosts for your application.
 # Uses Csv caster to easily load multiple hosts from a single string env variable.
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='binaryblade2411.pythonanywhere.com,127.0.0.1,localhost', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='binaryblade2411.pythonanywhere.com,morestburawa24.pythonanywhere.com,127.0.0.1,localhost', cast=Csv())
 
 
 # ====================================================================
@@ -207,6 +207,7 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    CSRF_TRUSTED_ORIGINS = ['https://morestburawa24.pythonanywhere.com','https://binaryblade2411.pythonanywhere.com']
 
 # Password validation (unmodified)
 AUTH_PASSWORD_VALIDATORS = [
