@@ -336,19 +336,26 @@ class ProjectViewSet(viewsets.ModelViewSet):
         """
         user = self.request.user
         
-        # Determine project type based on user role
-        # Freelancers create GIGs (Fiverr-style), Clients create JOBS (Upwork-style)
-        user_roles = [role.name.lower() for role in user.roles.all()]
-        if 'freelancer' in user_roles:
-            project_type = Project.ProjectType.GIG
-        else:
-            project_type = Project.ProjectType.JOB
+        # Check if project_type is explicitly provided by the frontend
+        project_type = self.request.data.get('project_type')
+        
+        if not project_type:
+            # Fallback to role-based logic (Legacy/Safety)
+            # Freelancers create GIGs (Fiverr-style), Clients create JOBS (Upwork-style)
+            try:
+                user_roles = [role.name.lower() for role in user.roles.all()]
+                if 'freelancer' in user_roles:
+                    project_type = Project.ProjectType.GIG
+                else:
+                    project_type = Project.ProjectType.JOB
+            except Exception:
+                project_type = Project.ProjectType.JOB # Failsafe
         
         # Save project with server-controlled fields
         serializer.save(
             client=user,                                # Owner = authenticated user
             status=Project.ProjectStatus.OPEN,          # Always start accepting proposals/orders
-            project_type=project_type                   # GIG or JOB based on role
+            project_type=project_type                   # GIG or JOB based on input or role
         )
 
 
