@@ -70,61 +70,43 @@ class ProjectViewSet(viewsets.ModelViewSet):
         Dynamically assign permissions based on the HTTP method/action.
         
         Returns:
-            list: Permission classes for the current request
-            
-        Permission Matrix:
-            - CREATE (POST):      IsAuthenticated + IsFreelancer
-              * ONLY Freelancers can create GIGs (Pure Fiverr Model)
-              * Clients browse and purchase gigs, they don't post jobs
-            - UPDATE (PUT/PATCH): IsAuthenticated + IsProjectOwner
-            - DELETE:             IsAuthenticated + IsProjectOwner
-            - LIST/RETRIEVE:      IsAuthenticatedOrReadOnly (public can read)
-        
-        Design Rationale:
-            - Pure Fiverr model: freelancers offer services, clients hire
-            - Public listing enables SEO and project discovery
-            - Modification restricted to owners prevents unauthorized changes
+        list: Permission classes for the current request
         """
-        if self.action in ['create']:
+        # --- Custom Actions (Explicit Requirements) ---
+        if self.action == 'my_projects':
+            # Must be authenticated and a client to see your own projects
+            self.permission_classes = [IsAuthenticated, IsClient]
+            
+        elif self.action == 'my_jobs':
+            # Must be authenticated and a freelancer to see your jobs
+            self.permission_classes = [IsAuthenticated, IsFreelancer]
+            
+        elif self.action == 'approve_work':
+            # Must be authenticated, the client, and the owner of the project
+            self.permission_classes = [IsAuthenticated, IsClient, IsProjectOwner]
+
+        # --- Standard CRUD Actions ---
+        elif self.action in ['create']:
             # Both freelancers (GIGs) and clients (JOBs) can create projects
             self.permission_classes = [IsAuthenticated, IsClientOrFreelancer]
             
         elif self.action in ['update', 'partial_update', 'destroy']:
             # Only the project creator can modify or delete
-            # Prevents clients/freelancers from editing each other's projects
             self.permission_classes = [IsAuthenticated, IsProjectOwner]
             
         elif self.action in ['list', 'retrieve']:
             # Public browsing allowed - no authentication required
-            # Allows anonymous users to browse gigs (marketplace discovery)
             self.permission_classes = [AllowAny]
             
         else:
-            # Default: authenticated or read-only
-            self.permission_classes = [IsAuthenticatedOrReadOnly]
+            # Default: be strict - require authentication
+            self.permission_classes = [IsAuthenticated]
             
-        return super().get_permissions()
+        return [permission() for permission in self.permission_classes]
 
     def get_queryset(self):
         """
-        Filter projects to show only OPEN opportunities.
-        
-        This is the default queryset for the "Find Work" page where freelancers
-        browse available projects. It intentionally excludes:
-        - IN_PROGRESS projects (already assigned)
-        - COMPLETED projects (finished work)
-        - CANCELED projects (no longer active)
-        
-        Returns:
-            QuerySet: Only projects with status=OPEN
-            
-        Note:
-            Clients and freelancers use custom actions (my_projects, my_jobs)
-            to view their specific projects. This default view is for discovery.
-        
-        Alternative Views:
-            - Use my_projects() for client's created projects
-            - Use my_jobs() for freelancer's active work
+        Filter projects to show only OPEN opportunities with safe query param handling.
         """
         # Show only open projects (the "job board" for freelancers)
         queryset = Project.objects.filter(status=Project.ProjectStatus.OPEN)
@@ -137,16 +119,25 @@ class ProjectViewSet(viewsets.ModelViewSet):
         # Filter by client (for fetching a specific user's projects/gigs)
         client_id = self.request.query_params.get('client')
         if client_id:
-            queryset = queryset.filter(client_id=client_id)
+            try:
+                queryset = queryset.filter(client_id=int(client_id))
+            except (ValueError, TypeError):
+                pass # Ignore invalid client IDs
 
         # Filter by category (including subcategories)
         category_id = self.request.query_params.get('category')
         if category_id:
-            from django.db.models import Q
-            queryset = queryset.filter(
-                Q(category_id=category_id) | 
-                Q(category__parent_id=category_id)
-            )
+            try:
+                cat_id = int(category_id)
+                from django.db.models import Q
+                queryset = queryset.filter(
+                    Q(category_id=cat_id) | 
+                    Q(category__parent_id=cat_id)
+                )
+            except (ValueError, TypeError):
+                # Safely ignore invalid non-integer categories (e.g., 'undefined')
+                # This prevents 500 errors on strict DBs like PostgreSQL
+                pass
         
         return queryset
 
