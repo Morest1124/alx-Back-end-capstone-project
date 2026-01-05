@@ -173,6 +173,12 @@ class ProposalListCreateView(mixins.CreateModelMixin, mixins.ListModelMixin, vie
                 "detail": "You cannot submit a proposal to your own project."
             })
 
+        # CHECK: Prevent duplicate proposals (avoids 500 IntegrityError)
+        if Proposal.objects.filter(project=project, freelancer=self.request.user).exists():
+            raise ValidationError({
+                "detail": "You have already submitted a proposal for this project."
+            })
+
         # Save with server-controlled fields
         # This prevents clients from manipulating:
         # - Which user submitted (could impersonate)

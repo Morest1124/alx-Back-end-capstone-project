@@ -31,6 +31,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     average_rating = serializers.SerializerMethodField()
     review_count = serializers.SerializerMethodField()
     view_count = serializers.SerializerMethodField()
+    user_has_submitted = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
@@ -56,6 +57,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             'average_rating',
             'review_count',
             'view_count',
+            'user_has_submitted',
             # 'verbose_name',
             # 'help_text',
             
@@ -88,6 +90,13 @@ class ProjectSerializer(serializers.ModelSerializer):
     def get_view_count(self, obj):
         """Return total number of view impressions."""
         return obj.views.count()
+
+    def get_user_has_submitted(self, obj):
+        """Check if the current user has already submitted a proposal for this project."""
+        request = self.context.get('request')
+        if request and request.user.is_authenticated:
+            return obj.proposals.filter(freelancer=request.user).exists()
+        return False
 
     def get_client_details(self, obj):
         """

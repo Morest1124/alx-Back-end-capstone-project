@@ -42,14 +42,18 @@ class FreelancerDetailSerializer(serializers.ModelSerializer):
         """Get average rating from user profile."""
         from Review.models import Review
         try:
-            # Safely access profile
-            profile = obj.profile
+            # Aggregate from Review model
             agg = Review.objects.filter(reviewee=obj).aggregate(avg=Avg('rating'))
             avg = agg.get('avg')
-            if avg is None:
-                return profile.rating
-            return round(avg, 1)
-        except ObjectDoesNotExist:
+            if avg is not None:
+                return round(avg, 1)
+            
+            # Fallback to profile rating if review aggregation yields nothing
+            # Note: Accessing obj.profile might fail if there's a schema mismatch (e.g. missing wallet_balance)
+            return getattr(obj.profile, 'rating', 0.0) if hasattr(obj, 'profile') else 0.0
+            
+        except (ObjectDoesNotExist, Exception):
+            # Exception caught here includes OperationalError (missing columns)
             return 0.0
 
 class UserContactSerializer(serializers.ModelSerializer):
