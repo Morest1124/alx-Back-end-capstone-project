@@ -359,15 +359,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
         )
 
 
-class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+class CategoryViewSet(viewsets.ModelViewSet):
     """
-    API endpoint for browsing categories and subcategories.
+    API endpoint for browsing and managing categories and subcategories.
     
     Endpoints:
         GET /api/projects/categories/ - List all main categories with subcategories
+        POST /api/projects/categories/ - Create a new category
         GET /api/projects/categories/{id}/ - Get a specific category
     
-    Response Format:
+    Response Format (List):
         [
             {
                 "id": 1,

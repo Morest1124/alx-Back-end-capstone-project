@@ -145,8 +145,16 @@ class MilestoneSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'project', 'status', 'created_at']
 
     def create(self, validated_data):
-        # Ensure project is set from context or view
+        # 1. Try to get project from the URL (nested route: /api/projects/<pk>/milestones/)
         project_id = self.context['view'].kwargs.get('project_pk')
+        
+        # 2. Try to get project from the request body if not in URL (standard route: /api/projects/milestones/)
+        if not project_id:
+            request = self.context.get('request')
+            if request and 'project' in request.data:
+                project_id = request.data.get('project')
+        
         if project_id:
             validated_data['project_id'] = project_id
+            
         return super().create(validated_data)
